@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class MyPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
