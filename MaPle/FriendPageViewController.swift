@@ -25,5 +25,9 @@ class FriendPageViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Payment Alert
+    var alertController = PaymentAlert()
+    
 
 }
