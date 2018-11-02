@@ -27,7 +27,19 @@ class FriendPageViewController: UIViewController {
     */
     
     // MARK: - Payment Alert
-    var alertController = PaymentAlert()
+    func paymentAlert() {
+        let paymentAlert = UIAlertController(title: "內購尊榮會員升等服務", message: "尊榮會員升等服務 \n 1.享有每日配段次數10次", preferredStyle: .alert)
+        let conform = UIAlertAction(title: "同意", style: .default) { (action) in
+            self.paymentProcess()
+        }
+        let cancel = UIAlertAction(title: "取消", style: .cancel)
+        paymentAlert.addAction(conform)
+        paymentAlert.addAction(cancel)
+        present(paymentAlert, animated: true)
+    }
+    func paymentProcess() {
+        
+    }
     
 
 }

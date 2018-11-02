@@ -17,7 +17,6 @@
 		8AA163C8217F74CD00D80197 /* MapPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163C7217F74CD00D80197 /* MapPageViewController.swift */; };
 		C82393A4B472C82F2D8A89A7 /* Pods_MaPle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */; };
 		DA7D12952181B9C400286775 /* Vision.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D12942181B9C400286775 /* Vision.swift */; };
-		DA7D12992181BB0400286775 /* PaymentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D12982181BB0400286775 /* PaymentAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		8AA163C5217F74B500D80197 /* FriendPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageViewController.swift; sourceTree = "<group>"; };
 		8AA163C7217F74CD00D80197 /* MapPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPageViewController.swift; sourceTree = "<group>"; };
 		DA7D12942181B9C400286775 /* Vision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vision.swift; sourceTree = "<group>"; };
-		DA7D12982181BB0400286775 /* PaymentAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +112,6 @@
 		DA7D129A2181BB1E00286775 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
-				DA7D12982181BB0400286775 /* PaymentAlert.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -232,7 +229,6 @@
 			files = (
 				8AA163B6217F5DC200D80197 /* ExploreViewController.swift in Sources */,
 				DA7D12952181B9C400286775 /* Vision.swift in Sources */,
-				DA7D12992181BB0400286775 /* PaymentAlert.swift in Sources */,
 				8AA163C6217F74B500D80197 /* FriendPageViewController.swift in Sources */,
 				8AA163C8217F74CD00D80197 /* MapPageViewController.swift in Sources */,
 				8AA163B2217F5DC200D80197 /* AppDelegate.swift in Sources */,
