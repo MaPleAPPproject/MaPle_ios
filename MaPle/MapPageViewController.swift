@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class MapPageViewController: UIViewController {
 
     override func viewDidLoad() {
