@@ -11,6 +11,8 @@
 		8A01110C21AD8E5000789296 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01110B21AD8E5000789296 /* SearchTableViewController.swift */; };
 		8A01110E21AD9ABA00789296 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01110D21AD9ABA00789296 /* SearchTableViewCell.swift */; };
 		8A0DE9DA2199E5EE0090ABDE /* PictureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DE9D92199E5EE0090ABDE /* PictureDetailViewController.swift */; };
+		8A30ED2021B0333F007F4960 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A30ED1F21B0333F007F4960 /* Assets.xcassets */; };
+		8A30ED2221B0351C007F4960 /* FriendPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A30ED2121B0351C007F4960 /* FriendPageViewController.swift */; };
 		8A3161E1219523EC00827F28 /* ExploreCommuicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E0219523EC00827F28 /* ExploreCommuicator.swift */; };
 		8A3161E5219524A400827F28 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E3219524A400827F28 /* Reachability.m */; };
 		8A3161E7219526F600827F28 /* ExploreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E6219526F600827F28 /* ExploreData.swift */; };
@@ -19,9 +21,7 @@
 		8AA163B4217F5DC200D80197 /* MyPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163B3217F5DC200D80197 /* MyPageController.swift */; };
 		8AA163B6217F5DC200D80197 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163B5217F5DC200D80197 /* ExploreViewController.swift */; };
 		8AA163B9217F5DC200D80197 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA163B7217F5DC200D80197 /* Main.storyboard */; };
-		8AA163BB217F5DC500D80197 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AA163BA217F5DC500D80197 /* Assets.xcassets */; };
 		8AA163BE217F5DC500D80197 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */; };
-		8AA163C6217F74B500D80197 /* FriendPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163C5217F74B500D80197 /* FriendPageViewController.swift */; };
 		8AA163C8217F74CD00D80197 /* MapPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163C7217F74CD00D80197 /* MapPageViewController.swift */; };
 		8AA9DF86219D6BC1007FCA62 /* LocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9DF85219D6BC1007FCA62 /* LocationMapViewController.swift */; };
 		8AADEC62219D2C6800A7FD34 /* OthersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AADEC61219D2C6800A7FD34 /* OthersPageViewController.swift */; };
@@ -42,6 +42,8 @@
 		8A01110B21AD8E5000789296 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		8A01110D21AD9ABA00789296 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		8A0DE9D92199E5EE0090ABDE /* PictureDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureDetailViewController.swift; sourceTree = "<group>"; };
+		8A30ED1F21B0333F007F4960 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A30ED2121B0351C007F4960 /* FriendPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendPageViewController.swift; path = "New Group/FriendPageViewController.swift"; sourceTree = "<group>"; };
 		8A3161E0219523EC00827F28 /* ExploreCommuicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCommuicator.swift; sourceTree = "<group>"; };
 		8A3161E2219524A300827F28 /* MaPle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MaPle-Bridging-Header.h"; sourceTree = "<group>"; };
 		8A3161E3219524A400827F28 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -53,10 +55,8 @@
 		8AA163B3217F5DC200D80197 /* MyPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageController.swift; sourceTree = "<group>"; };
 		8AA163B5217F5DC200D80197 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		8AA163B8217F5DC200D80197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8AA163BA217F5DC500D80197 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AA163BD217F5DC500D80197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AA163BF217F5DC500D80197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8AA163C5217F74B500D80197 /* FriendPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageViewController.swift; sourceTree = "<group>"; };
 		8AA163C7217F74CD00D80197 /* MapPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPageViewController.swift; sourceTree = "<group>"; };
 		8AA9DF85219D6BC1007FCA62 /* LocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapViewController.swift; sourceTree = "<group>"; };
 		8AADEC61219D2C6800A7FD34 /* OthersPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPageViewController.swift; sourceTree = "<group>"; };
@@ -137,10 +137,10 @@
 				8A3161E4219524A400827F28 /* Reachability.h */,
 				8A3161E3219524A400827F28 /* Reachability.m */,
 				8AA163B3217F5DC200D80197 /* MyPageController.swift */,
-				8AA163BA217F5DC500D80197 /* Assets.xcassets */,
+				8A30ED1F21B0333F007F4960 /* Assets.xcassets */,
 				8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */,
 				8AA163BF217F5DC500D80197 /* Info.plist */,
-				8AA163C5217F74B500D80197 /* FriendPageViewController.swift */,
+				8A30ED2121B0351C007F4960 /* FriendPageViewController.swift */,
 				8AA163C7217F74CD00D80197 /* MapPageViewController.swift */,
 				8A3161E2219524A300827F28 /* MaPle-Bridging-Header.h */,
 				DA7D129A2181BB1E00286775 /* Payment */,
@@ -234,7 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AA163BE217F5DC500D80197 /* LaunchScreen.storyboard in Resources */,
-				8AA163BB217F5DC500D80197 /* Assets.xcassets in Resources */,
+				8A30ED2021B0333F007F4960 /* Assets.xcassets in Resources */,
 				8AA163B9217F5DC200D80197 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,7 +292,6 @@
 				8A01110A21AD8E3B00789296 /* CollectionListViewController.swift in Sources */,
 				DA7D12952181B9C400286775 /* Vision.swift in Sources */,
 				8AB49D7721A3D1F9009F6472 /* OthersPage2CollectionViewController.swift in Sources */,
-				8AA163C6217F74B500D80197 /* FriendPageViewController.swift in Sources */,
 				8AA163C8217F74CD00D80197 /* MapPageViewController.swift in Sources */,
 				8AA9DF86219D6BC1007FCA62 /* LocationMapViewController.swift in Sources */,
 				8A613D6E21987F5400ADC06B /* ExploreCollectionViewCell.swift in Sources */,
@@ -302,6 +301,7 @@
 				8A0DE9DA2199E5EE0090ABDE /* PictureDetailViewController.swift in Sources */,
 				8AA163B2217F5DC200D80197 /* AppDelegate.swift in Sources */,
 				8AA163B4217F5DC200D80197 /* MyPageController.swift in Sources */,
+				8A30ED2221B0351C007F4960 /* FriendPageViewController.swift in Sources */,
 				8A3161E5219524A400827F28 /* Reachability.m in Sources */,
 				8AB49D7921A3D522009F6472 /* OthersPageUICollectionReusableView.swift in Sources */,
 				8A3161E1219523EC00827F28 /* ExploreCommuicator.swift in Sources */,

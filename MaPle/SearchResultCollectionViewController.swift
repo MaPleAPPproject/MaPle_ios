@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import MapKit
 
-
-class SearchResultCollectionViewController: UICollectionViewController {
+class SearchResultCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionFlowLayout: UICollectionViewFlowLayout!
     var filteredtopsPictures = [Picture]()
@@ -17,6 +17,8 @@ class SearchResultCollectionViewController: UICollectionViewController {
     var selectedDistrict: String?
     let communicatior = ExploreCommunicator.shared
     let fullScreenSize = UIScreen.main.bounds.size
+    let selectedAnnotation = LocationAnnotation()
+    var finalheaferView: ResultMapCollectionReusableView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,29 +27,78 @@ class SearchResultCollectionViewController: UICollectionViewController {
         self.collectionFlowLayout.itemSize = CGSize(width: self.fullScreenSize.width/3, height: self.fullScreenSize.width/3)
         self.collectionFlowLayout.minimumLineSpacing = 0
         self.collectionFlowLayout.minimumInteritemSpacing = 0
-
+        getannotationData(selectedDistrict: selectedDistrict)
+        self.title = selectedDistrict
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showDetail" {
+            guard let selectedIndexPath = self.collectionView.indexPathsForSelectedItems?.first else {
+                assertionFailure("failed to get indexPathsForSelectedItems")
+                return
+            }
+            guard let targetVC = segue.destination as? PictureDetailViewController else {
+                assertionFailure("Faild to get destination")
+                return
+            }
+            if selectedIndexPath.section == 1 {
+                targetVC.picture = self.filteredtopsPictures[selectedIndexPath.row]
+                targetVC.navigationItem.leftItemsSupplementBackButton = true
+            } else {
+                targetVC.picture = self.filterednewsPictures[selectedIndexPath.row]
+                targetVC.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
     }
-    */
-
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            let region = MKCoordinateRegion(center: self.selectedAnnotation.coordinate, span: span)
+            if let finalheaferView = self.finalheaferView {
+                finalheaferView.resultmapView.setRegion(region, animated: true)
+            }
+        }
+    }
+    func getannotationData(selectedDistrict: String?) {
+        guard let district = selectedDistrict else {
+            assertionFailure("selectedDistrict is nil")
+            return
+        }
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(district) { (placemark, error) in
+            if let error = error {
+                print("error:\(error)")
+            }
+            guard let placemark = placemark else {
+                assertionFailure("failed to get placemark")
+                return
+            }
+            guard let coordinate = placemark.first?.location?.coordinate else {
+                assertionFailure("failed to get coordinate")
+                return
+            }
+            self.selectedAnnotation.coordinate = coordinate
+        }
+    }
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 3
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
+            return 0 //map header
+        } else if section == 1 {
             print(filteredtopsPictures.count)
             return filteredtopsPictures.count
         } else {
@@ -62,7 +113,7 @@ class SearchResultCollectionViewController: UICollectionViewController {
             assertionFailure("failed to get class")
             return cell
         }
-        if indexPath.section == 0 {
+        if indexPath.section == 1 {
                 let postid = filteredtopsPictures[indexPath.row].postid
                 communicatior.getImage(postId: String(postid)) { (data, error) in
                     if let error = error {
@@ -75,7 +126,7 @@ class SearchResultCollectionViewController: UICollectionViewController {
                     finalcell.imageView.image = UIImage(data: data)
                 }
                 return finalcell
-        } else {
+        } else if indexPath.section == 2 {
             let postid = filterednewsPictures[indexPath.row].postid
             communicatior.getImage(postId: String(postid)) { (data, error) in
                 if let error = error {
@@ -88,9 +139,38 @@ class SearchResultCollectionViewController: UICollectionViewController {
                 finalcell.imageView.image = UIImage(data: data)
             }
             return finalcell
+        } else {
+            return cell
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let reuableView = collectionView.dequeueReusableSupplementaryView(ofKind: "UICollectionElementKindSectionHeader", withReuseIdentifier: "header", for: indexPath)
+        guard let finalheaferView = reuableView as? ResultMapCollectionReusableView else {
+            assertionFailure("failed to find ResultMapCollectionReusableView")
+            return reuableView
+        }
+        if indexPath.section == 0 {
+            finalheaferView.titlelabel.isHidden = true
+            finalheaferView.resultmapView.addAnnotation(self.selectedAnnotation)
+            self.finalheaferView = finalheaferView
+//            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+//            let region = MKCoordinateRegion(center: self.selectedAnnotation.coordinate, span: span)
+//            finalheaferView.resultmapView.setRegion(region, animated: true)
+            
+            return finalheaferView
+        } else if indexPath.section == 1{
+            finalheaferView.resultmapView.isHidden = true
+            finalheaferView.titlelabel.text = "熱門"
+            return finalheaferView
+        } else {
+            finalheaferView.resultmapView.isHidden = true
+            finalheaferView.titlelabel.text = "最新"
+            return finalheaferView
+        }
+    }
+
     
     // MARK: UICollectionViewDelegate
 

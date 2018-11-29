@@ -101,7 +101,7 @@
             <objects>
                 <viewController id="iWV-rC-5wd" customClass="PictureDetailViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bkf-ts-ovt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XgH-1W-MBg">
@@ -231,11 +231,11 @@
             <objects>
                 <viewController id="PzD-9Y-k8j" customClass="LocationMapViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="boU-70-n0M">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Scx-rl-Cd8">
-                                <rect key="frame" x="0.0" y="44" width="414" height="647"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </mapView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lYD-DB-cxs">
                                 <rect key="frame" x="77" y="83" width="261" height="29"/>
@@ -273,7 +273,7 @@
             <objects>
                 <collectionViewController id="Je0-ZP-vGy" customClass="OthersPage2CollectionViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ToA-HA-IaE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cga-Vd-G2q">
@@ -620,30 +620,29 @@
                                 <size key="customSize" width="100" height="100"/>
                                 <connections>
                                     <outlet property="imageView" destination="JrZ-IJ-Yav" id="xL5-hL-yk5"/>
+                                    <segue destination="iWV-rC-5wd" kind="show" identifier="showDetail" id="eqt-I6-fOa"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SOh-SX-85M" customClass="ResultMapCollectionReusableView" customModule="MaPle" customModuleProvider="target">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="header" id="SOh-SX-85M" customClass="ResultMapCollectionReusableView" customModule="MaPle" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="177"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="acw-O7-al2">
+                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S4x-7E-s2c">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="177"/>
-                                    <subviews>
-                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S4x-7E-s2c">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="177"/>
-                                        </mapView>
-                                    </subviews>
-                                </stackView>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </mapView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpX-3I-Om4">
+                                    <rect key="frame" x="8" y="78" width="42" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="acw-O7-al2" secondAttribute="bottom" id="HJ5-En-bhf"/>
-                                <constraint firstItem="acw-O7-al2" firstAttribute="leading" secondItem="SOh-SX-85M" secondAttribute="leading" id="S1G-Gh-I0g"/>
-                                <constraint firstAttribute="trailing" secondItem="acw-O7-al2" secondAttribute="trailing" id="UuX-8G-1a5"/>
-                                <constraint firstItem="acw-O7-al2" firstAttribute="top" secondItem="SOh-SX-85M" secondAttribute="top" id="Zfn-WW-Seh"/>
-                            </constraints>
                             <connections>
                                 <outlet property="resultmapView" destination="S4x-7E-s2c" id="ZH9-y3-o8c"/>
+                                <outlet property="titlelabel" destination="mpX-3I-Om4" id="2qf-2R-Y5r"/>
                             </connections>
                         </collectionReusableView>
                         <connections>
@@ -651,12 +650,19 @@
                             <outlet property="delegate" destination="OCF-Af-cc6" id="cNe-zt-QG2"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="XJ8-Mx-Sn6"/>
+                    <navigationItem key="navigationItem" id="XJ8-Mx-Sn6">
+                        <barButtonItem key="rightBarButtonItem" title="返回" style="done" id="o2X-0b-47g">
+                            <connections>
+                                <segue destination="rCD-sl-Cch" kind="unwind" unwindAction="unwindToList:" id="4Jw-SW-qUw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionFlowLayout" destination="Mv0-Kv-fbo" id="5yG-W6-XST"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CQ3-0G-xd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rCD-sl-Cch" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3350.7246376811595" y="1755.8035714285713"/>
         </scene>
@@ -688,6 +694,6 @@
         <image name="tabbar_mypage" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YJC-P5-apX"/>
+        <segue reference="eqt-I6-fOa"/>
     </inferredMetricsTieBreakers>
 </document>
