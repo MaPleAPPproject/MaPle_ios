@@ -127,6 +127,7 @@
       "idiom" : "mac",
       "filename" : "iTunesArtwork@2x.png",
       "scale" : "2x"
+<<<<<<< HEAD
     },
     {
       "idiom" : "universal",
@@ -136,16 +137,6 @@
     {
       "idiom" : "universal",
       "filename" : "Icon-App-72x72@2x.png",
-      "scale" : "3x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "Icon-App-76x76@3x.png",
-      "scale" : "3x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "iTunesArtwork@3x.png",
       "scale" : "3x"
     },
     {
@@ -195,6 +186,20 @@
       "filename" : "Icon-Small-50x50@2x.png",
       "unassigned" : true,
       "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Icon-App-76x76@3x.png",
+      "unassigned" : true,
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "iTunesArtwork@3x.png",
+      "unassigned" : true,
+      "scale" : "3x"
+=======
+>>>>>>> 52772711992e602d80108869651c52e3c17da8fe
     }
   ],
   "info" : {
