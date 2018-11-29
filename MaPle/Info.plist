@@ -20,7 +20,6 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-<<<<<<< HEAD
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -32,12 +31,6 @@
 	<string>是否允許使用當前位置？</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>是否同意使用ＡＰＰ時開啟定位？</string>
-=======
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>remote-notification</string>
-	</array>
->>>>>>> 52772711992e602d80108869651c52e3c17da8fe
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
