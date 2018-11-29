@@ -8,6 +8,7 @@ import MapKit
 import UIKit
 import CoreLocation
 
+
 class MapPageViewController: UIViewController {
     
     @IBOutlet weak var myMapView: MKMapView!

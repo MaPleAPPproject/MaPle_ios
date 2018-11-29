@@ -127,6 +127,7 @@
       "idiom" : "mac",
       "filename" : "iTunesArtwork@2x.png",
       "scale" : "2x"
+<<<<<<< HEAD
     },
     {
       "idiom" : "universal",
@@ -197,6 +198,8 @@
       "filename" : "iTunesArtwork@3x.png",
       "unassigned" : true,
       "scale" : "3x"
+=======
+>>>>>>> 52772711992e602d80108869651c52e3c17da8fe
     }
   ],
   "info" : {

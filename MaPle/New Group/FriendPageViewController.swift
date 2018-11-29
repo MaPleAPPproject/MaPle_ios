@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Alamofire
 
 class FriendPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
 
         // Do any additional setup after loading the view.
     }
@@ -39,7 +41,12 @@ class FriendPageViewController: UIViewController {
     }
     func paymentProcess() {
         
+        
     }
+//    func vipStatusUpdate(memberId: String) -> Bool {
+//
+//    }
+    
     
 
 }
