@@ -23,6 +23,7 @@
 		8AA163BE217F5DC500D80197 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */; };
 		8AA163C6217F74B500D80197 /* FriendPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163C5217F74B500D80197 /* FriendPageViewController.swift */; };
 		8AA163C8217F74CD00D80197 /* MapPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163C7217F74CD00D80197 /* MapPageViewController.swift */; };
+<<<<<<< HEAD
 		8AA9DF86219D6BC1007FCA62 /* LocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9DF85219D6BC1007FCA62 /* LocationMapViewController.swift */; };
 		8AADEC62219D2C6800A7FD34 /* OthersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AADEC61219D2C6800A7FD34 /* OthersPageViewController.swift */; };
 		8AB49D7721A3D1F9009F6472 /* OthersPage2CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB49D7621A3D1F9009F6472 /* OthersPage2CollectionViewController.swift */; };
@@ -30,6 +31,13 @@
 		8AB6499221AEC9660012439C /* SearchResultCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6499121AEC9660012439C /* SearchResultCollectionViewController.swift */; };
 		8AB6499421AECA250012439C /* ResultMapCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6499321AECA250012439C /* ResultMapCollectionReusableView.swift */; };
 		8AF86EE9218BFCCB00E1582D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF86EE8218BFCCB00E1582D /* ViewController.swift */; };
+=======
+		9D29E16921ABEEF000787AA2 /* userCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D29E16821ABEEF000787AA2 /* userCollectionViewCell.swift */; };
+		9DD64B3D21A594E30092E923 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD64B3C21A594E30092E923 /* UserAccount.swift */; };
+		9DD64B3F21A5986E0092E923 /* Communcator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD64B3E21A5986E0092E923 /* Communcator.swift */; };
+		9DE39D96219D513B00BAA38C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE39D95219D513B00BAA38C /* LoginViewController.swift */; };
+		9DE39D98219D519900BAA38C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE39D97219D519900BAA38C /* RegisterViewController.swift */; };
+>>>>>>> df670e585acdb6448136564192bfe9d810e84d61
 		C82393A4B472C82F2D8A89A7 /* Pods_MaPle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */; };
 		DA7D12952181B9C400286775 /* Vision.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D12942181B9C400286775 /* Vision.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +66,7 @@
 		8AA163BF217F5DC500D80197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AA163C5217F74B500D80197 /* FriendPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageViewController.swift; sourceTree = "<group>"; };
 		8AA163C7217F74CD00D80197 /* MapPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPageViewController.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		8AA9DF85219D6BC1007FCA62 /* LocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapViewController.swift; sourceTree = "<group>"; };
 		8AADEC61219D2C6800A7FD34 /* OthersPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPageViewController.swift; sourceTree = "<group>"; };
 		8AB49D7621A3D1F9009F6472 /* OthersPage2CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPage2CollectionViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +74,20 @@
 		8AB6499121AEC9660012439C /* SearchResultCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewController.swift; sourceTree = "<group>"; };
 		8AB6499321AECA250012439C /* ResultMapCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMapCollectionReusableView.swift; sourceTree = "<group>"; };
 		8AF86EE8218BFCCB00E1582D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = SOURCE_ROOT; };
+=======
+<<<<<<< HEAD
+		9D29E16821ABEEF000787AA2 /* userCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DD64B3C21A594E30092E923 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		9DD64B3E21A5986E0092E923 /* Communcator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communcator.swift; sourceTree = "<group>"; };
+		9DE39D95219D513B00BAA38C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9DE39D97219D519900BAA38C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+=======
+		DA149AF521A53CD400B7E2FE /* MaPle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MaPle.entitlements; sourceTree = "<group>"; };
+		DA149AF621A53D5400B7E2FE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		DA2EE53E21AD48710015D0D8 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		DA2EE54221AEE6490015D0D8 /* LodingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LodingView.swift; sourceTree = "<group>"; };
+>>>>>>> 52772711992e602d80108869651c52e3c17da8fe
+>>>>>>> df670e585acdb6448136564192bfe9d810e84d61
 		DA7D12942181B9C400286775 /* Vision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vision.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,11 +155,22 @@
 			isa = PBXGroup;
 			children = (
 				8AA163B1217F5DC200D80197 /* AppDelegate.swift */,
+<<<<<<< HEAD
 				8A3161DF2195239300827F28 /* Explore */,
 				8AA163B7217F5DC200D80197 /* Main.storyboard */,
 				8A3161E4219524A400827F28 /* Reachability.h */,
 				8A3161E3219524A400827F28 /* Reachability.m */,
 				8AA163B3217F5DC200D80197 /* MyPageController.swift */,
+=======
+				8AA163B3217F5DC200D80197 /* MyPageController.swift */,
+				8AA163B5217F5DC200D80197 /* ExploreViewController.swift */,
+				9DE39D95219D513B00BAA38C /* LoginViewController.swift */,
+				8AA163B7217F5DC200D80197 /* Main.storyboard */,
+				9DD64B3C21A594E30092E923 /* UserAccount.swift */,
+				9DD64B3E21A5986E0092E923 /* Communcator.swift */,
+				9D29E16821ABEEF000787AA2 /* userCollectionViewCell.swift */,
+				9DE39D97219D519900BAA38C /* RegisterViewController.swift */,
+>>>>>>> df670e585acdb6448136564192bfe9d810e84d61
 				8AA163BA217F5DC500D80197 /* Assets.xcassets */,
 				8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */,
 				8AA163BF217F5DC500D80197 /* Info.plist */,
@@ -285,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				8AA163B6217F5DC200D80197 /* ExploreViewController.swift in Sources */,
 				8AB6499421AECA250012439C /* ResultMapCollectionReusableView.swift in Sources */,
 				8AB6499221AEC9660012439C /* SearchResultCollectionViewController.swift in Sources */,
@@ -300,6 +335,25 @@
 				8A01110E21AD9ABA00789296 /* SearchTableViewCell.swift in Sources */,
 				8AF86EE9218BFCCB00E1582D /* ViewController.swift in Sources */,
 				8A0DE9DA2199E5EE0090ABDE /* PictureDetailViewController.swift in Sources */,
+=======
+<<<<<<< HEAD
+				9DE39D96219D513B00BAA38C /* LoginViewController.swift in Sources */,
+=======
+				DA2EE53F21AD48710015D0D8 /* PaymentViewController.swift in Sources */,
+>>>>>>> 52772711992e602d80108869651c52e3c17da8fe
+				8AA163B6217F5DC200D80197 /* ExploreViewController.swift in Sources */,
+				9DD64B3D21A594E30092E923 /* UserAccount.swift in Sources */,
+				DA7D12952181B9C400286775 /* Vision.swift in Sources */,
+				9DE39D98219D519900BAA38C /* RegisterViewController.swift in Sources */,
+				9DD64B3F21A5986E0092E923 /* Communcator.swift in Sources */,
+				8AA163C6217F74B500D80197 /* FriendPageViewController.swift in Sources */,
+				8AA163C8217F74CD00D80197 /* MapPageViewController.swift in Sources */,
+<<<<<<< HEAD
+				9D29E16921ABEEF000787AA2 /* userCollectionViewCell.swift in Sources */,
+=======
+				DA2EE54321AEE6490015D0D8 /* LodingView.swift in Sources */,
+>>>>>>> 52772711992e602d80108869651c52e3c17da8fe
+>>>>>>> df670e585acdb6448136564192bfe9d810e84d61
 				8AA163B2217F5DC200D80197 /* AppDelegate.swift in Sources */,
 				8AA163B4217F5DC200D80197 /* MyPageController.swift in Sources */,
 				8A3161E5219524A400827F28 /* Reachability.m in Sources */,
@@ -455,13 +509,21 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = YXL8NT93X4;
+=======
+<<<<<<< HEAD
+				DEVELOPMENT_TEAM = YJT86MXP57;
+=======
+				DEVELOPMENT_TEAM = 4378J62ZQ4;
+>>>>>>> 52772711992e602d80108869651c52e3c17da8fe
+>>>>>>> df670e585acdb6448136564192bfe9d810e84d61
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cp102-3.MaPle";
+				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MaPle/MaPle-Bridging-Header.h";
@@ -479,13 +541,21 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = YXL8NT93X4;
+=======
+<<<<<<< HEAD
+				DEVELOPMENT_TEAM = YJT86MXP57;
+=======
+				DEVELOPMENT_TEAM = 4378J62ZQ4;
+>>>>>>> 52772711992e602d80108869651c52e3c17da8fe
+>>>>>>> df670e585acdb6448136564192bfe9d810e84d61
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cp102-3.MaPle";
+				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MaPle/MaPle-Bridging-Header.h";
