@@ -22,7 +22,7 @@ typealias DataDoneHandler = (_ result:Data?, _ error: Error?) -> Void //jsonå›žå
 
 class ExploreCommunicator {
     
-    static let BASEURL = "http://192.168.196.156:8080/MaPle/"
+    static let BASEURL = "http://192.168.50.224:8080/MaPle/"
     let PictureServlet_URL = BASEURL + "PictureServlet"
     let UserProfileServlet_URL = BASEURL + "User_profileServlet"
     let UserPreferenceServlet_URL = BASEURL + "UserPreferenceServlet"
