@@ -11,18 +11,18 @@ import Alamofire
 
 
 // JSON Keys
-let DATA_KEY = "data"
+//let DATA_KEY = "data"
 let ACTION_KEY = "action"
 
 
 typealias ArrayDoneHandler = (_ result:[Any]?, _ error: Error?) -> Void //json回傳結果放置result
-typealias DoneHandler = (_ result:Any?, _ error: Error?) -> Void //json回傳結果放置result
+typealias AnyDoneHandler = (_ result:Any?, _ error: Error?) -> Void //json回傳結果放置result
 
 typealias DataDoneHandler = (_ result:Data?, _ error: Error?) -> Void //json回傳結果為data
 
 class ExploreCommunicator {
     
-    static let BASEURL = "http://192.168.50.224:8080/MaPle/"
+    static let BASEURL = "http://192.168.196.156:8080/MaPle/"
     let PictureServlet_URL = BASEURL + "PictureServlet"
     let UserProfileServlet_URL = BASEURL + "User_profileServlet"
     let UserPreferenceServlet_URL = BASEURL + "UserPreferenceServlet"
@@ -38,7 +38,7 @@ class ExploreCommunicator {
     
 
 //    MARK: - PictureServlet Public methods.
-    func getDistinct( completion: @escaping DoneHandler ) {
+    func getDistinct( completion: @escaping AnyDoneHandler ) {
 
         let parameters = [ACTION_KEY: "getDistinct"]
         doPost(urlString: PictureServlet_URL, parameters: parameters, completion: completion)//執行Post
@@ -97,24 +97,24 @@ class ExploreCommunicator {
             }
         }
     }
-    func getProfile(memberId: String, completion: @escaping DoneHandler) {
+    func getProfile(memberId: String, completion: @escaping AnyDoneHandler) {
         let parameters = [ACTION_KEY: "findotherById", "memberId": memberId]
         doPost(urlString: UserProfileServlet_URL, parameters: parameters, completion: completion)
     }
     //MARK: - PostDetailServlet Public methods.
-    func getPostdetail(postId: String, completion: @escaping DoneHandler) {
+    func getPostdetail(postId: String, completion: @escaping AnyDoneHandler) {
         let parameters = [ACTION_KEY: "findById", "postid": postId]
         doPost(urlString: PostDetailServlet_URL, parameters: parameters, completion: completion)
     }
     
     //MARK: - LocationListServlet Public methods.
-    func getLocationList(postId: String, completion: @escaping DoneHandler) {
+    func getLocationList(postId: String, completion: @escaping AnyDoneHandler) {
         let parameters = [ACTION_KEY: "findById", "PostId": postId]
         doPost(urlString: LocationListServlet, parameters: parameters, completion: completion)
     }
     
     //MARK: - UserPreferenceServlet Public methods.
-    func addCollect(userPreference: UserPreference, completion: @escaping DoneHandler) {
+    func addCollect(userPreference: UserPreference, completion: @escaping AnyDoneHandler) {
         let jsonEncoder = JSONEncoder()
         let jsonData = try! jsonEncoder.encode(userPreference)
         let json = String(data: jsonData, encoding: String.Encoding.utf8)!
@@ -122,12 +122,12 @@ class ExploreCommunicator {
         doPost(urlString: UserPreferenceServlet_URL, parameters: parameters, completion: completion)
     }
     
-    func cancelCollect(postId: String, collectorId: String, completion: @escaping DoneHandler) {
+    func cancelCollect(postId: String, collectorId: String, completion: @escaping AnyDoneHandler) {
         let parameters = [ACTION_KEY: "userpreDelete", "postid": postId, "collectorid": collectorId]
         doPost(urlString: UserPreferenceServlet_URL, parameters: parameters, completion: completion)
     }
     
-    func isCollectable(postId: String, collectorId: String, completion: @escaping DoneHandler) {
+    func isCollectable(postId: String, collectorId: String, completion: @escaping AnyDoneHandler) {
         let parameters = [ACTION_KEY: "userValid", "postid": postId, "collectorid": collectorId]
         doPost(urlString: UserPreferenceServlet_URL, parameters: parameters, completion: completion)
     }
@@ -139,7 +139,7 @@ class ExploreCommunicator {
 //            self.handleJSON(response: response, completion: completion)
 //        }
 //    }
-    private func doPost(urlString: String, parameters: [String: Any], completion: @escaping DoneHandler) {
+    private func doPost(urlString: String, parameters: [String: Any], completion: @escaping AnyDoneHandler) {
 
         Alamofire.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
             self.handleJSON(response: response, completion: completion)
@@ -152,7 +152,7 @@ class ExploreCommunicator {
         }
     }
     
-    private func handleJSON(response: DataResponse<Any>, completion: DoneHandler) {
+    private func handleJSON(response: DataResponse<Any>, completion: AnyDoneHandler) {
         switch response.result {
             case .success(let json)://result enum 特殊型態 可以讓參數夾帶另一個結果
                 print("get success response:\(json)")

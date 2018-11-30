@@ -4,13 +4,6 @@
 //
 //  Created by Violet on 2018/10/23.
 //
-
-//
-//  MapPageViewController.swift
-//  MaPle
-//
-//  Created by Violet on 2018/10/23.
-//
 import MapKit
 import UIKit
 import CoreLocation
