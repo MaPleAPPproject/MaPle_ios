@@ -15,6 +15,10 @@
 		8AA163BE217F5DC500D80197 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */; };
 		8AA163C6217F74B500D80197 /* FriendPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163C5217F74B500D80197 /* FriendPageViewController.swift */; };
 		8AA163C8217F74CD00D80197 /* MapPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163C7217F74CD00D80197 /* MapPageViewController.swift */; };
+		9D29E16921ABEEF000787AA2 /* userCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D29E16821ABEEF000787AA2 /* userCollectionViewCell.swift */; };
+		9DD64B3F21A5986E0092E923 /* Communcator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD64B3E21A5986E0092E923 /* Communcator.swift */; };
+		9DE39D96219D513B00BAA38C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE39D95219D513B00BAA38C /* LoginViewController.swift */; };
+		9DE39D98219D519900BAA38C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE39D97219D519900BAA38C /* RegisterViewController.swift */; };
 		C82393A4B472C82F2D8A89A7 /* Pods_MaPle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */; };
 		DA7D12952181B9C400286775 /* Vision.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D12942181B9C400286775 /* Vision.swift */; };
 /* End PBXBuildFile section */
@@ -33,6 +37,10 @@
 		8AA163BF217F5DC500D80197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AA163C5217F74B500D80197 /* FriendPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageViewController.swift; sourceTree = "<group>"; };
 		8AA163C7217F74CD00D80197 /* MapPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPageViewController.swift; sourceTree = "<group>"; };
+		9D29E16821ABEEF000787AA2 /* userCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DD64B3E21A5986E0092E923 /* Communcator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communcator.swift; sourceTree = "<group>"; };
+		9DE39D95219D513B00BAA38C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9DE39D97219D519900BAA38C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		DA7D12942181B9C400286775 /* Vision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vision.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +86,8 @@
 		8AA163B0217F5DC200D80197 /* MaPle */ = {
 			isa = PBXGroup;
 			children = (
+				9D29E16B21AFC35A00787AA2 /* Map */,
+				9D29E16A21AFC31400787AA2 /* Login */,
 				8AA163B1217F5DC200D80197 /* AppDelegate.swift */,
 				8AA163B3217F5DC200D80197 /* MyPageController.swift */,
 				8AA163B5217F5DC200D80197 /* ExploreViewController.swift */,
@@ -86,7 +96,6 @@
 				8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */,
 				8AA163BF217F5DC500D80197 /* Info.plist */,
 				8AA163C5217F74B500D80197 /* FriendPageViewController.swift */,
-				8AA163C7217F74CD00D80197 /* MapPageViewController.swift */,
 				DA7D129A2181BB1E00286775 /* Payment */,
 				DA7D12972181BA9B00286775 /* VisionAlgorithm */,
 			);
@@ -99,6 +108,25 @@
 				16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D29E16A21AFC31400787AA2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9DE39D95219D513B00BAA38C /* LoginViewController.swift */,
+				9DE39D97219D519900BAA38C /* RegisterViewController.swift */,
+				9DD64B3E21A5986E0092E923 /* Communcator.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9D29E16B21AFC35A00787AA2 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				8AA163C7217F74CD00D80197 /* MapPageViewController.swift */,
+				9D29E16821ABEEF000787AA2 /* userCollectionViewCell.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		DA7D12972181BA9B00286775 /* VisionAlgorithm */ = {
@@ -227,10 +255,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DE39D96219D513B00BAA38C /* LoginViewController.swift in Sources */,
 				8AA163B6217F5DC200D80197 /* ExploreViewController.swift in Sources */,
 				DA7D12952181B9C400286775 /* Vision.swift in Sources */,
+				9DE39D98219D519900BAA38C /* RegisterViewController.swift in Sources */,
+				9DD64B3F21A5986E0092E923 /* Communcator.swift in Sources */,
 				8AA163C6217F74B500D80197 /* FriendPageViewController.swift in Sources */,
 				8AA163C8217F74CD00D80197 /* MapPageViewController.swift in Sources */,
+				9D29E16921ABEEF000787AA2 /* userCollectionViewCell.swift in Sources */,
 				8AA163B2217F5DC200D80197 /* AppDelegate.swift in Sources */,
 				8AA163B4217F5DC200D80197 /* MyPageController.swift in Sources */,
 			);
@@ -379,14 +411,17 @@
 			baseConfigurationReference = 81A9F33315809AAE23DFDBA9 /* Pods-MaPle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YJT86MXP57;
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cp102-3.MaPle";
+				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -397,14 +432,17 @@
 			baseConfigurationReference = 27F6591CDB14574C6CD6EF97 /* Pods-MaPle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YJT86MXP57;
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cp102-3.MaPle";
+				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
