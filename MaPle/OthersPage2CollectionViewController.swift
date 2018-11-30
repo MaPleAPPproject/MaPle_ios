@@ -16,7 +16,7 @@ class OthersPage2CollectionViewController: UICollectionViewController {
     var iconData:Data?
     let communicator = ExploreCommunicator.shared
     var postDetail:PostDetail?
-    var userProfile:UserProfile?
+    var userProfile:UserProfileExplore?
     var allpost = [Picture]()
     var allcollect = [Picture]()
     var data = [Picture]()
@@ -89,7 +89,7 @@ class OthersPage2CollectionViewController: UICollectionViewController {
                 assertionFailure("failed to get data")
                 return
             }
-            guard let finalResult = try? JSONDecoder().decode(UserProfile.self, from: jsonData) else {
+            guard let finalResult = try? JSONDecoder().decode(UserProfileExplore.self, from: jsonData) else {
                 assertionFailure("fail to decode")
                 return
             }
@@ -274,7 +274,7 @@ class OthersPage2CollectionViewController: UICollectionViewController {
         return finalheaferView
         }
     
-    func handleHeaderData(headerView: OthersPageUICollectionReusableView, userProfileData: UserProfile) {
+    func handleHeaderData(headerView: OthersPageUICollectionReusableView, userProfileData: UserProfileExplore) {
         headerView.collectCountLabel.text = String(userProfileData.collectcount)
         headerView.emailLabel.text = userProfileData.email
         headerView.postCountLabel.text = String(userProfileData.postcount)

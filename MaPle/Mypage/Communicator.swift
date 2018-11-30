@@ -8,29 +8,32 @@
 import Foundation
 import Alamofire
 
-let MEMBERID_KEY = "memberId"
-let RESULT_KEY = "result"
-let USERPROFILE_KEY = "userprofile"
-let DATA_KEY = "data"
-let ACTION_KEY = "action"
-let FINDBYID_KEY = "findById"
-let UPDATE_KEY = "update"
-let GETPOST_KEY = "getPost"
-let DELETEPOST_KEY = "deletPost"
-let UPDATEPOST_KEY = "updatePost"
-let INSERTPOST_KEY = "insert"
-let IMAGEBASE64_KEY = "imageBase64"
-let LOCATION_KEY = "locationTable"
-let FINDOTHERBYID = "findotherById"
-let GETBYMEMBERID_KEY = "getBymemberId"
-let POSTID_KEY = "postId"
 
 
-typealias DoneHandler = (_ result: Any? , _ error: Error?) -> Void
-typealias DownloadDoneHandler = (_ result: Data?, _ error: Error?) -> Void
 
 class Communicator {
-    static let BASEURL = "http://192.168.50.183:8080/MaPle"
+    
+    let MEMBERID_KEY = "memberId"
+    let RESULT_KEY = "result"
+    let USERPROFILE_KEY = "userprofile"
+    let DATA_KEY = "data"
+    let ACTION_KEY = "action"
+    let FINDBYID_KEY = "findById"
+    let UPDATE_KEY = "update"
+    let GETPOST_KEY = "getPost"
+    let DELETEPOST_KEY = "deletPost"
+    let UPDATEPOST_KEY = "updatePost"
+    let INSERTPOST_KEY = "insert"
+    let IMAGEBASE64_KEY = "imageBase64"
+    let LOCATION_KEY = "locationTable"
+    let FINDOTHERBYID = "findotherById"
+    let GETBYMEMBERID_KEY = "getBymemberId"
+    let POSTID_KEY = "postId"
+    
+    typealias DoneHandler = (_ result: Any? , _ error: Error?) -> Void
+    typealias DownloadDoneHandler = (_ result: Data?, _ error: Error?) -> Void
+    
+    static let BASEURL = "http://192.168.50.224:8080/MaPle"
 //    static let BASEURL = "http://172.20.10.3:8080/MaPle"
    
 //    static let BASEURL = "http://192.168.197.14:8080/MaPle"

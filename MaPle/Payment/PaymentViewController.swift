@@ -30,7 +30,7 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
         
     }
     
-   
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         SKPaymentQueue.default().remove(self)
@@ -52,8 +52,8 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
             print("取不到任何內購的商品...")
         }
     }
-   
-
+    
+    
     func showMessage(_ product: Product) {
         var message: String!
         
@@ -74,11 +74,11 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
     
     
     // MARK: - Delegate
-
+    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         
         print("invalidProductIdentifiers： \(response.invalidProductIdentifiers.description)")
-       
+        
         if response.products.count != 0 {
             
             for product in response.products {
@@ -101,7 +101,7 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
                 SKPaymentQueue.default().finishTransaction(transaction)
                 
                 self.isProgress = false
-
+                
                 SKPaymentQueue.default().remove(self)
                 
                 afterPaymentFinish()
@@ -127,7 +127,7 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
                 self.isProgress = false
             case SKPaymentTransactionState.restored:
                 print("SKPaymentTransactionState.restore")
-
+                
                 SKPaymentQueue.default().finishTransaction(transaction)
                 self.isProgress = false
                 
@@ -150,9 +150,9 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
             buyAction = UIAlertAction(title: "購買", style: UIAlertAction.Style.default) { (action) -> Void in
                 if SKPaymentQueue.canMakePayments() {
                     SKPaymentQueue.default().add(self)
-
+                    
                     let payment = SKPayment(product: self.productsArray[self.selectedProductIndex])
-
+                    
                     SKPaymentQueue.default().add(payment)
                     
                     self.isProgress = true

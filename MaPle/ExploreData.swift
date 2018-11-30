@@ -47,7 +47,7 @@ struct LocationList: Codable{
     
 }
 
-struct Post: Codable {
+struct PostExplore: Codable {
     var memberid: Int
     var postid: Int
     var collectioncount: Int
@@ -98,7 +98,7 @@ struct PostDetail: Codable {
         case lon = "lon"
     }
 }
-struct UserProfile: Codable {
+struct UserProfileExplore: Codable {
     var email: String
     var vipStatus: Int
     var selfIntroduction: String

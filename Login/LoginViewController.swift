@@ -15,7 +15,7 @@ class LoginViewController: UIViewController,UITextViewDelegate {
     var label:UITextField!
     var email = "abc@gmail.com"
     var passWord = "abc123"
-    var communicator = Communicator.shared
+    var communicator = MapCommunicator.shared
     let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {

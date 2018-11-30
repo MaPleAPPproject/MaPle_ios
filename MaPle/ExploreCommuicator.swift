@@ -10,17 +10,16 @@ import Foundation
 import Alamofire
 
 
-// JSON Keys
-//let DATA_KEY = "data"
-let ACTION_KEY = "action"
 
-
-typealias ArrayDoneHandler = (_ result:[Any]?, _ error: Error?) -> Void //json回傳結果放置result
-typealias AnyDoneHandler = (_ result:Any?, _ error: Error?) -> Void //json回傳結果放置result
-
-typealias DataDoneHandler = (_ result:Data?, _ error: Error?) -> Void //json回傳結果為data
 
 class ExploreCommunicator {
+    let ACTION_KEY = "action"
+    
+    
+    typealias ArrayDoneHandler = (_ result:[Any]?, _ error: Error?) -> Void //json回傳結果放置result
+    typealias AnyDoneHandler = (_ result:Any?, _ error: Error?) -> Void //json回傳結果放置result
+    
+    typealias DataDoneHandler = (_ result:Data?, _ error: Error?) -> Void //json回傳結果為data
     
     static let BASEURL = "http://192.168.50.224:8080/MaPle/"
     let PictureServlet_URL = BASEURL + "PictureServlet"
