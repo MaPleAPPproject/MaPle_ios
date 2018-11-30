@@ -1,45 +1,40 @@
 //
-//  SecondViewController.swift
+//  CollectionListViewController.swift
 //  MaPle
 //
-//  Created by Violet on 2018/10/23.
+//  Created by Violet on 2018/11/27.
 //
 
 import UIKit
 
-class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate, UICollectionViewDataSource,UISearchResultsUpdating,UISearchControllerDelegate {
+class CollectionListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var collectionViewController: CollectionListViewController!
-    lazy var searchtableViewController: SearchTableViewController = {
-        self.storyboard?.instantiateViewController(withIdentifier: "searchbarVC") as! SearchTableViewController
-    }()
-    var selectedViewController: UIViewController!
-
-    @IBOutlet weak var containerView: UIView!
+    
     @IBOutlet weak var segmentView: UISegmentedControl!
     @IBOutlet weak var collectViewlayout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
     var serverReach: Reachability?
     let communicatior = ExploreCommunicator.shared
     let fullScreenSize = UIScreen.main.bounds.size
-    var districtList = [String]()
+    var districtList:[String]?
     var searchActive : Bool = false
     let searchController = UISearchController(searchResultsController: nil)
     let buttonBar = UIView()
     var datas = [Picture]()
-    var filtered:[String] = []
+    var filtered:[Picture] = []
     var tops = [Picture]()
     var recoms = [Picture]()
     var news = [Picture]()
-
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //draw layout
-//        self.collectViewlayout.itemSize = CGSize(width: self.fullScreenSize.width/3, height: self.fullScreenSize.width/3)
-//        self.collectViewlayout.minimumLineSpacing = 0
-//        self.collectViewlayout.minimumInteritemSpacing = 0
+        self.collectViewlayout.itemSize = CGSize(width: self.fullScreenSize.width/3, height: self.fullScreenSize.width/3)
+        self.collectViewlayout.minimumLineSpacing = 0
+        self.collectViewlayout.minimumInteritemSpacing = 0
         //check web connection
         serverReach = Reachability.forInternetConnection()
         NotificationCenter.default.addObserver(self, selector: #selector(networkStatusChanged), name: .reachabilityChanged, object: nil)
@@ -49,26 +44,14 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearc
             print("No network connection.")
             return
         }
-//        //Task
-//        getPictureTop()
-//        getPictureNew()
-//        getPictureRecom()
-//
-//        // Searchbar
-        getDistrictList()
-        self.searchController.searchResultsUpdater = self
-        self.searchController.delegate = self
-        self.searchController.searchBar.delegate = self
+        //Task
+        getPictureTop()
+        getPictureNew()
+        getPictureRecom()
         
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.dimsBackgroundDuringPresentation = true
-        self.searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "搜尋地點"
-        searchController.searchBar.sizeToFit()
-        searchController.searchBar.becomeFirstResponder()
-        self.navigationItem.titleView = searchController.searchBar
-        selectedViewController = collectionViewController
-//        self.segmentstylechange()
+        // Searchbar
+        getDistrictList()
+        self.segmentstylechange()
     }
     @objc
     func networkStatusChanged(){
@@ -83,24 +66,6 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearc
             
         }
     }
-    
-    
-    func changePage(to newViewController: UIViewController) {
-        // 2. Remove previous viewController
-        selectedViewController.willMove(toParent: nil)
-        selectedViewController.view.removeFromSuperview()
-        selectedViewController.removeFromParent()
-        
-        // 3. Add new viewController
-        addChild(newViewController)
-        self.containerView.addSubview(newViewController.view)
-        newViewController.view.frame = containerView.bounds
-        newViewController.didMove(toParent: self)
-        
-        // 4.
-        self.selectedViewController = newViewController
-    }
-    
     func getDistrictList() {
         communicatior.getDistinct { (result, error) in
             if let error = error {
@@ -121,7 +86,85 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearc
             self.districtList = finalresult
         }
     }
-
+    func getPictureTop() {
+        communicatior.getTop { (result, error) in
+            if let error = error {
+                print("failed to getTop:\(error)")
+            }
+            guard let result = result else {
+                print("result is nil")
+                return
+            }
+            //            print("result:\(result)")
+            for item in result {
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: item, options: .prettyPrinted) else {
+                    print("Fail to generate jsonData") //先將json物件轉為data
+                    return
+                }
+                guard let resultObject = try? JSONDecoder().decode(Picture.self, from: jsonData) else {
+                    print("fail to decode")
+                    return
+                }
+                self.tops.append(resultObject)
+            }
+            print("tops:\(self.tops)")
+            self.datas = self.tops
+            self.collectionView.delegate = self
+            self.collectionView.dataSource = self
+        }
+        
+    }
+    
+    func getPictureRecom() {
+        communicatior.getRecom(memberid: String(1), completion: { (result, error) in
+            if let error = error {
+                print("error:\(error)")
+            }
+            guard let result = result else {
+                print("result is nil")
+                return
+            }
+            for item in result {
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: item, options: .prettyPrinted) else {
+                    print("Fail to generate jsonData") //先將json物件轉為data
+                    return
+                }
+                guard let resultObject = try? JSONDecoder().decode(Picture.self, from: jsonData) else {
+                    print("fail to decode")
+                    return
+                }
+                self.recoms.append(resultObject)
+            }
+            print("recoms:\(self.recoms)")
+        })
+        
+    }
+    
+    func getPictureNew() {
+        communicatior.getAll { (result, error) in
+            if let error = error {
+                print("failed to getTop:\(error)")
+            }
+            guard let result = result else {
+                print("result is nil")
+                return
+            }
+            print("result:\(result)")
+            for item in result {
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: item, options: .prettyPrinted) else {
+                    print("Fail to generate jsonData") //先將json物件轉為data
+                    return
+                }
+                guard let resultObject = try? JSONDecoder().decode(Picture.self, from: jsonData) else {
+                    print("fail to decode")
+                    return
+                }
+                self.news.append(resultObject)
+            }
+            print("news:\(self.news)")
+        }
+        
+    }
     func showAlert(title: String? = nil, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let OK = UIAlertAction(title: "OK", style: .default)
@@ -146,7 +189,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearc
         default:
             self.datas = self.tops
             self.collectionView.reloadData()
-
+            
         }
     }
     
@@ -162,7 +205,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearc
             return datas.count
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         guard let pictureCell = cell as? ExploreCollectionViewCell else {
@@ -197,8 +240,6 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearc
             }
             targetVC.picture = self.datas[selectedIndexPath.row]
             targetVC.navigationItem.leftItemsSupplementBackButton = true
-        } else if segue.identifier == "ContainerViewSegue" {
-            collectionViewController = segue.destination as! CollectionListViewController
         }
         
     }
@@ -208,51 +249,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearc
             return
         }
     }
-    //MARK:- SearchBar
-   
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        let searchString = searchController.searchBar.text
-        
-        filtered = self.districtList.filter({ (item) -> Bool in
-            let countryText: NSString = item as NSString
-            return (countryText.range(of: searchString!, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
-        })
-        
-        print("filtered:\(filtered.description)")
-        searchtableViewController.searchActive = true
-        searchtableViewController.filtered = self.filtered
-        searchtableViewController.topPictures = self.collectionViewController.tops
-        searchtableViewController.newPictures = self.collectionViewController.news
-        searchtableViewController.tableView.reloadData()
-    }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        changePage(to: collectionViewController)
-        searchActive = false
-        self.dismiss(animated: true, completion: nil)
-    }
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        changePage(to: searchtableViewController)
-        searchActive = true
-        searchtableViewController.tableView.reloadData()
-    }
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false
-        searchtableViewController.tableView.reloadData()
-    }
-    
-    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        if !searchActive {
-            searchActive = true
-            searchtableViewController.tableView.reloadData()
-        }
-        
-//        searchController.searchBar.resignFirstResponder()
-    }
-    
+ 
     //MARK:- Segment Style
     func segmentstylechange() {
         self.segmentView.backgroundColor = .clear
@@ -280,5 +277,3 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearc
         segmentView.addTarget(self, action: #selector(self.categoryValueChanged(_:)), for: UIControl.Event.valueChanged)
     }
 }
-
-
