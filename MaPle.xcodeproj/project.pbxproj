@@ -148,13 +148,14 @@
 		8AA163B0217F5DC200D80197 /* MaPle */ = {
 			isa = PBXGroup;
 			children = (
+				9D87CEF221B0E08000CD08B4 /* Login */,
+				9D87CEF321B0E09500CD08B4 /* Map */,
+				9D87CEF421B0E0E300CD08B4 /* Friend */,
+				9D87CEF521B0E10000CD08B4 /* Mypage */,
 				9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */,
 				9D87CEEF21B0D55E00CD08B4 /* PaymentViewController.swift */,
 				9D87CEEA21B0D4FA00CD08B4 /* Assets.xcassets */,
-				9D87CEE321B0D4D900CD08B4 /* LoginViewController.swift */,
 				9D87CEE421B0D4DA00CD08B4 /* MaPle.entitlements */,
-				9D87CEE521B0D4DA00CD08B4 /* RegisterViewController.swift */,
-				9D87CEDE21B0D4B000CD08B4 /* Communcator.swift */,
 				9D87CEDF21B0D4B000CD08B4 /* UserAccount.swift */,
 				9D87CEDD21B0D4B000CD08B4 /* userCollectionViewCell.swift */,
 				8AA163B1217F5DC200D80197 /* AppDelegate.swift */,
@@ -167,7 +168,6 @@
 				8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */,
 				8AA163BF217F5DC500D80197 /* Info.plist */,
 				8A30ED2121B0351C007F4960 /* FriendPageViewController.swift */,
-				8AA163C7217F74CD00D80197 /* MapPageViewController.swift */,
 				8A3161E2219524A300827F28 /* MaPle-Bridging-Header.h */,
 				DA7D129A2181BB1E00286775 /* Payment */,
 				DA7D12972181BA9B00286775 /* VisionAlgorithm */,
@@ -181,6 +181,40 @@
 				16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D87CEF221B0E08000CD08B4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9D87CEE521B0D4DA00CD08B4 /* RegisterViewController.swift */,
+				9D87CEE321B0D4D900CD08B4 /* LoginViewController.swift */,
+			);
+			name = Login;
+			path = ../Login;
+			sourceTree = "<group>";
+		};
+		9D87CEF321B0E09500CD08B4 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				8AA163C7217F74CD00D80197 /* MapPageViewController.swift */,
+				9D87CEDE21B0D4B000CD08B4 /* Communcator.swift */,
+			);
+			name = Map;
+			path = ../Map;
+			sourceTree = "<group>";
+		};
+		9D87CEF421B0E0E300CD08B4 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		9D87CEF521B0E10000CD08B4 /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mypage;
 			sourceTree = "<group>";
 		};
 		DA7D12972181BA9B00286775 /* VisionAlgorithm */ = {

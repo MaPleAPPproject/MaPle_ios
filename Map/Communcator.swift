@@ -30,7 +30,7 @@ typealias DoneMemberIdHandler = (_ result:Int?, _ error:Error?) -> Void
 class  Communicator {
     
 //    static let BASEURL = "http://192.168.0.137:8080/MaPle/"
-    static let BASEURL = "http://192.168.196.175:8080/MaPle/"
+    static let BASEURL = "http://192.168.196.156:8080/MaPle/"
     let Login_URL = BASEURL + "UserAccountServlet"
     
     static let shared = Communicator()
