@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class LocationMapViewController: UIViewController /*,MKMapViewDelegate,CLLocationManagerDelegate*/ {
+class LocationMapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
 
     @IBOutlet weak var mapview: MKMapView!
     var postdetail:PostDetail?

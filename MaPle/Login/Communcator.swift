@@ -24,14 +24,15 @@ let action_Key = "action"
 
 
 typealias DoneHandler = (_ result:Int?, _ error:Error?) -> Void
-
 typealias DoneMemberIdHandler = (_ result:Int?, _ error:Error?) -> Void
+typealias DownloadDoneHandler = (_ result:Data?, _ error:Error?) -> Void
 
 class  Communicator {
     
 //    static let BASEURL = "http://192.168.0.137:8080/MaPle/"
-    static let BASEURL = "http://192.168.196.175:8080/MaPle/"
+    static let BASEURL = "http://192.168.196.156:8080/MaPle/"
     let Login_URL = BASEURL + "UserAccountServlet"
+    let Spot_URL = BASEURL + "spotServlet"
     
     static let shared = Communicator()
     private init() {
@@ -110,20 +111,20 @@ class  Communicator {
 //
 //    }
 //
-//    func downloadPhoto(filename: String, completion: @escaping DownloadDoneHandler){
-//        let finalURLString = PHOTO_BASE_URL + filename
-//        Alamofire.request(finalURLString).responseData { (response) in
-//            switch response.result{
-//            case .success(let data):
-//                print("photo Download OK: \(data.count)")
-//                completion(data, nil)
-//            case .failure(let error):
-//                print("photo Download Fail: \(error)")
-//                completion(nil, error)
-//            }
-//        }
-//        //        let data = try? Data(contentsOf: url)     UI thread會卡住等下載完畢才往下跑
-//    }
+    func downloadPhoto(completion: @escaping DownloadDoneHandler){
+        let finalURLString = Spot_URL
+        Alamofire.request(finalURLString).responseData { (response) in
+            switch response.result{
+            case .success(let data):
+                print("photo Download OK: \(data.count)")
+                completion(data, nil)
+            case .failure(let error):
+                print("photo Download Fail: \(error)")
+                completion(nil, error)
+            }
+        }
+        //        let data = try? Data(contentsOf: url)     UI thread會卡住等下載完畢才往下跑
+    }
 
 //    func send(photoMessage data:Data, completion: @escaping DoneHandler) {
 //        let parameters = [USERNAME_KEY:MY_NAME,
