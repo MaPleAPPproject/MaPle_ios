@@ -282,6 +282,23 @@ class OthersPage2CollectionViewController: UICollectionViewController {
         if userProfileData.vipStatus == 0 {
             headerView.vipLabel.isHidden = true
         }
-        print("headerView:\(headerView.segment.selectedSegmentIndex)")
+        setSegmentStyle(headerView: headerView)
+    }
+    
+    func setSegmentStyle(headerView: OthersPageUICollectionReusableView) {
+        
+        headerView.segment.tintColor = UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0)
+        headerView.segment.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 18),
+            NSAttributedString.Key.foregroundColor: UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0)
+            ], for: .normal)
+        headerView.segment.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 18),
+            NSAttributedString.Key.foregroundColor: UIColor.white
+            ], for: .selected)
+        headerView.segment.layer.cornerRadius = 0
+        headerView.segment.layer.borderColor = UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0).cgColor
+        headerView.segment.layer.borderWidth = 1.5
+        headerView.segment.layer.masksToBounds = true
     }
 }

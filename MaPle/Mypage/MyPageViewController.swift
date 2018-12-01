@@ -46,6 +46,7 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectCollectionView: UICollectionView!
     @IBOutlet weak var postCollectionView: UICollectionView!
+    let memberid = UserDefaults.standard.string(forKey: "MemberID")
     var memberId = 2
     var posts = [Post]()
     var images = [UIImage]() {

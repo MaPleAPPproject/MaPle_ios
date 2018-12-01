@@ -47,7 +47,7 @@ class ExploreCommunicator {
         Alamofire.request(PictureServlet_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { (response) in //回傳Data
             switch response.result {
             case .success(let data):
-                print("image download Ok:\(data.count) bytes")
+//                print("image download Ok:\(data.count) bytes")
                 completion(data, nil)
             case .failure(let error):
                 print("image download fail:\(error)")
@@ -154,7 +154,7 @@ class ExploreCommunicator {
     private func handleJSON(response: DataResponse<Any>, completion: AnyDoneHandler) {
         switch response.result {
             case .success(let json)://result enum 特殊型態 可以讓參數夾帶另一個結果
-                print("get success response:\(json)")
+//                print("get success response:\(json)")
                 guard let finaljson = json as? Any else {//因為回傳型別為Any 所以要轉型成字串
                     let error = NSError(domain: "Invaild JSON object", code: -1, userInfo: nil)
                     completion(nil, error)
@@ -170,7 +170,7 @@ class ExploreCommunicator {
     private func handleJSON(response: DataResponse<Any>, completion: ArrayDoneHandler) {
         switch response.result {
         case .success(let json)://result enum 特殊型態 可以讓參數夾帶另一個結果
-            print("get success response:\(json)")
+//            print("get success response:\(json)")
             guard let finaljson = json as? [Any] else {//因為回傳型別為Any 所以要轉型成字串
                 let error = NSError(domain: "Invaild JSON object", code: -1, userInfo: nil)
                 completion(nil, error)

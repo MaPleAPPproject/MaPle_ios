@@ -14,7 +14,6 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearc
         self.storyboard?.instantiateViewController(withIdentifier: "searchbarVC") as! SearchTableViewController
     }()
     var selectedViewController: UIViewController!
-
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var segmentView: UISegmentedControl!
     @IBOutlet weak var collectViewlayout: UICollectionViewFlowLayout!
@@ -49,12 +48,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearc
             print("No network connection.")
             return
         }
-//        //Task
-//        getPictureTop()
-//        getPictureNew()
-//        getPictureRecom()
-//
-//        // Searchbar
+        // Searchbar
         getDistrictList()
         self.searchController.searchResultsUpdater = self
         self.searchController.delegate = self
@@ -68,8 +62,12 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearc
         searchController.searchBar.becomeFirstResponder()
         self.navigationItem.titleView = searchController.searchBar
         selectedViewController = collectionViewController
-//        self.segmentstylechange()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     @objc
     func networkStatusChanged(){
         
@@ -207,6 +205,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearc
         guard unwindSegue.identifier == "ExplorePage" else {
             return
         }
+        viewDidLoad()
     }
     //MARK:- SearchBar
    
@@ -232,7 +231,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearc
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         changePage(to: collectionViewController)
         searchActive = false
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         changePage(to: searchtableViewController)

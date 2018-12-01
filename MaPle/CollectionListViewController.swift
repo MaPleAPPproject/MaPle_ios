@@ -25,12 +25,14 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
     var tops = [Picture]()
     var recoms = [Picture]()
     var news = [Picture]()
-    
+    private let refreshControl = UIRefreshControl()
+    let memberid = UserDefaults.standard.string(forKey: "MemberID")
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("memberid: \(memberid)")
         //draw layout
         self.collectViewlayout.itemSize = CGSize(width: self.fullScreenSize.width/3, height: self.fullScreenSize.width/3)
         self.collectViewlayout.minimumLineSpacing = 0
@@ -44,14 +46,27 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
             print("No network connection.")
             return
         }
+        guard let finalmemberid = memberid else {
+            assertionFailure("memberid is nil")
+            return
+        }
         //Task
         getPictureTop()
         getPictureNew()
-        getPictureRecom()
+        getPictureRecom(memberid: finalmemberid)
         
         // Searchbar
         getDistrictList()
         self.segmentstylechange()
+        
+        //refreshControl
+        if #available(iOS 10.0, *) {
+            self.collectionView.refreshControl = refreshControl
+        } else {
+            self.collectionView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(refreshPictureData(_:)), for: .valueChanged)
+        
     }
     @objc
     func networkStatusChanged(){
@@ -66,6 +81,18 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
             
         }
     }
+    
+    @objc func refreshPictureData(_ sender: Any) {
+        guard let finalmemberid = self.memberid else {
+            assertionFailure("memberid is nil")
+            return
+        }
+        getPictureTop()
+        getPictureNew()
+        getPictureRecom(memberid:finalmemberid)
+        self.refreshControl.endRefreshing()
+    }
+    
     func getDistrictList() {
         communicatior.getDistinct { (result, error) in
             if let error = error {
@@ -107,7 +134,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 }
                 self.tops.append(resultObject)
             }
-            print("tops:\(self.tops)")
+//            print("tops:\(self.tops)")
             self.datas = self.tops
             self.collectionView.delegate = self
             self.collectionView.dataSource = self
@@ -115,8 +142,8 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
         
     }
     
-    func getPictureRecom() {
-        communicatior.getRecom(memberid: String(1), completion: { (result, error) in
+    func getPictureRecom(memberid: String) {
+        communicatior.getRecom(memberid: memberid, completion: { (result, error) in
             if let error = error {
                 print("error:\(error)")
             }
@@ -135,7 +162,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 }
                 self.recoms.append(resultObject)
             }
-            print("recoms:\(self.recoms)")
+//            print("recoms:\(self.recoms)")
         })
         
     }
@@ -149,7 +176,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 print("result is nil")
                 return
             }
-            print("result:\(result)")
+//            print("result:\(result)")
             for item in result {
                 guard let jsonData = try? JSONSerialization.data(withJSONObject: item, options: .prettyPrinted) else {
                     print("Fail to generate jsonData") //先將json物件轉為data
@@ -161,7 +188,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 }
                 self.news.append(resultObject)
             }
-            print("news:\(self.news)")
+//            print("news:\(self.news)")
         }
         
     }
