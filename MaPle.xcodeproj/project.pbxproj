@@ -54,7 +54,6 @@
 		9D87CEE721B0D4DA00CD08B4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEE521B0D4DA00CD08B4 /* RegisterViewController.swift */; };
 		9D87CEED21B0D4FB00CD08B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D87CEEA21B0D4FA00CD08B4 /* Assets.xcassets */; };
 		9D87CEF021B0D55E00CD08B4 /* LodingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */; };
-		9D87CEF121B0D55E00CD08B4 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEEF21B0D55E00CD08B4 /* PaymentViewController.swift */; };
 		C82393A4B472C82F2D8A89A7 /* Pods_MaPle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */; };
 		DA7D12952181B9C400286775 /* Vision.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D12942181B9C400286775 /* Vision.swift */; };
 		DA7F8C3421B559F1009899F6 /* ServerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */; };
@@ -116,7 +115,6 @@
 		9D87CEE521B0D4DA00CD08B4 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9D87CEEA21B0D4FA00CD08B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LodingView.swift; sourceTree = "<group>"; };
-		9D87CEEF21B0D55E00CD08B4 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		DA7D12942181B9C400286775 /* Vision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vision.swift; sourceTree = "<group>"; };
 		DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCommunicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,7 +279,6 @@
 			isa = PBXGroup;
 			children = (
 				9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */,
-				9D87CEEF21B0D55E00CD08B4 /* PaymentViewController.swift */,
 				DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */,
 			);
 			path = Payment;
@@ -416,7 +413,6 @@
 				DA7D12952181B9C400286775 /* Vision.swift in Sources */,
 				8AA71EC021B1298D000B28BE /* CollectCollectionViewCell.swift in Sources */,
 				8AB49D7721A3D1F9009F6472 /* OthersPage2CollectionViewController.swift in Sources */,
-				9D87CEF121B0D55E00CD08B4 /* PaymentViewController.swift in Sources */,
 				9D87CEE221B0D4B000CD08B4 /* UserAccount.swift in Sources */,
 				8AA71EC621B1298D000B28BE /* UserprofileViewController.swift in Sources */,
 				8AA71EC121B1298D000B28BE /* MyPageViewController.swift in Sources */,
