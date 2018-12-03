@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (4.7.3)
+  - CarbonKit (2.2.2)
 
 DEPENDENCIES:
   - Alamofire
+  - CarbonKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - CarbonKit
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  CarbonKit: 0dec4738fa489b4c043a5f850c27fd0dbefb57cc
 
-PODFILE CHECKSUM: 50230d9e00c87c97bf8e3f474d37753910c246a0
+PODFILE CHECKSUM: cc54594f8ed00b23f72286527f7bc7e1ff5e294e
 
 COCOAPODS: 1.5.2

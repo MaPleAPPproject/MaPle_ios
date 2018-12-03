@@ -24,7 +24,7 @@ class OthersPageViewController: UIViewController,UICollectionViewDelegate,UIColl
     var iconData:Data?
     let communicator = ExploreCommunicator.shared
     var postDetail:PostDetail?
-    var userProfile:UserProfile?
+    var userProfile:UserProfileExplore?
     var allpost = [Picture]()
     var allcollect = [Picture]()
     var data = [Picture]()
@@ -97,7 +97,7 @@ class OthersPageViewController: UIViewController,UICollectionViewDelegate,UIColl
                 assertionFailure("failed to get data")
                 return
             }
-            guard let finalResult = try? JSONDecoder().decode(UserProfile.self, from: jsonData) else {
+            guard let finalResult = try? JSONDecoder().decode(UserProfileExplore.self, from: jsonData) else {
                 assertionFailure("fail to decode")
                 return
             }

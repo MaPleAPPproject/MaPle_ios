@@ -13,7 +13,7 @@ class RegisterViewController: UIViewController,UITextViewDelegate {
     var passWord = ""
 //    let account = ""
 //    let passWord = ""
-    var communicator = Communicator.shared
+    var communicator = MapCommunicator.shared
     
     @IBOutlet weak var accountTextField: UITextField!
     

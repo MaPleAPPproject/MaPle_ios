@@ -12,23 +12,21 @@
 		8A01110E21AD9ABA00789296 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01110D21AD9ABA00789296 /* SearchTableViewCell.swift */; };
 		8A0DE9DA2199E5EE0090ABDE /* PictureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DE9D92199E5EE0090ABDE /* PictureDetailViewController.swift */; };
 		8A30ED2021B0333F007F4960 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A30ED1F21B0333F007F4960 /* Assets.xcassets */; };
-		8A30ED2221B0351C007F4960 /* FriendPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A30ED2121B0351C007F4960 /* FriendPageViewController.swift */; };
 		8A3161E1219523EC00827F28 /* ExploreCommuicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E0219523EC00827F28 /* ExploreCommuicator.swift */; };
 		8A3161E5219524A400827F28 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E3219524A400827F28 /* Reachability.m */; };
 		8A3161E7219526F600827F28 /* ExploreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E6219526F600827F28 /* ExploreData.swift */; };
 		8A613D6E21987F5400ADC06B /* ExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A613D6D21987F5400ADC06B /* ExploreCollectionViewCell.swift */; };
 		8AA163B2217F5DC200D80197 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163B1217F5DC200D80197 /* AppDelegate.swift */; };
-		8AA163B4217F5DC200D80197 /* MyPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163B3217F5DC200D80197 /* MyPageController.swift */; };
 		8AA163B6217F5DC200D80197 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163B5217F5DC200D80197 /* ExploreViewController.swift */; };
 		8AA163B9217F5DC200D80197 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA163B7217F5DC200D80197 /* Main.storyboard */; };
 		8AA163BE217F5DC500D80197 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */; };
 		8AA71EB021B12778000B28BE /* MapPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EAE21B12778000B28BE /* MapPageViewController.swift */; };
-		8AA71EB121B12778000B28BE /* Communcator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EAF21B12778000B28BE /* Communcator.swift */; };
+		8AA71EB121B12778000B28BE /* MapCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EAF21B12778000B28BE /* MapCommunicator.swift */; };
 		8AA71EBD21B1298D000B28BE /* PrintHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB221B1298C000B28BE /* PrintHelper.swift */; };
 		8AA71EBE21B1298D000B28BE /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB321B1298C000B28BE /* PostCollectionViewCell.swift */; };
 		8AA71EBF21B1298D000B28BE /* MapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB421B1298D000B28BE /* MapTableViewController.swift */; };
 		8AA71EC021B1298D000B28BE /* CollectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB521B1298D000B28BE /* CollectCollectionViewCell.swift */; };
-		8AA71EC121B1298D000B28BE /* MapPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB621B1298D000B28BE /* MapPageViewController.swift */; };
+		8AA71EC121B1298D000B28BE /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB621B1298D000B28BE /* MyPageViewController.swift */; };
 		8AA71EC221B1298D000B28BE /* MapLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB721B1298D000B28BE /* MapLocationViewController.swift */; };
 		8AA71EC321B1298D000B28BE /* SinglePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB821B1298D000B28BE /* SinglePostViewController.swift */; };
 		8AA71EC421B1298D000B28BE /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB921B1298D000B28BE /* ImageManager.swift */; };
@@ -71,7 +69,6 @@
 		8A01110D21AD9ABA00789296 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		8A0DE9D92199E5EE0090ABDE /* PictureDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureDetailViewController.swift; sourceTree = "<group>"; };
 		8A30ED1F21B0333F007F4960 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8A30ED2121B0351C007F4960 /* FriendPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendPageViewController.swift; path = "New Group/FriendPageViewController.swift"; sourceTree = "<group>"; };
 		8A3161E0219523EC00827F28 /* ExploreCommuicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCommuicator.swift; sourceTree = "<group>"; };
 		8A3161E2219524A300827F28 /* MaPle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MaPle-Bridging-Header.h"; sourceTree = "<group>"; };
 		8A3161E3219524A400827F28 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -80,18 +77,17 @@
 		8A613D6D21987F5400ADC06B /* ExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewCell.swift; sourceTree = "<group>"; };
 		8AA163AE217F5DC200D80197 /* MaPle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaPle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AA163B1217F5DC200D80197 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8AA163B3217F5DC200D80197 /* MyPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageController.swift; sourceTree = "<group>"; };
 		8AA163B5217F5DC200D80197 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		8AA163B8217F5DC200D80197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AA163BD217F5DC500D80197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AA163BF217F5DC500D80197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AA71EAE21B12778000B28BE /* MapPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPageViewController.swift; sourceTree = "<group>"; };
-		8AA71EAF21B12778000B28BE /* Communcator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Communcator.swift; sourceTree = "<group>"; };
+		8AA71EAF21B12778000B28BE /* MapCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCommunicator.swift; sourceTree = "<group>"; };
 		8AA71EB221B1298C000B28BE /* PrintHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintHelper.swift; sourceTree = "<group>"; };
 		8AA71EB321B1298C000B28BE /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		8AA71EB421B1298D000B28BE /* MapTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewController.swift; sourceTree = "<group>"; };
 		8AA71EB521B1298D000B28BE /* CollectCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectCollectionViewCell.swift; sourceTree = "<group>"; };
-		8AA71EB621B1298D000B28BE /* MapPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPageViewController.swift; sourceTree = "<group>"; };
+		8AA71EB621B1298D000B28BE /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		8AA71EB721B1298D000B28BE /* MapLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationViewController.swift; sourceTree = "<group>"; };
 		8AA71EB821B1298D000B28BE /* SinglePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostViewController.swift; sourceTree = "<group>"; };
 		8AA71EB921B1298D000B28BE /* ImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
@@ -201,11 +197,9 @@
 				8AA163B7217F5DC200D80197 /* Main.storyboard */,
 				8A3161E4219524A400827F28 /* Reachability.h */,
 				8A3161E3219524A400827F28 /* Reachability.m */,
-				8AA163B3217F5DC200D80197 /* MyPageController.swift */,
 				8A30ED1F21B0333F007F4960 /* Assets.xcassets */,
 				8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */,
 				8AA163BF217F5DC500D80197 /* Info.plist */,
-				8A30ED2121B0351C007F4960 /* FriendPageViewController.swift */,
 				8A3161E2219524A300827F28 /* MaPle-Bridging-Header.h */,
 				DA7D129A2181BB1E00286775 /* Payment */,
 				DA7D12972181BA9B00286775 /* VisionAlgorithm */,
@@ -234,7 +228,7 @@
 		9D87CEF321B0E09500CD08B4 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				8AA71EAF21B12778000B28BE /* Communcator.swift */,
+				8AA71EAF21B12778000B28BE /* MapCommunicator.swift */,
 				8AA71EAE21B12778000B28BE /* MapPageViewController.swift */,
 			);
 			name = Map;
@@ -264,7 +258,7 @@
 				8AA71EBC21B1298D000B28BE /* Communicator.swift */,
 				8AA71EB921B1298D000B28BE /* ImageManager.swift */,
 				8AA71EB721B1298D000B28BE /* MapLocationViewController.swift */,
-				8AA71EB621B1298D000B28BE /* MapPageViewController.swift */,
+				8AA71EB621B1298D000B28BE /* MyPageViewController.swift */,
 				8AA71EB421B1298D000B28BE /* MapTableViewController.swift */,
 				8AA71EBA21B1298D000B28BE /* NewPostViewController.swift */,
 				8AA71EB321B1298C000B28BE /* PostCollectionViewCell.swift */,
@@ -371,10 +365,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MaPle/Pods-MaPle-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CarbonKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -407,7 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AA71EC221B1298D000B28BE /* MapLocationViewController.swift in Sources */,
-				8AA71EB121B12778000B28BE /* Communcator.swift in Sources */,
+				8AA71EB121B12778000B28BE /* MapCommunicator.swift in Sources */,
 				8AA71ED521B12A1D000B28BE /* GradientView.swift in Sources */,
 				8AA163B6217F5DC200D80197 /* ExploreViewController.swift in Sources */,
 				8AA71EC421B1298D000B28BE /* ImageManager.swift in Sources */,
@@ -423,7 +419,7 @@
 				9D87CEF121B0D55E00CD08B4 /* PaymentViewController.swift in Sources */,
 				9D87CEE221B0D4B000CD08B4 /* UserAccount.swift in Sources */,
 				8AA71EC621B1298D000B28BE /* UserprofileViewController.swift in Sources */,
-				8AA71EC121B1298D000B28BE /* MapPageViewController.swift in Sources */,
+				8AA71EC121B1298D000B28BE /* MyPageViewController.swift in Sources */,
 				8AA9DF86219D6BC1007FCA62 /* LocationMapViewController.swift in Sources */,
 				8A613D6E21987F5400ADC06B /* ExploreCollectionViewCell.swift in Sources */,
 				8AA71ED121B12A1D000B28BE /* FriendlistTableViewController.swift in Sources */,
@@ -436,8 +432,6 @@
 				8AA71ED721B12A1D000B28BE /* FriendCommunicator.swift in Sources */,
 				8AA163B2217F5DC200D80197 /* AppDelegate.swift in Sources */,
 				8AA71EC721B1298D000B28BE /* Communicator.swift in Sources */,
-				8AA163B4217F5DC200D80197 /* MyPageController.swift in Sources */,
-				8A30ED2221B0351C007F4960 /* FriendPageViewController.swift in Sources */,
 				8AA71EBE21B1298D000B28BE /* PostCollectionViewCell.swift in Sources */,
 				8A3161E5219524A400827F28 /* Reachability.m in Sources */,
 				8AB49D7921A3D522009F6472 /* OthersPageUICollectionReusableView.swift in Sources */,

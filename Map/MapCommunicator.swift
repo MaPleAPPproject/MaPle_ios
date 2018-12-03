@@ -19,21 +19,21 @@ let MemberID_Key = "MemberID"
 let Email_Key = "Email"
 let PassWord_Key = "PassWord"
 let UserName_Key = "UserName"
-let DATA_KEY = "data"
+//let DATA_KEY = "data"
 let action_Key = "action"
 
 
-typealias DoneHandler = (_ result:Int?, _ error:Error?) -> Void
 
-typealias DoneMemberIdHandler = (_ result:Int?, _ error:Error?) -> Void
 
-class  Communicator {
+class  MapCommunicator {
     
+    typealias DoneHandler = (_ result:Int?, _ error:Error?) -> Void
+    typealias DoneMemberIdHandler = (_ result:Int?, _ error:Error?) -> Void
 //    static let BASEURL = "http://192.168.0.137:8080/MaPle/"
     static let BASEURL = "http://192.168.50.224:8080/MaPle/"
     let Login_URL = BASEURL + "UserAccountServlet"
     
-    static let shared = Communicator()
+    static let shared = MapCommunicator()
     private init() {
         
     }

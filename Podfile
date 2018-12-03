@@ -9,4 +9,5 @@ target 'MaPle' do
 
   # Pods for MaPle
 pod 'Alamofire'
+pod 'CarbonKit'
 end
