@@ -50,7 +50,6 @@
 		8AB49D7921A3D522009F6472 /* OthersPageUICollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB49D7821A3D522009F6472 /* OthersPageUICollectionReusableView.swift */; };
 		8AB6499221AEC9660012439C /* SearchResultCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6499121AEC9660012439C /* SearchResultCollectionViewController.swift */; };
 		8AB6499421AECA250012439C /* ResultMapCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6499321AECA250012439C /* ResultMapCollectionReusableView.swift */; };
-		8AF86EE9218BFCCB00E1582D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF86EE8218BFCCB00E1582D /* ViewController.swift */; };
 		9D87CEE021B0D4B000CD08B4 /* userCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEDD21B0D4B000CD08B4 /* userCollectionViewCell.swift */; };
 		9D87CEE221B0D4B000CD08B4 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEDF21B0D4B000CD08B4 /* UserAccount.swift */; };
 		9D87CEE621B0D4DA00CD08B4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEE321B0D4D900CD08B4 /* LoginViewController.swift */; };
@@ -60,6 +59,7 @@
 		9D87CEF121B0D55E00CD08B4 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEEF21B0D55E00CD08B4 /* PaymentViewController.swift */; };
 		C82393A4B472C82F2D8A89A7 /* Pods_MaPle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */; };
 		DA7D12952181B9C400286775 /* Vision.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D12942181B9C400286775 /* Vision.swift */; };
+		DA7F8C3421B559F1009899F6 /* ServerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,7 +113,6 @@
 		8AB49D7821A3D522009F6472 /* OthersPageUICollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPageUICollectionReusableView.swift; sourceTree = "<group>"; };
 		8AB6499121AEC9660012439C /* SearchResultCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewController.swift; sourceTree = "<group>"; };
 		8AB6499321AECA250012439C /* ResultMapCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMapCollectionReusableView.swift; sourceTree = "<group>"; };
-		8AF86EE8218BFCCB00E1582D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = SOURCE_ROOT; };
 		9D87CEDD21B0D4B000CD08B4 /* userCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D87CEDF21B0D4B000CD08B4 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		9D87CEE321B0D4D900CD08B4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +122,7 @@
 		9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LodingView.swift; sourceTree = "<group>"; };
 		9D87CEEF21B0D55E00CD08B4 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		DA7D12942181B9C400286775 /* Vision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vision.swift; sourceTree = "<group>"; };
+		DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCommunicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,7 +288,7 @@
 			children = (
 				9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */,
 				9D87CEEF21B0D55E00CD08B4 /* PaymentViewController.swift */,
-				8AF86EE8218BFCCB00E1582D /* ViewController.swift */,
+				DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -431,7 +431,6 @@
 				8AA71ED221B12A1D000B28BE /* FriendData.swift in Sources */,
 				8A01110E21AD9ABA00789296 /* SearchTableViewCell.swift in Sources */,
 				9D87CEE621B0D4DA00CD08B4 /* LoginViewController.swift in Sources */,
-				8AF86EE9218BFCCB00E1582D /* ViewController.swift in Sources */,
 				8A0DE9DA2199E5EE0090ABDE /* PictureDetailViewController.swift in Sources */,
 				8AA71EC321B1298D000B28BE /* SinglePostViewController.swift in Sources */,
 				8AA71ED721B12A1D000B28BE /* FriendCommunicator.swift in Sources */,
@@ -444,6 +443,7 @@
 				8AB49D7921A3D522009F6472 /* OthersPageUICollectionReusableView.swift in Sources */,
 				8AA71EBF21B1298D000B28BE /* MapTableViewController.swift in Sources */,
 				9D87CEF021B0D55E00CD08B4 /* LodingView.swift in Sources */,
+				DA7F8C3421B559F1009899F6 /* ServerCommunicator.swift in Sources */,
 				8AA71EB021B12778000B28BE /* MapPageViewController.swift in Sources */,
 				8AA71ED321B12A1D000B28BE /* FriendlistTableViewCell.swift in Sources */,
 				9D87CEE021B0D4B000CD08B4 /* userCollectionViewCell.swift in Sources */,

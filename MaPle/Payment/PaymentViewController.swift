@@ -15,22 +15,38 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
     var isProgress: Bool = false
     var lodingView: LodingView?
     
+    
     let messageTitle = "尊榮會員升等服務"
     let message = "現在升等VIP立即開啟聊天室功能~!"
+    var memberId = 1 // Todo
+    var serverCommunicator : ServerCommunicator?
     
     
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
+        self.serverCommunicator = ServerCommunicator(memberId)
         
-        self.lodingView = LodingView(frame: UIScreen.main.bounds)
-        self.view.addSubview(self.lodingView!)
+        //        self.lodingView = LodingView(frame: UIScreen.main.bounds)
+        //        self.view.addSubview(self.lodingView!)
+        //
+        //        self.productIDs.append("Not_Consumable_Product")
+        //        self.requestProductInfo()
         
-        self.productIDs.append("Not_Consumable_Product")
-        self.requestProductInfo()
+        serverCommunicator!.loadUserVipStatus { (results, error) in
+            
+            guard let result = results!["vipStatus"]as? Int else {
+                assertionFailure("Json covertion fail")
+                return
+            }
+            self.memberId = result
+        }
         
     }
     
-   
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         SKPaymentQueue.default().remove(self)
@@ -41,6 +57,7 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
     }
     
     func requestProductInfo() {
+        
         if SKPaymentQueue.canMakePayments() {
             
             let productIdentifiers: Set<String> = NSSet(array: self.productIDs) as! Set<String>
@@ -52,15 +69,9 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
             print("取不到任何內購的商品...")
         }
     }
-   
-
-    func showMessage(_ product: Product) {
-        var message: String!
-        
-        switch product {
-        case .nonConsumable:
-            message = "升等成功！"
-        }
+    
+    
+    func showMessage(_ message: String) {
         
         let alertController = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
         let confirm = UIAlertAction(title: "是", style: .default, handler: nil)
@@ -74,11 +85,11 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
     
     
     // MARK: - Delegate
-
+    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         
         print("invalidProductIdentifiers： \(response.invalidProductIdentifiers.description)")
-       
+        
         if response.products.count != 0 {
             
             for product in response.products {
@@ -101,7 +112,7 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
                 SKPaymentQueue.default().finishTransaction(transaction)
                 
                 self.isProgress = false
-
+                
                 SKPaymentQueue.default().remove(self)
                 
                 afterPaymentFinish()
@@ -127,7 +138,7 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
                 self.isProgress = false
             case SKPaymentTransactionState.restored:
                 print("SKPaymentTransactionState.restore")
-
+                
                 SKPaymentQueue.default().finishTransaction(transaction)
                 self.isProgress = false
                 
@@ -150,9 +161,9 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
             buyAction = UIAlertAction(title: "購買", style: UIAlertAction.Style.default) { (action) -> Void in
                 if SKPaymentQueue.canMakePayments() {
                     SKPaymentQueue.default().add(self)
-
+                    
                     let payment = SKPayment(product: self.productsArray[self.selectedProductIndex])
-
+                    
                     SKPaymentQueue.default().add(payment)
                     
                     self.isProgress = true
@@ -180,10 +191,22 @@ class PaymentViewController:UIViewController, SKProductsRequestDelegate, SKPayme
     }
     
     func afterPaymentFinish(){
-        // 購買後執行
-        
+        serverCommunicator!.updateUserVipStatus(memberId) { (results, error) in
+            if let error = error {
+                assertionFailure("failed to update Vip status error code : \(error)")
+                return
+            }
+            guard let result = results!["response"]as? Int else {
+                assertionFailure("Json covertion fail")
+                return
+            }
+            if result == 1 {
+                self.view.setNeedsDisplay()
+            } else {
+                self.showMessage("操作錯誤, 請重新來過~!")
+            }
+        }
     }
-    
 }
 enum Product {
     case nonConsumable
