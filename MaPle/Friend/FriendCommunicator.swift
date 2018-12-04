@@ -27,7 +27,7 @@ class FriendCommunicator {
     typealias DownloadDoneHandler = (_ result: Data?, _ error: Error?) -> Void
 
     
-    static let BASEURL = "http://192.168.50.224:8080/MaPle"
+    static let BASEURL = "http://\(Communicator.IP):8080/MaPle"
     //"http://192.168.1.28:8080/MaPle" home
     let FRIENDLIST_URL = BASEURL + "/FriendServlet"
     let MATCH_URL = BASEURL + "/MatchServlet"

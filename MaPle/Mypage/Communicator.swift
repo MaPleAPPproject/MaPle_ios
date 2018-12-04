@@ -13,6 +13,10 @@ import Alamofire
 
 class Communicator {
     
+    static let IP = "192.168.50.224"
+    
+    static let BASEURL = "http://\(IP):8080/MaPle"
+    
     let MEMBERID_KEY = "memberId"
     let RESULT_KEY = "result"
     let USERPROFILE_KEY = "userprofile"
@@ -33,11 +37,8 @@ class Communicator {
     typealias DoneHandler = (_ result: Any? , _ error: Error?) -> Void
     typealias DownloadDoneHandler = (_ result: Data?, _ error: Error?) -> Void
     
-    static let BASEURL = "http://192.168.50.224:8080/MaPle"
-//    static let BASEURL = "http://172.20.10.3:8080/MaPle"
-   
-//    static let BASEURL = "http://192.168.197.14:8080/MaPle"
-//        static let BASEURL = "http://192.168.0.101:8080/MaPle"
+    
+
     let USERPROFILE_URL = BASEURL + "/User_profileServlet"
     let CPOST_URL = BASEURL + "/CpostServlet"
     let PICTURE_URL = BASEURL + "/PictureServlet"

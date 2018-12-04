@@ -9,8 +9,7 @@
 import Foundation
 import Alamofire
 
-let localhost = "192.168.43.251"
-let url = "http://\(localhost):8080/MaPle"
+let url = "http://\(Communicator.IP):8080/MaPle"
 let userProfileUrl = "\(url)/User_profileServlet"
 
 
@@ -51,8 +50,6 @@ class ServerCommunicator {
                     return
                 }
                 
-                
-                
                 completion(finalJson, nil)
                 
             case .failure(let error):
@@ -65,13 +62,7 @@ class ServerCommunicator {
     
     
 }
-struct Friend: Codable {
-    var id: String
-    var friendName: String
-    var lat: String
-    var lon: String
-    var lastUpdateDateTime: String
-}
+
 
 
 
