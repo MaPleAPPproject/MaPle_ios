@@ -13,8 +13,8 @@ class LoginViewController: UIViewController,UITextViewDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     
     var label:UITextField!
-    var email = "abc@gmail.com"
-    var passWord = "abc123"
+    var email = "Brian@gmail.com"
+    var passWord = "Brian123"
     var communicator = MapCommunicator.shared
     let userDefaults = UserDefaults.standard
     

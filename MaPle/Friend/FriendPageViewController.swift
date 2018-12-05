@@ -51,13 +51,14 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
     
     // MARK - Payment
     
-    var productIDs: [String] = [String]()
-    var productsArray: [SKProduct] = [SKProduct]()
-    var selectedProductIndex: Int!
+    var productIDs = [String]()
+    var productsArray = [SKProduct]()
+    
     var isProgress: Bool = false
     var lodingView: LodingView?
     
     
+    let TAG = "FriendPageViewController : "
     let messageTitle = "尊榮會員升等服務"
     let message = "現在升等VIP立即開啟聊天室功能~!"
     
@@ -71,22 +72,23 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
         guard let memberId = UserDefaults.standard.object(forKey: "IntMemberID") as? Int else {
             return
         }
-        print(memberId)
+        print(TAG, memberId)
         self.serverCommunicator = ServerCommunicator(memberId)
         
-                self.lodingView = LodingView(frame: UIScreen.main.bounds)
-                self.view.addSubview(self.lodingView!)
+        self.lodingView = LodingView(frame: UIScreen.main.bounds)
+        self.view.addSubview(self.lodingView!)
         
-                productIDs.append("") // Todo add the productId
-                self.requestProductInfo()
+        productIDs.append("") // Todo add the productId
+        self.requestProductInfo()
         
-            serverCommunicator!.loadUserVipStatus { (results, error) in
+        serverCommunicator!.loadUserVipStatus { (results, error) in
             
             guard let result = results!["vipStatus"]as? Int else {
                 assertionFailure("Json covertion fail")
                 return
             }
             self.vipStatus = result
+            
         }
         
     }
@@ -141,6 +143,7 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
             for product in response.products {
                 self.productsArray.append(product)
             }
+            
         } else {
             print("取不到任何商品...")
         }
@@ -209,7 +212,7 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
                 if SKPaymentQueue.canMakePayments() {
                     SKPaymentQueue.default().add(self)
                     
-                    let payment = SKPayment(product: self.productsArray[self.selectedProductIndex])
+                    let payment = SKPayment(product: self.productsArray[1])
                     
                     SKPaymentQueue.default().add(payment)
                     
