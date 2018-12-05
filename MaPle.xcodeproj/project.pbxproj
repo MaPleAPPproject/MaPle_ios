@@ -192,7 +192,6 @@
 				9D87CEEA21B0D4FA00CD08B4 /* Assets.xcassets */,
 				9D87CEE421B0D4DA00CD08B4 /* MaPle.entitlements */,
 				9D87CEDF21B0D4B000CD08B4 /* UserAccount.swift */,
-				9D87CEDD21B0D4B000CD08B4 /* userCollectionViewCell.swift */,
 				8AA163B1217F5DC200D80197 /* AppDelegate.swift */,
 				8A3161DF2195239300827F28 /* Explore */,
 				8AA163B7217F5DC200D80197 /* Main.storyboard */,
@@ -230,6 +229,7 @@
 		9D87CEF321B0E09500CD08B4 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				9D87CEDD21B0D4B000CD08B4 /* userCollectionViewCell.swift */,
 				8AA71EAF21B12778000B28BE /* MapCommunicator.swift */,
 				8AA71EAE21B12778000B28BE /* MapPageViewController.swift */,
 			);
@@ -602,7 +602,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YJT86MXP57;
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -626,7 +626,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YJT86MXP57;
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

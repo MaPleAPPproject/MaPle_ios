@@ -412,7 +412,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
                                     <action selector="beginEdit:" destination="Hnb-Nt-0Uu" eventType="editingDidBegin" id="M5E-mb-REE"/>
                                     <action selector="endEdit:" destination="Hnb-Nt-0Uu" eventType="editingDidEnd" id="9lg-qU-I6J"/>
@@ -426,7 +426,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="beginEdit:" destination="Hnb-Nt-0Uu" eventType="editingDidBegin" id="v60-VW-X5e"/>
                                     <action selector="endEdit:" destination="Hnb-Nt-0Uu" eventType="editingDidEnd" id="js3-NI-mjk"/>
@@ -441,9 +441,9 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="login" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXF-y2-Jys">
-                                <rect key="frame" x="62.5" y="553.5" width="100" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="登入">
+                                <rect key="frame" x="62.5" y="553.5" width="100" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="登入" backgroundImage="buttonBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -451,9 +451,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guW-Wg-LYl">
-                                <rect key="frame" x="212.5" y="553.5" width="100" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="註冊">
+                                <rect key="frame" x="212.5" y="553.5" width="100" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="註冊" backgroundImage="buttonBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -509,7 +509,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
                                     <action selector="beginEdit:" destination="W4J-g3-D3y" eventType="editingDidBegin" id="yPk-74-aoy"/>
                                     <action selector="endEdit:" destination="W4J-g3-D3y" eventType="editingDidEnd" id="7Zp-j0-jOJ"/>
@@ -523,7 +523,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="beginEdit:" destination="W4J-g3-D3y" eventType="editingDidBegin" id="2aZ-uK-i92"/>
                                     <action selector="endEdit:" destination="W4J-g3-D3y" eventType="editingDidEnd" id="Dy9-iS-yfL"/>
@@ -538,9 +538,9 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYE-UB-HyI">
-                                <rect key="frame" x="62.5" y="468.5" width="100" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="提交">
+                                <rect key="frame" x="62.5" y="468.5" width="100" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="提交" backgroundImage="buttonBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -548,9 +548,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fs-uV-nrz">
-                                <rect key="frame" x="212.5" y="468.5" width="100" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="返回">
+                                <rect key="frame" x="212.5" y="468.5" width="100" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="返回" backgroundImage="buttonBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -610,7 +610,7 @@
             </objects>
             <point key="canvasLocation" x="1986" y="9"/>
         </scene>
-        <!--Map Page View Controller-->
+        <!--地圖-->
         <scene sceneID="QNB-NW-9fR">
             <objects>
                 <viewController id="8DQ-hr-w1g" customClass="MapPageViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
@@ -621,7 +621,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Twi-LY-cH6">
                                 <rect key="frame" x="0.0" y="64" width="375" height="415.5"/>
                                 <subviews>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="llW-av-luc">
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="llW-av-luc">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="415.5"/>
                                         <connections>
                                             <outlet property="delegate" destination="8DQ-hr-w1g" id="Ntf-hb-brS"/>
@@ -639,50 +639,69 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fvC-kw-gmx">
                                 <rect key="frame" x="0.0" y="479.5" width="375" height="138.5"/>
                                 <color key="backgroundColor" red="0.51278692479999999" green="0.76501482730000003" blue="0.79534900190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9zK-2w-RGE">
-                                    <size key="itemSize" width="128" height="128"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9zK-2w-RGE">
+                                    <size key="itemSize" width="120" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="10" maxX="0.0" maxY="10"/>
+                                    <inset key="sectionInset" minX="10" minY="5" maxX="0.0" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="hQ4-2I-SvA" customClass="userCollectionViewCell" customModule="MaPle" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="128" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="cell" reuseIdentifier="cell" id="hQ4-2I-SvA" customClass="userCollectionViewCell" customModule="MaPle" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="5.5" width="120" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group" translatesAutoresizingMaskIntoConstraints="NO" id="Ubs-rR-tCX">
-                                                    <rect key="frame" x="10" y="5" width="108" height="85.5"/>
+                                                    <rect key="frame" x="10" y="5" width="108" height="80.5"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="你好" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cHO-dv-W8q">
-                                                    <rect key="frame" x="10" y="93.5" width="108" height="29.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ej-us-XWZ">
+                                                    <rect key="frame" x="10" y="88.5" width="108" height="29"/>
                                                     <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="cHO-dv-W8q" secondAttribute="trailing" constant="10" id="1t3-gU-oO1"/>
-                                            <constraint firstAttribute="bottom" secondItem="cHO-dv-W8q" secondAttribute="bottom" constant="5" id="DiS-um-1ZZ"/>
-                                            <constraint firstItem="cHO-dv-W8q" firstAttribute="top" secondItem="Ubs-rR-tCX" secondAttribute="bottom" constant="3" id="HIS-vP-cT8"/>
+                                            <constraint firstAttribute="bottom" secondItem="6ej-us-XWZ" secondAttribute="bottom" constant="3" id="2fr-Ov-4wa"/>
+                                            <constraint firstAttribute="trailing" secondItem="6ej-us-XWZ" secondAttribute="trailing" constant="10" id="99S-Hw-DXd"/>
+                                            <constraint firstItem="6ej-us-XWZ" firstAttribute="leading" secondItem="hQ4-2I-SvA" secondAttribute="leading" constant="10" id="Jfy-Nt-JD4"/>
                                             <constraint firstAttribute="trailing" secondItem="Ubs-rR-tCX" secondAttribute="trailing" constant="10" id="P1B-et-nhf"/>
                                             <constraint firstItem="Ubs-rR-tCX" firstAttribute="top" secondItem="hQ4-2I-SvA" secondAttribute="top" constant="5" id="bqT-Td-wXu"/>
                                             <constraint firstItem="Ubs-rR-tCX" firstAttribute="height" secondItem="hQ4-2I-SvA" secondAttribute="height" multiplier="1:1.5" id="e2m-Yb-r6X"/>
-                                            <constraint firstItem="cHO-dv-W8q" firstAttribute="leading" secondItem="hQ4-2I-SvA" secondAttribute="leading" constant="10" id="wr1-Pl-8Ke"/>
+                                            <constraint firstItem="6ej-us-XWZ" firstAttribute="top" secondItem="Ubs-rR-tCX" secondAttribute="bottom" constant="3" id="i5s-Vw-F8B"/>
                                             <constraint firstItem="Ubs-rR-tCX" firstAttribute="leading" secondItem="hQ4-2I-SvA" secondAttribute="leading" constant="10" id="zSF-0i-fhj"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="photoImageView" destination="Ubs-rR-tCX" id="Hpr-Bw-mwX"/>
-                                            <outlet property="titleUITextField" destination="cHO-dv-W8q" id="fwW-lu-732"/>
+                                            <outlet property="titleUILabel" destination="6ej-us-XWZ" id="7MF-Hr-Lfo"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
+                                    <outlet property="dataSource" destination="8DQ-hr-w1g" id="EgD-0V-1VU"/>
                                     <outlet property="delegate" destination="8DQ-hr-w1g" id="TwW-4a-VsK"/>
                                 </connections>
                             </collectionView>
@@ -700,10 +719,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cHs-Eb-vgT"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5ir-v0-3ld"/>
+                    <navigationItem key="navigationItem" title="地圖" id="5ir-v0-3ld"/>
                     <connections>
                         <outlet property="myMapView" destination="llW-av-luc" id="Mye-xy-kPV"/>
-                        <outlet property="mypostCollectionView" destination="fvC-kw-gmx" id="iQX-h7-3Ns"/>
+                        <outlet property="mypostCollectionView" destination="fvC-kw-gmx" id="T2v-GZ-sdz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TW2-2d-xoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1340,7 +1359,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gSe-Y5-4eY">
-                                <rect key="frame" x="137.5" y="53" width="100" height="100"/>
+                                <rect key="frame" x="113" y="53" width="100" height="100"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="hqZ-dH-6fB">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -1374,7 +1393,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="left" axis="vertical" distribution="fillProportionally" alignment="top" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="kMz-UM-mme">
-                                <rect key="frame" x="0.5" y="250" width="374" height="330"/>
+                                <rect key="frame" x="-24" y="250" width="374" height="330"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pBV-Mq-YVq">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="48"/>
@@ -1637,14 +1656,14 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqv-fB-qjT">
-                                <rect key="frame" x="222" y="149" width="48" height="48"/>
+                                <rect key="frame" x="173" y="149" width="48" height="48"/>
                                 <state key="normal" image="ic_edit"/>
                                 <connections>
                                     <action selector="userNameEditBtnPressed:" destination="d4X-6K-dqV" eventType="touchUpInside" id="uf4-id-zCl"/>
                                 </connections>
                             </button>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleAspectFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xva-eF-hjp">
-                                <rect key="frame" x="65" y="161" width="245" height="42"/>
+                                <rect key="frame" x="65" y="161" width="196" height="42"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LlJ-4R-4Bx">
                                         <rect key="frame" x="0.0" y="0.0" width="92" height="42"/>
@@ -1656,7 +1675,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaI-yI-xE5">
-                                        <rect key="frame" x="126.5" y="0.0" width="42" height="42"/>
+                                        <rect key="frame" x="102" y="0.0" width="42" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="ZQi-Pi-BGf"/>
                                             <constraint firstAttribute="width" constant="42" id="w7K-62-pez"/>
@@ -1667,7 +1686,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVD-qc-7Kg">
-                                        <rect key="frame" x="203" y="0.0" width="42" height="42"/>
+                                        <rect key="frame" x="154" y="0.0" width="42" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="42" id="gV8-k0-zf6"/>
                                         </constraints>
@@ -2244,6 +2263,7 @@
         <image name="MaPle" width="256" height="75"/>
         <image name="Sign Up" width="308" height="90"/>
         <image name="addimage" width="350" height="350"/>
+        <image name="buttonBackground" width="150" height="50"/>
         <image name="cancel" width="230.39999389648438" height="230.39999389648438"/>
         <image name="checked" width="230.39999389648438" height="230.39999389648438"/>
         <image name="ic_edit" width="48" height="48"/>
