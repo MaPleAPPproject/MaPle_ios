@@ -56,9 +56,25 @@
 		9D87CEF021B0D55E00CD08B4 /* LodingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */; };
 		C82393A4B472C82F2D8A89A7 /* Pods_MaPle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */; };
 		DA7D12952181B9C400286775 /* Vision.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D12942181B9C400286775 /* Vision.swift */; };
+<<<<<<< HEAD
 		DA7F8C3421B559F1009899F6 /* ServerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */; };
 		DAA93FA921B751AB00EE8273 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA93FA821B751AB00EE8273 /* StoreKit.framework */; };
-		FA783FC221B7953000FE3945 /* ModifyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA783FC121B7953000FE3945 /* ModifyPostViewController.swift */; };
+=======
+		FA135BF221AAE12D005BE233 /* CollectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA135BF121AAE12D005BE233 /* CollectCollectionViewCell.swift */; };
+		FA135BF421AB99CD005BE233 /* SinglePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA135BF321AB99CD005BE233 /* SinglePostViewController.swift */; };
+		FA1C6F6F21B10C2A00E70091 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C6F6E21B10C2A00E70091 /* MyPageViewController.swift */; };
+		FA67D51521B5678700DDC56F /* FriendPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA67D51421B5678700DDC56F /* FriendPostViewController.swift */; };
+		FA67D51721B658CE00DDC56F /* ModifyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA67D51621B658CE00DDC56F /* ModifyPostViewController.swift */; };
+		FA6813D021A80D920061E26E /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6813CF21A80D920061E26E /* PostCollectionViewCell.swift */; };
+		FA7AEBD121AEC2460062D353 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7AEBD021AEC2460062D353 /* ImageManager.swift */; };
+		FA7AEBD321AED87D0062D353 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7AEBD221AED87D0062D353 /* NewPostViewController.swift */; };
+		FA99C2FE21AD7B7D0032354D /* UserprofileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99C2FD21AD7B7D0032354D /* UserprofileViewController.swift */; };
+		FAB8D86B21AFD62100F09A5D /* MapLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB8D86A21AFD62000F09A5D /* MapLocationViewController.swift */; };
+		FAB8D86F21B015B600F09A5D /* MapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB8D86E21B015B600F09A5D /* MapTableViewController.swift */; };
+		FAB8D87121B0225D00F09A5D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB8D87021B0225D00F09A5D /* MapViewController.swift */; };
+		FAE859C421A2906300212219 /* PrintHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE859C321A2906300212219 /* PrintHelper.swift */; };
+		FAEE273821A24DCE000D4413 /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE273721A24DCE000D4413 /* Communicator.swift */; };
+>>>>>>> myPage1130
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,9 +134,25 @@
 		9D87CEEA21B0D4FA00CD08B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LodingView.swift; sourceTree = "<group>"; };
 		DA7D12942181B9C400286775 /* Vision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vision.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCommunicator.swift; sourceTree = "<group>"; };
 		DAA93FA821B751AB00EE8273 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		FA783FC121B7953000FE3945 /* ModifyPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModifyPostViewController.swift; path = "../../../MaPle_ios 拷貝1205/MaPle/Mypage/ModifyPostViewController.swift"; sourceTree = "<group>"; };
+=======
+		FA135BF121AAE12D005BE233 /* CollectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA135BF321AB99CD005BE233 /* SinglePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePostViewController.swift; sourceTree = "<group>"; };
+		FA1C6F6E21B10C2A00E70091 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		FA67D51421B5678700DDC56F /* FriendPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPostViewController.swift; sourceTree = "<group>"; };
+		FA67D51621B658CE00DDC56F /* ModifyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPostViewController.swift; sourceTree = "<group>"; };
+		FA6813CF21A80D920061E26E /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA7AEBD021AEC2460062D353 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		FA7AEBD221AED87D0062D353 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		FA99C2FD21AD7B7D0032354D /* UserprofileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserprofileViewController.swift; sourceTree = "<group>"; };
+		FAB8D86A21AFD62000F09A5D /* MapLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationViewController.swift; sourceTree = "<group>"; };
+		FAB8D86E21B015B600F09A5D /* MapTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewController.swift; sourceTree = "<group>"; };
+		FAB8D87021B0225D00F09A5D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		FAE859C321A2906300212219 /* PrintHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintHelper.swift; sourceTree = "<group>"; };
+		FAEE273721A24DCE000D4413 /* Communicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communicator.swift; sourceTree = "<group>"; };
+>>>>>>> myPage1130
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				8AA163B0217F5DC200D80197 /* MaPle */,
+				DA7D12972181BA9B00286775 /* VisionAlgorithm */,
 				8AA163AF217F5DC200D80197 /* Products */,
 				38A99688B3ED0AB1A2BFCC0D /* Pods */,
 				97C2342A36E01136857BD7D9 /* Frameworks */,
@@ -196,6 +229,7 @@
 				9D87CEDF21B0D4B000CD08B4 /* UserAccount.swift */,
 				9D87CEDD21B0D4B000CD08B4 /* userCollectionViewCell.swift */,
 				8AA163B1217F5DC200D80197 /* AppDelegate.swift */,
+<<<<<<< HEAD
 				8A3161DF2195239300827F28 /* Explore */,
 				8AA163B7217F5DC200D80197 /* Main.storyboard */,
 				8A3161E4219524A400827F28 /* Reachability.h */,
@@ -206,6 +240,15 @@
 				8A3161E2219524A300827F28 /* MaPle-Bridging-Header.h */,
 				DA7D129A2181BB1E00286775 /* Payment */,
 				DA7D12972181BA9B00286775 /* VisionAlgorithm */,
+=======
+				8AA163BF217F5DC500D80197 /* Info.plist */,
+				FA1C6F6D21B0E62900E70091 /* Map */,
+				FA1C6F6C21B0E5EB00E70091 /* Payment */,
+				FA1C6F6A21B0E58600E70091 /* Explore */,
+				FA1C6F6921B0E56D00E70091 /* Login */,
+				FA1C6F6821B0E50800E70091 /* Friend */,
+				FABF277621A5652900957F9C /* Mypage */,
+>>>>>>> myPage1130
 			);
 			path = MaPle;
 			sourceTree = "<group>";
@@ -258,7 +301,6 @@
 		9D87CEF521B0E10000CD08B4 /* Mypage */ = {
 			isa = PBXGroup;
 			children = (
-				FA783FC121B7953000FE3945 /* ModifyPostViewController.swift */,
 				8AA71EB521B1298D000B28BE /* CollectCollectionViewCell.swift */,
 				8AA71EBC21B1298D000B28BE /* Communicator.swift */,
 				8AA71EB921B1298D000B28BE /* ImageManager.swift */,
@@ -277,18 +319,73 @@
 		DA7D12972181BA9B00286775 /* VisionAlgorithm */ = {
 			isa = PBXGroup;
 			children = (
+				8AA163B7217F5DC200D80197 /* Main.storyboard */,
+				8AA163BA217F5DC500D80197 /* Assets.xcassets */,
+				8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */,
 				DA7D12942181B9C400286775 /* Vision.swift */,
 			);
 			path = VisionAlgorithm;
 			sourceTree = "<group>";
 		};
-		DA7D129A2181BB1E00286775 /* Payment */ = {
+		FA1C6F6821B0E50800E70091 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				8AA163C5217F74B500D80197 /* FriendPageViewController.swift */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		FA1C6F6921B0E56D00E70091 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		FA1C6F6A21B0E58600E70091 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				8AA163B5217F5DC200D80197 /* ExploreViewController.swift */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		FA1C6F6C21B0E5EB00E70091 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
 				9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */,
 				DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */,
 			);
 			path = Payment;
+			sourceTree = "<group>";
+		};
+		FA1C6F6D21B0E62900E70091 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				FAB8D87021B0225D00F09A5D /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		FABF277621A5652900957F9C /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				FA1C6F6E21B10C2A00E70091 /* MyPageViewController.swift */,
+				FA7AEBD221AED87D0062D353 /* NewPostViewController.swift */,
+				FA67D51621B658CE00DDC56F /* ModifyPostViewController.swift */,
+				FA7AEBD021AEC2460062D353 /* ImageManager.swift */,
+				FA99C2FD21AD7B7D0032354D /* UserprofileViewController.swift */,
+				FAEE273721A24DCE000D4413 /* Communicator.swift */,
+				FAB8D86A21AFD62000F09A5D /* MapLocationViewController.swift */,
+				FA135BF321AB99CD005BE233 /* SinglePostViewController.swift */,
+				FA67D51421B5678700DDC56F /* FriendPostViewController.swift */,
+				FA6813CF21A80D920061E26E /* PostCollectionViewCell.swift */,
+				FAB8D86E21B015B600F09A5D /* MapTableViewController.swift */,
+				FA135BF121AAE12D005BE233 /* CollectCollectionViewCell.swift */,
+				FAE859C321A2906300212219 /* PrintHelper.swift */,
+				8AA163C7217F74CD00D80197 /* MapPageViewController.swift */,
+			);
+			path = Mypage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,12 +489,23 @@
 			files = (
 			);
 			inputPaths = (
+<<<<<<< HEAD
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
+=======
+				"${SRCROOT}/Pods/Target Support Files/Pods-MaPle/Pods-MaPle-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework",
+>>>>>>> myPage1130
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+<<<<<<< HEAD
 				"$(DERIVED_FILE_DIR)/Pods-MaPle-checkManifestLockResult.txt",
+=======
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CarbonKit.framework",
+>>>>>>> myPage1130
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -415,6 +523,7 @@
 				8AA71EB121B12778000B28BE /* MapCommunicator.swift in Sources */,
 				8AA71ED521B12A1D000B28BE /* GradientView.swift in Sources */,
 				8AA163B6217F5DC200D80197 /* ExploreViewController.swift in Sources */,
+<<<<<<< HEAD
 				8AA71EC421B1298D000B28BE /* ImageManager.swift in Sources */,
 				8AB6499421AECA250012439C /* ResultMapCollectionReusableView.swift in Sources */,
 				8AB6499221AEC9660012439C /* SearchResultCollectionViewController.swift in Sources */,
@@ -435,7 +544,6 @@
 				8AA71ED221B12A1D000B28BE /* FriendData.swift in Sources */,
 				8A01110E21AD9ABA00789296 /* SearchTableViewCell.swift in Sources */,
 				9D87CEE621B0D4DA00CD08B4 /* LoginViewController.swift in Sources */,
-				FA783FC221B7953000FE3945 /* ModifyPostViewController.swift in Sources */,
 				8A0DE9DA2199E5EE0090ABDE /* PictureDetailViewController.swift in Sources */,
 				8AA71EC321B1298D000B28BE /* SinglePostViewController.swift in Sources */,
 				8AA71ED721B12A1D000B28BE /* FriendCommunicator.swift in Sources */,
@@ -457,6 +565,26 @@
 				8AA71ED921B12A1D000B28BE /* InvitationViewController.swift in Sources */,
 				8A3161E7219526F600827F28 /* ExploreData.swift in Sources */,
 				8AA71EC521B1298D000B28BE /* NewPostViewController.swift in Sources */,
+=======
+				FA99C2FE21AD7B7D0032354D /* UserprofileViewController.swift in Sources */,
+				FAE859C421A2906300212219 /* PrintHelper.swift in Sources */,
+				FA7AEBD321AED87D0062D353 /* NewPostViewController.swift in Sources */,
+				FA135BF421AB99CD005BE233 /* SinglePostViewController.swift in Sources */,
+				DA7D12952181B9C400286775 /* Vision.swift in Sources */,
+				FA67D51521B5678700DDC56F /* FriendPostViewController.swift in Sources */,
+				FA67D51721B658CE00DDC56F /* ModifyPostViewController.swift in Sources */,
+				FAEE273821A24DCE000D4413 /* Communicator.swift in Sources */,
+				8AA163C6217F74B500D80197 /* FriendPageViewController.swift in Sources */,
+				8AA163C8217F74CD00D80197 /* MapPageViewController.swift in Sources */,
+				FA6813D021A80D920061E26E /* PostCollectionViewCell.swift in Sources */,
+				FA1C6F6F21B10C2A00E70091 /* MyPageViewController.swift in Sources */,
+				FAB8D86F21B015B600F09A5D /* MapTableViewController.swift in Sources */,
+				8AA163B2217F5DC200D80197 /* AppDelegate.swift in Sources */,
+				FA135BF221AAE12D005BE233 /* CollectCollectionViewCell.swift in Sources */,
+				FAB8D86B21AFD62100F09A5D /* MapLocationViewController.swift in Sources */,
+				FA7AEBD121AEC2460062D353 /* ImageManager.swift in Sources */,
+				FAB8D87121B0225D00F09A5D /* MapViewController.swift in Sources */,
+>>>>>>> myPage1130
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,20 +731,32 @@
 			baseConfigurationReference = 81A9F33315809AAE23DFDBA9 /* Pods-MaPle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+<<<<<<< HEAD
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+=======
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 53L8H6U7Q7;
+>>>>>>> myPage1130
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MaPle/MaPle-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = "cp102-3.MaPle12345678";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+>>>>>>> myPage1130
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -627,19 +767,31 @@
 			baseConfigurationReference = 27F6591CDB14574C6CD6EF97 /* Pods-MaPle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+<<<<<<< HEAD
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+=======
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 53L8H6U7Q7;
+>>>>>>> myPage1130
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MaPle/MaPle-Bridging-Header.h";
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = "cp102-3.MaPle12345678";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+>>>>>>> myPage1130
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -58,7 +58,6 @@
 		DA7D12952181B9C400286775 /* Vision.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D12942181B9C400286775 /* Vision.swift */; };
 		DA7F8C3421B559F1009899F6 /* ServerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */; };
 		DAA93FA921B751AB00EE8273 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA93FA821B751AB00EE8273 /* StoreKit.framework */; };
-		FA783FC221B7953000FE3945 /* ModifyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA783FC121B7953000FE3945 /* ModifyPostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,7 +119,6 @@
 		DA7D12942181B9C400286775 /* Vision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vision.swift; sourceTree = "<group>"; };
 		DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCommunicator.swift; sourceTree = "<group>"; };
 		DAA93FA821B751AB00EE8273 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		FA783FC121B7953000FE3945 /* ModifyPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModifyPostViewController.swift; path = "../../../MaPle_ios 拷貝1205/MaPle/Mypage/ModifyPostViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,7 +256,6 @@
 		9D87CEF521B0E10000CD08B4 /* Mypage */ = {
 			isa = PBXGroup;
 			children = (
-				FA783FC121B7953000FE3945 /* ModifyPostViewController.swift */,
 				8AA71EB521B1298D000B28BE /* CollectCollectionViewCell.swift */,
 				8AA71EBC21B1298D000B28BE /* Communicator.swift */,
 				8AA71EB921B1298D000B28BE /* ImageManager.swift */,
@@ -435,7 +432,6 @@
 				8AA71ED221B12A1D000B28BE /* FriendData.swift in Sources */,
 				8A01110E21AD9ABA00789296 /* SearchTableViewCell.swift in Sources */,
 				9D87CEE621B0D4DA00CD08B4 /* LoginViewController.swift in Sources */,
-				FA783FC221B7953000FE3945 /* ModifyPostViewController.swift in Sources */,
 				8A0DE9DA2199E5EE0090ABDE /* PictureDetailViewController.swift in Sources */,
 				8AA71EC321B1298D000B28BE /* SinglePostViewController.swift in Sources */,
 				8AA71ED721B12A1D000B28BE /* FriendCommunicator.swift in Sources */,
