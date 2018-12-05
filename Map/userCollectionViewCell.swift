@@ -9,6 +9,6 @@ import UIKit
 
 class userCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var titleUITextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var titleUILabel: UILabel!
 }
