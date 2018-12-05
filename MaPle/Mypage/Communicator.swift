@@ -13,7 +13,7 @@ import Alamofire
 
 class Communicator {
     
-    static let IP = "192.168.50.224"
+    static let IP = "192.168.43.251"
     
     static let BASEURL = "http://\(IP):8080/MaPle"
     

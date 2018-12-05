@@ -190,6 +190,8 @@ class  MapCommunicator {
         Alamofire.request(urlstring, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
             
             self.handleMemberID(response: response, completion: completion)
+            
+            
         }
     }
     

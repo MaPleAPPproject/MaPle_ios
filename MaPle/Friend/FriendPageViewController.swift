@@ -44,7 +44,11 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
         friendView.isHidden = false
         invitationView.isHidden = true
         matchView.isHidden = true
+        
+        prepareForPayment()
+        
     }
+    
     // MARK - Payment
     
     var productIDs: [String] = [String]()
@@ -56,29 +60,33 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
     
     let messageTitle = "尊榮會員升等服務"
     let message = "現在升等VIP立即開啟聊天室功能~!"
-    var memberId = 1 // Todo
+    
     var serverCommunicator : ServerCommunicator?
+    var vipStatus : Int?
     
     
     func prepareForPayment() {
         
-        
-        super.viewDidLoad()
+       
+        guard let memberId = UserDefaults.standard.object(forKey: "IntMemberID") as? Int else {
+            return
+        }
+        print(memberId)
         self.serverCommunicator = ServerCommunicator(memberId)
         
-        //        self.lodingView = LodingView(frame: UIScreen.main.bounds)
-        //        self.view.addSubview(self.lodingView!)
-        //
-        //        self.productIDs.append("Not_Consumable_Product")
-        //        self.requestProductInfo()
+                self.lodingView = LodingView(frame: UIScreen.main.bounds)
+                self.view.addSubview(self.lodingView!)
         
-        serverCommunicator!.loadUserVipStatus { (results, error) in
+                productIDs.append("") // Todo add the productId
+                self.requestProductInfo()
+        
+            serverCommunicator!.loadUserVipStatus { (results, error) in
             
             guard let result = results!["vipStatus"]as? Int else {
                 assertionFailure("Json covertion fail")
                 return
             }
-            self.memberId = result
+            self.vipStatus = result
         }
         
     }
@@ -133,11 +141,12 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
             for product in response.products {
                 self.productsArray.append(product)
             }
-        }
-        else {
+        } else {
             print("取不到任何商品...")
         }
-        
+        if response.invalidProductIdentifiers.count != 0 {
+            print(response.invalidProductIdentifiers.description)
+        }
     }
     
     
@@ -229,6 +238,9 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
     }
     
     func afterPaymentFinish(){
+        guard let memberId = UserDefaults.standard.object(forKey: "IntMemberID") as? Int else {
+            return
+        }
         serverCommunicator!.updateUserVipStatus(memberId) { (results, error) in
             if let error = error {
                 assertionFailure("failed to update Vip status error code : \(error)")

@@ -20,8 +20,8 @@ class ExploreCommunicator {
     typealias AnyDoneHandler = (_ result:Any?, _ error: Error?) -> Void //json回傳結果放置result
     
     typealias DataDoneHandler = (_ result:Data?, _ error: Error?) -> Void //json回傳結果為data
-    
-    static let BASEURL = "http://192.168.50.224:8080/MaPle/"
+
+    static let BASEURL = "http://\(Communicator.IP):8080/MaPle/"
     let PictureServlet_URL = BASEURL + "PictureServlet"
     let UserProfileServlet_URL = BASEURL + "User_profileServlet"
     let UserPreferenceServlet_URL = BASEURL + "UserPreferenceServlet"

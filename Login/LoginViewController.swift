@@ -41,6 +41,8 @@ class LoginViewController: UIViewController,UITextViewDelegate {
             self.communicator.findMemberId(Email: self.email, PassWord: self.passWord, completion: { (data, error) in
                 let memberId = data! as Int
                 let stringMemberId = String(memberId)
+                print("userDefaults memberId :\(memberId, stringMemberId)" )
+                self.userDefaults.set(memberId, forKey: "IntMemberID")
                 self.userDefaults.set(stringMemberId, forKey: "MemberID")
                 self.userDefaults.set(self.email, forKey: "Email")
                 self.userDefaults.set(self.passWord, forKey: "PassWord")
