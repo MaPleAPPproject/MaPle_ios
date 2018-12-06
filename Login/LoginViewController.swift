@@ -21,7 +21,6 @@ class LoginViewController: UIViewController,UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        registerBtn.imageView?.contentMode = .scaleToFill
     }
     
     @IBAction func LoginBtn(_ sender: Any) {

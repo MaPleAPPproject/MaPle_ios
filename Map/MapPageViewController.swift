@@ -10,7 +10,7 @@ import CoreLocation
 
 class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate,UICollectionViewDataSource {
     
-    
+    @IBOutlet weak var cellLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var myMapView: MKMapView!
     @IBOutlet weak var mypostCollectionView: UICollectionView!
     
@@ -20,12 +20,20 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     let communicator = MapCommunicator.shared
     let mark = MKPointAnnotation()
     var spots: [Dictionary<String, Any>] = []
-    var spots2: [Dictionary<String, Any>] = []
-    var count:Int = 0
     var images = [UIImage]()
+    let safearea = UIScreen.main.bounds.height
+    var count = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let window = UIApplication.shared.keyWindow
+        let topPadding = window?.safeAreaInsets.top
+        let bottomPadding = window?.safeAreaInsets.bottom
+        let safeAreaHeight = UIScreen.main.bounds.height - topPadding! - bottomPadding!
+        cellLayout.itemSize = CGSize(width: (safeAreaHeight/5)*0.8 , height: safeAreaHeight/5)
+        
         memberId = self.userDefaults.value(forKey: "MemberID") as! String
         locationManager.delegate = self
         myMapView.delegate = self
@@ -33,24 +41,10 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         guard CLLocationManager.locationServicesEnabled() else {
             return
         }
-        
         self.myMapView.showsUserLocation = true
         locationManager.activityType = .automotiveNavigation
         locationManager.requestWhenInUseAuthorization()
-        
-        let myLocation = locationManager.location?.coordinate
-        if (myLocation?.latitude != nil) && (myLocation?.longitude != nil) {
-            locationManager.startUpdatingHeading()
-            locationManager.startUpdatingLocation()
-            self.myMapView.setCenter(myLocation!, animated: true)
-        }else{
-            let alert = UIAlertController(title: "警告!", message: "請允許APP使用定位資料", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "我知道了", style: .default, handler: {
-                action in
-            })
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
-        }
+        movetomylocation()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,12 +52,7 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             let result = data!
             if let error = error {
                 print("\(error)")
-                let alert = UIAlertController(title: "警告!", message: "連線異常(3)", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "我知道了", style: .default, handler: {
-                    action in
-                })
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
+                self.alert(message: "連線異常")
                 return
             }else {
                 let Data = result.data(using: .utf8)!
@@ -71,19 +60,7 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                     if let jsonArray = try JSONSerialization.jsonObject(with: Data, options : .allowFragments) as? [Dictionary<String,Any>]
                     {
                         self.spots = jsonArray
-                        self.spots2 = jsonArray
-                        for spot in self.spots2 {
-                            let point = MKPointAnnotation()
-                            let postid = spot["PostId"] as! Int
-                            let stringid = String(postid)
-                            self.mark.subtitle = stringid
-                            point.subtitle = stringid
-                            let lat = spot["Lat"] as! Double
-                            let lon = spot["Lon"] as! Double
-                            point.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon )
-                            point.title = spot["District"] as? String
-                            self.myMapView.addAnnotation(point)
-                        }
+                        self.drawSpots()
                         self.mypostCollectionView.reloadData()
                     }else {
                         print("bad json")
@@ -95,6 +72,19 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
     }
     
+    @IBAction func drawSpotsBtnPressed(_ sender: Any) {
+        if count % 2 == 0{
+            drawSpots()
+            count += 1
+        }else {
+            myMapView.removeAnnotations(myMapView.annotations)
+            count += 1
+        }
+    }
+    
+    @IBAction func myLocationPressed(_ sender: Any) {
+        movetomylocation()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -111,22 +101,19 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! userCollectionViewCell
-        for spot in spots{
-            cell.titleUILabel.text = spot["District"] as? String
-            let id = spot["PostId"] as! Int
-            cell.tag = id
-            self.communicator.findPhoto(PostId: id) { (data, error) in
-                if let error = error{
-                    print("\(error)")
-                    return
-                }else{
-                    let image = UIImage(data:data!)
-                    cell.photoImageView.image = image
-                    self.images.append(image!)
-                }
+        let spot = spots[indexPath.row]
+        let id = spot["PostId"] as! Int
+        cell.tag = id
+        cell.titleUILabel.text = spot["District"] as? String
+        self.communicator.findPhoto(PostId: id) { (data, error) in
+            if let error = error{
+                print("\(error)")
+                return
+            }else{
+                let image = UIImage(data:data!)!
+                cell.photoImageView.image = image
+                self.images.append(image)
             }
-            self.spots.remove(at: 0)
-            break
         }
         return cell
     }
@@ -139,7 +126,7 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         let cell = collectionView.cellForItem(at: indexPath)
         let id = cell!.tag
         myMapView.removeAnnotations(myMapView.annotations)
-        for spot in spots2{
+        for spot in spots {
             let postid = spot["PostId"] as! Int
             let stringid = String(postid)
             mark.subtitle = stringid
@@ -166,7 +153,7 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             annView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
         }
         
-        annView!.pinTintColor = UIColor.blue
+        annView!.pinTintColor = UIColor.red
         let id = Int(annotation.subtitle!!)
         
         self.communicator.findPhoto(PostId: id!) { (data, error) in
@@ -175,27 +162,17 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 return
             }else{
                 let image = UIImage(data:data!)
-                let button = UIButton(type: .detailDisclosure)
+                let button = UIButton(type: .detailDisclosure )
                 button.addTarget(self, action: #selector(self.accessoryBtnPress(sender:)), for: .touchUpInside)
-                let leftIconView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 53, height: 53))
+                let leftIconView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 54, height: 54))
                 leftIconView.image = image
                 annView!.leftCalloutAccessoryView = leftIconView
-                //                annView!.rightCalloutAccessoryView = button
+                                annView!.rightCalloutAccessoryView = button
             }
         }
         annView!.canShowCallout = true
         return annView
     }
-    
-    //    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-    //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginView")
-    //             self.show(vc!, sender: self)
-    //    }
-    
-    //    private func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-    //                let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginView")
-    //                self.show(vc!, sender: self)
-    //    }
     
     @objc
     func accessoryBtnPress(sender:Any){
@@ -203,8 +180,42 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.show(vc!, sender: self)
     }
     
-    //    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    //        let tag = view.tag
-    //    }
+    func alert(message:String) {
+        let alert = UIAlertController(title: "警告!", message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "我知道了", style: .default, handler: {
+            action in
+        })
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+    }
     
+    func drawSpots() {
+        for spot in self.spots {
+            let point = MKPointAnnotation()
+            let postid = spot["PostId"] as! Int
+            let stringid = String(postid)
+            self.mark.subtitle = stringid
+            point.subtitle = stringid
+            let lat = spot["Lat"] as! Double
+            let lon = spot["Lon"] as! Double
+            point.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon )
+            point.title = spot["District"] as? String
+            self.myMapView.addAnnotation(point)
+        }
+    }
+    
+    func movetomylocation() {
+        let myLocation = locationManager.location?.coordinate
+        if (myLocation?.latitude != nil) && (myLocation?.longitude != nil) {
+            locationManager.startUpdatingHeading()
+            locationManager.startUpdatingLocation()
+            let span = MKCoordinateSpan(latitudeDelta: 100, longitudeDelta: 100)
+            let region = MKCoordinateRegion(center: myLocation!, span: span)
+            //將region帶入mainMap
+            myMapView.setRegion(region, animated: true)
+            self.myMapView.setCenter(myLocation!, animated: true)
+        }else{
+            self.alert(message: "請允許APP使用定位資料")
+        }
+    }
 }

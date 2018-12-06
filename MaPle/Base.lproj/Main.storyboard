@@ -551,7 +551,7 @@
                                 <rect key="frame" x="212.5" y="468.5" width="100" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="返回" backgroundImage="buttonBackground">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="backBtnPressed:" destination="W4J-g3-D3y" eventType="touchUpInside" id="jtG-Ec-Gs6"/>
@@ -627,34 +627,60 @@
                                             <outlet property="delegate" destination="8DQ-hr-w1g" id="Ntf-hb-brS"/>
                                         </connections>
                                     </mapView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5i-rH-g8E">
+                                        <rect key="frame" x="315" y="5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="LuC-5t-U2z"/>
+                                            <constraint firstAttribute="height" constant="50" id="tcj-LT-6gI"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="location-pin"/>
+                                        <connections>
+                                            <action selector="drawSpotsBtnPressed:" destination="8DQ-hr-w1g" eventType="touchUpInside" id="UfD-mh-Wax"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWR-q1-vIL">
+                                        <rect key="frame" x="5" y="5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="gg5-HM-Gir"/>
+                                            <constraint firstAttribute="width" constant="50" id="n2a-bo-S2p"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="blueLocation"/>
+                                        <connections>
+                                            <action selector="myLocationPressed:" destination="8DQ-hr-w1g" eventType="touchUpInside" id="cxH-XE-vbK"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="t5i-rH-g8E" firstAttribute="top" secondItem="Twi-LY-cH6" secondAttribute="top" constant="5" id="1is-To-bVF"/>
                                     <constraint firstItem="llW-av-luc" firstAttribute="leading" secondItem="Twi-LY-cH6" secondAttribute="leading" id="4dW-aH-EJI"/>
                                     <constraint firstAttribute="bottom" secondItem="llW-av-luc" secondAttribute="bottom" id="7q7-i8-kGo"/>
                                     <constraint firstItem="llW-av-luc" firstAttribute="top" secondItem="Twi-LY-cH6" secondAttribute="top" id="Fgc-vg-Zld"/>
+                                    <constraint firstAttribute="trailing" secondItem="t5i-rH-g8E" secondAttribute="trailing" constant="10" id="Zvh-ZG-imh"/>
+                                    <constraint firstItem="eWR-q1-vIL" firstAttribute="top" secondItem="Twi-LY-cH6" secondAttribute="top" constant="5" id="iHZ-cG-RWu"/>
                                     <constraint firstAttribute="trailing" secondItem="llW-av-luc" secondAttribute="trailing" id="s8f-RE-hyG"/>
+                                    <constraint firstItem="eWR-q1-vIL" firstAttribute="leading" secondItem="Twi-LY-cH6" secondAttribute="leading" constant="5" id="tif-A4-n6m"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fvC-kw-gmx">
                                 <rect key="frame" x="0.0" y="479.5" width="375" height="138.5"/>
                                 <color key="backgroundColor" red="0.51278692479999999" green="0.76501482730000003" blue="0.79534900190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9zK-2w-RGE">
-                                    <size key="itemSize" width="120" height="128"/>
+                                    <size key="itemSize" width="120" height="125"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="5" maxX="0.0" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="cell" reuseIdentifier="cell" id="hQ4-2I-SvA" customClass="userCollectionViewCell" customModule="MaPle" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="5.5" width="120" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="10" y="7" width="120" height="125"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="125"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group" translatesAutoresizingMaskIntoConstraints="NO" id="Ubs-rR-tCX">
-                                                    <rect key="frame" x="10" y="5" width="108" height="80.5"/>
+                                                    <rect key="frame" x="10" y="5" width="100" height="83.5"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -663,8 +689,8 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ej-us-XWZ">
-                                                    <rect key="frame" x="10" y="88.5" width="108" height="29"/>
-                                                    <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <rect key="frame" x="10" y="91.5" width="100" height="30.5"/>
+                                                    <color key="backgroundColor" red="0.036792200058698654" green="0.67242628335952759" blue="0.9883008599281311" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -721,6 +747,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="地圖" id="5ir-v0-3ld"/>
                     <connections>
+                        <outlet property="cellLayout" destination="9zK-2w-RGE" id="HBc-zj-qHK"/>
                         <outlet property="myMapView" destination="llW-av-luc" id="Mye-xy-kPV"/>
                         <outlet property="mypostCollectionView" destination="fvC-kw-gmx" id="T2v-GZ-sdz"/>
                     </connections>
@@ -1784,14 +1811,14 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mwi-2N-OUc">
-                                <rect key="frame" x="47" y="164" width="730" height="320"/>
+                                <rect key="frame" x="47" y="164" width="281" height="320"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="jYF-GY-0Dh"/>
                                     <constraint firstAttribute="height" constant="320" id="n28-ja-lXT"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Q4-9y-UzI" userLabel="marker">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Q4-9y-UzI" userLabel="marker">
                                 <rect key="frame" x="55" y="496" width="438" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="3s5-UB-KAB"/>
@@ -1802,7 +1829,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wq-Fq-gqu">
-                                <rect key="frame" x="145" y="66" width="663" height="38"/>
+                                <rect key="frame" x="145" y="66" width="214" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="X4P-Mu-xXS"/>
                                 </constraints>
@@ -1811,10 +1838,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2i-w3-voC">
-                                <rect key="frame" x="47" y="541" width="730" height="74"/>
+                                <rect key="frame" x="47" y="541" width="281" height="74"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="98" usesAttributedText="YES" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeN-Ua-2fE">
-                                        <rect key="frame" x="0.0" y="0.0" width="730" height="98"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="281" height="98"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Label">
                                                 <attributes>
@@ -1832,7 +1859,7 @@
                                     <constraint firstItem="aeN-Ua-2fE" firstAttribute="top" secondItem="P2i-w3-voC" secondAttribute="top" id="nEc-WR-t6H"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r34-WN-6Q7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r34-WN-6Q7">
                                 <rect key="frame" x="501" y="502" width="276" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="276" id="m8k-He-aLY"/>
@@ -1842,7 +1869,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="postedDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35r-Mc-r2z">
-                                <rect key="frame" x="145" y="112" width="663" height="20"/>
+                                <rect key="frame" x="145" y="112" width="214" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2263,6 +2290,7 @@
         <image name="MaPle" width="256" height="75"/>
         <image name="Sign Up" width="308" height="90"/>
         <image name="addimage" width="350" height="350"/>
+        <image name="blueLocation" width="102.40000152587891" height="102.40000152587891"/>
         <image name="buttonBackground" width="150" height="50"/>
         <image name="cancel" width="230.39999389648438" height="230.39999389648438"/>
         <image name="checked" width="230.39999389648438" height="230.39999389648438"/>
@@ -2271,6 +2299,7 @@
         <image name="ic_key" width="48" height="48"/>
         <image name="ic_membership" width="48" height="48"/>
         <image name="ic_selfintro" width="48" height="48"/>
+        <image name="location-pin" width="102.40000152587891" height="102.40000152587891"/>
         <image name="maps-and-flags" width="384" height="384"/>
         <image name="noBtn" width="75" height="75"/>
         <image name="tabbar_explore" width="25" height="25"/>

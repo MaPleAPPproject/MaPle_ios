@@ -24,16 +24,16 @@ let DATA_KEY = "data"
 let action_Key = "action"
 let imageSize_key = "imageSize"
 
+
 typealias DownloadDoneHandler = (_ result:Data?, _ error:Error?) -> Void
 typealias DoneHandler = (_ result:Int?, _ error:Error?) -> Void
 typealias DoneMemberIdHandler = (_ result:String?, _ error:Error?) -> Void
 
 class  MapCommunicator {
     
-    //    static let BASEURL = "http://192.168.0.137:8080/MaPle/"
-    static let BASEURL = "http://192.168.196.216:8080/MaPle/"
-    let Login_URL = BASEURL + "UserAccountServlet"
-    let spot_URL = BASEURL + "spotServlet"
+    static let BASEURL = "http://\(Communicator.IP):8080/MaPle"
+    let Login_URL = BASEURL + "/UserAccountServlet"
+    let spot_URL = BASEURL + "/spotServlet"
     
     static let shared = MapCommunicator()
     private init() {
@@ -211,8 +211,6 @@ class  MapCommunicator {
             completion(nil, error)
         }
     }
-    
-    
 }
 
 
