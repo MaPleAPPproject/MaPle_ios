@@ -638,13 +638,26 @@
                                             <action selector="myLocationPressed:" destination="8DQ-hr-w1g" eventType="touchUpInside" id="bjp-4k-Kcp"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWc-um-PjI">
+                                        <rect key="frame" x="5" y="5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="aF0-i7-4rW"/>
+                                            <constraint firstAttribute="width" constant="40" id="cfN-EO-QmN"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="location-pin"/>
+                                        <connections>
+                                            <action selector="drawSpotsBtnPressed:" destination="8DQ-hr-w1g" eventType="touchUpInside" id="Nmh-u3-7Sp"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="bWc-um-PjI" firstAttribute="top" secondItem="Twi-LY-cH6" secondAttribute="top" constant="5" id="2zk-IP-jko"/>
                                     <constraint firstItem="llW-av-luc" firstAttribute="leading" secondItem="Twi-LY-cH6" secondAttribute="leading" id="4dW-aH-EJI"/>
                                     <constraint firstAttribute="bottom" secondItem="llW-av-luc" secondAttribute="bottom" id="7q7-i8-kGo"/>
                                     <constraint firstItem="llW-av-luc" firstAttribute="top" secondItem="Twi-LY-cH6" secondAttribute="top" id="Fgc-vg-Zld"/>
                                     <constraint firstAttribute="trailing" secondItem="kVc-br-aLG" secondAttribute="trailing" constant="5" id="fq6-sV-dqC"/>
+                                    <constraint firstItem="bWc-um-PjI" firstAttribute="leading" secondItem="Twi-LY-cH6" secondAttribute="leading" constant="5" id="gaC-sp-LvM"/>
                                     <constraint firstItem="kVc-br-aLG" firstAttribute="top" secondItem="Twi-LY-cH6" secondAttribute="top" constant="5" id="jBe-LF-Jhr"/>
                                     <constraint firstAttribute="trailing" secondItem="llW-av-luc" secondAttribute="trailing" id="s8f-RE-hyG"/>
                                 </constraints>
@@ -656,11 +669,11 @@
                                     <size key="itemSize" width="120" height="125"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="5" maxX="0.0" maxY="5"/>
+                                    <inset key="sectionInset" minX="8" minY="5" maxX="0.0" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="cell" reuseIdentifier="cell" id="hQ4-2I-SvA" customClass="userCollectionViewCell" customModule="MaPle" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="7" width="120" height="125"/>
+                                        <rect key="frame" x="8" y="7" width="120" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="125"/>
@@ -732,16 +745,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cHs-Eb-vgT"/>
                     </view>
-                    <navigationItem key="navigationItem" title="地圖" id="5ir-v0-3ld">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="location-pin29" id="UQt-wk-ziw">
-                            <connections>
-                                <action selector="drawSpotsBtnPressed:" destination="8DQ-hr-w1g" id="xLh-Xs-gUn"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="地圖" id="5ir-v0-3ld"/>
                     <connections>
                         <outlet property="cellLayout" destination="9zK-2w-RGE" id="HBc-zj-qHK"/>
-                        <outlet property="drawLocationpin" destination="UQt-wk-ziw" id="KjX-va-Hk9"/>
                         <outlet property="myMapView" destination="llW-av-luc" id="Mye-xy-kPV"/>
                         <outlet property="mypostCollectionView" destination="fvC-kw-gmx" id="T2v-GZ-sdz"/>
                     </connections>
@@ -2293,7 +2299,7 @@
         <image name="ic_key" width="48" height="48"/>
         <image name="ic_membership" width="48" height="48"/>
         <image name="ic_selfintro" width="48" height="48"/>
-        <image name="location-pin29" width="23.200000762939453" height="23.200000762939453"/>
+        <image name="location-pin" width="102.40000152587891" height="102.40000152587891"/>
         <image name="maps-and-flags" width="384" height="384"/>
         <image name="noBtn" width="75" height="75"/>
         <image name="tabbar_explore" width="25" height="25"/>

@@ -33,7 +33,7 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         let topPadding = window?.safeAreaInsets.top
         let bottomPadding = window?.safeAreaInsets.bottom
         let safeAreaHeight = UIScreen.main.bounds.height - topPadding! - bottomPadding!
-        cellLayout.itemSize = CGSize(width: (safeAreaHeight/5)*0.85 , height: safeAreaHeight/5)
+        cellLayout.itemSize = CGSize(width: (safeAreaHeight/5)*0.88 , height: safeAreaHeight/5)
         
         memberId = self.userDefaults.value(forKey: "MemberID") as! String
         locationManager.delegate = self
