@@ -11,7 +11,6 @@
 		8A01110C21AD8E5000789296 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01110B21AD8E5000789296 /* SearchTableViewController.swift */; };
 		8A01110E21AD9ABA00789296 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01110D21AD9ABA00789296 /* SearchTableViewCell.swift */; };
 		8A0DE9DA2199E5EE0090ABDE /* PictureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DE9D92199E5EE0090ABDE /* PictureDetailViewController.swift */; };
-		8A30ED2021B0333F007F4960 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A30ED1F21B0333F007F4960 /* Assets.xcassets */; };
 		8A3161E1219523EC00827F28 /* ExploreCommuicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E0219523EC00827F28 /* ExploreCommuicator.swift */; };
 		8A3161E5219524A400827F28 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E3219524A400827F28 /* Reachability.m */; };
 		8A3161E7219526F600827F28 /* ExploreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E6219526F600827F28 /* ExploreData.swift */; };
@@ -68,7 +67,6 @@
 		8A01110B21AD8E5000789296 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		8A01110D21AD9ABA00789296 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		8A0DE9D92199E5EE0090ABDE /* PictureDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureDetailViewController.swift; sourceTree = "<group>"; };
-		8A30ED1F21B0333F007F4960 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A3161E0219523EC00827F28 /* ExploreCommuicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCommuicator.swift; sourceTree = "<group>"; };
 		8A3161E2219524A300827F28 /* MaPle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MaPle-Bridging-Header.h"; sourceTree = "<group>"; };
 		8A3161E3219524A400827F28 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -197,7 +195,6 @@
 				8AA163B7217F5DC200D80197 /* Main.storyboard */,
 				8A3161E4219524A400827F28 /* Reachability.h */,
 				8A3161E3219524A400827F28 /* Reachability.m */,
-				8A30ED1F21B0333F007F4960 /* Assets.xcassets */,
 				8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */,
 				8AA163BF217F5DC500D80197 /* Info.plist */,
 				8A3161E2219524A300827F28 /* MaPle-Bridging-Header.h */,
@@ -354,7 +351,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AA163BE217F5DC500D80197 /* LaunchScreen.storyboard in Resources */,
-				8A30ED2021B0333F007F4960 /* Assets.xcassets in Resources */,
 				9D87CEED21B0D4FB00CD08B4 /* Assets.xcassets in Resources */,
 				8AA163B9217F5DC200D80197 /* Main.storyboard in Resources */,
 			);

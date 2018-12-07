@@ -627,39 +627,26 @@
                                             <outlet property="delegate" destination="8DQ-hr-w1g" id="Ntf-hb-brS"/>
                                         </connections>
                                     </mapView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5i-rH-g8E">
-                                        <rect key="frame" x="315" y="5" width="50" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVc-br-aLG">
+                                        <rect key="frame" x="330" y="5" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="LuC-5t-U2z"/>
-                                            <constraint firstAttribute="height" constant="50" id="tcj-LT-6gI"/>
-                                        </constraints>
-                                        <state key="normal" title="Button" image="location-pin"/>
-                                        <connections>
-                                            <action selector="drawSpotsBtnPressed:" destination="8DQ-hr-w1g" eventType="touchUpInside" id="UfD-mh-Wax"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWR-q1-vIL">
-                                        <rect key="frame" x="5" y="5" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="gg5-HM-Gir"/>
-                                            <constraint firstAttribute="width" constant="50" id="n2a-bo-S2p"/>
+                                            <constraint firstAttribute="width" constant="40" id="31V-n7-YdL"/>
+                                            <constraint firstAttribute="height" constant="40" id="Fs3-QD-5ZL"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="blueLocation"/>
                                         <connections>
-                                            <action selector="myLocationPressed:" destination="8DQ-hr-w1g" eventType="touchUpInside" id="cxH-XE-vbK"/>
+                                            <action selector="myLocationPressed:" destination="8DQ-hr-w1g" eventType="touchUpInside" id="bjp-4k-Kcp"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="t5i-rH-g8E" firstAttribute="top" secondItem="Twi-LY-cH6" secondAttribute="top" constant="5" id="1is-To-bVF"/>
                                     <constraint firstItem="llW-av-luc" firstAttribute="leading" secondItem="Twi-LY-cH6" secondAttribute="leading" id="4dW-aH-EJI"/>
                                     <constraint firstAttribute="bottom" secondItem="llW-av-luc" secondAttribute="bottom" id="7q7-i8-kGo"/>
                                     <constraint firstItem="llW-av-luc" firstAttribute="top" secondItem="Twi-LY-cH6" secondAttribute="top" id="Fgc-vg-Zld"/>
-                                    <constraint firstAttribute="trailing" secondItem="t5i-rH-g8E" secondAttribute="trailing" constant="10" id="Zvh-ZG-imh"/>
-                                    <constraint firstItem="eWR-q1-vIL" firstAttribute="top" secondItem="Twi-LY-cH6" secondAttribute="top" constant="5" id="iHZ-cG-RWu"/>
+                                    <constraint firstAttribute="trailing" secondItem="kVc-br-aLG" secondAttribute="trailing" constant="5" id="fq6-sV-dqC"/>
+                                    <constraint firstItem="kVc-br-aLG" firstAttribute="top" secondItem="Twi-LY-cH6" secondAttribute="top" constant="5" id="jBe-LF-Jhr"/>
                                     <constraint firstAttribute="trailing" secondItem="llW-av-luc" secondAttribute="trailing" id="s8f-RE-hyG"/>
-                                    <constraint firstItem="eWR-q1-vIL" firstAttribute="leading" secondItem="Twi-LY-cH6" secondAttribute="leading" constant="5" id="tif-A4-n6m"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fvC-kw-gmx">
@@ -745,9 +732,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cHs-Eb-vgT"/>
                     </view>
-                    <navigationItem key="navigationItem" title="地圖" id="5ir-v0-3ld"/>
+                    <navigationItem key="navigationItem" title="地圖" id="5ir-v0-3ld">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="location-pin29" id="UQt-wk-ziw">
+                            <connections>
+                                <action selector="drawSpotsBtnPressed:" destination="8DQ-hr-w1g" id="xLh-Xs-gUn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cellLayout" destination="9zK-2w-RGE" id="HBc-zj-qHK"/>
+                        <outlet property="drawLocationpin" destination="UQt-wk-ziw" id="KjX-va-Hk9"/>
                         <outlet property="myMapView" destination="llW-av-luc" id="Mye-xy-kPV"/>
                         <outlet property="mypostCollectionView" destination="fvC-kw-gmx" id="T2v-GZ-sdz"/>
                     </connections>
@@ -1386,7 +1380,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gSe-Y5-4eY">
-                                <rect key="frame" x="113" y="53" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="53" width="100" height="100"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="hqZ-dH-6fB">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -1420,7 +1414,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="left" axis="vertical" distribution="fillProportionally" alignment="top" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="kMz-UM-mme">
-                                <rect key="frame" x="-24" y="250" width="374" height="330"/>
+                                <rect key="frame" x="0.5" y="250" width="374" height="330"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pBV-Mq-YVq">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="48"/>
@@ -1683,14 +1677,14 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqv-fB-qjT">
-                                <rect key="frame" x="173" y="149" width="48" height="48"/>
+                                <rect key="frame" x="222" y="149" width="48" height="48"/>
                                 <state key="normal" image="ic_edit"/>
                                 <connections>
                                     <action selector="userNameEditBtnPressed:" destination="d4X-6K-dqV" eventType="touchUpInside" id="uf4-id-zCl"/>
                                 </connections>
                             </button>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleAspectFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xva-eF-hjp">
-                                <rect key="frame" x="65" y="161" width="196" height="42"/>
+                                <rect key="frame" x="65" y="161" width="245" height="42"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LlJ-4R-4Bx">
                                         <rect key="frame" x="0.0" y="0.0" width="92" height="42"/>
@@ -1702,7 +1696,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaI-yI-xE5">
-                                        <rect key="frame" x="102" y="0.0" width="42" height="42"/>
+                                        <rect key="frame" x="126.5" y="0.0" width="42" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="ZQi-Pi-BGf"/>
                                             <constraint firstAttribute="width" constant="42" id="w7K-62-pez"/>
@@ -1713,7 +1707,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVD-qc-7Kg">
-                                        <rect key="frame" x="154" y="0.0" width="42" height="42"/>
+                                        <rect key="frame" x="203" y="0.0" width="42" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="42" id="gV8-k0-zf6"/>
                                         </constraints>
@@ -2299,7 +2293,7 @@
         <image name="ic_key" width="48" height="48"/>
         <image name="ic_membership" width="48" height="48"/>
         <image name="ic_selfintro" width="48" height="48"/>
-        <image name="location-pin" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="location-pin29" width="23.200000762939453" height="23.200000762939453"/>
         <image name="maps-and-flags" width="384" height="384"/>
         <image name="noBtn" width="75" height="75"/>
         <image name="tabbar_explore" width="25" height="25"/>
