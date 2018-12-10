@@ -15,13 +15,15 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
     let communicator = FriendCommunicator.shared
     let explorecommunicator = ExploreCommunicator.shared
     var friendlist : [Friend_profile] = []
+    let memberid = UserDefaults.standard.integer(forKey: "MemberIDint")
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         friendlistTableView.delegate = self
         friendlistTableView.dataSource = self
-        getfriends()
+        getfriends(memberid: memberid)
         friendlistTableView.separatorInset = UIEdgeInsets.zero
         friendlistTableView.separatorColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
     }
@@ -121,8 +123,8 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
     
     
     
-    func getfriends() {
-        let memberid = 1
+    func getfriends(memberid: Int) {
+        
         communicator.getAllFriend(memberid: memberid) { (result,error) in
             if let error = error {
                 print("getAllFriend error:\(error)")
@@ -144,7 +146,7 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
             }
             
             self.friendlist = resultObject
-            print("\(self.friendlist)")
+//            print("\(self.friendlist)")
             self.friendlistTableView.reloadData()
             
         }

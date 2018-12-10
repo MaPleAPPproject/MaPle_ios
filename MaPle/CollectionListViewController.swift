@@ -32,8 +32,6 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
-        print("memberid: \(memberid)")
         //draw layout
         self.collectViewlayout.itemSize = CGSize(width: self.fullScreenSize.width/3, height: self.fullScreenSize.width/3)
         self.collectViewlayout.minimumLineSpacing = 0

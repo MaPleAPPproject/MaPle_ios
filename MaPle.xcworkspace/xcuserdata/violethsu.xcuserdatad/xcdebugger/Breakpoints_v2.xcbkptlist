@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MaPle/ExploreCommuicator.swift"
-            timestampString = "566107299.400357"
+            timestampString = "566117110.412984"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MaPle/ExploreCommuicator.swift"
-            timestampString = "566107299.4004281"
+            timestampString = "566117110.413511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "144"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MaPle/PictureDetailViewController.swift"
-            timestampString = "565807369.987988"
+            timestampString = "566117110.414224"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
@@ -442,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MaPle/PictureDetailViewController.swift"
-            timestampString = "565807369.988446"
+            timestampString = "566117110.414729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -490,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MaPle/PictureDetailViewController.swift"
-            timestampString = "565807369.988572"
+            timestampString = "566117110.414906"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
@@ -506,7 +506,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MaPle/PictureDetailViewController.swift"
-            timestampString = "565807369.988638"
+            timestampString = "566117110.414997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -538,7 +538,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MaPle/PictureDetailViewController.swift"
-            timestampString = "565807369.988736"
+            timestampString = "566117110.415099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "171"
@@ -554,7 +554,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MaPle/PictureDetailViewController.swift"
-            timestampString = "565807369.9888051"
+            timestampString = "566117110.415186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
@@ -1146,28 +1146,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MaPle/Friend/FriendPageViewController.swift"
-            timestampString = "565807369.990031"
+            timestampString = "566117110.415697"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "indexChanged(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MaPle/Friend/FriendPageViewController.swift"
-            timestampString = "565807369.990109"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "segmentstylechange()"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "requestProductInfo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1178,12 +1162,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MaPle/Friend/FriendPageViewController.swift"
-            timestampString = "565807369.990173"
+            timestampString = "566117110.4158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "segmentLineChange(index:)"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "prepareForPayment()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1226,12 +1210,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MaPle/Friend/FriendlistTableViewController.swift"
-            timestampString = "566107299.401147"
+            timestampString = "566117110.415881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MaPle/Friend/FriendlistTableViewController.swift"
+            timestampString = "566117110.415976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -193,7 +193,7 @@ class PictureDetailViewController: UIViewController {
         let redcolor = UIColor(red: 245/255, green: 136/255, blue: 136/255, alpha: 1.0)
         if sender.tintColor == redcolor {
             print("already like need to cancellike")
-            communicatior.cancelCollect(postId: String(picture.postid), collectorId: String(1)) { (result, error) in
+            communicatior.cancelCollect(postId: String(picture.postid), collectorId: userid) { (result, error) in
                 if let error = error {
                     print("error:\(error)")
                 }
@@ -215,7 +215,8 @@ class PictureDetailViewController: UIViewController {
             }
         }else {
             print("need to like")
-            let userpre = UserPreference(postid: postdetail.postid, collectorid: Int(userid)!, memberid: postdetail.memberId, collectcount: postdetail.collectcount)
+            let memberid = UserDefaults.standard.integer(forKey: "MemberIDint")
+            let userpre = UserPreference(postid: postdetail.postid, collectorid: memberid, memberid: postdetail.memberId, collectcount: postdetail.collectcount)
             communicatior.addCollect(userPreference: userpre) { (result, error) in
                 if let error = error {
                     print("error:\(error)")

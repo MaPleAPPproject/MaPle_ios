@@ -16,13 +16,15 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
     let explorecommunicator = ExploreCommunicator.shared
     var matchlist : [Friend_profile] = []
     let refreshControl = UIRefreshControl()
+    let memberid = UserDefaults.standard.integer(forKey: "MemberIDint")
+
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         matchlistTableView.delegate = self
         matchlistTableView.dataSource = self
-        getmatch()
+        getmatch(memberid: memberid)
         
         //refreshControl
         if #available(iOS 10.0, *) {
@@ -90,7 +92,7 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
     @objc
     func refreshPictureData(_ sender: Any) {
-        getmatch()
+        getmatch(memberid: memberid)
         self.refreshControl.endRefreshing()
     }
     
@@ -107,8 +109,7 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     //MARK:-Retrieve Server
     
-    func getmatch() {
-        let memberid = 2
+    func getmatch(memberid: Int) {
         communicator.getAllMatch(memberid: memberid) { (result,error) in
             if let error = error {
                 print("getAllFriend error:\(error)")
@@ -139,7 +140,7 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @objc func acceptMatch(friendid: Int) {
     
-        communicator.acceptMatch(memberid: 2, friendid: friendid) { (result, error) in
+        communicator.acceptMatch(memberid: memberid, friendid: friendid) { (result, error) in
             if let error = error {
                 print("acceptMatch error:\(error)")
                 return
@@ -166,7 +167,7 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     func reject(friendid: Int) {
-        communicator.reject(memberid: 1, friendid: friendid) { (result, error) in
+        communicator.reject(memberid: memberid, friendid: friendid) { (result, error) in
             if let error = error {
                 print("acceptMatch error:\(error)")
                 return

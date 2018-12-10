@@ -18,6 +18,8 @@ class InvitationViewController: UIViewController {
     @IBOutlet weak var viewTinderBackGround: UIView!
     @IBOutlet weak var viewActions: UIView!
     var selectedViewController: UIViewController!
+    let memberid = UserDefaults.standard.integer(forKey: "MemberIDint")
+
 
     
     var currentIndex = 0
@@ -34,7 +36,7 @@ class InvitationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewActions.alpha = 0
-        getallInvitation()
+        getallInvitation(memberid: memberid)
         selectedViewController = self.parent
         let notificationName = Notification.Name("GetMemberIDtoButton")
         NotificationCenter.default.addObserver(self, selector: #selector(self.clickProfileButton(noti:)), name: notificationName, object: nil)
@@ -74,8 +76,7 @@ class InvitationViewController: UIViewController {
         }
     }
     
-    func getallInvitation() {
-        let memberid = 1
+    func getallInvitation(memberid: Int) {
         communicator.getAllInvitation(memberid: memberid) { (result,error) in
             if let error = error {
                 print("getallInvitation error:\(error)")
