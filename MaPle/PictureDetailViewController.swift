@@ -168,7 +168,8 @@ class PictureDetailViewController: UIViewController {
             }
             targetVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
             targetVC.navigationItem.leftItemsSupplementBackButton = true
-            targetVC.postDetail = pictureDetail
+            targetVC.memberid = pictureDetail?.memberId
+            targetVC.userName = pictureDetail?.username
             targetVC.iconData = iconData
         } else if segue.identifier == "showMap" {
             guard  let targetVC = segue.destination as? LocationMapViewController else {

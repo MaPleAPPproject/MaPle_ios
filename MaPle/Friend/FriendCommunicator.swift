@@ -8,27 +8,26 @@
 import Foundation
 import Alamofire
 
+let ACTION_KEY = "action"
+let MEMBERID_KEY = "memberid"
+let FRIENDID_KEY = "friendid"
+let GETALL_KEY = "getAll"
+let GETALLINVITE_KEY = "getAllinvite"
+let REJECT_KEY = "friendReject"
+let INVITELIKE_KEY = "findByIds2"
+let MATCHLIKE_KEY = "findByIds"
+let GETPHOTO_KEY = "getfriendImage"
+let RESULT_KEY = "result"
+
+//文字
+typealias DoneHandler = (_ result: Any? , _ error: Error?) -> Void
+//圖
+typealias DownloadDoneHandler = (_ result: Data?, _ error: Error?) -> Void
 
 class FriendCommunicator {
-    let ACTION_KEY = "action"
-    let MEMBERID_KEY = "memberid"
-    let FRIENDID_KEY = "friendid"
-    let GETALL_KEY = "getAll"
-    let GETALLINVITE_KEY = "getAllinvite"
-    let REJECT_KEY = "friendReject"
-    let INVITELIKE_KEY = "findByIds2"
-    let MATCHLIKE_KEY = "findByIds"
-    let GETPHOTO_KEY = "getfriendImage"
-    let RESULT_KEY = "result"
-    
-    //文字
-    typealias DoneHandler = (_ result: Any? , _ error: Error?) -> Void
-    //圖
-    typealias DownloadDoneHandler = (_ result: Data?, _ error: Error?) -> Void
-
-    
-    static let BASEURL = "http://192.168.50.224:8080/MaPle"
+    static let BASEURL = "http://172.20.10.5:8080/MaPle"
     //"http://192.168.1.28:8080/MaPle" home
+    //"http://192.168.196.147:8080/MaPle" Tibame
     let FRIENDLIST_URL = BASEURL + "/FriendServlet"
     let MATCH_URL = BASEURL + "/MatchServlet"
     let INVITE_URL = BASEURL + "/User_profileServlet"

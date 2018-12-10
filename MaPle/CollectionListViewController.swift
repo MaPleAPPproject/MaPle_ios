@@ -32,6 +32,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
         print("memberid: \(memberid)")
         //draw layout
         self.collectViewlayout.itemSize = CGSize(width: self.fullScreenSize.width/3, height: self.fullScreenSize.width/3)
@@ -81,6 +82,13 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
             
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear index:\(self.segmentView.selectedSegmentIndex)")
+        self.categoryValueChanged(self.segmentView)
+    }
+    
     
     @objc func refreshPictureData(_ sender: Any) {
         guard let finalmemberid = self.memberid else {
@@ -192,33 +200,6 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
         }
         
     }
-    func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let OK = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(OK)
-        present(alert,animated: true)
-    }
-    
-    @IBAction func categoryValueChanged(_ sender: UISegmentedControl) {
-        UIView.animate(withDuration: 0.3) {
-            self.buttonBar.frame.origin.x = (self.segmentView.frame.width / CGFloat(self.segmentView.numberOfSegments)) * CGFloat(self.segmentView.selectedSegmentIndex)
-        }
-        switch sender.selectedSegmentIndex {
-        case 0:
-            self.datas = self.tops
-            self.collectionView.reloadData()
-        case 1:
-            self.datas = self.recoms
-            self.collectionView.reloadData()
-        case 2:
-            self.datas = self.news
-            self.collectionView.reloadData()
-        default:
-            self.datas = self.tops
-            self.collectionView.reloadData()
-            
-        }
-    }
     
     
     //MARK:- collectionView Method
@@ -255,6 +236,40 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     //MARK:- Actions
+    
+    func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OK = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(OK)
+        present(alert,animated: true)
+    }
+    
+    @IBAction func categoryValueChanged(_ sender: UISegmentedControl) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3) {
+                self.buttonBar.frame.origin.x = (self.segmentView.frame.width / CGFloat(sender.numberOfSegments)) * CGFloat(sender.selectedSegmentIndex)
+                self.buttonBar.layoutIfNeeded()
+                print("self.buttonBar.frame.origin.x:\(self.buttonBar.frame.origin.x)")
+            }
+        }
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.datas = self.tops
+            self.collectionView.reloadData()
+        case 1:
+            self.datas = self.recoms
+            self.collectionView.reloadData()
+        case 2:
+            self.datas = self.news
+            self.collectionView.reloadData()
+        default:
+            self.datas = self.tops
+            self.collectionView.reloadData()
+            
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             guard let selectedIndexPath = self.collectionView.indexPathsForSelectedItems?.first else {
