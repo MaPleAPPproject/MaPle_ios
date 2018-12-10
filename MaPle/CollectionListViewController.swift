@@ -25,12 +25,15 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
     var tops = [Picture]()
     var recoms = [Picture]()
     var news = [Picture]()
-    
+    private let refreshControl = UIRefreshControl()
+    let memberid = UserDefaults.standard.string(forKey: "MemberID")
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("viewDidLoad")
+        print("memberid: \(memberid)")
         //draw layout
         self.collectViewlayout.itemSize = CGSize(width: self.fullScreenSize.width/3, height: self.fullScreenSize.width/3)
         self.collectViewlayout.minimumLineSpacing = 0
@@ -44,14 +47,27 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
             print("No network connection.")
             return
         }
+        guard let finalmemberid = memberid else {
+            assertionFailure("memberid is nil")
+            return
+        }
         //Task
         getPictureTop()
         getPictureNew()
-        getPictureRecom()
+        getPictureRecom(memberid: finalmemberid)
         
         // Searchbar
         getDistrictList()
         self.segmentstylechange()
+        
+        //refreshControl
+        if #available(iOS 10.0, *) {
+            self.collectionView.refreshControl = refreshControl
+        } else {
+            self.collectionView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(refreshPictureData(_:)), for: .valueChanged)
+        
     }
     @objc
     func networkStatusChanged(){
@@ -66,6 +82,25 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
             
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear index:\(self.segmentView.selectedSegmentIndex)")
+        self.categoryValueChanged(self.segmentView)
+    }
+    
+    
+    @objc func refreshPictureData(_ sender: Any) {
+        guard let finalmemberid = self.memberid else {
+            assertionFailure("memberid is nil")
+            return
+        }
+        getPictureTop()
+        getPictureNew()
+        getPictureRecom(memberid:finalmemberid)
+        self.refreshControl.endRefreshing()
+    }
+    
     func getDistrictList() {
         communicatior.getDistinct { (result, error) in
             if let error = error {
@@ -107,7 +142,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 }
                 self.tops.append(resultObject)
             }
-            print("tops:\(self.tops)")
+//            print("tops:\(self.tops)")
             self.datas = self.tops
             self.collectionView.delegate = self
             self.collectionView.dataSource = self
@@ -115,8 +150,8 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
         
     }
     
-    func getPictureRecom() {
-        communicatior.getRecom(memberid: String(1), completion: { (result, error) in
+    func getPictureRecom(memberid: String) {
+        communicatior.getRecom(memberid: memberid, completion: { (result, error) in
             if let error = error {
                 print("error:\(error)")
             }
@@ -135,7 +170,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 }
                 self.recoms.append(resultObject)
             }
-            print("recoms:\(self.recoms)")
+//            print("recoms:\(self.recoms)")
         })
         
     }
@@ -149,7 +184,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 print("result is nil")
                 return
             }
-            print("result:\(result)")
+//            print("result:\(result)")
             for item in result {
                 guard let jsonData = try? JSONSerialization.data(withJSONObject: item, options: .prettyPrinted) else {
                     print("Fail to generate jsonData") //先將json物件轉為data
@@ -161,36 +196,9 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 }
                 self.news.append(resultObject)
             }
-            print("news:\(self.news)")
+//            print("news:\(self.news)")
         }
         
-    }
-    func showAlert(title: String? = nil, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let OK = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(OK)
-        present(alert,animated: true)
-    }
-    
-    @IBAction func categoryValueChanged(_ sender: UISegmentedControl) {
-        UIView.animate(withDuration: 0.3) {
-            self.buttonBar.frame.origin.x = (self.segmentView.frame.width / CGFloat(self.segmentView.numberOfSegments)) * CGFloat(self.segmentView.selectedSegmentIndex)
-        }
-        switch sender.selectedSegmentIndex {
-        case 0:
-            self.datas = self.tops
-            self.collectionView.reloadData()
-        case 1:
-            self.datas = self.recoms
-            self.collectionView.reloadData()
-        case 2:
-            self.datas = self.news
-            self.collectionView.reloadData()
-        default:
-            self.datas = self.tops
-            self.collectionView.reloadData()
-            
-        }
     }
     
     
@@ -228,6 +236,40 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     //MARK:- Actions
+    
+    func showAlert(title: String? = nil, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OK = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(OK)
+        present(alert,animated: true)
+    }
+    
+    @IBAction func categoryValueChanged(_ sender: UISegmentedControl) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3) {
+                self.buttonBar.frame.origin.x = (self.segmentView.frame.width / CGFloat(sender.numberOfSegments)) * CGFloat(sender.selectedSegmentIndex)
+                self.buttonBar.layoutIfNeeded()
+                print("self.buttonBar.frame.origin.x:\(self.buttonBar.frame.origin.x)")
+            }
+        }
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.datas = self.tops
+            self.collectionView.reloadData()
+        case 1:
+            self.datas = self.recoms
+            self.collectionView.reloadData()
+        case 2:
+            self.datas = self.news
+            self.collectionView.reloadData()
+        default:
+            self.datas = self.tops
+            self.collectionView.reloadData()
+            
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             guard let selectedIndexPath = self.collectionView.indexPathsForSelectedItems?.first else {

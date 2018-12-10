@@ -13,8 +13,8 @@ class LoginViewController: UIViewController,UITextViewDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     
     var label:UITextField!
-    var email = "brian@gmail.com"
-    var passWord = "brian123"
+    var email = "abc@gmail.com"
+    var passWord = "abc123"
     var communicator = MapCommunicator.shared
     let userDefaults = UserDefaults.standard
     
@@ -26,7 +26,7 @@ class LoginViewController: UIViewController,UITextViewDelegate {
     @IBAction func LoginBtn(_ sender: Any) {
 //        email = accountTextField.text!
 //        passWord = passwordTextField.text!
-        
+
         communicator.login(Email: email, PassWord: passWord) { (data, error) in
             if let error = error {
                 print(error)
@@ -42,7 +42,6 @@ class LoginViewController: UIViewController,UITextViewDelegate {
                 let memberId = data! as Int
                 let stringMemberId = String(memberId)
                 self.userDefaults.set(stringMemberId, forKey: "MemberID")
-                
                 self.userDefaults.set(self.email, forKey: "Email")
                 self.userDefaults.set(self.passWord, forKey: "PassWord")
             })

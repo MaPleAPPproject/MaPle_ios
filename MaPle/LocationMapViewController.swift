@@ -152,7 +152,8 @@ class LocationMapViewController: UIViewController,MKMapViewDelegate,CLLocationMa
         let figure = UIImage(data: imagedata!)
         let picture = UIImageView(image: figure)
         result?.leftCalloutAccessoryView = picture
-        result?.leftCalloutAccessoryView?.sizeToFit()
+        picture.contentMode = .scaleAspectFill
+        picture.frame = CGRect(x: 5, y: 5, width: (result?.frame.size.height)!, height: (result?.frame.size.height)!)
         let button = UIButton(type: .detailDisclosure)
         
         //      動態加入按鈕,程式和IbAction做的是一樣 selector is a objective c code

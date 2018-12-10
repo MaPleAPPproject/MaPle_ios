@@ -266,7 +266,11 @@
             <objects>
                 <collectionViewController storyboardIdentifier="othersPage" id="Je0-ZP-vGy" customClass="OthersPage2CollectionViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ToA-HA-IaE">
+<<<<<<< HEAD
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+=======
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="504"/>
+>>>>>>> explore_revised
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cga-Vd-G2q">
@@ -2034,6 +2038,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
+                            <navigationBar contentMode="scaleToFill" backIndicatorImage="tabbar_explore" translatesAutoresizingMaskIntoConstraints="NO" id="CPt-rL-6mT">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="好友" id="YaM-20-uZs">
+                                        <barButtonItem key="rightBarButtonItem" title="Item" id="DRQ-vs-Xc4">
+                                            <connections>
+                                                <action selector="IABbtn:" destination="1OH-nA-bUv" id="488-jl-eVY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LqF-gt-Pcd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="29"/>
+                                <segments>
+                                    <segment title="朋友清單"/>
+                                    <segment title="交友邀請"/>
+                                    <segment title="配對朋友"/>
+                                </segments>
+                                <color key="tintColor" red="0.037315614519999998" green="0.67052710059999998" blue="0.98680645229999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="indexChanged:" destination="1OH-nA-bUv" eventType="valueChanged" id="0ZM-Rq-OC5"/>
+                                </connections>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="friendlist" translatesAutoresizingMaskIntoConstraints="NO" id="Ofc-m2-Mde">
+                                <rect key="frame" x="0.0" y="92" width="375" height="526"/>
+                                <connections>
+                                    <segue destination="4Dw-UJ-VSm" kind="embed" id="5oy-q6-5so"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="invitation" translatesAutoresizingMaskIntoConstraints="NO" id="J5O-6j-lQh">
+                                <rect key="frame" x="0.0" y="92" width="375" height="526"/>
+                                <connections>
+                                    <segue destination="2Ug-Xk-Jng" kind="embed" id="SJi-T8-2VX"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="match" translatesAutoresizingMaskIntoConstraints="NO" id="PQf-St-oU6">
+                                <rect key="frame" x="0.0" y="92" width="375" height="526"/>
+                                <connections>
+                                    <segue destination="Jpl-8L-JkL" kind="embed" id="B78-Ps-KbR"/>
+                                </connections>
+                            </containerView>
+=======
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kEc-qM-e3c">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
@@ -2092,6 +2140,7 @@
                                     </view>
                                 </subviews>
                             </stackView>
+>>>>>>> explore_revised
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -2362,7 +2411,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nN4-io-1xC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="5745" y="139"/>
+=======
             <point key="canvasLocation" x="7346" y="800"/>
+>>>>>>> explore_revised
         </scene>
         <!--Chat Room View Controller-->
         <scene sceneID="owW-JM-q0a">
@@ -2377,7 +2430,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7CY-kZ-XDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="6762" y="139"/>
+=======
             <point key="canvasLocation" x="8218" y="1334"/>
+>>>>>>> explore_revised
         </scene>
         <!--match-->
         <scene sceneID="kto-7M-rCO">
@@ -2510,7 +2567,11 @@
     <inferredMetricsTieBreakers>
         <segue reference="F2o-S1-WBr"/>
         <segue reference="sPz-ap-fph"/>
+<<<<<<< HEAD
+        <segue reference="1pv-Sg-3Zr"/>
+=======
         <segue reference="6zI-Mq-GCT"/>
         <segue reference="YJC-P5-apX"/>
+>>>>>>> explore_revised
     </inferredMetricsTieBreakers>
 </document>
