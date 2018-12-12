@@ -7,7 +7,6 @@
 
 import UIKit
 
-let NAMES = ["Adam Gontier","Matt Walst","Brad Walst","Neil Sanderson","Barry Stock","Nicky Patson"]
 let THERESOLD_MARGIN = (UIScreen.main.bounds.size.width/2) * 0.75
 let SCALE_STRENGTH : CGFloat = 4
 let SCALE_RANGE : CGFloat = 0.90
@@ -19,19 +18,28 @@ protocol TinderCardDelegate: NSObjectProtocol {
 }
 
 class TinderCard: UIView {
-
+    
+    var invitationVC: InvitationViewController!
     var xCenter: CGFloat = 0.0
     var yCenter: CGFloat = 0.0
     var originalPoint = CGPoint.zero
     var imageViewStatus = UIImageView()
     var overLayImage = UIImageView()
+    var profileButton = UIButton()
     var isLiked = false
-    
+    let userid: Int?
+    let userName: String?
+    var iconData: Data?
+    let communicator = ExploreCommunicator.shared
     weak var delegate: TinderCardDelegate?
+    let notificationName = Notification.Name("GetMemberIDtoButton")
+
     
-    public init(frame: CGRect, value: String) {
+    public init(frame: CGRect, value: String, names:String, friend: Friend_profile) {
+        self.userid = friend.FriendID
+        self.userName = friend.Username
         super.init(frame: frame)
-        setupView(at: value)
+        setupView(at: value, names: names, friend: friend)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,7 +47,7 @@ class TinderCard: UIView {
     }
     
     
-    func setupView(at value:String) {
+    func setupView(at selfintro:String, names: String, friend: Friend_profile) {
         
         layer.cornerRadius = 20
         layer.shadowRadius = 3
@@ -54,23 +62,44 @@ class TinderCard: UIView {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.beingDragged))
         addGestureRecognizer(panGestureRecognizer)
         
+        //背景圖
         let backGroundImageView = UIImageView(frame:bounds)
-        backGroundImageView.image = UIImage(named:String(Int(1 + arc4random() % (8 - 1))))
+        
+        communicator.getIcon(memberId: String(friend.FriendID), imageSize: "100") { (data, error) in
+            if let error = error {
+                print("error:\(error)")
+            }
+            guard let data = data else {
+                assertionFailure("data is nil")
+                return
+            }
+            self.iconData = data
+            backGroundImageView.image = UIImage(data: data)
+        }
+//        backGroundImageView.image = UIImage(named:String(Int(1 + arc4random() % (8 - 1))))
         backGroundImageView.contentMode = .scaleAspectFill
         backGroundImageView.clipsToBounds = true;
         addSubview(backGroundImageView)
         
-        let profileImageView = UIImageView(frame:CGRect(x: 20, y: frame.size.height - 80, width: 60, height: 60))
-        profileImageView.image = UIImage(named:"profileimage1")
-        profileImageView.contentMode = .scaleAspectFill
-        profileImageView.layer.cornerRadius = 25
-        profileImageView.clipsToBounds = true
-        addSubview(profileImageView)
+        //個人檔案
+        profileButton = UIButton(frame:CGRect(x: 20, y: frame.size.height - 80, width: 60, height: 60))
+        profileButton.setTitle("檔案", for: .normal)
+        profileButton.backgroundColor = UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0)
+        profileButton.setTitleColor(.white, for: .normal)
+        profileButton.contentMode = .scaleAspectFill
+        profileButton.layer.cornerRadius = 25
+        profileButton.clipsToBounds = true
+        profileButton.isEnabled = true
+        profileButton.addTarget(self, action: #selector(clickProfilButton), for: .touchUpInside)
+        addSubview(profileButton)
         
+        //自我介紹
         let labelText = UILabel(frame:CGRect(x: 90, y: frame.size.height - 80, width: frame.size.width - 100, height: 60))
-        let attributedText = NSMutableAttributedString(string: NAMES[Int(arc4random_uniform(UInt32(NAMES.count)))], attributes: [.foregroundColor: UIColor.white,.font:UIFont.boldSystemFont(ofSize: 25)])
-        attributedText.append(NSAttributedString(string: "\n\(value) mins", attributes: [.foregroundColor: UIColor.white,.font:UIFont.systemFont(ofSize: 18)]))
+        let attributedText = NSMutableAttributedString(string: names, attributes: [.foregroundColor: UIColor.white,.font:UIFont.boldSystemFont(ofSize: 25)])
+
+        attributedText.append(NSAttributedString(string: "\n\(selfintro)", attributes: [.foregroundColor: UIColor.white,.font:UIFont.systemFont(ofSize: 18)]))
         labelText.attributedText = attributedText
+        labelText.shadowColor = UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0)
         labelText.numberOfLines = 2
         addSubview(labelText)
         
@@ -156,6 +185,8 @@ class TinderCard: UIView {
         print("WATCHOUT RIGHT")
     }
     
+   
+    
     func leftAction() {
         
         let finishPoint = CGPoint(x: -frame.size.width*2, y: 2 * yCenter + originalPoint.y)
@@ -168,6 +199,12 @@ class TinderCard: UIView {
         delegate?.cardGoesLeft(card: self)
         print("WATCHOUT LEFT")
     }
+    
+    @objc func clickProfilButton() {
+        let object = [self.userid, self.userName] as [Any]
+        NotificationCenter.default.post(name: notificationName, object: object)
+    }
+    
     
     // right click action
     func rightClickAction() {
@@ -270,5 +307,6 @@ class TinderCard: UIView {
         
         print("WATCHOUT SHAKE ACTION")
     }
-
+    
+    
 }

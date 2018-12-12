@@ -19,6 +19,8 @@ class SearchResultCollectionViewController: UICollectionViewController,UICollect
     let fullScreenSize = UIScreen.main.bounds.size
     let selectedAnnotation = LocationAnnotation()
     var finalheaferView: ResultMapCollectionReusableView? = nil
+    var finalfooterView: TitleCollectionReusableView? = nil
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,31 +148,45 @@ class SearchResultCollectionViewController: UICollectionViewController,UICollect
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let reuableView = collectionView.dequeueReusableSupplementaryView(ofKind: "UICollectionElementKindSectionHeader", withReuseIdentifier: "header", for: indexPath)
-        guard let finalheaferView = reuableView as? ResultMapCollectionReusableView else {
-            assertionFailure("failed to find ResultMapCollectionReusableView")
-            return reuableView
-        }
-        if indexPath.section == 0 {
-            finalheaferView.titlelabel.isHidden = true
-            finalheaferView.resultmapView.addAnnotation(self.selectedAnnotation)
-            self.finalheaferView = finalheaferView
-//            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-//            let region = MKCoordinateRegion(center: self.selectedAnnotation.coordinate, span: span)
-//            finalheaferView.resultmapView.setRegion(region, animated: true)
-            
+        if kind == "UICollectionElementKindSectionHeader" {
+            let reuableView = collectionView.dequeueReusableSupplementaryView(ofKind: "UICollectionElementKindSectionHeader", withReuseIdentifier: "header", for: indexPath)
+            guard let finalheaferView = reuableView as? ResultMapCollectionReusableView else {
+                assertionFailure("failed to find ResultMapCollectionReusableView")
+                return reuableView
+            }
+            if indexPath.section == 0 {
+                finalheaferView.resultmapView.addAnnotation(self.selectedAnnotation)
+                self.finalheaferView = finalheaferView
+            } else {
+                finalheaferView.isHidden = true
+            }
             return finalheaferView
-        } else if indexPath.section == 1{
-            finalheaferView.resultmapView.isHidden = true
-            finalheaferView.titlelabel.text = "熱門"
-            return finalheaferView
+
         } else {
-            finalheaferView.resultmapView.isHidden = true
-            finalheaferView.titlelabel.text = "最新"
-            return finalheaferView
+            let reuablefooterView = collectionView.dequeueReusableSupplementaryView(ofKind: "UICollectionElementKindSectionFooter", withReuseIdentifier: "footer", for: indexPath)
+
+            guard  let finalfooterView = reuablefooterView as? TitleCollectionReusableView else {
+                assertionFailure("failed to find TitleCollectionReusableView")
+                return reuablefooterView
+            }
+            if indexPath.section == 0 {
+                finalfooterView.titleLabel.text = "熱門"
+            } else if indexPath.section == 1 {
+                finalfooterView.titleLabel.text = "最新"
+            } else {
+                finalfooterView.isHidden = true
+            }
+            finalfooterView.titleLabel.textColor = UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0)
+            return finalfooterView
         }
     }
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section != 0 {
+            return CGSize.zero
+        } else {
+            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height/4)
+        }
+    }
     
     // MARK: UICollectionViewDelegate
 

@@ -2114,7 +2114,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sXM-iQ-tAY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-
+<<<<<<< HEAD
+            <point key="canvasLocation" x="4969" y="232"/>
+=======
             <point key="canvasLocation" x="5772" y="229.83508245877064"/>
         </scene>
         <!--invitation-->
@@ -2268,6 +2270,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7eW-LL-aZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4832.8000000000002" y="229.83508245877064"/>
+>>>>>>> b53d327a65286b1669b59148b0c7df51863883a0
         </scene>
         <!--friendlist-->
         <scene sceneID="hNi-iw-ZPM">

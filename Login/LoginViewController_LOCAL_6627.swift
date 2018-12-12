@@ -14,8 +14,8 @@ class LoginViewController: UIViewController,UITextViewDelegate {
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
     var label:UITextField!
-    var email = "Brian@gmail.com"
-    var passWord = "Brian123"
+    var email = ""
+    var passWord = ""
     var communicator = MapCommunicator.shared
     let userDefaults = UserDefaults.standard
     
@@ -102,4 +102,3 @@ class LoginViewController: UIViewController,UITextViewDelegate {
         self.present(alert, animated: true, completion: nil)
     }
 }
-

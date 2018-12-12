@@ -12,7 +12,7 @@ class FriendlistTableViewCell: UITableViewCell {
     @IBOutlet weak var photoIV: UIImageView!
     @IBOutlet weak var nameLB: UILabel!
     @IBOutlet weak var introLB: UILabel!
-    
+    @IBOutlet weak var chatBt: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

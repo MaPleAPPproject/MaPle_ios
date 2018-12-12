@@ -14,8 +14,13 @@ class LoginViewController: UIViewController,UITextViewDelegate {
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
     var label:UITextField!
-    var email = "Brian@gmail.com"
-    var passWord = "Brian123"
+<<<<<<< HEAD
+    var email = ""
+    var passWord = ""
+=======
+    var email = "brian@gmail.com"
+    var passWord = "brian123"
+>>>>>>> explore_revised
     var communicator = MapCommunicator.shared
     let userDefaults = UserDefaults.standard
     
@@ -24,6 +29,7 @@ class LoginViewController: UIViewController,UITextViewDelegate {
     }
     
     @IBAction func LoginBtn(_ sender: Any) {
+<<<<<<< HEAD
         email = accountTextField.text!
         passWord = passwordTextField.text!
         
@@ -31,6 +37,11 @@ class LoginViewController: UIViewController,UITextViewDelegate {
             alert(message: "帳密不可為空白")
             return
         }
+=======
+//        email = accountTextField.text!
+//        passWord = passwordTextField.text!
+        
+>>>>>>> explore_revised
         communicator.login(Email: email, PassWord: passWord) { (data, error) in
             if let error = error {
                 print("error:\(error)")
@@ -38,6 +49,7 @@ class LoginViewController: UIViewController,UITextViewDelegate {
                 return
             }
             self.communicator.findMemberId(Email: self.email, PassWord: self.passWord, completion: { (data, error) in
+<<<<<<< HEAD
                 if error != nil {
                     print("error:\(error!)")
                     self.alert(message: "伺服器連線異常")
@@ -57,6 +69,14 @@ class LoginViewController: UIViewController,UITextViewDelegate {
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "registerView")
                     self.show(vc!, sender: self)
                 }
+=======
+                let memberId = data! as Int
+                let stringMemberId = String(memberId)
+                self.userDefaults.set(stringMemberId, forKey: "MemberID")
+                
+                self.userDefaults.set(self.email, forKey: "Email")
+                self.userDefaults.set(self.passWord, forKey: "PassWord")
+>>>>>>> explore_revised
             })
         }
     }
@@ -102,4 +122,3 @@ class LoginViewController: UIViewController,UITextViewDelegate {
         self.present(alert, animated: true, completion: nil)
     }
 }
-

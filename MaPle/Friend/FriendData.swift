@@ -38,7 +38,7 @@ struct UserProfile : Codable {
         self.postCount = postCount
         self.collectionCount = collectionCount
     }
-   
+    
 }
 
 struct Friendlist : Codable {
