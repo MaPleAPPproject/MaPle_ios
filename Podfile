@@ -10,4 +10,5 @@ target 'MaPle' do
   # Pods for MaPle
 pod 'Alamofire'
 pod 'CarbonKit'
+pod 'Starscream', '~> 3.0.2'
 end

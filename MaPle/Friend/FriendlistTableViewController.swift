@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import Starscream
 
 class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var friendlistTableView: UITableView!
-    
-    
+    let memberid = UserDefaults.standard.string(forKey: "MemberID")
+
+//    let memberid = UserDefaults.standard.integer(forKey: "MemberIDint")
     let communicator = FriendCommunicator.shared
-    let explorecommunicator = ExploreCommunicator.shared
     var friendlist : [Friend_profile] = []
+    var socket: WebSocket!
     
     
     override func viewDidLoad() {
@@ -24,6 +26,7 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
         getfriends()
         friendlistTableView.separatorInset = UIEdgeInsets.zero
         friendlistTableView.separatorColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        print("UserDefaults.standard.string---->\(memberid)")
     }
     
     // MARK: - Table view data source
@@ -44,7 +47,8 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
         cell.nameLB.adjustsFontSizeToFitWidth = true
         cell.introLB.text = friend.selfIntroduction
         cell.chatBt.tag = friend.FriendID
-        explorecommunicator.getIcon(memberId: String(friend.FriendID), imageSize: "100") { (data, error) in
+        
+        communicator.getPhoto(id: String(friend.FriendID)) { (data, error) in
             if let error = error {
                 print("Download fail: \(error)")
                 return
@@ -55,8 +59,9 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
             }
             cell.photoIV.image = UIImage(data: photodata)
             cell.photoIV.clipsToBounds = true
-            cell.photoIV.layer.cornerRadius = 30
-        }        
+            cell.photoIV.layer.cornerRadius = 60
+            
+        }
         return cell
     }
     
@@ -122,8 +127,11 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
     
     
     func getfriends() {
-        let memberid = 1
-        communicator.getAllFriend(memberid: memberid) { (result,error) in
+        guard let memberId =  memberid else {
+            assertionFailure("memberid is nil")
+            return
+        }
+        communicator.getAllFriend(memberid: memberId) { (result,error) in
             if let error = error {
                 print("getAllFriend error:\(error)")
                 return
@@ -157,7 +165,7 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
     
     @IBAction func chatPressed(_ sender: UIButton) {
         print("sender.tag:\(sender.tag)")
-        if let controller = storyboard?.instantiateViewController(withIdentifier: "chatRoom") as? ChatRoomViewController {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "chatRoom") as? ChatViewController {
             controller.friendId = sender.tag
             controller.title = String(sender.tag)
             controller.navigationItem.leftItemsSupplementBackButton = true

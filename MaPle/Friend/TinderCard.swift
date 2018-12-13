@@ -20,17 +20,20 @@ protocol TinderCardDelegate: NSObjectProtocol {
 class TinderCard: UIView {
     
     var invitationVC: InvitationViewController!
+    
     var xCenter: CGFloat = 0.0
     var yCenter: CGFloat = 0.0
     var originalPoint = CGPoint.zero
     var imageViewStatus = UIImageView()
     var overLayImage = UIImageView()
+    
     var profileButton = UIButton()
     var isLiked = false
     let userid: Int?
     let userName: String?
     var iconData: Data?
-    let communicator = ExploreCommunicator.shared
+    //let communicator = ExploreCommunicator.shared
+    let communicator = FriendCommunicator.shared
     weak var delegate: TinderCardDelegate?
     let notificationName = Notification.Name("GetMemberIDtoButton")
 
@@ -65,16 +68,17 @@ class TinderCard: UIView {
         //背景圖
         let backGroundImageView = UIImageView(frame:bounds)
         
-        communicator.getIcon(memberId: String(friend.FriendID), imageSize: "100") { (data, error) in
+        communicator.getPhoto(id: String(friend.FriendID)) { (data, error) in
             if let error = error {
                 print("error:\(error)")
             }
-            guard let data = data else {
+            guard let data = data else{
                 assertionFailure("data is nil")
                 return
             }
             self.iconData = data
             backGroundImageView.image = UIImage(data: data)
+            
         }
 //        backGroundImageView.image = UIImage(named:String(Int(1 + arc4random() % (8 - 1))))
         backGroundImageView.contentMode = .scaleAspectFill
@@ -305,7 +309,7 @@ class TinderCard: UIView {
             })
         })
         
-        print("WATCHOUT SHAKE ACTION")
+        //print("WATCHOUT SHAKE ACTION")
     }
     
     

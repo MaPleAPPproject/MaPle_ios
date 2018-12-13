@@ -19,13 +19,16 @@ class InvitationViewController: UIViewController {
     @IBOutlet weak var viewActions: UIView!
     var selectedViewController: UIViewController!
 
-    
     var currentIndex = 0
     var currentLoadedCardsArray = [TinderCard]()
     var allCardsArray = [TinderCard]()
     var valueArray = ["1"]
+//    let memberid = UserDefaults.standard.integer(forKey: "MemberIDint")
+    let memberid = UserDefaults.standard.string(forKey: "MemberID")
+
     let communicator = FriendCommunicator.shared
     let explorecommunicator = ExploreCommunicator.shared
+    
     var friends = [Friend_profile]()
     var friendsNames = [String]()
     var iconData: Data?
@@ -75,8 +78,11 @@ class InvitationViewController: UIViewController {
     }
     
     func getallInvitation() {
-        let memberid = 1
-        communicator.getAllInvitation(memberid: memberid) { (result,error) in
+        guard let memberId =  memberid else {
+            assertionFailure("memberid is nil")
+            return
+        }
+        communicator.getAllInvitation(memberid: memberId) { (result,error) in
             if let error = error {
                 print("getallInvitation error:\(error)")
                 return

@@ -18,6 +18,8 @@ let INVITELIKE_KEY = "findByIds2"
 let MATCHLIKE_KEY = "findByIds"
 let GETPHOTO_KEY = "getfriendImage"
 let RESULT_KEY = "result"
+let GETNAME_KEY = "getfriendName"
+
 
 //文字
 typealias DoneHandler = (_ result: Any? , _ error: Error?) -> Void
@@ -25,9 +27,10 @@ typealias DoneHandler = (_ result: Any? , _ error: Error?) -> Void
 typealias DownloadDoneHandler = (_ result: Data?, _ error: Error?) -> Void
 
 class FriendCommunicator {
-    static let BASEURL = "http://172.20.10.5:8080/MaPle"
-    //"http://192.168.1.28:8080/MaPle" home
-    //"http://192.168.196.147:8080/MaPle" Tibame
+    static let IP = "192.168.197.29"
+    //"192.168.50.213"
+    static let BASEURL = "http://" + IP + ":8080/MaPle"
+    static let SOCKET_URL = "ws://" + IP + ":8080/MaPle/ChatServer/"
     let FRIENDLIST_URL = BASEURL + "/FriendServlet"
     let MATCH_URL = BASEURL + "/MatchServlet"
     let INVITE_URL = BASEURL + "/User_profileServlet"
@@ -35,13 +38,13 @@ class FriendCommunicator {
     static let shared = FriendCommunicator()
     private init(){}
     
-    func getAllFriend(memberid: Int, completion: @escaping DoneHandler) {
+    func getAllFriend(memberid: String, completion: @escaping DoneHandler) {
         let parameters: [String : Any] = [ACTION_KEY : GETALL_KEY, "memberid" : memberid]
         doPost(url: FRIENDLIST_URL, parameters: parameters, completion: completion)
         print("getAllFriend parameters:\(parameters)")
     }
     
-    func getAllInvitation(memberid: Int, completion: @escaping DoneHandler) {
+    func getAllInvitation(memberid: String, completion: @escaping DoneHandler) {
         let parameters: [String : Any] = [ACTION_KEY : GETALLINVITE_KEY, "memberid" : memberid]
         doPost(url: MATCH_URL, parameters: parameters, completion: completion)
         print("getAllInvitation parameters:\(parameters)")
@@ -53,31 +56,38 @@ class FriendCommunicator {
         print("getAllMatch parameters:\(parameters)")
     }
     
-    func reject(memberid: Int, friendid:Int, completion: @escaping DoneHandler) {
+    func reject(memberid: String, friendid:String, completion: @escaping DoneHandler) {
         let parameters: [String : Any] = [ACTION_KEY : REJECT_KEY, "memberid" : memberid, "friendid" : friendid]
         doPost(url: MATCH_URL, parameters: parameters, completion: completion)
         print("reject parameters:\(parameters)")
     }
     
-    func acceptInvitation(memberid: Int, friendid:Int, completion: @escaping DoneHandler) {
+    func acceptInvitation(memberid: String, friendid:String, completion: @escaping DoneHandler) {
         let parameters: [String : Any] = [ACTION_KEY : INVITELIKE_KEY, "memberid" : friendid, "friendid" : memberid]
         doPost(url: MATCH_URL, parameters: parameters, completion: completion)
         print("acceptInvitation parameters:\(parameters)")
     }
     
-    func acceptMatch(memberid: Int, friendid:Int, completion: @escaping DoneHandler) {
+    func acceptMatch(memberid: String, friendid:String, completion: @escaping DoneHandler) {
         let parameters: [String : Any] = [ACTION_KEY : MATCHLIKE_KEY, "memberid" : memberid, "friendid" : friendid]
         doPost(url: MATCH_URL, parameters: parameters, completion: completion)
         print("acceptMatch parameters:\(parameters)")
     }
     
-    func friendProfile(memberid: Int, completion: @escaping DoneHandler) {
+    func friendProfile(memberid: String, completion: @escaping DoneHandler) {
         let parameters: [String : Any] = [ACTION_KEY : REJECT_KEY, "MEMBERID_KEY" : memberid]
         doPost(url: MATCH_URL, parameters: parameters, completion: completion)
         print("friendProfile parameters:\(parameters)")
     }
+    func getfriendName(friendid: String, completion: @escaping DoneHandler) {
+        let parameters: [String : Any] = [ACTION_KEY : getfriendName, "friendid" : friendid]
+        doPost(url: MATCH_URL, parameters: parameters, completion: completion)
+        print("friendProfile parameters:\(parameters)")
+    }
     
-    func getPhoto(id: Int, completion: @escaping DownloadDoneHandler) {
+    
+    
+    func getPhoto(id: String, completion: @escaping DownloadDoneHandler) {
         let parameters: [String : Any] = [ACTION_KEY : GETPHOTO_KEY, "id" : id,"imageSize" : 100]
         Alamofire.request(FRIENDLIST_URL, method: .post, parameters:parameters , encoding: JSONEncoding.default).responseData { (response) in
             switch response.result {
@@ -91,6 +101,8 @@ class FriendCommunicator {
         }
         
     }
+    
+    
     
     func doPost(url: String, parameters:[String : Any]?, completion: @escaping DoneHandler ){
         

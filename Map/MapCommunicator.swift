@@ -29,8 +29,8 @@ class  MapCommunicator {
     
     typealias DoneHandler = (_ result:Int?, _ error:Error?) -> Void
     typealias DoneMemberIdHandler = (_ result:Int?, _ error:Error?) -> Void
-//    static let BASEURL = "http://192.168.50.224:8080/MaPle/"
-    static let BASEURL = "http://172.20.10.5:8080/MaPle/"
+//    static let BASEURL = "http://192.168.197.29:8080/MaPle/"
+    static let BASEURL = "http://192.168.197.29:8080/MaPle/"
     let Login_URL = BASEURL + "UserAccountServlet"
     
     static let shared = MapCommunicator()

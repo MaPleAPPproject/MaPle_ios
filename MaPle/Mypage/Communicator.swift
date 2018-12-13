@@ -33,7 +33,7 @@ class Communicator {
     typealias DoneHandler = (_ result: Any? , _ error: Error?) -> Void
     typealias DownloadDoneHandler = (_ result: Data?, _ error: Error?) -> Void
     
-    static let BASEURL = "http://172.20.10.5:8080/MaPle"
+    static let BASEURL = "http://192.168.197.29:8080/MaPle"
 //    static let BASEURL = "http://172.20.10.3:8080/MaPle"
    
 //    static let BASEURL = "http://192.168.197.14:8080/MaPle"

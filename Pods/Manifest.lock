@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (4.7.3)
   - CarbonKit (2.2.2)
+  - Starscream (3.0.6)
 
 DEPENDENCIES:
   - Alamofire
   - CarbonKit
+  - Starscream (~> 3.0.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - CarbonKit
+    - Starscream
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   CarbonKit: 0dec4738fa489b4c043a5f850c27fd0dbefb57cc
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
 
-PODFILE CHECKSUM: cc54594f8ed00b23f72286527f7bc7e1ff5e294e
+PODFILE CHECKSUM: 295aa0e3be3ee0180caf99f8799bb543128c5457
 
 COCOAPODS: 1.5.2
