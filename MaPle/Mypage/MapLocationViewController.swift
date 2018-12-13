@@ -10,60 +10,152 @@ import CoreLocation
 import MapKit
 
 class MapLocationViewController: UIViewController {
-
-    @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
+    var selectedLocation : [String : String] = [:]
+    var lat = Double ()
+    var lon = Double ()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        RequestAuthoriztion()
         locationManager.delegate = self
         mapView.delegate = self
-       
         
-        RequestAuthoriztion()
-        searchBar.placeholder = "請輸入地址"
-        let inputString = searchBar.text
-        showAnnotation()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    
-    func showAnnotation(){
-        let annotation = MKPointAnnotation()
-//        guard let coordinate = locationManager.location?.coordinate else {return}
-        annotation.coordinate = CLLocationCoordinate2D(latitude: 24.2013, longitude: 120.5810)
-        annotation.title = "title"
-        annotation.subtitle = "subTitle"
-        mapView.addAnnotation(annotation)
-        mapView.setCenter(annotation.coordinate, animated: true)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(mapViewLongPressed(longGesture:)))
+        mapView.addGestureRecognizer(tapGesture)
         
     }
     
-    func addressToCoordinate(){
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = searchBar.text
-        request.region = mapView.region
-        let search = MKLocalSearch(request: request)
-        search.start { (response, error) in
-           guard  error == nil  else {
+    @IBAction func navigationBtnPressed(_ sender: UIButton) {
+        locationManager.requestLocation()
+    }
+    
+    @objc
+    func mapViewLongPressed(longGesture: UILongPressGestureRecognizer){
+        
+        let point = longGesture.location(in: mapView)
+        let coor = mapView.convert(point, toCoordinateFrom: mapView)
+        print("coor:lat:\(coor.latitude)\tlon:\(coor.longitude)")
+        geoCoderConvert(lat: coor.latitude, lon: coor.longitude, centerMoved: false)
+        
+    }
+    
+    @IBAction func searchBtnPressed(_ sender: UIButton) {
+        
+        guard let address = addressTextField.text else {
+            print("address is nil")
+            return
+        }
+        
+        if !address.isEmpty {
+            addressToCoordinate(address: address)
+            addressTextField.resignFirstResponder()
+            addressTextField.text = ""
+        } else {
+            let alert = UIAlertController(title: nil, message: "沒有相符的地點", preferredStyle: .alert
+            )
+            let ok = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(ok)
+            present(alert, animated: true)
+        }
+        
+    }
+    
+    func addressToCoordinate(address: String){
+        
+        
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) { (placemarks, error) in
+            //            guard let error = error else {
+            //                return
+            //            }
+            
+            guard let placemarks = placemarks else {
+                print("placemarks is nil")
+                
+                let alert = UIAlertController(title: nil, message: "沒有相符的地點", preferredStyle: .alert
+                )
+                let ok = UIAlertAction(title: "OK", style: .default)
+                alert.addAction(ok)
+                self.present(alert, animated: true)
                 return
             }
+            let  placemark = placemarks.first!
+            self.showAnnotationByPlaceMark(placemark: placemark, centerMove: true)
             
-            guard response != nil else {
-                return
+        }
+        
+    }
+    
+    
+    func showAnnotationByPlaceMark(placemark: CLPlacemark, centerMove: Bool){
+        let allAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
+        // let annotation = MKPointAnnotation()
+        let annotation = AttractionAnnotation()
+        var addressString = ""
+        defer {
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) {
+                self.mapView.addAnnotation(annotation)
+                self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+                self.mapView.selectAnnotation(annotation, animated: true)
+                
             }
-            
-            for item in (response?.mapItems)! {
-                self.mapView.addAnnotation(item.placemark)
+            if !centerMove {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) {
+                    self.mapView.setCenter(annotation.coordinate, animated: true)
+                }
             }
         }
         
+        let country = placemark.country
+        let adminarea = placemark.administrativeArea
+        let countryCode = placemark.isoCountryCode
+        let location = placemark.location
+        let address = placemark.name
+        
+        print("country:\(country)")
+        print("adminarea:\(adminarea)")
+        print("countryCode:\(countryCode)")
+        print("address:\(address)")
+        
+        selectedLocation.updateValue(country ?? "", forKey: "country")
+        selectedLocation.updateValue(adminarea ?? "", forKey: "adminarea")
+        selectedLocation.updateValue(countryCode ?? "", forKey: "countryCode")
+        selectedLocation.updateValue(address ?? "", forKey: "address")
+        guard let place  = location else {
+            print("location is nil")
+            return}
+        lat = place.coordinate.latitude
+        lon = place.coordinate.longitude
+        
+        
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        annotation.title = country ?? ""
+        annotation.subtitle = adminarea ?? ""
+        
+        guard
+            let locality = placemark.locality,
+            let subAdmin = placemark.subAdministrativeArea else {
+                print("locality or subAdmin is nil ")
+                return
+        }
+     
+        
+        
+        addressString = locality + ", " + subAdmin
+        annotation.subtitle = addressString
+        selectedLocation.updateValue( addressString, forKey: "district" )
         
     }
     
     
-
+    
     func RequestAuthoriztion() {
         let state = CLLocationManager.authorizationStatus()
         guard CLLocationManager.locationServicesEnabled() else {
@@ -81,60 +173,38 @@ class MapLocationViewController: UIViewController {
             present(alert, animated: true)
         }
         
-        
-         locationManager.requestLocation()
     }
     
-    func geoCoderConvert(lat:Double, lon: Double){
+    func geoCoderConvert(lat:Double, lon: Double, centerMoved: Bool){
         let location = CLLocation(latitude: lat, longitude: lon)
         let geocoder = CLGeocoder()
         
         
         geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            if error != nil  {
-                
-                print("geocoder error:\(String(describing: error))")
+            //            guard error != nil else {
+            //                print("geocoder error:\(String(describing: error))")
+            //                return
+            //            }
+            
+            guard let placemarks = placemarks else {
+                print("placemarks is nil")
                 return
+                
             }
             
-            guard let placesmarks = placemarks else {
-                assertionFailure("placemarks is nil")
-                return
-                
-            }
-            
-            for placemark in placesmarks  {
-                
-                guard let name = placemark.name else {
-                    print("fail to get data from placemark")
-                    return
-                }
-                
-//                self.address = name
-                
-            }
+            let  placemark = placemarks.first!
+            self.showAnnotationByPlaceMark(placemark: placemark, centerMove: centerMoved)
             
         }
         
     }
     
     
-    
-    
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
+        
+    }
+    
 }
 
 extension MapLocationViewController: MKMapViewDelegate{
@@ -143,13 +213,48 @@ extension MapLocationViewController: MKMapViewDelegate{
             return nil
         }
         
-        var annView = mapView.dequeueReusableAnnotationView(withIdentifier: "pin")
-        if annView != nil {
-            annView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        guard let annotation = annotation as? AttractionAnnotation else {
+            assertionFailure("Fail to cast as AttractionAnnotation.")
+            return nil
         }
-        return annView
         
+        let identifier = "attraction"
+        var result = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+        if result == nil {
+            result = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        } else {
+            result?.annotation = annotation
+        }
+
+        result?.pinTintColor = UIColor.red
+        result?.canShowCallout = true
+        let image = #imageLiteral(resourceName: "star-1")
+        let pinView = #imageLiteral(resourceName: "pin")
+        result?.image = pinView
+        let imageView = UIImageView(image: image)
+        result?.leftCalloutAccessoryView = imageView
+        
+        let button = UIButton(type:.detailDisclosure)
+        
+        result?.rightCalloutAccessoryView = button
+        
+        return result
     }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let annotation = mapView.annotations
+        mapView.removeAnnotations(annotation)
+        let alert = UIAlertController(title: "確定地點", message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+            
+            self.performSegue(withIdentifier: "unwind", sender: self)
+        }
+        let cancel = UIAlertAction(title: "cancel", style: .default)
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        present(alert, animated: true)
+    }
+  
 }
 
 extension MapLocationViewController: CLLocationManagerDelegate {
@@ -158,10 +263,29 @@ extension MapLocationViewController: CLLocationManagerDelegate {
             return
         }
         
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         mapView.setRegion(region, animated: true)
+        geoCoderConvert(lat: location.coordinate.latitude, lon: location.coordinate.longitude, centerMoved: true)
+        
         
     }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        let error = error
+        print("didFailWithError :\(error)")
+    }
+    
+}
+
+class AttractionAnnotation: NSObject, MKAnnotation {
+    var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0)
+    var title: String?
+    var subtitle: String?
+    
+    override init(){
+        super.init()
+    }
+    
     
 }

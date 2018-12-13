@@ -13,16 +13,11 @@
 //
 
 import UIKit
-import CarbonKit
+
 
 
 class MyPageViewController:
 UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    
-    
-    
-    
     
     @IBOutlet weak var selfIntroLabel: UILabel!
     @IBOutlet weak var collectNumLabel: UILabel!
@@ -36,57 +31,43 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     var postIdArray = [Int]()
     var postIds = [Int]()
     var collectionIds = [Int]()
+    var memberId = UserDefaults.standard.integer(forKey: "MemberIDint")
     
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
-    
     
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
     let communicator = Communicator.shared
     
-    
     @IBOutlet weak var collectCollectionView: UICollectionView!
     @IBOutlet weak var postCollectionView: UICollectionView!
-    var memberId = UserDefaults.standard.integer(forKey: "MemberIDint")
+
     var posts = [Post]()
-    var images = [UIImage]() {
-        didSet{
-            //           postCollectionView.reloadData()
-        }
-        
-        willSet{
-            postCollectionView.reloadData()
-        }
-    }
+    
     
     @IBOutlet weak var scrollView: UIScrollView!
-    var collectImages = [UIImage](){
-        didSet{
-            //            collectCollectionView.reloadData()
-        }
-        
-        willSet{
-            collectCollectionView.reloadData()
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //        postCollectionView.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: "PostCell")
+      
         setScrollView()
         loadUserprofile(memberId: memberId)
         setTapGestureForPhotoIcon()
-        
-        
-        downloadPhotoIcon()
-        
-        getAllPostImages(memberId: memberId) // posts in postView
-        getCollections()
-        getAllPosts()
-        //         postCollectionView.reloadData()
-        //         collectCollectionView.reloadData()
+        downloadPhotoIcon(memberId: memberId)
+        getCollectionIds(memberId: memberId)
+        getPostIds(memberId: memberId)
+        print(#function)
         
         // Do any additional setup after loading the view, typically from a nib.
         
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+     getCollectionIds(memberId: memberId)
+     loadUserprofile(memberId: memberId)
+     getPostIds(memberId: memberId)
+     postCollectionView.reloadData()
         
     }
     
@@ -142,93 +123,102 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        switch collectionView.tag {
-        case 0:
-            return images.count
-        case 1:
-            return collectImages.count
-        default:
-            return images.count
+       
+        shouldSetEmptyView(collectionView)
+        return collectionView.tag == 0 ? postIds.count :  collectionIds.count
+    }
+    
+    func shouldSetEmptyView(_ collectionView: UICollectionView){
+        if collectionView.tag == 0 {
+            if postIds.count == 0 {
+                postCollectionView.setEmptyView()
+            } else {
+                postCollectionView.restore()
+            }
+        } else  {
+            print("*collectionIds.count:\(collectionIds.count)")
+            if collectionIds.count == 0 {
+                collectCollectionView.setEmptyView2()
+            } else {
+                collectCollectionView.restore()
+            }
         }
         
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        switch collectionView.tag {
-        case 0:
+       
+        
             return 1
-        case 1:
-            return 1
-        default:
-            return 1
-        }
         
     }
+    
+   
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+       
         switch collectionView.tag {
         case 0:
-            let cell = setCellForCollectionView(collectionView:collectionView ,withReuseIdentifier: "PostCell", indexPath: indexPath, imagesArray: images)
             
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! PostCollectionViewCell
+            if postIds.count == 0 {
+                return cell}
+            let postId = self.postIds[indexPath.row]
+            
+            communicator.getPostImage(postId: postId) { (data, error) in
+                if let error = error {
+                    printHelper.println(tag: "Mypageviewcontroller", line: #line, "error:\(error)")
+                    return
+                }
+                
+                guard let data = data else {
+                    print("data is nil")
+                    return
+                }
+                
+                guard let image = UIImage(data: data) else {return }
+                DispatchQueue.main.async {
+                    cell.postImageView.image = image
+                    
+                }
+                
+            }
             return cell
+            
         case 1:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! CollectCollectionViewCell
             
-            let cell =  setCellForCollectionView(collectionView:collectionView ,withReuseIdentifier: "CollectionCell", indexPath: indexPath, imagesArray: collectImages)
-            
+            let postId = self.collectionIds[indexPath.row]
+            communicator.getPostImage(postId: postId) { (data, error) in
+                if let error = error {
+                    printHelper.println(tag: "Mypageviewcontroller", line: #line, "error:\(error)")
+                    return
+                }
+                
+                guard let data = data else {
+                    print("data is nil")
+                    return
+                }
+                
+                guard let image = UIImage(data: data) else {return }
+                DispatchQueue.main.async {
+                    cell.collectImageView.image = image
+                    
+                }
+                
+            }
             return cell
             
         default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! PostCollectionViewCell
+            
             return cell
             
         }
-        
-        
-        
-        
-        
     }
     
-    func setCellForCollectionView(collectionView: UICollectionView, withReuseIdentifier:String, indexPath: IndexPath, imagesArray:[UIImage]) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: withReuseIdentifier, for: indexPath)
-        
-        if withReuseIdentifier == "PostCell"{
-            guard let finalCell = cell as? PostCollectionViewCell else {
-                return cell
-            }
-            
-            if imagesArray.count > 0 {
-                DispatchQueue.main.async {
-                    finalCell.postImageView.image = imagesArray[indexPath.row]
-                    self.postCollectionView.reloadData()
-                    
-                    
-                }
-            }
-            return finalCell
-            
-        } else {
-            guard let finalCell = cell as? CollectCollectionViewCell else {
-                return cell
-            }
-            
-            if imagesArray.count > 0 {
-                DispatchQueue.main.async {
-                    finalCell.collectImageView.image = imagesArray[indexPath.row]
-                    self.collectCollectionView.reloadData()
-                    
-                }
-            }
-            return finalCell
-        }
-        
-    }
     @objc
     func toUserProfiles(){
-        
         performSegue(withIdentifier: "userprofileSegue", sender: self)
     }
     
@@ -262,21 +252,18 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
                     return
             }
             
-            
             self.userNameLabel?.text = resultObject.userName
             self.postNumLabel?.text = String(resultObject.postCount)
             self.collectNumLabel?.text = String(resultObject.collectionCount)
             self.selfIntroLabel?.text = resultObject.selfIntroduction
-            
-            
             
         }
         
     }
     
     
-    func downloadPhotoIcon(){
-        let memberId = 2
+    func downloadPhotoIcon(memberId: Int){
+        
         let parameter:[String : Any] = ["action":"getImage", "memberId": memberId, "imageSize": 270]
         communicator.doPostData(urlString: communicator.USERPROFILE_URL, parameters: parameter) { (data, error) in
             if let error = error {
@@ -300,31 +287,6 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
         }
     }
     
-    func getAllPosts(){
-        let memberId = 2
-        communicator.getAllPostsByMemberId(memberId: memberId) { (result, error) in
-            guard let jsonObject = self.handleResult(result: result, error: error) else {
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            
-            guard let resultObject = try? decoder.decode( [Post].self
-                , from: jsonObject ) else {
-                    print(" Fail to decode jsonData.")
-                    return
-            }
-            
-            self.posts = resultObject
-            print("self.posts:\(self.posts)")
-            printHelper.printLog(item: self.posts)
-        }
-    }
-    
-    
-    
-    
-    
     
     func handleResult(result: Any?, error: Error?) -> Data? {
         if let error = error {
@@ -343,13 +305,10 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
                 return nil
         }
         
-        
         return jsonObject
     }
     
-    // get all posts by memberId
-    func getAllPostImages(memberId: Int){
-        
+    func getPostIds(memberId: Int){
         communicator.getAllPostIds(memberId: memberId) { (result, error
             ) in
             
@@ -365,56 +324,17 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
                     return
             }
             
-            var resultPostIds = resultObject
-            
-            let count = resultPostIds.count
-            
-            if count > 0{
-                for index in 0...count-1 {
-                    let postId = resultPostIds[index]
-                    self.postIds.append(postId)
-                }
-            }
-            
-            self.postIdArray = self.postIds
-            printHelper.println(tag: "", line: #line, "self.postIdArray:\(self.postIdArray)")
-            if self.postIdArray.count > 0 && !self.postIdArray.isEmpty{
-                for index in 0..<self.postIdArray.count {
-                    self.communicator.getPostImage(postId: self.postIdArray[index], completion: { (data, error) in
-                        if let error = error {
-                            printHelper.println(tag: "Mypageviewcontroller", line: #line, "getPostImage error:\(error)")
-                            return
-                        }
-                        
-                        guard let data = data else {
-                            print("getPostImage data is nil")
-                            return
-                        }
-                        
-                        guard let image = UIImage(data: data) else {
-                            print("getPostImage is nil")
-                            return}
-                        self.images.append(image)
-                        self.postCollectionView.reloadData()
-                        
-                    })
-                }
-                DispatchQueue.main.async{
-                    
-                    self.layout.invalidateLayout()
-                }
-                
-            } else {
-                print("postIdArray is nil or empty.")
+            self.postIds = resultObject
+            DispatchQueue.main.async {
+                self.postCollectionView.reloadData()
             }
             
         }
-        
     }
     
     
-    func getCollections() {
-        let memberId = 2
+    func getCollectionIds(memberId: Int) {
+        
         communicator.getCollectionIdsByMemeber(memberId: memberId) { (result, error) in
             guard let jsonObject = self.handleResult(result: result, error: error) else {
                 return
@@ -428,48 +348,40 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
                     return
             }
             
-            var resultCollectionIds = resultObject
             
-            let count = resultCollectionIds.count
-            
-            if count > 0{
-                for index in 0...count-1 {
-                    let collectionId = resultCollectionIds[index]
-                    self.collectionIds.append(collectionId)
-                }
-            }
-            
-            printHelper.println(tag: "", line: #line, " self.collectionIds:\(self.collectionIds)")
-            if self.collectionIds.count > 0 && !self.collectionIds.isEmpty{
-                for index in 0..<self.collectionIds.count {
-                    self.communicator.getPostImage(postId: self.collectionIds[index], completion: { (data, error) in
-                        if let error = error {
-                            printHelper.println(tag: "Mypageviewcontroller", line: #line, "error:\(error)")
-                            return
-                        }
-                        
-                        guard let data = data else {
-                            print("data is nil")
-                            return
-                        }
-                        
-                        guard let image = UIImage(data: data) else {
-                            print("image is nil")
-                            return}
-                        self.collectImages.append(image)
-                        self.collectCollectionView.reloadData()
-                        
-                        
-                    })
-                }
-                
-            } else {
-                print("postIdArray is nil or empty.")
+           self.collectionIds = resultObject
+            print("*self.collectionIds:\(self.collectionIds)")
+            DispatchQueue.main.async {
+                self.collectCollectionView.reloadData()
             }
             
         }
+    }
+    
+    func getPostImage(postId: Int) -> UIImage?{
+        var finalImage = UIImage()
+        self.communicator.getPostImage(postId: postId, completion: { (data, error) in
+            if let error = error {
+                printHelper.println(tag: "Mypageviewcontroller", line: #line, "getPostImage error:\(error)")
+                return
+            }
+            
+            guard let data = data else {
+                print("getPostImage data is nil")
+                return
+            }
+            
+            guard let image = UIImage(data: data) else {
+                print("getPostImage is nil")
+                return}
+            
+            finalImage = image
+            
+        })
+        return finalImage
         
     }
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -477,18 +389,18 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
         
         switch segue.identifier {
         case "postShowSegue":
-            let controller = segue.destination as!  SinglePostViewController
+            
+            let controller = segue.destination as! SinglePostViewController
             if let indexPath = postCollectionView.indexPathsForSelectedItems?.first {
-                print("indexPath:\(indexPath.row)")
-                let postId = postIdArray[indexPath.row]
+                
+                let postId = postIds[indexPath.row]
                 print("postShowSegue prepare postId:\(postId)")
                 controller.postId = postId
-                
                 controller.memberId = self.memberId
                 
             }
         case "collectShowSegue":
-            let controller = segue.destination as!  SinglePostViewController
+            let controller = segue.destination as!  FriendPostViewController
             if let indexPath = collectCollectionView.indexPathsForSelectedItems?.first {
                 print("indexPath:\(indexPath.row)")
                 let postId = collectionIds[indexPath.row]
@@ -501,14 +413,48 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
     }
+    
+    
+    
+    
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        print(#function)
+        if segue.identifier == "fromUserProfileSegue"{
+            let segue = segue.source as! UserprofileViewController
+            let image = segue.photoIcon.image
+            self.photoIcon.image = image
+            self.userNameLabel.text = segue.userNameLabel.text
+            self.selfIntroLabel.text = segue.selfIntroTextView.text
+        }
+        
+        if segue.identifier == "toMyPage" {
+            
+            loadUserprofile(memberId: memberId)
+            setTapGestureForPhotoIcon()
+            downloadPhotoIcon(memberId: memberId)
+            getCollectionIds(memberId: memberId)
+            getPostIds(memberId: memberId)
+        }
+        
+        if segue.identifier == "backToMyPage" {
+            
+            getPostIds(memberId: memberId)
+            DispatchQueue.main.async {
+                self.postCollectionView.reloadData()
+            }
+        }
+        
+
+        
+    }
+    
 }
+
 
 
 extension MyPageViewController: UIScrollViewDelegate{
     
 }
-
-
 
 extension Communicator {
     func loadUserProfile(memberId:Int, completion:@escaping DoneHandler) {
@@ -614,12 +560,38 @@ struct  PostIdByMember :Codable {
     
 }
 
+extension UICollectionView {
+    func setEmptyView(){
+        let image = UIImage(named: "emptyview2")
+        let imageView = UIImageView(image: image)
+        imageView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        let emptyView = imageView
+        self.backgroundView = emptyView
+    }
+    
+    func setEmptyView2(){
+        let image = UIImage(named: "emptyView4")
+        let imageView = UIImageView(image: image)
+        imageView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+       
+        let emptyView = imageView
+        self.backgroundView = emptyView
+    }
+    
+    func restore() {
+    self.backgroundView = nil
+
+    }
+}
+
 struct PostIdResult: Codable {
     
     //    var postsPostIdByMember: [PostIdByMember]?
     var postIds:[Int]?
     
 }
+
+
 
 
 

@@ -62,5 +62,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>請同意MaPle使用相機功能</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>請同意MaPle取得相片膠卷</string>
 </dict>
 </plist>

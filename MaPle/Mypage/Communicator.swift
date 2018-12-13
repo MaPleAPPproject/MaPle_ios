@@ -11,12 +11,22 @@ import Alamofire
 
 
 
+
+
 class Communicator {
     
-    static let IP = "172.20.10.5"
+    static let IP = "192.168.197.9"
     
     static let BASEURL = "http://\(IP):8080/MaPle"
     
+    let USERPROFILE_URL = BASEURL + "/User_profileServlet"
+    let CPOST_URL = BASEURL + "/CpostServlet"
+    let PICTURE_URL = BASEURL + "/PictureServlet"
+    let CHART_URL = BASEURL + "/ChartServlet"
+    static let shared = Communicator()
+    
+    private init(){}
+    //getMemberIdByPostId
     let MEMBERID_KEY = "memberId"
     let RESULT_KEY = "result"
     let USERPROFILE_KEY = "userprofile"
@@ -25,7 +35,7 @@ class Communicator {
     let FINDBYID_KEY = "findById"
     let UPDATE_KEY = "update"
     let GETPOST_KEY = "getPost"
-    let DELETEPOST_KEY = "deletPost"
+    let DELETEPOST_KEY = "deletePost"
     let UPDATEPOST_KEY = "updatePost"
     let INSERTPOST_KEY = "insert"
     let IMAGEBASE64_KEY = "imageBase64"
@@ -37,14 +47,6 @@ class Communicator {
     typealias DoneHandler = (_ result: Any? , _ error: Error?) -> Void
     typealias DownloadDoneHandler = (_ result: Data?, _ error: Error?) -> Void
     
-    
-
-    let USERPROFILE_URL = BASEURL + "/User_profileServlet"
-    let CPOST_URL = BASEURL + "/CpostServlet"
-    let PICTURE_URL = BASEURL + "/PictureServlet"
-    static let shared = Communicator()
-    private init(){}
-    //getMemberIdByPostId
     func getPost(postId:Int, completion:@escaping DoneHandler) {
         let parameters: [String : Any] = [ACTION_KEY:GETPOST_KEY, POSTID_KEY: postId]
         doPost(urlString: CPOST_URL, parameters: parameters, completion: completion)
@@ -75,11 +77,15 @@ class Communicator {
         print("parameters:\(parameters)")
     }
     
-    func updatePost(postId: Int, imageBase64: String, completion:@escaping DoneHandler){
-        let parameters: [String : Any] = [ACTION_KEY:UPDATEPOST_KEY, POSTID_KEY: postId,IMAGEBASE64_KEY:imageBase64]
-         doPost(urlString: CPOST_URL, parameters: parameters, completion: completion)
+    func updatePost(postId: Int, imageBase64: String, post: UpdatePost, completion:@escaping DoneHandler){
+        
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try! jsonEncoder.encode(post)
+        let json = String(data: jsonData, encoding: .utf8)!
+        let parameters: [String : Any] = [ACTION_KEY: "update", POSTID_KEY: postId,IMAGEBASE64_KEY:imageBase64, "updatePost": json]
+        doPost(urlString: CPOST_URL, parameters: parameters, completion: completion)
         printHelper.println(tag: "Communicator:", line: #line,#function)
-        print("parameters:\(parameters)")
+        
     }
     
     
@@ -88,21 +94,41 @@ class Communicator {
         let jsonData = try! jsonEncoder.encode(userProfile)
         let json = String(data: jsonData, encoding: .utf8)!
         let parameters: [String : Any] = [ACTION_KEY:"update", "userprofile": json, IMAGEBASE64_KEY: imageBase64]
-         doPost(urlString: USERPROFILE_URL, parameters: parameters, completion: completion)
+        doPost(urlString: USERPROFILE_URL, parameters: parameters, completion: completion)
         printHelper.println(tag: "Communicator:", line: #line,#function)
-//        print("updateUserprofile parameters:\(parameters)")
+        //        print("updateUserprofile parameters:\(parameters)")
         
     }
     
-    func insertNewPost(memberId: Int, imageBase64: String, comment: String, locationTable:Location, completion: DoneHandler){
-        let parameters: [String : Any] = [ACTION_KEY:INSERTPOST_KEY, MEMBERID_KEY: memberId, IMAGEBASE64_KEY:imageBase64, LOCATION_KEY: locationTable]
+    func insertNewPost(memberId: Int, imageBase64: String, comment: String, locationTable: Location, completion: @escaping DoneHandler){
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try! jsonEncoder.encode(locationTable)
+        let json = String(data: jsonData, encoding: .utf8)!
+        let parameters: [String : Any] = [ACTION_KEY:INSERTPOST_KEY, MEMBERID_KEY: memberId, IMAGEBASE64_KEY:imageBase64, LOCATION_KEY: json, "comment": comment]
+        
+        doPost(urlString: CPOST_URL, parameters: parameters, completion: completion)
+       
         printHelper.println(tag: "Communicator:", line: #line,#function)
+        
+    }
+    
+    func getCountryCode(memberId: Int, completion:@escaping DoneHandler ) {
+        let parameters: [String : Any] = [ACTION_KEY:"getCountryCode", MEMBERID_KEY: memberId]
+        doPost(urlString: CHART_URL, parameters: parameters, completion: completion)
+        printHelper.println(tag: "Communicator", line: #line, #function)
+        print("parameters:\(parameters)")
+    }
+    
+    func getVisitedStatic(memberId: Int, completion:@escaping DoneHandler ) {
+        let parameters: [String : Any] = [ACTION_KEY:"getVisitedStatic", MEMBERID_KEY: memberId]
+        doPost(urlString: CHART_URL, parameters: parameters, completion: completion)
+        printHelper.println(tag: "Communicator", line: #line, #function)
         print("parameters:\(parameters)")
     }
     
     
     func downloadPhoto(url:String, completion: @escaping DownloadDoneHandler) {
-//        let finalURLString = PHOTO_BASE_URL + filename
+        //        let finalURLString = PHOTO_BASE_URL + filename
         Alamofire.request(url).responseData { (response) in
             switch response.result {
             case .success(let data) :
@@ -117,7 +143,7 @@ class Communicator {
     
     
     func doPost(urlString: String, parameters:[String : Any]?, completion: @escaping DoneHandler ){
-
+        
         Alamofire.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(completionHandler: { (response) in
             self.handleJson(response: response, completion: completion)
         })
@@ -133,13 +159,15 @@ class Communicator {
             case .failure(let error):
                 print("error:\(error)")
                 completion(nil,error)
-
+                
             }
         }
         
     }
     
-
+    
+    
+    
     
     
     func handleJson(response: DataResponse<Any>, completion: DoneHandler) {
@@ -159,14 +187,7 @@ class Communicator {
 }
 
 
-struct Location {
-    var postId:Int
-    var district: String
-    var address: String
-    var lat: Double
-    var lon: Double
-    var countryCode: String
-}
+
 
 
 

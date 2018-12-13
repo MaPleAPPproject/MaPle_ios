@@ -13,36 +13,22 @@ class UserprofileViewController: UIViewController {
     let imageManager = ImageManager.shared
     var squareImage = UIImage()
 
-//    @IBOutlet weak var confirmPasswordTextField: UITextField!
-//    @IBOutlet weak var confirmPasswordView: UIView!
-//    @IBOutlet weak var newPasswordTextField: UITextField!
-//    @IBOutlet weak var newPasswordView: UIView!
-//    @IBOutlet weak var passwordLabel: UILabel!
-    
-   
-  
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nameEditBtn: UIButton!
-    
     @IBOutlet weak var remiderLabel: UILabel!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
-    
-
     @IBOutlet weak var nameEditStack: UIStackView!
     let communicator = Communicator.shared
     let picker = UIImagePickerController()
-    
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var photoIcon: UIImageView!
-    var memberId = 2
-    
+     var memberId = UserDefaults.standard.integer(forKey: "MemberIDint")
     @IBOutlet weak var vipStatus: UILabel!
     @IBOutlet weak var remiderStack: UIStackView!
     @IBOutlet weak var selfIntroTextView: UITextView!
-    
     @IBOutlet weak var passwordEditStackView: UIStackView!
     var isShowEditStack = false
     
@@ -54,22 +40,14 @@ class UserprofileViewController: UIViewController {
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changePhoto))
         photoIcon.addGestureRecognizer(gestureRecognizer)
-       photoIcon.isUserInteractionEnabled = true
+        photoIcon.isUserInteractionEnabled = true
         
-//        let picker = UIImagePickerController()
+        //        let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
         
         picker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         
-        
-        
-        
-     
-       
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     
@@ -78,7 +56,7 @@ class UserprofileViewController: UIViewController {
         
     }
     
-  
+    
     
     
     func authorize() -> Bool {
@@ -151,7 +129,7 @@ class UserprofileViewController: UIViewController {
         }
         return false
     }
-
+    
     
     
     @objc
@@ -174,18 +152,18 @@ class UserprofileViewController: UIViewController {
         }
         let gallery = UIAlertAction(title: "相簿", style: .default) { (action) in
             
-//                let picker = UIImagePickerController()
-//                picker.sourceType = .photoLibrary
-//                picker.allowsEditing = true
-//
-//                picker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            //                let picker = UIImagePickerController()
+            //                picker.sourceType = .photoLibrary
+            //                picker.allowsEditing = true
+            //
+            //                picker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
             let state = self.authorize()
             if state == true {
                 self.present(self.picker, animated: true, completion: nil)
             }
             
-                
-                
+            
+            
             
         }
         alert.addAction(camera)
@@ -195,8 +173,9 @@ class UserprofileViewController: UIViewController {
     
     @IBAction func saveUserProfile(_ sender: UIBarButtonItem) {
         updateUserProfile()
-//        performSegue(withIdentifier: "UserProfileToMyPageSegue", sender: sender)
-       
+        print("I am going to mypage")
+        performSegue(withIdentifier: "fromUserProfileSegue", sender: sender)
+        
     }
     
     @IBAction func userNameEditBtnPressed(_ sender: UIButton) {
@@ -221,7 +200,7 @@ class UserprofileViewController: UIViewController {
     
     @IBAction func nameEditCancelBtnPressed(_ sender: UIButton) {
         offNameEditMode()
-       
+        
         
     }
     
@@ -256,7 +235,7 @@ class UserprofileViewController: UIViewController {
         guard let newPassword = newPasswordTextField!.text,
             let confirmPassword = confirmPasswordTextField!.text else {
                 print("newPassword or confirmPassword is nil ")
-            return
+                return
         }
         
         if !newPassword.isEmpty && !confirmPassword.isEmpty {
@@ -266,38 +245,38 @@ class UserprofileViewController: UIViewController {
                 passwordEditStackView?.visiblity(gone: true, dimension: 0.0)
                 confirmPasswordTextField!.text = ""
                 newPasswordTextField!.text = ""
-               
+                
             } else {
                 remiderStack.visiblity(gone: false, dimension: 30, attribute: .height)
                 remiderLabel.text = "請確認輸入的密碼必須一致！"
                 remiderLabel.textColor = .red
-               
+                
             }
             
         } else {
             remiderStack.visiblity(gone: false, dimension: 30, attribute: .height)
             remiderLabel.text = "您尚未輸入任何字元喔！"
-      
+            
         }
     }
     @IBAction func passwordCancelBtnPressed(_ sender: UIButton) {
-       
-     
+        
+        
         passwordEditStackView?.visiblity(gone: true, dimension: 0.0)
         confirmPasswordTextField!.text = ""
         newPasswordTextField!.text = ""
         
-       
+        
     }
     @IBAction func passwordEditBtnPressed(_ sender: UIButton) {
         
-//        passwordEditStackView.heightAnchor.constraint(equalToConstant: 165)
+        //        passwordEditStackView.heightAnchor.constraint(equalToConstant: 165)
         isShowEditStack = true
         let viewHeight:CGFloat = isShowEditStack ? 150 : 0.0
         passwordEditStackView?.visiblity(gone: !isShowEditStack, dimension: viewHeight)
         newPasswordTextField.isSecureTextEntry = true
         confirmPasswordTextField.isSecureTextEntry = true
-
+        
     }
     
     func loadUserprofile(memberId: Int){
@@ -329,68 +308,68 @@ class UserprofileViewController: UIViewController {
             self.userNameLabel?.text = resultObject.userName
             self.emailLabel?.text = resultObject.email
             self.passwordLabel?.text = resultObject.password
-//            self.postNumLabel?.text = String(resultObject.postCount)
-//            self.collectNumLabel?.text = String(resultObject.collectionCount)
+            //            self.postNumLabel?.text = String(resultObject.postCount)
+            //            self.collectNumLabel?.text = String(resultObject.collectionCount)
             print("resultObject.selfIntroduction:\(resultObject.selfIntroduction)")
             self.selfIntroTextView?.text = resultObject.selfIntroduction
             let vipStatus = resultObject.vipStatus
             switch vipStatus {
             case 0:
-                 self.vipStatus.text = "Basic"
+                self.vipStatus.text = "Basic"
             case 1:
-                 self.vipStatus.text = "Premium"
+                self.vipStatus.text = "Premium"
             default:
-                 self.vipStatus.text = "Basic"
+                self.vipStatus.text = "Basic"
             }
-//
+            //
             
             
         }
         
     }
     
-
+    
     
     
     func updateUserProfile(){
         guard let image = photoIcon.image,
-        let userName = userNameLabel.text,
-        let email = emailLabel.text,
-        let password = passwordLabel.text,
-        let vipStatus = self.vipStatus.text,
-        let selfIntro = selfIntroTextView.text else {
+            let userName = userNameLabel.text,
+            let email = emailLabel.text,
+            let password = passwordLabel.text,
+            let vipStatus = self.vipStatus.text,
+            let selfIntro = selfIntroTextView.text else {
                 print("userProfile is nil")
                 return
-            
+                
         }
         
         var vipStatusNum = 0
         switch vipStatus {
         case "Basic":
-             vipStatusNum = 0
+            vipStatusNum = 0
         case "Premium":
-             vipStatusNum = 1
+            vipStatusNum = 1
         default:
-             vipStatusNum = 0
+            vipStatusNum = 0
         }
-        
-       let imageBase64 = imageManager.convertImageToBase64(image: squareImage)
-//        guard let a = squareImage.jpegData(compressionQuality: 0.8),
-//         let aString = String(data: a, encoding: .utf8) else {
-//            print("aString is nil")
-//            return
-//
-//        }
-//       let data = squareImage.pngData()!
-//        guard let dataString = String(data: data, encoding: .utf8) else {
-//            print("dataString is nil")
-//            return
-//
-//        }
-       let userProfile = Userprofile(memberId: memberId, email: email , password: password, userName: userName, selfIntroduction: selfIntro, vipStatus: vipStatusNum, postCount: 0, collectionCount: 0)
+        let photoImage = image.crop(ratio: 1)
+        let imageBase64 = imageManager.convertImageToBase64(image: photoImage)
+        //        guard let a = squareImage.jpegData(compressionQuality: 0.8),
+        //         let aString = String(data: a, encoding: .utf8) else {
+        //            print("aString is nil")
+        //            return
+        //
+        //        }
+        //       let data = squareImage.pngData()!
+        //        guard let dataString = String(data: data, encoding: .utf8) else {
+        //            print("dataString is nil")
+        //            return
+        //
+        //        }
+        let userProfile = Userprofile(memberId: memberId, email: email , password: password, userName: userName, selfIntroduction: selfIntro, vipStatus: vipStatusNum, postCount: 0, collectionCount: 0)
         communicator.updateUserprofile(userProfile: userProfile, imageBase64: imageBase64) { (result, error) in
             if let error = error {
-                print("loadUserProfile error:\(error)")
+                print("updateUserprofile error:\(error)")
                 return
             }
             
@@ -408,46 +387,46 @@ class UserprofileViewController: UIViewController {
             default :
                 return
             }
-        
+            
         }
         
     }
-        func downloadPhotoIcon(memberId: Int){
-            
-            let parameter:[String : Any] = ["action":"getImage", "memberId": memberId, "imageSize": 270]
-            communicator.doPostData(urlString: communicator.USERPROFILE_URL, parameters: parameter) { (data, error) in
-                if let error = error {
-                    printHelper.println(tag: "Mypageviewcontroller", line: #line, "error:\(error)")
-                    return
-                }
-                
-                guard let data = data else {
-                    print("data is nil")
-                    return
-                }
-                
-                let image = UIImage(data: data)
-                
-                DispatchQueue.main.async {
-                    self.photoIcon.image = image
-                    self.photoIcon.clipsToBounds = true
-                    self.photoIcon.layer.cornerRadius = self.photoIcon.frame.size.width / 2
-                }
-                
+    func downloadPhotoIcon(memberId: Int){
+        
+        let parameter:[String : Any] = ["action":"getImage", "memberId": memberId, "imageSize": 270]
+        communicator.doPostData(urlString: communicator.USERPROFILE_URL, parameters: parameter) { (data, error) in
+            if let error = error {
+                printHelper.println(tag: "Mypageviewcontroller", line: #line, "error:\(error)")
+                return
             }
+            
+            guard let data = data else {
+                print("data is nil")
+                return
+            }
+            
+            let image = UIImage(data: data)
+            
+            DispatchQueue.main.async {
+                self.photoIcon.image = image
+                self.photoIcon.clipsToBounds = true
+                self.photoIcon.layer.cornerRadius = self.photoIcon.frame.size.width / 2
+            }
+            
         }
+    }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    
 }
 
 
@@ -471,12 +450,12 @@ extension UserprofileViewController: UIImagePickerControllerDelegate, UINavigati
         squareImage = image.crop(ratio: 1)
         photoIcon.image = squareImage
         dismiss(animated: true, completion: nil)
-
+        
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("imagePickerControllerDidCancel")
     }
-
+    
 }
 
 
@@ -513,7 +492,7 @@ extension UIImage {
         return finalImage
     }
     
-  
+    
     
     
     
@@ -546,11 +525,11 @@ extension UIImage {
             }
         }
         let rect = CGRect(x: 0.0, y: 0.0, width: CGFloat(actualWidth), height: CGFloat(actualHeight))
-//        let rect = CGRectMake(0.0, 0.0, CGFloat(actualWidth), CGFloat(actualHeight))
+        //        let rect = CGRectMake(0.0, 0.0, CGFloat(actualWidth), CGFloat(actualHeight))
         UIGraphicsBeginImageContext(rect.size)
         image.draw(in: rect)
         let img = UIGraphicsGetImageFromCurrentImageContext()
-//        let imageData = UIImage.JPEGRepresentation(img!,CGFloat(compressionQuality))
+        //        let imageData = UIImage.JPEGRepresentation(img!,CGFloat(compressionQuality))
         let imageData1 = img?.jpegData(compressionQuality: 0.5)
         UIGraphicsEndImageContext()
         guard let imageData = imageData1 else {

@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D9413BDA74C9504E1FD7B80C13D9146D"
-               BlueprintName = "Pods-MaPle"
+               BlueprintIdentifier = "2D6BF64699CDA8F1ECDC2762633AA6D0"
+               BlueprintName = "FSInteractiveMap"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "Pods-MaPle.framework">
+               BuildableName = "FSInteractiveMap.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
