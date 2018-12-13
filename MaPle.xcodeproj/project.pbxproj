@@ -67,8 +67,6 @@
 		FA39615B21C1ED660024D2CC /* collectEmptyView3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA39615A21C1ED650024D2CC /* collectEmptyView3.png */; };
 		FA39615D21C1F72B0024D2CC /* emptyView4.png in Resources */ = {isa = PBXBuildFile; fileRef = FA39615C21C1F72B0024D2CC /* emptyView4.png */; };
 		FA39616321C20EFF0024D2CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA39616221C20EFF0024D2CC /* Main.storyboard */; };
-		FA39616521C210B40024D2CC /* collectEmptyView.png in Resources */ = {isa = PBXBuildFile; fileRef = FA39616421C210B40024D2CC /* collectEmptyView.png */; };
-		FA39616721C210D80024D2CC /* emptyview2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA39616621C210D80024D2CC /* emptyview2.png */; };
 		FA39616921C2122C0024D2CC /* world-low.svg in Resources */ = {isa = PBXBuildFile; fileRef = FA39616821C2122B0024D2CC /* world-low.svg */; };
 		FA39616B21C2128A0024D2CC /* earth-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA39616A21C2128A0024D2CC /* earth-2.png */; };
 		FAB509B921C1783E00662F59 /* emptyview.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB509B821C1783E00662F59 /* emptyview.png */; };
@@ -142,8 +140,6 @@
 		FA39615A21C1ED650024D2CC /* collectEmptyView3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectEmptyView3.png; sourceTree = "<group>"; };
 		FA39615C21C1F72B0024D2CC /* emptyView4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emptyView4.png; sourceTree = "<group>"; };
 		FA39616221C20EFF0024D2CC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		FA39616421C210B40024D2CC /* collectEmptyView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = collectEmptyView.png; path = ../../../collectEmptyView.png; sourceTree = "<group>"; };
-		FA39616621C210D80024D2CC /* emptyview2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = emptyview2.png; path = ../../../emptyview2.png; sourceTree = "<group>"; };
 		FA39616821C2122B0024D2CC /* world-low.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "world-low.svg"; sourceTree = "<group>"; };
 		FA39616A21C2128A0024D2CC /* earth-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "earth-2.png"; sourceTree = "<group>"; };
 		FAB509B821C1783E00662F59 /* emptyview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emptyview.png; sourceTree = "<group>"; };
@@ -298,12 +294,10 @@
 				8AA71EB721B1298D000B28BE /* MapLocationViewController.swift */,
 				FA2B182921BEA23200EF5214 /* FriendPostViewController.swift */,
 				FA39615A21C1ED650024D2CC /* collectEmptyView3.png */,
-				FA39616421C210B40024D2CC /* collectEmptyView.png */,
 				8AA71EB621B1298D000B28BE /* MyPageViewController.swift */,
 				FA39615C21C1F72B0024D2CC /* emptyView4.png */,
 				8AA71EBA21B1298D000B28BE /* NewPostViewController.swift */,
 				8AA71EB321B1298C000B28BE /* PostCollectionViewCell.swift */,
-				FA39616621C210D80024D2CC /* emptyview2.png */,
 				8AA71EB221B1298C000B28BE /* PrintHelper.swift */,
 				8AA71EB821B1298D000B28BE /* SinglePostViewController.swift */,
 				FA2B182F21BFB0D100EF5214 /* pinView2.png */,
@@ -401,9 +395,7 @@
 				FA39616321C20EFF0024D2CC /* Main.storyboard in Resources */,
 				FA39616B21C2128A0024D2CC /* earth-2.png in Resources */,
 				9D87CEED21B0D4FB00CD08B4 /* Assets.xcassets in Resources */,
-				FA39616721C210D80024D2CC /* emptyview2.png in Resources */,
 				FA39615B21C1ED660024D2CC /* collectEmptyView3.png in Resources */,
-				FA39616521C210B40024D2CC /* collectEmptyView.png in Resources */,
 				FA2B183021BFB0D100EF5214 /* pinView2.png in Resources */,
 				FA39615D21C1F72B0024D2CC /* emptyView4.png in Resources */,
 			);
@@ -659,7 +651,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/juiyingchiu/MaPle_ios/MaPle/MaPle-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MaPle/MaPle-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -683,7 +675,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/juiyingchiu/MaPle_ios/MaPle/MaPle-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MaPle/MaPle-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
