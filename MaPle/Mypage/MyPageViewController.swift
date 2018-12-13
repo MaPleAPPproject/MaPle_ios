@@ -158,7 +158,7 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
                 return cell}
             let postId = self.postIds[indexPath.row]
             
-            let postId = self.postIds[indexPath.row]
+        
             communicator.getPostImage(postId: postId) { (data, error) in
                 if let error = error {
                     printHelper.println(tag: "Mypageviewcontroller", line: #line, "error:\(error)")
@@ -351,7 +351,7 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
             }
             }
         }
-    }
+    
     
     func getPostImage(postId: Int) -> UIImage?{
         var finalImage = UIImage()
