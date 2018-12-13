@@ -1,13 +1,13 @@
 //
-//  NewPostViewController.swift
+//  ModifyPostViewController.swift
 //  MaPle
 //
-//  Created by juiying chiu on 2018/11/28.
+//  Created by juiying chiu on 2018/12/10.
 //
 
 import UIKit
 
-class NewPostViewController: UIViewController, UITextViewDelegate {
+class ModifyPostViewController: UIViewController ,UITextViewDelegate{
     let communicator = Communicator.shared
     
     
@@ -27,52 +27,33 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
     var lon = Double()
     var postId = Int()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configView()
         setLocationLabel()
-        //        getMemberIdFromUserDefault()
         
     }
-    
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        print("lat:\(self.lat)")
-        //        print("lon:\(self.lon)")
-        //        print("select location:\(self.selectedLocation)")
-        //        setLocationLabel()
-    }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        guard let image = postImage.image else {
-            return
-        }
-        squareImage = image
-        
-        guard let comment = commentTextView.text else {
-            return
-        }
-        self.comment = comment
         
     }
     
     func configView(){
-        commentTextView.text = "What's new?"
+        commentTextView.text = comment
         commentTextView.textColor = UIColor.darkGray
         commentTextView.font = UIFont(name: "verdana", size: 15.0)
         commentTextView.returnKeyType = .done
         commentTextView.delegate = self
+        
         postImage.layer.borderColor = UIColor.black.cgColor
         postImage.layer.borderWidth = 0.2
         
         let tapgestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changePhoto))
         postImage.addGestureRecognizer(tapgestureRecognizer)
         postImage.isUserInteractionEnabled = true
+        postImage.image = squareImage
         
     }
     
@@ -80,14 +61,29 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
     func setLocationLabel(){
         
         if selectedLocation.isEmpty {
-            locationLabel.text = "請點選紅色圖標選擇地點"
-            
+            locationLabel.text = location
         } else {
             
+            let countryCode = (selectedLocation["countryCode"])
+            let country = (selectedLocation["country"])
+            let adminArea = (selectedLocation["adminarea"])
+            let district = (selectedLocation["district"])
             
+            var placeString = ""
+            
+            if district != nil {
+                placeString += district!
+                placeString += ", "
+            } else {
+                
+                placeString += adminArea!
+                placeString += ", "
+            }
+            placeString += country!
+            print("placeString:\(placeString)")
+            locationLabel.text = placeString
         }
     }
-    
     
     @objc
     func changePhoto(){
@@ -112,49 +108,34 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
             let picker = UIImagePickerController()
             picker.sourceType = .photoLibrary
             picker.allowsEditing = true
+            
             picker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
             self.present(picker, animated: true, completion: nil)
+            
         }
         alert.addAction(camera)
         alert.addAction(gallery)
         present(alert,animated: true)
+        
     }
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         let source =  segue.source as! MapLocationViewController
         print(source.selectedLocation)
         self.selectedLocation = source.selectedLocation
-        
-        let countryCode = (source.selectedLocation["countryCode"])
-        let country = (source.selectedLocation["country"])
-        let adminArea = (source.selectedLocation["adminarea"])
-        let district = (source.selectedLocation["district"])
         self.lat = source.lat
         self.lon = source.lon
-        print("lat:\(lat)")
-        print("lon:\(lon)")
         
-        var placeString = ""
+        setLocationLabel()
+
         
-        if district != nil {
-            placeString += district!
-            placeString += ", "
-        } else {
-            
-            placeString += adminArea!
-            placeString += ", "
-        }
-        placeString += country!
-        print("placeString:\(placeString)")
-        locationLabel.text = placeString
         
     }
-    
     
     @IBAction func cancelBarBtnPressed(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "請確定要離開嗎？", message: "此次修改將不會被儲存", preferredStyle: .alert)
         let yes = UIAlertAction(title: "我要離開", style: .default) { (action) in
-            self.performSegue(withIdentifier: "triggerByCancel", sender: self)
+            self.performSegue(withIdentifier: "cancelUpdatePostSegue", sender: self)
         }
         
         let no = UIAlertAction(title: "繼續編輯", style: .default, handler: nil)
@@ -163,7 +144,8 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
         present(alert, animated: true)
     }
     
-    
+    @IBAction func markerBtnPressed(_ sender: UIButton) {
+    }
     
     func showAlert(message: String){
         let alert = UIAlertController(title: "提醒", message: message, preferredStyle: .alert)
@@ -171,8 +153,11 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
         alert.addAction(ok)
         present(alert, animated: true)
     }
-    @IBAction func savePost(_ sender: UIBarButtonItem) {
-        
+    
+    
+    @IBAction func saveBtnPressed(_ sender: UIBarButtonItem) {
+        var post :UpdatePost
+        print(selectedLocation)
         guard let photoImage = postImage.image else {
             showAlert(message: "請加入照片~")
             return
@@ -183,28 +168,31 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
             showAlert(message: "請加入貼文內容~")
             return
         }
-        let country = selectedLocation["country"] ?? ""
-        let address = selectedLocation["address"] ?? ""
-        let district = selectedLocation["district"] ?? ""
-        let countryCode = selectedLocation["countryCode"] ?? ""
-        let adminArea = selectedLocation["adminarea"] ?? ""
-        var addressString = ""
-        var districtString = ""
-        if district == ""{
-            addressString = country + ", " + address
-            districtString = adminArea + ", " + country
-        } else {
-            addressString = country + ", " + district + ", " + address
-            districtString = district + "," + country
-        }
-       
-        let locaiton = Location(postId: nil, district: districtString, address: addressString, latitude: lat , longitude: lon, countryCode: countryCode)
-        
-        
-        communicator.insertNewPost(memberId: memberId, imageBase64: imageBase64, comment: comment, locationTable: locaiton) { (result, error) in
+        if !selectedLocation.isEmpty{
+            let country = selectedLocation["country"] ?? ""
+            let address = selectedLocation["address"] ?? ""
+            let district = selectedLocation["district"] ?? ""
+            let countryCode = selectedLocation["countryCode"] ?? ""
+            let adminArea = selectedLocation["adminarea"] ?? ""
+            var addressString = ""
+            var districtString = ""
+            if district == ""{
+                addressString = country + ", " + address
+                districtString = adminArea + ", " + country
+            } else {
+                addressString = country + ", " + district + ", " + address
+                districtString = district + "," + country
+            }
             
+            post = UpdatePost(countryCode: countryCode, address: addressString
+                , district: districtString, latitude: lat, longitude: lon, comment: comment)
+            }else {
+            post = UpdatePost(countryCode: nil, address: nil, district: nil, latitude: nil , longitude: nil, comment: comment)
+        }
+        
+        communicator.updatePost(postId: postId , imageBase64: imageBase64, post: post) { (result, error) in
             if let error = error {
-                print("insertNewPost error:\(error)")
+                print("Update post error:\(error)")
                 return
             }
             
@@ -212,37 +200,36 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
                 print("result is nil")
                 return
             }
+            let count = result as! Int
             
-            let resultDict = result as! Dictionary< String, Int>
-            
-            
-            let pictureCount = resultDict["pictureCount"]
-            let locationCount = resultDict["locationCount"]
-            
-            if pictureCount == 1 && locationCount == 1{
-                print("Post inserting OK")
-                
-                guard let postId = resultDict["postId"] else { return }
-                self.postId = postId
-                self.performSegue(withIdentifier: "toMyPage", sender: self)
+            if count == 1 {
+                print("Updating post OK")
+                self.performSegue(withIdentifier: "updatePostDoneSegue", sender: self)
                 
             } else {
-                print("Fail to insert post")
-                self.performSegue(withIdentifier: "toMyPage", sender: self)
+                print("Fail to update post")
+                self.showAlert(message: "貼文更新失敗，請再試一次！")
+                //                self.performSegue(withIdentifier: "updatePostDoneSegue", sender: self)
             }
-            
         }
-        
-        
-        
     }
     
     
+    // MARK: - Navigation
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "updatePostDoneSegue" {
+           
+            
+            let controller = segue.destination as! SinglePostViewController
+            controller.postId = self.postId
+        }
+    }
 }
 
-
-extension NewPostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ModifyPostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @objc
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as! UIImage
@@ -253,13 +240,17 @@ extension NewPostViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
 }
-
-
-struct Location: Codable {
-    var postId:Int?
-    var district: String?
+struct UpdatePost: Codable{
+    var countryCode: String?
     var address: String?
+    var district: String?
     var latitude: Double?
     var longitude: Double?
-    var countryCode: String?
+    var comment: String?
 }
+
+
+
+
+
+

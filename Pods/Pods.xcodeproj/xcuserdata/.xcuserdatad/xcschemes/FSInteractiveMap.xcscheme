@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "352F3CCD20CDBC5C9822654BDACCE6D0"
-               BlueprintName = "CarbonKit"
+               BlueprintIdentifier = "2D6BF64699CDA8F1ECDC2762633AA6D0"
+               BlueprintName = "FSInteractiveMap"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "CarbonKit.framework">
+               BuildableName = "FSInteractiveMap.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

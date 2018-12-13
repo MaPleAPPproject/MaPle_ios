@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ExploreViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate, UICollectionViewDataSource,UISearchResultsUpdating,UISearchControllerDelegate {
     
     var collectionViewController: CollectionListViewController!
