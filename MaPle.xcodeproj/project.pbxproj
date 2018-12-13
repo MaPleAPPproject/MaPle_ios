@@ -11,7 +11,6 @@
 		8A01110C21AD8E5000789296 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01110B21AD8E5000789296 /* SearchTableViewController.swift */; };
 		8A01110E21AD9ABA00789296 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01110D21AD9ABA00789296 /* SearchTableViewCell.swift */; };
 		8A0DE9DA2199E5EE0090ABDE /* PictureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DE9D92199E5EE0090ABDE /* PictureDetailViewController.swift */; };
-		8A30ED2021B0333F007F4960 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A30ED1F21B0333F007F4960 /* Assets.xcassets */; };
 		8A3161E1219523EC00827F28 /* ExploreCommuicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E0219523EC00827F28 /* ExploreCommuicator.swift */; };
 		8A3161E5219524A400827F28 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E3219524A400827F28 /* Reachability.m */; };
 		8A3161E7219526F600827F28 /* ExploreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E6219526F600827F28 /* ExploreData.swift */; };
@@ -24,7 +23,6 @@
 		8AA71EB121B12778000B28BE /* MapCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EAF21B12778000B28BE /* MapCommunicator.swift */; };
 		8AA71EBD21B1298D000B28BE /* PrintHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB221B1298C000B28BE /* PrintHelper.swift */; };
 		8AA71EBE21B1298D000B28BE /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB321B1298C000B28BE /* PostCollectionViewCell.swift */; };
-		8AA71EBF21B1298D000B28BE /* MapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB421B1298D000B28BE /* MapTableViewController.swift */; };
 		8AA71EC021B1298D000B28BE /* CollectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB521B1298D000B28BE /* CollectCollectionViewCell.swift */; };
 		8AA71EC121B1298D000B28BE /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB621B1298D000B28BE /* MyPageViewController.swift */; };
 		8AA71EC221B1298D000B28BE /* MapLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB721B1298D000B28BE /* MapLocationViewController.swift */; };
@@ -43,6 +41,10 @@
 		8AA71ED821B12A1D000B28BE /* FriendPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71ECF21B12A1D000B28BE /* FriendPageViewController.swift */; };
 		8AA71ED921B12A1D000B28BE /* InvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71ED021B12A1D000B28BE /* InvitationViewController.swift */; };
 		8AA9DF86219D6BC1007FCA62 /* LocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9DF85219D6BC1007FCA62 /* LocationMapViewController.swift */; };
+		8AAC630321BE3724003D6EB6 /* TitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC630221BE3724003D6EB6 /* TitleCollectionReusableView.swift */; };
+		8AAC630521BE381D003D6EB6 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC630421BE381D003D6EB6 /* ChatRoomViewController.swift */; };
+		8AAC630821BE3A22003D6EB6 /* MatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC630621BE3A21003D6EB6 /* MatchTableViewController.swift */; };
+		8AAC630921BE3A22003D6EB6 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC630721BE3A22003D6EB6 /* MatchTableViewCell.swift */; };
 		8AADEC62219D2C6800A7FD34 /* OthersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AADEC61219D2C6800A7FD34 /* OthersPageViewController.swift */; };
 		8AB49D7721A3D1F9009F6472 /* OthersPage2CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB49D7621A3D1F9009F6472 /* OthersPage2CollectionViewController.swift */; };
 		8AB49D7921A3D522009F6472 /* OthersPageUICollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB49D7821A3D522009F6472 /* OthersPageUICollectionReusableView.swift */; };
@@ -58,7 +60,18 @@
 		DA7D12952181B9C400286775 /* Vision.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D12942181B9C400286775 /* Vision.swift */; };
 		DA7F8C3421B559F1009899F6 /* ServerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */; };
 		DAA93FA921B751AB00EE8273 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA93FA821B751AB00EE8273 /* StoreKit.framework */; };
-		FA783FC221B7953000FE3945 /* ModifyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA783FC121B7953000FE3945 /* ModifyPostViewController.swift */; };
+		FA2B182421BEA02700EF5214 /* WorldTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B182321BEA02700EF5214 /* WorldTableViewController.swift */; };
+		FA2B182621BEA08E00EF5214 /* ModifyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B182521BEA08E00EF5214 /* ModifyPostViewController.swift */; };
+		FA2B182821BEA0E700EF5214 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B182721BEA0E700EF5214 /* ChartViewController.swift */; };
+		FA2B182A21BEA23200EF5214 /* FriendPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B182921BEA23200EF5214 /* FriendPostViewController.swift */; };
+		FA2B182C21BEA29A00EF5214 /* world-low.svg in Resources */ = {isa = PBXBuildFile; fileRef = FA2B182B21BEA29A00EF5214 /* world-low.svg */; };
+		FA2B182E21BEA2A200EF5214 /* earth-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2B182D21BEA2A100EF5214 /* earth-2.png */; };
+		FA2B183021BFB0D100EF5214 /* pinView2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2B182F21BFB0D100EF5214 /* pinView2.png */; };
+		FA39615921C1E9FC0024D2CC /* collectEmptyView.png in Resources */ = {isa = PBXBuildFile; fileRef = FA39615821C1E9FC0024D2CC /* collectEmptyView.png */; };
+		FA39615B21C1ED660024D2CC /* collectEmptyView3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA39615A21C1ED650024D2CC /* collectEmptyView3.png */; };
+		FA39615D21C1F72B0024D2CC /* emptyView4.png in Resources */ = {isa = PBXBuildFile; fileRef = FA39615C21C1F72B0024D2CC /* emptyView4.png */; };
+		FAB509B921C1783E00662F59 /* emptyview.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB509B821C1783E00662F59 /* emptyview.png */; };
+		FAB509BD21C179D500662F59 /* emptyview2.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB509BC21C179D500662F59 /* emptyview2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +82,6 @@
 		8A01110B21AD8E5000789296 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		8A01110D21AD9ABA00789296 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		8A0DE9D92199E5EE0090ABDE /* PictureDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureDetailViewController.swift; sourceTree = "<group>"; };
-		8A30ED1F21B0333F007F4960 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A3161E0219523EC00827F28 /* ExploreCommuicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCommuicator.swift; sourceTree = "<group>"; };
 		8A3161E2219524A300827F28 /* MaPle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MaPle-Bridging-Header.h"; sourceTree = "<group>"; };
 		8A3161E3219524A400827F28 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -86,7 +98,6 @@
 		8AA71EAF21B12778000B28BE /* MapCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCommunicator.swift; sourceTree = "<group>"; };
 		8AA71EB221B1298C000B28BE /* PrintHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintHelper.swift; sourceTree = "<group>"; };
 		8AA71EB321B1298C000B28BE /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
-		8AA71EB421B1298D000B28BE /* MapTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewController.swift; sourceTree = "<group>"; };
 		8AA71EB521B1298D000B28BE /* CollectCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectCollectionViewCell.swift; sourceTree = "<group>"; };
 		8AA71EB621B1298D000B28BE /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		8AA71EB721B1298D000B28BE /* MapLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +116,10 @@
 		8AA71ECF21B12A1D000B28BE /* FriendPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendPageViewController.swift; sourceTree = "<group>"; };
 		8AA71ED021B12A1D000B28BE /* InvitationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationViewController.swift; sourceTree = "<group>"; };
 		8AA9DF85219D6BC1007FCA62 /* LocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapViewController.swift; sourceTree = "<group>"; };
+		8AAC630221BE3724003D6EB6 /* TitleCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleCollectionReusableView.swift; sourceTree = "<group>"; };
+		8AAC630421BE381D003D6EB6 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		8AAC630621BE3A21003D6EB6 /* MatchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewController.swift; sourceTree = "<group>"; };
+		8AAC630721BE3A22003D6EB6 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
 		8AADEC61219D2C6800A7FD34 /* OthersPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPageViewController.swift; sourceTree = "<group>"; };
 		8AB49D7621A3D1F9009F6472 /* OthersPage2CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPage2CollectionViewController.swift; sourceTree = "<group>"; };
 		8AB49D7821A3D522009F6472 /* OthersPageUICollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPageUICollectionReusableView.swift; sourceTree = "<group>"; };
@@ -120,7 +135,18 @@
 		DA7D12942181B9C400286775 /* Vision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vision.swift; sourceTree = "<group>"; };
 		DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCommunicator.swift; sourceTree = "<group>"; };
 		DAA93FA821B751AB00EE8273 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		FA783FC121B7953000FE3945 /* ModifyPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModifyPostViewController.swift; path = "../../../MaPle_ios 拷貝1205/MaPle/Mypage/ModifyPostViewController.swift"; sourceTree = "<group>"; };
+		FA2B182321BEA02700EF5214 /* WorldTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTableViewController.swift; sourceTree = "<group>"; };
+		FA2B182521BEA08E00EF5214 /* ModifyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPostViewController.swift; sourceTree = "<group>"; };
+		FA2B182721BEA0E700EF5214 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		FA2B182921BEA23200EF5214 /* FriendPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPostViewController.swift; sourceTree = "<group>"; };
+		FA2B182B21BEA29A00EF5214 /* world-low.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "world-low.svg"; path = "../../../Downloads/FSInteractiveMap/FSInteractiveMap/FSInteractiveMap/Data/world-low.svg"; sourceTree = "<group>"; };
+		FA2B182D21BEA2A100EF5214 /* earth-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "earth-2.png"; path = "../../../Downloads/earth-2.png"; sourceTree = "<group>"; };
+		FA2B182F21BFB0D100EF5214 /* pinView2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinView2.png; sourceTree = "<group>"; };
+		FA39615821C1E9FC0024D2CC /* collectEmptyView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = collectEmptyView.png; path = ../../../Desktop/collectEmptyView.png; sourceTree = "<group>"; };
+		FA39615A21C1ED650024D2CC /* collectEmptyView3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectEmptyView3.png; sourceTree = "<group>"; };
+		FA39615C21C1F72B0024D2CC /* emptyView4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emptyView4.png; sourceTree = "<group>"; };
+		FAB509B821C1783E00662F59 /* emptyview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emptyview.png; sourceTree = "<group>"; };
+		FAB509BC21C179D500662F59 /* emptyview2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = emptyview2.png; path = ../../../Desktop/emptyview2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +174,7 @@
 		8A3161DF2195239300827F28 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				8AAC630221BE3724003D6EB6 /* TitleCollectionReusableView.swift */,
 				8AB6499321AECA250012439C /* ResultMapCollectionReusableView.swift */,
 				8AB6499121AEC9660012439C /* SearchResultCollectionViewController.swift */,
 				8AB49D7821A3D522009F6472 /* OthersPageUICollectionReusableView.swift */,
@@ -194,13 +221,11 @@
 				9D87CEEA21B0D4FA00CD08B4 /* Assets.xcassets */,
 				9D87CEE421B0D4DA00CD08B4 /* MaPle.entitlements */,
 				9D87CEDF21B0D4B000CD08B4 /* UserAccount.swift */,
-				9D87CEDD21B0D4B000CD08B4 /* userCollectionViewCell.swift */,
 				8AA163B1217F5DC200D80197 /* AppDelegate.swift */,
 				8A3161DF2195239300827F28 /* Explore */,
 				8AA163B7217F5DC200D80197 /* Main.storyboard */,
 				8A3161E4219524A400827F28 /* Reachability.h */,
 				8A3161E3219524A400827F28 /* Reachability.m */,
-				8A30ED1F21B0333F007F4960 /* Assets.xcassets */,
 				8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */,
 				8AA163BF217F5DC500D80197 /* Info.plist */,
 				8A3161E2219524A300827F28 /* MaPle-Bridging-Header.h */,
@@ -232,6 +257,7 @@
 		9D87CEF321B0E09500CD08B4 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				9D87CEDD21B0D4B000CD08B4 /* userCollectionViewCell.swift */,
 				8AA71EAF21B12778000B28BE /* MapCommunicator.swift */,
 				8AA71EAE21B12778000B28BE /* MapPageViewController.swift */,
 			);
@@ -242,6 +268,9 @@
 		9D87CEF421B0E0E300CD08B4 /* Friend */ = {
 			isa = PBXGroup;
 			children = (
+				8AAC630721BE3A22003D6EB6 /* MatchTableViewCell.swift */,
+				8AAC630621BE3A21003D6EB6 /* MatchTableViewController.swift */,
+				8AAC630421BE381D003D6EB6 /* ChatRoomViewController.swift */,
 				8AA71ECB21B12A1D000B28BE /* EmojiRateView.swift */,
 				8AA71ECE21B12A1D000B28BE /* FriendCommunicator.swift */,
 				8AA71EC921B12A1D000B28BE /* FriendData.swift */,
@@ -258,17 +287,27 @@
 		9D87CEF521B0E10000CD08B4 /* Mypage */ = {
 			isa = PBXGroup;
 			children = (
-				FA783FC121B7953000FE3945 /* ModifyPostViewController.swift */,
+				FA2B182D21BEA2A100EF5214 /* earth-2.png */,
+				FA2B182B21BEA29A00EF5214 /* world-low.svg */,
 				8AA71EB521B1298D000B28BE /* CollectCollectionViewCell.swift */,
+				FA2B182721BEA0E700EF5214 /* ChartViewController.swift */,
+				FA2B182521BEA08E00EF5214 /* ModifyPostViewController.swift */,
 				8AA71EBC21B1298D000B28BE /* Communicator.swift */,
+				FA2B182321BEA02700EF5214 /* WorldTableViewController.swift */,
 				8AA71EB921B1298D000B28BE /* ImageManager.swift */,
 				8AA71EB721B1298D000B28BE /* MapLocationViewController.swift */,
+				FA2B182921BEA23200EF5214 /* FriendPostViewController.swift */,
+				FA39615A21C1ED650024D2CC /* collectEmptyView3.png */,
+				FA39615821C1E9FC0024D2CC /* collectEmptyView.png */,
 				8AA71EB621B1298D000B28BE /* MyPageViewController.swift */,
-				8AA71EB421B1298D000B28BE /* MapTableViewController.swift */,
+				FA39615C21C1F72B0024D2CC /* emptyView4.png */,
 				8AA71EBA21B1298D000B28BE /* NewPostViewController.swift */,
 				8AA71EB321B1298C000B28BE /* PostCollectionViewCell.swift */,
+				FAB509BC21C179D500662F59 /* emptyview2.png */,
 				8AA71EB221B1298C000B28BE /* PrintHelper.swift */,
 				8AA71EB821B1298D000B28BE /* SinglePostViewController.swift */,
+				FA2B182F21BFB0D100EF5214 /* pinView2.png */,
+				FAB509B821C1783E00662F59 /* emptyview.png */,
 				8AA71EBB21B1298D000B28BE /* UserprofileViewController.swift */,
 			);
 			path = Mypage;
@@ -357,9 +396,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AA163BE217F5DC500D80197 /* LaunchScreen.storyboard in Resources */,
-				8A30ED2021B0333F007F4960 /* Assets.xcassets in Resources */,
+				FA2B182E21BEA2A200EF5214 /* earth-2.png in Resources */,
+				FAB509B921C1783E00662F59 /* emptyview.png in Resources */,
 				9D87CEED21B0D4FB00CD08B4 /* Assets.xcassets in Resources */,
+				FA2B182C21BEA29A00EF5214 /* world-low.svg in Resources */,
+				FA39615B21C1ED660024D2CC /* collectEmptyView3.png in Resources */,
+				FAB509BD21C179D500662F59 /* emptyview2.png in Resources */,
+				FA2B183021BFB0D100EF5214 /* pinView2.png in Resources */,
+				FA39615921C1E9FC0024D2CC /* collectEmptyView.png in Resources */,
 				8AA163B9217F5DC200D80197 /* Main.storyboard in Resources */,
+				FA39615D21C1F72B0024D2CC /* emptyView4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,12 +420,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MaPle/Pods-MaPle-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FSInteractiveMap/FSInteractiveMap.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CarbonKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSInteractiveMap.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -412,25 +458,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AA71EC221B1298D000B28BE /* MapLocationViewController.swift in Sources */,
+				8AAC630521BE381D003D6EB6 /* ChatRoomViewController.swift in Sources */,
 				8AA71EB121B12778000B28BE /* MapCommunicator.swift in Sources */,
 				8AA71ED521B12A1D000B28BE /* GradientView.swift in Sources */,
 				8AA163B6217F5DC200D80197 /* ExploreViewController.swift in Sources */,
 				8AA71EC421B1298D000B28BE /* ImageManager.swift in Sources */,
 				8AB6499421AECA250012439C /* ResultMapCollectionReusableView.swift in Sources */,
 				8AB6499221AEC9660012439C /* SearchResultCollectionViewController.swift in Sources */,
+				FA2B182821BEA0E700EF5214 /* ChartViewController.swift in Sources */,
 				8A01110C21AD8E5000789296 /* SearchTableViewController.swift in Sources */,
 				8AA71ED621B12A1D000B28BE /* TinderCard.swift in Sources */,
 				8AA71ED421B12A1D000B28BE /* EmojiRateView.swift in Sources */,
 				8A01110A21AD8E3B00789296 /* CollectionListViewController.swift in Sources */,
 				DA7D12952181B9C400286775 /* Vision.swift in Sources */,
+				8AAC630821BE3A22003D6EB6 /* MatchTableViewController.swift in Sources */,
+				8AAC630921BE3A22003D6EB6 /* MatchTableViewCell.swift in Sources */,
 				8AA71EC021B1298D000B28BE /* CollectCollectionViewCell.swift in Sources */,
 				8AB49D7721A3D1F9009F6472 /* OthersPage2CollectionViewController.swift in Sources */,
 				9D87CEE221B0D4B000CD08B4 /* UserAccount.swift in Sources */,
 				8AA71EC621B1298D000B28BE /* UserprofileViewController.swift in Sources */,
 				8AA71EC121B1298D000B28BE /* MyPageViewController.swift in Sources */,
 				8AA9DF86219D6BC1007FCA62 /* LocationMapViewController.swift in Sources */,
+				FA2B182A21BEA23200EF5214 /* FriendPostViewController.swift in Sources */,
 				8A613D6E21987F5400ADC06B /* ExploreCollectionViewCell.swift in Sources */,
 				8AA71ED121B12A1D000B28BE /* FriendlistTableViewController.swift in Sources */,
+				8AAC630321BE3724003D6EB6 /* TitleCollectionReusableView.swift in Sources */,
 				8AADEC62219D2C6800A7FD34 /* OthersPageViewController.swift in Sources */,
 				8AA71ED221B12A1D000B28BE /* FriendData.swift in Sources */,
 				8A01110E21AD9ABA00789296 /* SearchTableViewCell.swift in Sources */,
@@ -444,7 +496,6 @@
 				8AA71EBE21B1298D000B28BE /* PostCollectionViewCell.swift in Sources */,
 				8A3161E5219524A400827F28 /* Reachability.m in Sources */,
 				8AB49D7921A3D522009F6472 /* OthersPageUICollectionReusableView.swift in Sources */,
-				8AA71EBF21B1298D000B28BE /* MapTableViewController.swift in Sources */,
 				9D87CEF021B0D55E00CD08B4 /* LodingView.swift in Sources */,
 				DA7F8C3421B559F1009899F6 /* ServerCommunicator.swift in Sources */,
 				8AA71EB021B12778000B28BE /* MapPageViewController.swift in Sources */,
@@ -452,8 +503,10 @@
 				9D87CEE021B0D4B000CD08B4 /* userCollectionViewCell.swift in Sources */,
 				9D87CEE721B0D4DA00CD08B4 /* RegisterViewController.swift in Sources */,
 				8AA71EBD21B1298D000B28BE /* PrintHelper.swift in Sources */,
+				FA2B182421BEA02700EF5214 /* WorldTableViewController.swift in Sources */,
 				8A3161E1219523EC00827F28 /* ExploreCommuicator.swift in Sources */,
 				8AA71ED821B12A1D000B28BE /* FriendPageViewController.swift in Sources */,
+				FA2B182621BEA08E00EF5214 /* ModifyPostViewController.swift in Sources */,
 				8AA71ED921B12A1D000B28BE /* InvitationViewController.swift in Sources */,
 				8A3161E7219526F600827F28 /* ExploreData.swift in Sources */,
 				8AA71EC521B1298D000B28BE /* NewPostViewController.swift in Sources */,
@@ -606,7 +659,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 53L8H6U7Q7;
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -615,7 +668,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "MaPle/MaPle-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/juiyingchiu/MaPle_ios/MaPle/MaPle-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -630,7 +683,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 53L8H6U7Q7;
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -639,7 +692,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "MaPle/MaPle-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/juiyingchiu/MaPle_ios/MaPle/MaPle-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

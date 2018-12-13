@@ -23,6 +23,7 @@ class PictureDetailViewController: UIViewController {
     @IBOutlet weak var pictureImageView: UIImageView!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    let memberid = UserDefaults.standard.string(forKey: "MemberID")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,17 +40,17 @@ class PictureDetailViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let picture = self.picture else {
+        guard let picture = self.picture, let userid = memberid else {
             print("picture is nil")
             return
         }
-        checkCollected(postid: picture.postid, userid: 1)
+        checkCollected(postid: picture.postid, userid: userid)
         getPictureDetail(postid: picture.postid)
     }
     
-    func checkCollected(postid: Int, userid: Int) {
+    func checkCollected(postid: Int, userid: String) {
         
-        communicatior.isCollectable(postId: String(postid), collectorId: String(userid)) { (result, error) in
+        communicatior.isCollectable(postId: String(postid), collectorId: userid) { (result, error) in
             if let error = error {
                 print("error:\(error)")
             }
@@ -71,13 +72,14 @@ class PictureDetailViewController: UIViewController {
     
     func handleRetriveData(picture: Picture?) {
         
-        guard  let finalpicture = picture else {
+        guard  let finalpicture = picture , let userid = memberid else {
             assertionFailure("picture data is nil")
             return
         }
         getPictureDetail(postid: finalpicture.postid)
-        checkCollected(postid: finalpicture.postid, userid: 1)
+        checkCollected(postid: finalpicture.postid, userid: userid)
         self.commentLabel.text = finalpicture.comment
+        self.commentLabel.adjustsFontSizeToFitWidth = true
         
         self.dateLabel.text = getDate(date: finalpicture.date)
         communicatior.getImage(postId: String(finalpicture.postid)) { (data, error) in
@@ -102,6 +104,7 @@ class PictureDetailViewController: UIViewController {
                 assertionFailure("result is nil")
                 return
             }
+            print("get success response:\(result)")
             guard let jsonData = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) else {
                 assertionFailure("fail to get data")
                 return
@@ -165,7 +168,8 @@ class PictureDetailViewController: UIViewController {
             }
             targetVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
             targetVC.navigationItem.leftItemsSupplementBackButton = true
-            targetVC.postDetail = pictureDetail
+            targetVC.memberid = pictureDetail?.memberId
+            targetVC.userName = pictureDetail?.username
             targetVC.iconData = iconData
         } else if segue.identifier == "showMap" {
             guard  let targetVC = segue.destination as? LocationMapViewController else {
@@ -181,7 +185,7 @@ class PictureDetailViewController: UIViewController {
     
     @IBAction func CollectBtPress(_ sender: UIButton) {
 
-        guard let postdetail = pictureDetail, let picture = picture else {
+        guard let postdetail = pictureDetail, let picture = picture, let userid = memberid else {
             print("postdetail and picture is nil")
             return
         }
@@ -189,7 +193,7 @@ class PictureDetailViewController: UIViewController {
         let redcolor = UIColor(red: 245/255, green: 136/255, blue: 136/255, alpha: 1.0)
         if sender.tintColor == redcolor {
             print("already like need to cancellike")
-            communicatior.cancelCollect(postId: String(picture.postid), collectorId: String(1)) { (result, error) in
+            communicatior.cancelCollect(postId: String(picture.postid), collectorId: userid) { (result, error) in
                 if let error = error {
                     print("error:\(error)")
                 }
@@ -211,7 +215,8 @@ class PictureDetailViewController: UIViewController {
             }
         }else {
             print("need to like")
-            let userpre = UserPreference(postid: postdetail.postid, collectorid: 1, memberid: postdetail.memberId, collectcount: postdetail.collectcount)
+            let memberid = UserDefaults.standard.integer(forKey: "MemberIDint")
+            let userpre = UserPreference(postid: postdetail.postid, collectorid: memberid, memberid: postdetail.memberId, collectcount: postdetail.collectcount)
             communicatior.addCollect(userPreference: userpre) { (result, error) in
                 if let error = error {
                     print("error:\(error)")

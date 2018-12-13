@@ -30,16 +30,6 @@ class OthersPageViewController: UIViewController,UICollectionViewDelegate,UIColl
     var data = [Picture]()
     let screensize = UIScreen.main.bounds.size
     
-    override func loadView() {
-        super.loadView()
-        guard let finalpostDetail = postDetail else {
-            assertionFailure("postdetail is nil")
-            return
-        }
-//        getAllpost(memberid: finalpostDetail.memberId)
-//        self.data = self.allpost
-//        getAllcollection(memberid: finalpostDetail.memberId)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -252,17 +242,4 @@ class OthersPageViewController: UIViewController,UICollectionViewDelegate,UIColl
             targetVC.navigationItem.leftItemsSupplementBackButton = true
         }
     }
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        guard kind == "UICollectionElementKindSectionHeader" else {
-//            assertionFailure("failed to get header")
-//            let test = UICollectionReusableView()
-//            return test
-//        }
-//        let reuableView = collectionView.dequeueReusableSupplementaryView(ofKind: "UICollectionElementKindSectionHeader", withReuseIdentifier: "header", for: indexPath)
-////        reuableView.backgroundColor = .black
-////        let control = UISegmentedControl(items: ["Seg1","Seg2","Seg3"])
-////        control.addTarget(self, action: "valueChanged:", for: UIControl.Event.valueChanged)
-////        reuableView.addSubview(control)
-//        return reuableView
-//    }
 }

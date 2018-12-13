@@ -5,6 +5,7 @@
 //  Created by juiying chiu on 2018/11/30.
 //
 
+
 import UIKit
 
 
@@ -24,6 +25,7 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     var postIdArray = [Int]()
     var postIds = [Int]()
     var collectionIds = [Int]()
+    var memberId = UserDefaults.standard.integer(forKey: "MemberIDint")
     
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     
@@ -32,24 +34,16 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectCollectionView: UICollectionView!
     @IBOutlet weak var postCollectionView: UICollectionView!
-    var memberId = 2
+
     var posts = [Post]()
     
     
     @IBOutlet weak var scrollView: UIScrollView!
-    var collectImages = [UIImage](){
-        didSet{
-            //            collectCollectionView.reloadData()
-        }
-        
-        willSet{
-            //            collectCollectionView.reloadData()
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //        postCollectionView.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: "PostCell")
+      
         setScrollView()
         loadUserprofile(memberId: memberId)
         setTapGestureForPhotoIcon()
@@ -64,7 +58,11 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        downloadPhotoIcon(memberId: memberId)
+     getCollectionIds(memberId: memberId)
+     loadUserprofile(memberId: memberId)
+     getPostIds(memberId: memberId)
+     postCollectionView.reloadData()
+        
     }
     
     @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
@@ -119,22 +117,46 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+       
+        shouldSetEmptyView(collectionView)
         return collectionView.tag == 0 ? postIds.count :  collectionIds.count
+    }
+    
+    func shouldSetEmptyView(_ collectionView: UICollectionView){
+        if collectionView.tag == 0 {
+            if postIds.count == 0 {
+                postCollectionView.setEmptyView()
+            } else {
+                postCollectionView.restore()
+            }
+        } else if collectionView.tag == 1 {
+            if collectionIds.count == 0 {
+                collectCollectionView.setEmptyView2()
+            } else {
+                collectionView.restore()
+            }
+        }
         
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+       
         
-        return 1
+            return 1
+        
     }
     
+   
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+       
         switch collectionView.tag {
         case 0:
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! PostCollectionViewCell
+            if postIds.count == 0 {
+                return cell}
+            let postId = self.postIds[indexPath.row]
             
             let postId = self.postIds[indexPath.row]
             communicator.getPostImage(postId: postId) { (data, error) in
@@ -188,13 +210,11 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
             
         }
         
-        
     }
     
     
     @objc
     func toUserProfiles(){
-        
         performSegue(withIdentifier: "userprofileSegue", sender: self)
         
     }
@@ -264,27 +284,6 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
         }
     }
     
-    //    func getAllPosts(){
-    //        let memberId = 2
-    //        communicator.getAllPostsByMemberId(memberId: memberId) { (result, error) in
-    //            guard let jsonObject = self.handleResult(result: result, error: error) else {
-    //                return
-    //            }
-    //
-    //            let decoder = JSONDecoder()
-    //
-    //            guard let resultObject = try? decoder.decode( [Post].self
-    //                , from: jsonObject ) else {
-    //                    print(" Fail to decode jsonData.")
-    //                    return
-    //            }
-    //
-    //            self.posts = resultObject
-    //            print("self.posts:\(self.posts)")
-    //            printHelper.printLog(item: self.posts)
-    //        }
-    //    }
-    
     func handleResult(result: Any?, error: Error?) -> Data? {
         if let error = error {
             print("error:\(error)")
@@ -321,13 +320,9 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
                     return
             }
             
-            
-            
-            if resultObject.count > 0 {
-                self.postIds = resultObject
-                DispatchQueue.main.async {
-                    self.postCollectionView.reloadData()
-                }
+            self.postIds = resultObject
+            DispatchQueue.main.async {
+                self.postCollectionView.reloadData()
             }
             
         }
@@ -349,11 +344,11 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
                     return
             }
             
-            if resultObject.count > 0 {
-                self.collectionIds = resultObject
-                DispatchQueue.main.async {
-                    self.collectCollectionView.reloadData()
-                }
+            
+           self.collectionIds = resultObject
+            DispatchQueue.main.async {
+                self.collectCollectionView.reloadData()
+            }
             }
         }
     }
@@ -390,14 +385,12 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
         switch segue.identifier {
         case "postShowSegue":
             
-            let navVC = segue.destination as! UINavigationController
-            let controller = navVC.topViewController as!  SinglePostViewController
+            let controller = segue.destination as! SinglePostViewController
             if let indexPath = postCollectionView.indexPathsForSelectedItems?.first {
-                print("indexPath:\(indexPath.row)")
+                
                 let postId = postIds[indexPath.row]
                 print("postShowSegue prepare postId:\(postId)")
                 controller.postId = postId
-                
                 controller.memberId = self.memberId
                 
             }
@@ -418,6 +411,33 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        print(#function)
+        if segue.identifier == "fromUserProfileSegue"{
+            let segue = segue.source as! UserprofileViewController
+            let image = segue.photoIcon.image
+            self.photoIcon.image = image
+            self.userNameLabel.text = segue.userNameLabel.text
+            self.selfIntroLabel.text = segue.selfIntroTextView.text
+        }
+        
+        if segue.identifier == "toMyPage" {
+            
+            loadUserprofile(memberId: memberId)
+            setTapGestureForPhotoIcon()
+            downloadPhotoIcon(memberId: memberId)
+            getCollectionIds(memberId: memberId)
+            getPostIds(memberId: memberId)
+        }
+        
+        if segue.identifier == "backToMyPage" {
+            
+            getPostIds(memberId: memberId)
+            DispatchQueue.main.async {
+                self.postCollectionView.reloadData()
+            }
+        }
+        
+
         
     }
     
@@ -428,8 +448,6 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 extension MyPageViewController: UIScrollViewDelegate{
     
 }
-
-
 
 extension Communicator {
     func loadUserProfile(memberId:Int, completion:@escaping DoneHandler) {
@@ -535,12 +553,39 @@ struct  PostIdByMember :Codable {
     
 }
 
+extension UICollectionView {
+    func setEmptyView(){
+        let image = UIImage(named: "emptyview2")
+        let imageView = UIImageView(image: image)
+        imageView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        let emptyView = imageView
+        self.backgroundView = emptyView
+    }
+    
+    func setEmptyView2(){
+        let image = UIImage(named: "emptyView4")
+        let imageView = UIImageView(image: image)
+        imageView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+       
+        let emptyView = imageView
+        self.addSubview(emptyView)
+//        self.backgroundView = emptyView
+    }
+    
+    func restore() {
+    self.backgroundView = nil
+
+    }
+}
+
 struct PostIdResult: Codable {
     
     //    var postsPostIdByMember: [PostIdByMember]?
     var postIds:[Int]?
     
 }
+
+
 
 
 
