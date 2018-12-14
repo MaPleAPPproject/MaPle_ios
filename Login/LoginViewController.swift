@@ -14,8 +14,8 @@ class LoginViewController: UIViewController,UITextViewDelegate {
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
     var label:UITextField!
-    var email = "Brian@gmail.com"
-    var passWord = "Brian123"
+    var email = ""
+    var passWord = ""
     var communicator = MapCommunicator.shared
     let userDefaults = UserDefaults.standard
     
@@ -75,11 +75,11 @@ class LoginViewController: UIViewController,UITextViewDelegate {
     }
     
     @IBAction func beginEdit(_ sender: UITextField) {
-        animateViewMoving(up: true, moveValue: 100)
+        animateViewMoving(up: true, moveValue: 110)
     }
     
     @IBAction func endEdit(_ sender: UITextField) {
-        animateViewMoving(up: false, moveValue: 100)
+        animateViewMoving(up: false, moveValue: 110)
     }
     
     //textField movement method
