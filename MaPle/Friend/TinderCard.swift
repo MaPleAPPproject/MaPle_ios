@@ -4,7 +4,6 @@
 //
 //  Created by 蘇曉彤 on 2018/11/29.
 //
-
 import UIKit
 
 let THERESOLD_MARGIN = (UIScreen.main.bounds.size.width/2) * 0.75
@@ -20,20 +19,23 @@ protocol TinderCardDelegate: NSObjectProtocol {
 class TinderCard: UIView {
     
     var invitationVC: InvitationViewController!
+    
     var xCenter: CGFloat = 0.0
     var yCenter: CGFloat = 0.0
     var originalPoint = CGPoint.zero
     var imageViewStatus = UIImageView()
     var overLayImage = UIImageView()
+    
     var profileButton = UIButton()
     var isLiked = false
     let userid: Int?
     let userName: String?
     var iconData: Data?
-    let communicator = ExploreCommunicator.shared
+    //let communicator = ExploreCommunicator.shared
+    let communicator = FriendCommunicator.shared
     weak var delegate: TinderCardDelegate?
     let notificationName = Notification.Name("GetMemberIDtoButton")
-
+    
     
     public init(frame: CGRect, value: String, names:String, friend: Friend_profile) {
         self.userid = friend.FriendID
@@ -65,18 +67,19 @@ class TinderCard: UIView {
         //背景圖
         let backGroundImageView = UIImageView(frame:bounds)
         
-        communicator.getIcon(memberId: String(friend.FriendID), imageSize: "100") { (data, error) in
+        communicator.getPhoto(id: friend.FriendID) { (data, error) in
             if let error = error {
                 print("error:\(error)")
             }
-            guard let data = data else {
+            guard let data = data else{
                 assertionFailure("data is nil")
                 return
             }
             self.iconData = data
             backGroundImageView.image = UIImage(data: data)
+            
         }
-//        backGroundImageView.image = UIImage(named:String(Int(1 + arc4random() % (8 - 1))))
+        //        backGroundImageView.image = UIImage(named:String(Int(1 + arc4random() % (8 - 1))))
         backGroundImageView.contentMode = .scaleAspectFill
         backGroundImageView.clipsToBounds = true;
         addSubview(backGroundImageView)
@@ -96,7 +99,7 @@ class TinderCard: UIView {
         //自我介紹
         let labelText = UILabel(frame:CGRect(x: 90, y: frame.size.height - 80, width: frame.size.width - 100, height: 60))
         let attributedText = NSMutableAttributedString(string: names, attributes: [.foregroundColor: UIColor.white,.font:UIFont.boldSystemFont(ofSize: 25)])
-
+        
         attributedText.append(NSAttributedString(string: "\n\(selfintro)", attributes: [.foregroundColor: UIColor.white,.font:UIFont.systemFont(ofSize: 18)]))
         labelText.attributedText = attributedText
         labelText.shadowColor = UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0)
@@ -185,7 +188,7 @@ class TinderCard: UIView {
         print("WATCHOUT RIGHT")
     }
     
-   
+    
     
     func leftAction() {
         
@@ -273,7 +276,7 @@ class TinderCard: UIView {
     
     func shakeAnimationCard(){
         
-        imageViewStatus.image = #imageLiteral(resourceName: "btn_skip_pressed")
+        imageViewStatus.image = #imageLiteral(resourceName: "emptyview.png")
         overLayImage.image = #imageLiteral(resourceName: "overlay_skip")
         UIView.animate(withDuration: 0.5, animations: {() -> Void in
             self.center = CGPoint(x: self.center.x - (self.frame.size.width / 2), y: self.center.y)
@@ -305,7 +308,7 @@ class TinderCard: UIView {
             })
         })
         
-        print("WATCHOUT SHAKE ACTION")
+        //print("WATCHOUT SHAKE ACTION")
     }
     
     

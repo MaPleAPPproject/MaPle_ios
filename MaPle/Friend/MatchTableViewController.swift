@@ -11,12 +11,14 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     @IBOutlet weak var matchlistTableView: UITableView!
-    
+    let memberID = UserDefaults.standard.integer(forKey: "MemberIDint")
+    let memberid = UserDefaults.standard.string(forKey: "MemberID")
+
+
     let communicator = FriendCommunicator.shared
-    let explorecommunicator = ExploreCommunicator.shared
     var matchlist : [Friend_profile] = []
     let refreshControl = UIRefreshControl()
-    let memberid = UserDefaults.standard.integer(forKey: "MemberIDint")
+    
 
 
     
@@ -24,7 +26,7 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         matchlistTableView.delegate = self
         matchlistTableView.dataSource = self
-        getmatch(memberid: memberid)
+        getmatch(memberid: memberID)
         
         //refreshControl
         if #available(iOS 10.0, *) {
@@ -47,11 +49,15 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.statusLabel.isHidden = true
         cell.dislikeButton.isHidden = false
         cell.likeButton.isHidden = false
+        
         cell.nameLB.text = friend.Username
         cell.introLB.text = friend.selfIntroduction
+        
+        //加上按鈕標籤
         cell.likeButton.tag = friend.FriendID
         cell.dislikeButton.tag = friend.FriendID
-        explorecommunicator.getIcon(memberId: String(friend.FriendID), imageSize: "100") { (data, error) in
+        
+        communicator.getPhoto(id: friend.FriendID) { (data, error) in
             if let error = error {
                 print("Download fail: \(error)")
                 return
@@ -60,10 +66,12 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 print("photo data is nil.")
                 return
             }
+            
             cell.photoIV.image = UIImage(data: photodata)
             cell.photoIV.clipsToBounds = true
             cell.photoIV.layer.cornerRadius = 30
         }
+
         return cell
     }
     
@@ -92,24 +100,25 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
     @objc
     func refreshPictureData(_ sender: Any) {
-        getmatch(memberid: memberid)
+        getmatch(memberid: memberID)
         self.refreshControl.endRefreshing()
     }
     
     @IBAction func likeBt(_ sender: UIButton) {
         print("like friendID:\(sender.tag)")
-        self.acceptMatch(friendid: sender.tag)
+        self.like(friendid: sender.tag)
     }
     
     
     @IBAction func dislikeBt(_ sender: UIButton) {
         print("dislike friendID:\(sender.tag)")
-//        self.reject(friendid: sender.tag)
+//        self.dislike(friendid: sender.tag)
     }
     
     //MARK:-Retrieve Server
     
     func getmatch(memberid: Int) {
+        
         communicator.getAllMatch(memberid: memberid) { (result,error) in
             if let error = error {
                 print("getAllFriend error:\(error)")
@@ -138,9 +147,13 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-    @objc func acceptMatch(friendid: Int) {
+    @objc func like(friendid: Int) {
     
-        communicator.acceptMatch(memberid: memberid, friendid: friendid) { (result, error) in
+        guard let memberId =  memberid else {
+            assertionFailure("memberid is nil")
+            return
+        }
+        communicator.acceptMatch(memberid: Int(memberId)!, friendid: friendid) { (result, error) in
             if let error = error {
                 print("acceptMatch error:\(error)")
                 return
@@ -166,8 +179,13 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-    func reject(friendid: Int) {
-        communicator.reject(memberid: memberid, friendid: friendid) { (result, error) in
+    func dislike(friendid: Int) {
+        
+        guard let memberId =  memberid else {
+            assertionFailure("memberid is nil")
+            return
+        }
+        communicator.reject(memberid: Int(memberId)!, friendid: friendid) { (result, error) in
             if let error = error {
                 print("acceptMatch error:\(error)")
                 return

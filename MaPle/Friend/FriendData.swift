@@ -7,57 +7,6 @@
 
 import Foundation
 
-struct UserProfile : Codable {
-    var memberId: Int
-    var email: String
-    var password: String
-    var userName: String
-    var selfIntroduction: String
-    var vipStatus: Int
-    var postCount: Int
-    var collectionCount: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case memberId = "memberId"
-        case email = "email"
-        case password = "password"
-        case userName = "userName"
-        case selfIntroduction = "selfIntroduction"
-        case vipStatus = "vipStatus"
-        case postCount = "postcount"
-        case collectionCount = "collectcount"
-    }
-    
-    init(memberId:Int,email: String, password: String, userName: String, selfIntroduction: String, vipStatus: Int, postCount:Int, collectionCount: Int) {
-        self.memberId = memberId
-        self.email = email
-        self.password = password
-        self.userName = userName
-        self.selfIntroduction = selfIntroduction
-        self.vipStatus = vipStatus
-        self.postCount = postCount
-        self.collectionCount = collectionCount
-    }
-    
-}
-
-struct Friendlist : Codable {
-    var MatchID: Int
-    var RelationshipStatus: Int
-    var MemberID: Int
-    var FriendID: Int
-    var MessageRoom: Int
-    
-    init(MatchID:Int, RelationshipStatus:Int, MemberID:Int, FriendID:Int, MessageRoom: Int) {
-        self.MatchID = MatchID
-        self.RelationshipStatus = RelationshipStatus
-        self.MemberID = MemberID
-        self.FriendID = FriendID
-        self.MessageRoom = MessageRoom
-    }
-}
-
-
 struct Friend_profile : Codable {
     var FriendID : Int
     var Username: String
@@ -84,3 +33,38 @@ struct Friend_profile : Codable {
     }
     
 }
+
+struct ChatMessage : Codable {
+    var type: String
+    var sender: String
+    var senderName: String
+    var receiver: String
+    var content: String
+    var messageType: String
+    
+    init(type: String, sender: String, senderName: String, receiver: String, content: String, messageType: String) {
+        self.type = type
+        self.sender = sender
+        self.senderName = senderName
+        self.receiver = receiver
+        self.content = content
+        self.messageType = messageType
+    }
+    
+}
+
+struct StateMessage: Codable {
+    var type: String
+    var user: String
+    var users: Set<String>
+    var userName: String
+    
+    init(type: String, user: String, users: Set<String>, userName: String) {
+        self.type = type
+        self.user = user
+        self.users = users
+        self.userName = userName
+    }
+}
+
+

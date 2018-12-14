@@ -6,7 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>4
     </dependencies>
     <scenes>
         <!--探索-->
@@ -1059,7 +1059,7 @@
         <!--好友-->
         <scene sceneID="8oa-zA-Vym">
             <objects>
-                <viewController id="1OH-nA-bUv" customClass="FriendPageViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1OH-nA-bUv" customClass="FriendPageViewController" customModule="MaPle" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UHz-dS-Q0y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1133,7 +1133,11 @@
                         <viewLayoutGuide key="safeArea" id="5sI-TL-rce"/>
                     </view>
                     <navigationItem key="navigationItem" title="好友" id="YaM-20-uZs">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="DRQ-vs-Xc4"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="DRQ-vs-Xc4">
+                            <connections>
+                                <action selector="IABbtn:" destination="1OH-nA-bUv" id="KCt-ee-ilj"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="friendSegmentControl" destination="LqF-gt-Pcd" id="Rzb-xf-Mt5"/>
@@ -1393,21 +1397,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nN4-io-1xC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7346" y="800"/>
-        </scene>
-        <!--Chat Room View Controller-->
-        <scene sceneID="owW-JM-q0a">
-            <objects>
-                <viewController storyboardIdentifier="chatRoom" id="VHT-Gb-8pb" customClass="ChatRoomViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="N0M-Ok-j1N">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="e95-0Y-rXH"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7CY-kZ-XDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8218" y="1334"/>
         </scene>
         <!--match-->
         <scene sceneID="kto-7M-rCO">
@@ -3219,6 +3208,103 @@
             </objects>
             <point key="canvasLocation" x="7938" y="-523"/>
         </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="ujk-Rx-nN4">
+            <objects>
+                <viewController storyboardIdentifier="chatRoom" hidesBottomBarWhenPushed="YES" id="ZRR-iu-Z2i" customClass="ChatViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wIl-37-e3f">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TdO-Tq-xvr">
+                                <rect key="frame" x="0.0" y="34" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="back" id="kK0-eI-JAg"/>
+                                </items>
+                            </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LkF-vF-FqR" customClass="ChatView" customModule="MaPle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="78" width="414" height="765"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMh-TX-LrN">
+                                <rect key="frame" x="0.0" y="830" width="414" height="66"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cU4-Pe-avE">
+                                        <rect key="frame" x="15" y="13" width="48" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="IDO-xE-Ggu"/>
+                                            <constraint firstAttribute="width" constant="48" id="fWk-sY-L1N"/>
+                                        </constraints>
+                                        <state key="normal" title="photo" image="btn_photo"/>
+                                        <connections>
+                                            <action selector="sendPhotoPressed:" destination="ZRR-iu-Z2i" eventType="touchUpInside" id="XzO-JO-Igb"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入聊天訊息" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5BJ-l2-JZR">
+                                        <rect key="frame" x="74" y="20" width="280" height="30"/>
+                                        <color key="backgroundColor" red="0.062486901880000001" green="0.068015478549999994" blue="0.20845037699999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="NotoNastaliqUrdu" family="Noto Nastaliq Urdu" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ZRR-iu-Z2i" id="FIq-LO-PqM"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNA-cD-Opj">
+                                        <rect key="frame" x="360" y="9" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="fEZ-58-l40"/>
+                                            <constraint firstAttribute="height" constant="48" id="qbL-ly-PPL"/>
+                                        </constraints>
+                                        <state key="normal" title="send" image="btn_send"/>
+                                        <connections>
+                                            <action selector="sendTextPressed:" destination="ZRR-iu-Z2i" eventType="touchUpInside" id="LNh-Bv-8Fb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.066362619400000003" green="0.7642713189" blue="0.75016939640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="nNA-cD-Opj" secondAttribute="bottom" constant="9" id="G4f-FO-BdD"/>
+                                    <constraint firstAttribute="bottom" secondItem="nNA-cD-Opj" secondAttribute="bottom" constant="9" id="GRG-H0-MIM"/>
+                                    <constraint firstAttribute="bottom" secondItem="cU4-Pe-avE" secondAttribute="bottom" constant="13" id="I3K-E6-Hbt"/>
+                                    <constraint firstAttribute="trailing" secondItem="5BJ-l2-JZR" secondAttribute="trailing" constant="60" id="KI3-y5-rwX"/>
+                                    <constraint firstAttribute="bottom" secondItem="5BJ-l2-JZR" secondAttribute="bottom" constant="16" id="MVe-Ce-sX7"/>
+                                    <constraint firstAttribute="trailing" secondItem="nNA-cD-Opj" secondAttribute="trailing" constant="6" id="PqT-Vu-O6L"/>
+                                    <constraint firstAttribute="trailing" secondItem="nNA-cD-Opj" secondAttribute="trailing" constant="6" id="S4R-cY-ork"/>
+                                    <constraint firstAttribute="height" constant="66" id="Sdf-eP-ZlZ"/>
+                                    <constraint firstItem="cU4-Pe-avE" firstAttribute="leading" secondItem="RMh-TX-LrN" secondAttribute="leading" constant="15" id="f7g-S2-AWo"/>
+                                    <constraint firstItem="5BJ-l2-JZR" firstAttribute="leading" secondItem="RMh-TX-LrN" secondAttribute="leading" constant="74" id="tff-35-tcE"/>
+                                    <constraint firstItem="5BJ-l2-JZR" firstAttribute="top" secondItem="RMh-TX-LrN" secondAttribute="top" constant="20" id="z0D-Nk-FRC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LkF-vF-FqR" firstAttribute="top" secondItem="TdO-Tq-xvr" secondAttribute="bottom" id="6ib-Y9-cUu"/>
+                            <constraint firstItem="TdO-Tq-xvr" firstAttribute="trailing" secondItem="xDW-VH-3Jh" secondAttribute="trailing" id="AR7-dO-0pB"/>
+                            <constraint firstAttribute="bottom" secondItem="RMh-TX-LrN" secondAttribute="bottom" id="N9n-C3-c16"/>
+                            <constraint firstItem="LkF-vF-FqR" firstAttribute="leading" secondItem="xDW-VH-3Jh" secondAttribute="leading" id="UIQ-rh-erk"/>
+                            <constraint firstItem="TdO-Tq-xvr" firstAttribute="top" secondItem="wIl-37-e3f" secondAttribute="top" constant="34" id="Vhr-Xr-9Z6"/>
+                            <constraint firstItem="RMh-TX-LrN" firstAttribute="trailing" secondItem="xDW-VH-3Jh" secondAttribute="trailing" id="hde-33-x3R"/>
+                            <constraint firstItem="LkF-vF-FqR" firstAttribute="trailing" secondItem="xDW-VH-3Jh" secondAttribute="trailing" id="khJ-xe-WuT"/>
+                            <constraint firstItem="TdO-Tq-xvr" firstAttribute="leading" secondItem="xDW-VH-3Jh" secondAttribute="leading" id="oUr-BE-duW"/>
+                            <constraint firstItem="LkF-vF-FqR" firstAttribute="top" secondItem="TdO-Tq-xvr" secondAttribute="bottom" id="pMf-3g-1If"/>
+                            <constraint firstAttribute="bottom" secondItem="LkF-vF-FqR" secondAttribute="bottom" constant="53" id="reI-pB-mpC"/>
+                            <constraint firstItem="RMh-TX-LrN" firstAttribute="leading" secondItem="xDW-VH-3Jh" secondAttribute="leading" id="zEr-wu-DAB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xDW-VH-3Jh"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="RMh-TX-LrN" id="suf-bM-aNQ"/>
+                        <outlet property="chatView" destination="LkF-vF-FqR" id="USA-y5-sly"/>
+                        <outlet property="inputTextField" destination="5BJ-l2-JZR" id="R7t-Vk-fkM"/>
+                        <outlet property="sendTextButton" destination="nNA-cD-Opj" id="xn4-No-T9b"/>
+                        <outlet property="sendphotoButton" destination="cU4-Pe-avE" id="7NC-f3-fKc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NKu-xw-iVx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7120" y="1755"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Explore_locationBt" width="128" height="128"/>
@@ -3227,6 +3313,8 @@
         <image name="Sign Up" width="308" height="90"/>
         <image name="addimage" width="350" height="350"/>
         <image name="blueLocation" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="btn_photo" width="90.239997863769531" height="71.279998779296875"/>
+        <image name="btn_send" width="96" height="96"/>
         <image name="buttonBackground" width="150" height="50"/>
         <image name="cancel" width="230.39999389648438" height="230.39999389648438"/>
         <image name="checked" width="230.39999389648438" height="230.39999389648438"/>
@@ -3247,9 +3335,9 @@
         <image name="yesBtn" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Br3-x8-NPc"/>
+        <segue reference="2Hh-4h-JnH"/>
         <segue reference="uVC-LD-brJ"/>
         <segue reference="pfb-uM-Fmf"/>
-        <segue reference="1pv-Sg-3Zr"/>
+        <segue reference="YJC-P5-apX"/>
     </inferredMetricsTieBreakers>
 </document>

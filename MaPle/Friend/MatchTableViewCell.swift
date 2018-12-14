@@ -15,7 +15,8 @@ class MatchTableViewCell: UITableViewCell {
     @IBOutlet weak var dislikeButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
-    
+    @IBOutlet weak var cardbackgroundView: CardView!
+    @IBOutlet weak var photobackgroundView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
