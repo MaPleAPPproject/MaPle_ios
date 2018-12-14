@@ -31,7 +31,6 @@
 		8AA71EC621B1298D000B28BE /* UserprofileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EBB21B1298D000B28BE /* UserprofileViewController.swift */; };
 		8AA71EC721B1298D000B28BE /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EBC21B1298D000B28BE /* Communicator.swift */; };
 		8AA71ED121B12A1D000B28BE /* FriendlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EC821B12A1C000B28BE /* FriendlistTableViewController.swift */; };
-		8AA71ED221B12A1D000B28BE /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EC921B12A1D000B28BE /* FriendData.swift */; };
 		8AA71ED321B12A1D000B28BE /* FriendlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71ECA21B12A1D000B28BE /* FriendlistTableViewCell.swift */; };
 		8AA71ED421B12A1D000B28BE /* EmojiRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71ECB21B12A1D000B28BE /* EmojiRateView.swift */; };
 		8AA71ED521B12A1D000B28BE /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71ECC21B12A1D000B28BE /* GradientView.swift */; };
@@ -52,16 +51,15 @@
 		9D87CEE221B0D4B000CD08B4 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEDF21B0D4B000CD08B4 /* UserAccount.swift */; };
 		9D87CEE621B0D4DA00CD08B4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEE321B0D4D900CD08B4 /* LoginViewController.swift */; };
 		9D87CEE721B0D4DA00CD08B4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEE521B0D4DA00CD08B4 /* RegisterViewController.swift */; };
-		9D87CEED21B0D4FB00CD08B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D87CEEA21B0D4FA00CD08B4 /* Assets.xcassets */; };
 		9D87CEF021B0D55E00CD08B4 /* LodingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */; };
+		ADF0815B21C1FF6B0013012F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815821C1FF6B0013012F /* CardView.swift */; };
+		ADF0815C21C1FF6B0013012F /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815921C1FF6B0013012F /* UIImage+Resize.swift */; };
+		ADF0815D21C1FF6B0013012F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815A21C1FF6B0013012F /* ChatView.swift */; };
+		ADF0815F21C202FA0013012F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815E21C202FA0013012F /* ChatViewController.swift */; };
+		ADF0816121C203A80013012F /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0816021C203A80013012F /* FriendData.swift */; };
 		C82393A4B472C82F2D8A89A7 /* Pods_MaPle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */; };
+		DA237C8A21C270AA00BA0CC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA237C8921C270AA00BA0CC5 /* Assets.xcassets */; };
 		DA7F8C3421B559F1009899F6 /* ServerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */; };
-		DA800F9621C35F8400CB4A88 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA800F8E21C35F8400CB4A88 /* CardView.swift */; };
-		DA800F9721C35F8400CB4A88 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA800F8F21C35F8400CB4A88 /* ChatViewController.swift */; };
-		DA800F9921C35F8400CB4A88 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA800F9121C35F8400CB4A88 /* UIImage+Resize.swift */; };
-		DA800F9B21C35F8400CB4A88 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA800F9321C35F8400CB4A88 /* ChatView.swift */; };
-		DA800F9F21C35F8F00CB4A88 /* emptyview2.png in Resources */ = {isa = PBXBuildFile; fileRef = DA800F9D21C35F8F00CB4A88 /* emptyview2.png */; };
-		DA800FA021C35F8F00CB4A88 /* collectEmptyView.png in Resources */ = {isa = PBXBuildFile; fileRef = DA800F9E21C35F8F00CB4A88 /* collectEmptyView.png */; };
 		DAA93FA921B751AB00EE8273 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA93FA821B751AB00EE8273 /* StoreKit.framework */; };
 		FA2B182421BEA02700EF5214 /* WorldTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B182321BEA02700EF5214 /* WorldTableViewController.swift */; };
 		FA2B182621BEA08E00EF5214 /* ModifyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B182521BEA08E00EF5214 /* ModifyPostViewController.swift */; };
@@ -108,7 +106,6 @@
 		8AA71EBB21B1298D000B28BE /* UserprofileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserprofileViewController.swift; sourceTree = "<group>"; };
 		8AA71EBC21B1298D000B28BE /* Communicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Communicator.swift; sourceTree = "<group>"; };
 		8AA71EC821B12A1C000B28BE /* FriendlistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendlistTableViewController.swift; sourceTree = "<group>"; };
-		8AA71EC921B12A1D000B28BE /* FriendData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
 		8AA71ECA21B12A1D000B28BE /* FriendlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendlistTableViewCell.swift; sourceTree = "<group>"; };
 		8AA71ECB21B12A1D000B28BE /* EmojiRateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiRateView.swift; sourceTree = "<group>"; };
 		8AA71ECC21B12A1D000B28BE /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -130,15 +127,14 @@
 		9D87CEE321B0D4D900CD08B4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9D87CEE421B0D4DA00CD08B4 /* MaPle.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = MaPle.entitlements; sourceTree = "<group>"; };
 		9D87CEE521B0D4DA00CD08B4 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		9D87CEEA21B0D4FA00CD08B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LodingView.swift; sourceTree = "<group>"; };
+		ADF0815821C1FF6B0013012F /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		ADF0815921C1FF6B0013012F /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		ADF0815A21C1FF6B0013012F /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		ADF0815E21C202FA0013012F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		ADF0816021C203A80013012F /* FriendData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
+		DA237C8921C270AA00BA0CC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCommunicator.swift; sourceTree = "<group>"; };
-		DA800F8E21C35F8400CB4A88 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		DA800F8F21C35F8400CB4A88 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		DA800F9121C35F8400CB4A88 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
-		DA800F9321C35F8400CB4A88 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		DA800F9D21C35F8F00CB4A88 /* emptyview2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emptyview2.png; sourceTree = "<group>"; };
-		DA800F9E21C35F8F00CB4A88 /* collectEmptyView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectEmptyView.png; sourceTree = "<group>"; };
 		DAA93FA821B751AB00EE8273 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FA2B182321BEA02700EF5214 /* WorldTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTableViewController.swift; sourceTree = "<group>"; };
 		FA2B182521BEA08E00EF5214 /* ModifyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPostViewController.swift; sourceTree = "<group>"; };
@@ -218,11 +214,11 @@
 		8AA163B0217F5DC200D80197 /* MaPle */ = {
 			isa = PBXGroup;
 			children = (
+				DA237C8921C270AA00BA0CC5 /* Assets.xcassets */,
 				9D87CEF221B0E08000CD08B4 /* Login */,
 				9D87CEF321B0E09500CD08B4 /* Map */,
 				9D87CEF421B0E0E300CD08B4 /* Friend */,
 				9D87CEF521B0E10000CD08B4 /* Mypage */,
-				9D87CEEA21B0D4FA00CD08B4 /* Assets.xcassets */,
 				9D87CEE421B0D4DA00CD08B4 /* MaPle.entitlements */,
 				9D87CEDF21B0D4B000CD08B4 /* UserAccount.swift */,
 				8AA163B1217F5DC200D80197 /* AppDelegate.swift */,
@@ -271,21 +267,21 @@
 		9D87CEF421B0E0E300CD08B4 /* Friend */ = {
 			isa = PBXGroup;
 			children = (
-				DA800F8E21C35F8400CB4A88 /* CardView.swift */,
-				DA800F9321C35F8400CB4A88 /* ChatView.swift */,
-				DA800F8F21C35F8400CB4A88 /* ChatViewController.swift */,
-				DA800F9121C35F8400CB4A88 /* UIImage+Resize.swift */,
 				8AAC630721BE3A22003D6EB6 /* MatchTableViewCell.swift */,
 				8AAC630621BE3A21003D6EB6 /* MatchTableViewController.swift */,
-				8AA71ECB21B12A1D000B28BE /* EmojiRateView.swift */,
-				8AA71ECE21B12A1D000B28BE /* FriendCommunicator.swift */,
-				8AA71EC921B12A1D000B28BE /* FriendData.swift */,
-				8AA71ECA21B12A1D000B28BE /* FriendlistTableViewCell.swift */,
-				8AA71EC821B12A1C000B28BE /* FriendlistTableViewController.swift */,
 				8AA71ECF21B12A1D000B28BE /* FriendPageViewController.swift */,
-				8AA71ECC21B12A1D000B28BE /* GradientView.swift */,
+				8AA71ECE21B12A1D000B28BE /* FriendCommunicator.swift */,
+				ADF0816021C203A80013012F /* FriendData.swift */,
+				8AA71EC821B12A1C000B28BE /* FriendlistTableViewController.swift */,
+				8AA71ECA21B12A1D000B28BE /* FriendlistTableViewCell.swift */,
+				ADF0815E21C202FA0013012F /* ChatViewController.swift */,
 				8AA71ED021B12A1D000B28BE /* InvitationViewController.swift */,
+				8AA71ECC21B12A1D000B28BE /* GradientView.swift */,
+				8AA71ECB21B12A1D000B28BE /* EmojiRateView.swift */,
 				8AA71ECD21B12A1D000B28BE /* TinderCard.swift */,
+				ADF0815821C1FF6B0013012F /* CardView.swift */,
+				ADF0815A21C1FF6B0013012F /* ChatView.swift */,
+				ADF0815921C1FF6B0013012F /* UIImage+Resize.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -295,8 +291,6 @@
 			children = (
 				FA39616A21C2128A0024D2CC /* earth-2.png */,
 				FA39616821C2122B0024D2CC /* world-low.svg */,
-				DA800F9E21C35F8F00CB4A88 /* collectEmptyView.png */,
-				DA800F9D21C35F8F00CB4A88 /* emptyview2.png */,
 				8AA71EB521B1298D000B28BE /* CollectCollectionViewCell.swift */,
 				FA2B182721BEA0E700EF5214 /* ChartViewController.swift */,
 				FA2B182521BEA08E00EF5214 /* ModifyPostViewController.swift */,
@@ -398,11 +392,9 @@
 				FAB509B921C1783E00662F59 /* emptyview.png in Resources */,
 				FA39616321C20EFF0024D2CC /* Main.storyboard in Resources */,
 				FA39616B21C2128A0024D2CC /* earth-2.png in Resources */,
-				9D87CEED21B0D4FB00CD08B4 /* Assets.xcassets in Resources */,
 				FA39615B21C1ED660024D2CC /* collectEmptyView3.png in Resources */,
-				DA800FA021C35F8F00CB4A88 /* collectEmptyView.png in Resources */,
-				DA800F9F21C35F8F00CB4A88 /* emptyview2.png in Resources */,
 				FA2B183021BFB0D100EF5214 /* pinView2.png in Resources */,
+				DA237C8A21C270AA00BA0CC5 /* Assets.xcassets in Resources */,
 				FA39615D21C1F72B0024D2CC /* emptyView4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,11 +411,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MaPle/Pods-MaPle-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/FSInteractiveMap/FSInteractiveMap.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSInteractiveMap.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -460,10 +454,12 @@
 				8AA71ED521B12A1D000B28BE /* GradientView.swift in Sources */,
 				8AA163B6217F5DC200D80197 /* ExploreViewController.swift in Sources */,
 				8AA71EC421B1298D000B28BE /* ImageManager.swift in Sources */,
+				ADF0815C21C1FF6B0013012F /* UIImage+Resize.swift in Sources */,
 				8AB6499421AECA250012439C /* ResultMapCollectionReusableView.swift in Sources */,
+				ADF0816121C203A80013012F /* FriendData.swift in Sources */,
 				8AB6499221AEC9660012439C /* SearchResultCollectionViewController.swift in Sources */,
-				DA800F9721C35F8400CB4A88 /* ChatViewController.swift in Sources */,
 				FA2B182821BEA0E700EF5214 /* ChartViewController.swift in Sources */,
+				ADF0815F21C202FA0013012F /* ChatViewController.swift in Sources */,
 				8A01110C21AD8E5000789296 /* SearchTableViewController.swift in Sources */,
 				8AA71ED621B12A1D000B28BE /* TinderCard.swift in Sources */,
 				8AA71ED421B12A1D000B28BE /* EmojiRateView.swift in Sources */,
@@ -473,7 +469,6 @@
 				8AA71EC021B1298D000B28BE /* CollectCollectionViewCell.swift in Sources */,
 				8AB49D7721A3D1F9009F6472 /* OthersPage2CollectionViewController.swift in Sources */,
 				9D87CEE221B0D4B000CD08B4 /* UserAccount.swift in Sources */,
-				DA800F9B21C35F8400CB4A88 /* ChatView.swift in Sources */,
 				8AA71EC621B1298D000B28BE /* UserprofileViewController.swift in Sources */,
 				8AA71EC121B1298D000B28BE /* MyPageViewController.swift in Sources */,
 				8AA9DF86219D6BC1007FCA62 /* LocationMapViewController.swift in Sources */,
@@ -482,7 +477,6 @@
 				8AA71ED121B12A1D000B28BE /* FriendlistTableViewController.swift in Sources */,
 				8AAC630321BE3724003D6EB6 /* TitleCollectionReusableView.swift in Sources */,
 				8AADEC62219D2C6800A7FD34 /* OthersPageViewController.swift in Sources */,
-				8AA71ED221B12A1D000B28BE /* FriendData.swift in Sources */,
 				8A01110E21AD9ABA00789296 /* SearchTableViewCell.swift in Sources */,
 				9D87CEE621B0D4DA00CD08B4 /* LoginViewController.swift in Sources */,
 				8A0DE9DA2199E5EE0090ABDE /* PictureDetailViewController.swift in Sources */,
@@ -498,16 +492,16 @@
 				8AA71EB021B12778000B28BE /* MapPageViewController.swift in Sources */,
 				8AA71ED321B12A1D000B28BE /* FriendlistTableViewCell.swift in Sources */,
 				9D87CEE021B0D4B000CD08B4 /* userCollectionViewCell.swift in Sources */,
+				ADF0815D21C1FF6B0013012F /* ChatView.swift in Sources */,
 				9D87CEE721B0D4DA00CD08B4 /* RegisterViewController.swift in Sources */,
 				8AA71EBD21B1298D000B28BE /* PrintHelper.swift in Sources */,
 				FA2B182421BEA02700EF5214 /* WorldTableViewController.swift in Sources */,
 				8A3161E1219523EC00827F28 /* ExploreCommuicator.swift in Sources */,
-				DA800F9621C35F8400CB4A88 /* CardView.swift in Sources */,
-				DA800F9921C35F8400CB4A88 /* UIImage+Resize.swift in Sources */,
 				8AA71ED821B12A1D000B28BE /* FriendPageViewController.swift in Sources */,
 				FA2B182621BEA08E00EF5214 /* ModifyPostViewController.swift in Sources */,
 				8AA71ED921B12A1D000B28BE /* InvitationViewController.swift in Sources */,
 				8A3161E7219526F600827F28 /* ExploreData.swift in Sources */,
+				ADF0815B21C1FF6B0013012F /* CardView.swift in Sources */,
 				8AA71EC521B1298D000B28BE /* NewPostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,7 +644,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
+				DEVELOPMENT_TEAM = 4378J62ZQ4;
+=======
 				DEVELOPMENT_TEAM = YJT86MXP57;
+>>>>>>> newMaster
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -674,7 +672,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
+				DEVELOPMENT_TEAM = 4378J62ZQ4;
+=======
 				DEVELOPMENT_TEAM = YJT86MXP57;
+>>>>>>> newMaster
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
