@@ -44,6 +44,19 @@ class ChartViewController: UIViewController, UIScrollViewDelegate{
     }
     
     
+    func setData (data : [String : Int]){
+        
+        let insets = UIEdgeInsets(top: 32, left: 20, bottom: 0, right: 0)
+        self.map.frame = self.topView.bounds.inset(by: insets)
+        var colorAxis: [Any] = []
+        for _ in 0...data.keys.count {
+            colorAxis.append(UIColor.green)
+        }
+        self.map.loadMap("world-low", withData: data, colorAxis: colorAxis)
+        
+    }
+    
+    
     func colorGeoMap() {
         
         communicator.getCountryCode(memberId: memberId) { (result, error) in
@@ -56,23 +69,33 @@ class ChartViewController: UIViewController, UIScrollViewDelegate{
                 print("getCountryCode result is nil")
                 return
             }
-            let count = result as! Array<String>
-            print(count)
+            let countryCodes = result as! Array<String>
+            print(countryCodes)
             var value = 0
-            for countryCode in count {
-                self.countryCodeDict.updateValue(value, forKey: countryCode)
-                value += 1
+            
+            if countryCodes.count == 1 {
+                let code = countryCodes.first as! String
+                let data = [code : 12, "AA" : 20 ]
+               self.setData(data: data)
+            } else {
+                for countryCode in countryCodes {
+                    self.countryCodeDict.updateValue(value, forKey: countryCode)
+                    value += 1
+                }
+                
+                self.setData(data: self.countryCodeDict)
             }
+           
             
-            
-            let insets = UIEdgeInsets(top: 32, left: 20, bottom: 0, right: 0)
-            self.map.frame = self.topView.bounds.inset(by: insets)
-            var colorAxis: [Any] = []
-            for _ in 0...count.count {
-                colorAxis.append(UIColor.red)
-            }
-            self.map.loadMap("world-low", withData: self.countryCodeDict, colorAxis: colorAxis)
-            
+//
+//            let insets = UIEdgeInsets(top: 32, left: 20, bottom: 0, right: 0)
+//            self.map.frame = self.topView.bounds.inset(by: insets)
+//            var colorAxis: [Any] = []
+//            for _ in 0...countryCodes.count {
+//                colorAxis.append(UIColor.green)
+//            }
+//            self.map.loadMap("world-low", withData: self.countryCodeDict, colorAxis: colorAxis)
+//
             
             self.map.clickHandler = {(identifier: String? , _ layer: CAShapeLayer?) -> Void in
                 if (self.oldClickedLayer != nil) {
@@ -95,6 +118,8 @@ class ChartViewController: UIViewController, UIScrollViewDelegate{
         }
         topView.addSubview(map)
     }
+    
+    
     
     
     
