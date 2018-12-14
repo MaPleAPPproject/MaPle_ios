@@ -10,12 +10,13 @@ import CoreLocation
 
 class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate,UICollectionViewDataSource {
     
-    @IBOutlet weak var drawLocationpin: UIBarButtonItem!
+    @IBOutlet weak var drawSpotsBtn: UIBarButtonItem!
     @IBOutlet weak var cellLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var myMapView: MKMapView!
     @IBOutlet weak var mypostCollectionView: UICollectionView!
     
     var memberId = ""
+    var postId = 0
     var locationManager = CLLocationManager()
     let userDefaults = UserDefaults.standard
     let communicator = MapCommunicator.shared
@@ -24,7 +25,6 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     var images = [UIImage]()
     let safearea = UIScreen.main.bounds.height
     var count = 0
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +38,40 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         memberId = self.userDefaults.value(forKey: "MemberID") as! String
         locationManager.delegate = self
         myMapView.delegate = self
+        myMapView.showsScale = true
         
         guard CLLocationManager.locationServicesEnabled() else {
             return
         }
+        
+        let theLocation = myMapView.userLocation
+        theLocation.title = "現在位置"
+        
         self.myMapView.showsUserLocation = true
         self.myMapView.showsCompass = false
-        locationManager.activityType = .automotiveNavigation
-        locationManager.requestWhenInUseAuthorization()
-        movetomylocation()
+        
+        if CLLocationManager.authorizationStatus( ) == .notDetermined {
+            // 取得定位服務授權
+            self.locationManager.requestWhenInUseAuthorization()
+            
+        }else if CLLocationManager.authorizationStatus() == .denied {
+            // 提示可至[設定]中開啟權限
+            let alertController = UIAlertController(
+                title: "定位權限已關閉",
+                message:
+                "如要變更權限，請至 設定 > 隱私權 > 定位服務 開啟",
+                preferredStyle: .alert)
+            let okAction = UIAlertAction(
+                title: "確認", style: .default, handler:nil)
+            alertController.addAction(okAction)
+            self.present(
+                alertController,
+                animated: true, completion: nil)
+        }else if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            // 開始定位自身位置
+            locationManager.activityType = .fitness
+            movetomylocation()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,10 +100,13 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     
     @IBAction func drawSpotsBtnPressed(_ sender: Any) {
-        if count % 2 == 0{
+        if count % 2 == 0 {
+            drawSpotsBtn.image = UIImage(named: "eraser64")
+            myMapView.removeAnnotations(myMapView.annotations)
             drawSpots()
             count += 1
         }else {
+            drawSpotsBtn.image = UIImage(named: "location-pin64")
             myMapView.removeAnnotations(myMapView.annotations)
             count += 1
         }
@@ -157,6 +185,7 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         
         annView!.pinTintColor = UIColor.red
         let id = Int(annotation.subtitle!!)
+
         
         self.communicator.findPhoto(PostId: id!) { (data, error) in
             if let error = error{
@@ -165,23 +194,33 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             }else{
                 let image = UIImage(data:data!)
                 let button = UIButton(type: .detailDisclosure )
+                button.tag = id!
                 button.addTarget(self, action: #selector(self.accessoryBtnPress(sender:)), for: .touchUpInside)
                 let leftIconView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 54, height: 54))
                 leftIconView.image = image
                 annView!.leftCalloutAccessoryView = leftIconView
-                                annView!.rightCalloutAccessoryView = button
+                annView!.rightCalloutAccessoryView = button
             }
         }
+        annView!.animatesDrop = true
         annView!.canShowCallout = true
         return annView
     }
     
     @objc
-    func accessoryBtnPress(sender:Any){
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginView")
-        self.show(vc!, sender: self)
+    func accessoryBtnPress(sender:UIButton){
+        postId = sender.tag
+        performSegue(withIdentifier: "ToSinglePostView", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ToSinglePostView" {
+            let controller = segue.destination as! SinglePostViewController
+                controller.postId = postId
+        }
+    }
+
     func alert(message:String) {
         let alert = UIAlertController(title: "警告!", message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "我知道了", style: .default, handler: {
@@ -192,6 +231,7 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     
     func drawSpots() {
+        myMapView.removeAnnotations(myMapView.annotations)
         for spot in self.spots {
             let point = MKPointAnnotation()
             let postid = spot["PostId"] as! Int
@@ -210,14 +250,37 @@ class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         let myLocation = locationManager.location?.coordinate
         if (myLocation?.latitude != nil) && (myLocation?.longitude != nil) {
             locationManager.startUpdatingHeading()
-            locationManager.startUpdatingLocation()
             let span = MKCoordinateSpan(latitudeDelta: 100, longitudeDelta: 100)
             let region = MKCoordinateRegion(center: myLocation!, span: span)
             //將region帶入mainMap
             myMapView.setRegion(region, animated: true)
             self.myMapView.setCenter(myLocation!, animated: true)
-        }else{
-            self.alert(message: "請允許APP使用定位資料")
+        }
+    }
+    
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .restricted, .denied:
+            let alert = UIAlertController(title: "無法顯示現在位置", message: "如要變更權限，請至 設定 > 隱私權 > 定位服務 開啟", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "我知道了", style: .default, handler: {
+                action in
+            })
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+            break
+            
+        case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+            movetomylocation()
+            break
+            
+        case .notDetermined, .authorizedAlways:
+            movetomylocation()
+            break
         }
     }
 }
