@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hnb-Nt-0Uu">
+<<<<<<< HEAD
+    <device id="retina6_1" orientation="portrait">
+=======
     <device id="retina5_5" orientation="portrait">
+>>>>>>> newMaster
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -64,39 +68,66 @@
             <objects>
                 <viewController id="iWV-rC-5wd" customClass="PictureDetailViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bkf-ts-ovt">
+<<<<<<< HEAD
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BUl-lM-XZx">
+                                <rect key="frame" x="38" y="98" width="90" height="90"/>
+=======
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BUl-lM-XZx">
                                 <rect key="frame" x="38" y="103.66666666666669" width="90" height="90"/>
+>>>>>>> newMaster
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="7zc-aa-V4I"/>
                                     <constraint firstAttribute="width" constant="90" id="BWk-z9-1dk"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Explore_locationBt" translatesAutoresizingMaskIntoConstraints="NO" id="eUd-gz-yzz">
+<<<<<<< HEAD
+                                <rect key="frame" x="38" y="537" width="32" height="32"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01f-xH-TOB">
+                                <rect key="frame" x="38" y="581" width="338" height="20.5"/>
+=======
                                 <rect key="frame" x="38" y="542.66666666666663" width="128" height="32"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01f-xH-TOB">
                                 <rect key="frame" x="38" y="586.66666666666663" width="338" height="20.333333333333371"/>
+>>>>>>> newMaster
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1O-G9-HAH">
+<<<<<<< HEAD
+                                <rect key="frame" x="38" y="609.5" width="338" height="18"/>
+=======
                                 <rect key="frame" x="38" y="615" width="338" height="18"/>
+>>>>>>> newMaster
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgh-Sc-4al">
+<<<<<<< HEAD
+                                <rect key="frame" x="286" y="543" width="42" height="20"/>
+=======
                                 <rect key="frame" x="286" y="548.66666666666663" width="42" height="20"/>
+>>>>>>> newMaster
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="WA9-ar-hfS">
+<<<<<<< HEAD
+                                <rect key="frame" x="78" y="536" width="56" height="34"/>
+=======
                                 <rect key="frame" x="174" y="541.66666666666663" width="56" height="34"/>
+>>>>>>> newMaster
                                 <state key="normal" title="district">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -105,7 +136,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMR-v8-1nU">
+<<<<<<< HEAD
+                                <rect key="frame" x="336" y="533" width="40" height="40"/>
+=======
                                 <rect key="frame" x="336" y="538.66666666666663" width="40" height="40"/>
+>>>>>>> newMaster
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="WID-bR-8nJ"/>
                                     <constraint firstAttribute="width" constant="40" id="sdJ-GZ-cjJ"/>
@@ -117,7 +152,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="left" restorationIdentifier="showProfile" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICB-FN-qQK">
+<<<<<<< HEAD
+                                <rect key="frame" x="146" y="126" width="83" height="34"/>
+=======
                                 <rect key="frame" x="146" y="131.66666666666666" width="83" height="34"/>
+>>>>>>> newMaster
                                 <state key="normal" title="userName">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -126,7 +165,11 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XgH-1W-MBg">
+<<<<<<< HEAD
+                                <rect key="frame" x="40.5" y="196" width="333" height="333"/>
+=======
                                 <rect key="frame" x="40.666666666666657" y="201.66666666666663" width="333" height="333"/>
+>>>>>>> newMaster
                                 <constraints>
                                     <constraint firstAttribute="width" constant="333" id="RAo-0O-nv6"/>
                                     <constraint firstAttribute="height" constant="333" id="m96-Zg-V9t"/>
@@ -222,11 +265,19 @@
             <objects>
                 <viewController id="PzD-9Y-k8j" customClass="LocationMapViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="boU-70-n0M">
+<<<<<<< HEAD
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Scx-rl-Cd8">
+                                <rect key="frame" x="0.0" y="44" width="414" height="647"/>
+=======
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Scx-rl-Cd8">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+>>>>>>> newMaster
                             </mapView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lYD-DB-cxs">
                                 <rect key="frame" x="57" y="41" width="300" height="29"/>
@@ -1398,6 +1449,8 @@
             </objects>
             <point key="canvasLocation" x="7346" y="800"/>
         </scene>
+<<<<<<< HEAD
+=======
         <!--Chat Room View Controller-->
         <scene sceneID="owW-JM-q0a">
             <objects>
@@ -1413,6 +1466,7 @@
             </objects>
             <point key="canvasLocation" x="8218" y="1334"/>
         </scene>
+>>>>>>> newMaster
         <!--match-->
         <scene sceneID="kto-7M-rCO">
             <objects>
@@ -3350,9 +3404,15 @@
         <image name="yesBtn" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="2Hh-4h-JnH"/>
+        <segue reference="6zI-Mq-GCT"/>
+        <segue reference="YJC-P5-apX"/>
+=======
+        <segue reference="Br3-x8-NPc"/>
         <segue reference="uVC-LD-brJ"/>
         <segue reference="pfb-uM-Fmf"/>
-        <segue reference="YJC-P5-apX"/>
+        <segue reference="1pv-Sg-3Zr"/>
+>>>>>>> newMaster
     </inferredMetricsTieBreakers>
 </document>

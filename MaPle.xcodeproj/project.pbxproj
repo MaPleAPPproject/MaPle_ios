@@ -644,7 +644,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = 4378J62ZQ4;
+=======
+				DEVELOPMENT_TEAM = YJT86MXP57;
+>>>>>>> newMaster
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -668,7 +672,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = 4378J62ZQ4;
+=======
+				DEVELOPMENT_TEAM = YJT86MXP57;
+>>>>>>> newMaster
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
