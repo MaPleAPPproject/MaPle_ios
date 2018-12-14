@@ -8,7 +8,9 @@
 import StoreKit
 import UIKit
 
-class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+class FriendPageViewController: UIViewController
+, SKProductsRequestDelegate, SKPaymentTransactionObserver
+{
     
     @IBOutlet weak var friendSegmentControl: UISegmentedControl!
     @IBOutlet weak var friendView: UIView!
@@ -50,7 +52,6 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
         matchView.isHidden = true
         
         prepareForPayment()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,12 +74,12 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
         self.friendSegmentControl.backgroundColor = .clear
         self.friendSegmentControl.tintColor = .clear
         self.friendSegmentControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 18),
+            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 18)!,
             NSAttributedString.Key.foregroundColor: UIColor.lightGray
             ], for: .normal)
         
         self.friendSegmentControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 18),
+            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 18)!,
             NSAttributedString.Key.foregroundColor: UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0)
             ], for: .selected)
         
@@ -135,10 +136,10 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
         print(TAG, memberId)
         self.serverCommunicator = ServerCommunicator(memberId)
         
-        self.lodingView = LodingView(frame: UIScreen.main.bounds)
-        self.view.addSubview(self.lodingView!)
-        
-        productIDs.append("") // Todo add the productId
+//        self.lodingView = LodingView(frame: UIScreen.main.bounds)
+//        self.view.addSubview(self.lodingView!)
+//        
+        productIDs.append("vip") // Todo add the productId
         self.requestProductInfo()
         
         serverCommunicator!.loadUserVipStatus { (results, error) in
@@ -152,7 +153,7 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
         }
         
     }
-    
+
     
     
     
@@ -180,20 +181,20 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
     
     
     func showMessage(_ message: String) {
-        
+    
         let alertController = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
         let confirm = UIAlertAction(title: "是", style: .default, handler: nil)
-        
+    
         alertController.addAction(confirm)
-        
+    
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    
-    
-    
+
+
+
+
     // MARK: - Delegate
-    
+
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         
         print("invalidProductIdentifiers： \(response.invalidProductIdentifiers.description)")
@@ -211,8 +212,8 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
             print(response.invalidProductIdentifiers.description)
         }
     }
-    
-    
+
+
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
         for transaction in transactions {
@@ -257,7 +258,7 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
             }
         }
     }
-    
+
     func showActionSheet(_ product: Product) {
         
         if self.isProgress {
@@ -290,16 +291,16 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
         
         self.present(actionSheetController, animated: true, completion: nil)
     }
-    
+
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
         print("restoreCompletedTransactionsFailed.")
         print(error.localizedDescription)
     }
-    
+
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         print("paymentQueueRestoreCompletedTransactionsFinished.")
     }
-    
+
     func afterPaymentFinish(){
         guard let memberId = UserDefaults.standard.object(forKey: "IntMemberID") as? Int else {
             return
@@ -323,4 +324,4 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
     enum Product {
         case nonConsumable
     }
-}
+} // view controller

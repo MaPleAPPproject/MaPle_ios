@@ -19,6 +19,8 @@ import UIKit
 class MyPageViewController:
 UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    
+    
     @IBOutlet weak var selfIntroLabel: UILabel!
     @IBOutlet weak var collectNumLabel: UILabel!
     @IBOutlet weak var postNumLabel: UILabel!
@@ -256,6 +258,10 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
             self.postNumLabel?.text = String(resultObject.postCount)
             self.collectNumLabel?.text = String(resultObject.collectionCount)
             self.selfIntroLabel?.text = resultObject.selfIntroduction
+            
+            let id = String(memberId)
+            Communicator.friendsListIndex[id] = resultObject.userName
+            
             
         }
         

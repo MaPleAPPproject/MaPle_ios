@@ -261,8 +261,8 @@ class EmojiRateView: UIView {
      - returns: face UIBezierPath
      */
     fileprivate func facePathWithRect(_ rect: CGRect) -> UIBezierPath {
-        let margin = rateFaceMargin + 2
-        let facePath = UIBezierPath(ovalIn: rect.inset(by: UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)))
+        let margin = rateFaceMargin + 4
+        let facePath = UIBezierPath(ovalIn: rect.inset(by: UIEdgeInsets(top: margin + 30, left: margin, bottom: margin - 35, right: margin)))
         return facePath
     }
     
