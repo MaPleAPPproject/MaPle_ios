@@ -172,9 +172,38 @@ class UserprofileViewController: UIViewController {
     }
     
     @IBAction func saveUserProfile(_ sender: UIBarButtonItem) {
-        updateUserProfile()
-        print("I am going to mypage")
-        performSegue(withIdentifier: "fromUserProfileSegue", sender: sender)
+        let queue = DispatchQueue(label: "dispatchQueue")
+        queue.sync {
+            self.updateUserProfile()
+
+        }
+        communicator.loadUserProfile(memberId: memberId) { (result, error) in
+            if let error = error {
+                print("loadUserProfile error:\(error)")
+                return
+            }
+            
+            guard let result = result else {
+                print("result is nil")
+                return
+            }
+            
+            guard let jsonObject = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
+                else {
+                    print("loadUserprofile Fail to generate jsonData")
+                    return
+            }
+            let decoder = JSONDecoder()
+            guard let resultObject = try? decoder.decode(Userprofile.self
+                , from: jsonObject) else {
+                    print("loadUserprofile Fail to decode jsonData.")
+                    return
+            }
+            print("I am going to mypage")
+            self.performSegue(withIdentifier: "fromUserProfileSegue", sender: resultObject)
+        }
+//        print("I am going to mypage")
+//        performSegue(withIdentifier: "fromUserProfileSegue", sender: sender)
         
     }
     
@@ -367,6 +396,7 @@ class UserprofileViewController: UIViewController {
         //
         //        }
         let userProfile = Userprofile(memberId: memberId, email: email , password: password, userName: userName, selfIntroduction: selfIntro, vipStatus: vipStatusNum, postCount: 0, collectionCount: 0)
+    
         communicator.updateUserprofile(userProfile: userProfile, imageBase64: imageBase64) { (result, error) in
             if let error = error {
                 print("updateUserprofile error:\(error)")
