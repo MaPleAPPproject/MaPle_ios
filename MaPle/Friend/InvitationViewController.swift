@@ -15,15 +15,15 @@ class InvitationViewController: UIViewController {
     @IBOutlet var containerView: GradientView!
     @IBOutlet weak var emojiView: EmojiRateView!
     @IBOutlet weak var viewTinderBackGround: UIView!
-    @IBOutlet weak var viewActions: UIView!
+//    @IBOutlet weak var viewActions: UIView!
     var selectedViewController: UIViewController!
     
     var currentIndex = 0
     var currentLoadedCardsArray = [TinderCard]()
     var allCardsArray = [TinderCard]()
     var valueArray = ["1"]
-    //    let memberid = UserDefaults.standard.integer(forKey: "MemberIDint")
-    let memberid = UserDefaults.standard.string(forKey: "MemberID")
+    let memberID = UserDefaults.standard.integer(forKey: "MemberIDint")
+//    let memberid = UserDefaults.standard.string(forKey: "MemberID")
     
     let communicator = FriendCommunicator.shared
     let explorecommunicator = ExploreCommunicator.shared
@@ -35,7 +35,7 @@ class InvitationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewActions.alpha = 0
+        //viewActions.alpha = 0
         getallInvitation()
         selectedViewController = self.parent
         let notificationName = Notification.Name("GetMemberIDtoButton")
@@ -77,11 +77,11 @@ class InvitationViewController: UIViewController {
     }
     
     func getallInvitation() {
-        guard let memberId =  memberid else {
-            assertionFailure("memberid is nil")
-            return
-        }
-        communicator.getAllInvitation(memberid: Int(memberId)!) { (result,error) in
+//        guard let memberId =  memberid else {
+//            assertionFailure("memberid is nil")
+//            return
+//        }
+        communicator.getAllInvitation(memberid: memberID) { (result,error) in
             if let error = error {
                 print("getallInvitation error:\(error)")
                 return
@@ -121,6 +121,7 @@ class InvitationViewController: UIViewController {
                 allCardsArray.append(newCard)
                 if i < capCount {
                     currentLoadedCardsArray.append(newCard)
+                    newCard.tag = i //array內加標籤
                 }
             }
             
@@ -141,7 +142,7 @@ class InvitationViewController: UIViewController {
         let dummyCard = currentLoadedCardsArray.first;
         dummyCard?.shakeAnimationCard()
         UIView.animate(withDuration: 1.0, delay: 2.0, options: .curveLinear, animations: {
-            self.viewActions.alpha = 1.0
+            //self.viewActions.alpha = 1.0
         }, completion: nil)
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.animateEmojiView), userInfo: emojiView, repeats: true)
     }
@@ -149,6 +150,7 @@ class InvitationViewController: UIViewController {
     func createTinderCard(at index: Int , selfintro :String, names:String,friend: Friend_profile ) -> TinderCard {
         
         let card = TinderCard(frame: CGRect(x: 0, y: 0, width: self.viewTinderBackGround.frame.size.width , height: viewTinderBackGround.frame.size.height - 50) ,value : selfintro, names: names,friend: friend )
+        card.invitationVC = self 
         card.delegate = self
         return card
     }

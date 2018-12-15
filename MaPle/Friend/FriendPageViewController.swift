@@ -112,7 +112,7 @@ class FriendPageViewController: UIViewController
     
     // MARK - Payment
     
-    var productIDs = [String]()
+    var productIDs = Set<String>()
     var productsArray = [SKProduct]()
     
     var isProgress: Bool = false
@@ -139,7 +139,7 @@ class FriendPageViewController: UIViewController
 //        self.lodingView = LodingView(frame: UIScreen.main.bounds)
 //        self.view.addSubview(self.lodingView!)
 //        
-        productIDs.append("vip") // Todo add the productId
+        productIDs.insert("Vip") // Todo add the productId
         self.requestProductInfo()
         
         serverCommunicator!.loadUserVipStatus { (results, error) in
@@ -168,9 +168,8 @@ class FriendPageViewController: UIViewController
     func requestProductInfo() {
         
         if SKPaymentQueue.canMakePayments() {
-            
-            let productIdentifiers: Set<String> = NSSet(array: self.productIDs) as! Set<String>
-            let productRequest: SKProductsRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
+            print("ProductId : \(productIDs)")
+            let productRequest = SKProductsRequest(productIdentifiers: productIDs)
             
             productRequest.delegate = self
             productRequest.start()
@@ -197,12 +196,12 @@ class FriendPageViewController: UIViewController
 
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         
-        print("invalidProductIdentifiers： \(response.invalidProductIdentifiers.description)")
         
         if response.products.count != 0 {
             
             for product in response.products {
                 self.productsArray.append(product)
+                print(product)
             }
             
         } else {

@@ -18,7 +18,7 @@ protocol TinderCardDelegate: NSObjectProtocol {
 
 class TinderCard: UIView {
     
-    var invitationVC: InvitationViewController!
+    weak var invitationVC: InvitationViewController!
     
     var xCenter: CGFloat = 0.0
     var yCenter: CGFloat = 0.0
@@ -36,6 +36,7 @@ class TinderCard: UIView {
     weak var delegate: TinderCardDelegate?
     let notificationName = Notification.Name("GetMemberIDtoButton")
     
+    let memberID = UserDefaults.standard.integer(forKey: "MemberIDint")
     
     public init(frame: CGRect, value: String, names:String, friend: Friend_profile) {
         self.userid = friend.FriendID
@@ -157,11 +158,14 @@ class TinderCard: UIView {
     
     func afterSwipeAction() {
         
+        let friend = invitationVC.friends[tag]
+        print("得到的好友邀請FriendID", friend.FriendID)
+        
         if xCenter > THERESOLD_MARGIN {
-            rightAction()
+            rightAction(friendId: friend.FriendID)
         }
         else if xCenter < -THERESOLD_MARGIN {
-            leftAction()
+            leftAction(friendId: friend.FriendID)
         }
         else {
             //reseting image
@@ -175,7 +179,8 @@ class TinderCard: UIView {
         }
     }
     
-    func rightAction() {
+    //接受
+    func rightAction(friendId: Int) {
         
         let finishPoint = CGPoint(x: frame.size.width*2, y: 2 * yCenter + originalPoint.y)
         UIView.animate(withDuration: 0.5, animations: {
@@ -185,12 +190,24 @@ class TinderCard: UIView {
         })
         isLiked = true
         delegate?.cardGoesRight(card: self)
-        print("WATCHOUT RIGHT")
+        
+        communicator.acceptInvitation(memberid: memberID, friendid: friendId) { (result, error) in
+            if let error = error {
+                print("acceptInvitation error :\(error)")
+                return
+            }
+            guard let result = result else {
+                print("result is nil")
+                return
+            }
+            print("接受朋友邀請")
+        }
+        
     }
     
     
-    
-    func leftAction() {
+    //拒絕
+    func leftAction(friendId: Int) {
         
         let finishPoint = CGPoint(x: -frame.size.width*2, y: 2 * yCenter + originalPoint.y)
         UIView.animate(withDuration: 0.5, animations: {
@@ -200,7 +217,19 @@ class TinderCard: UIView {
         })
         isLiked = false
         delegate?.cardGoesLeft(card: self)
-        print("WATCHOUT LEFT")
+        
+        communicator.reject(memberid: memberID, friendid: friendId) { (result, error) in
+            if let error = error {
+                print("acceptMatch error:\(error)")
+                return
+            }
+            guard let result = result else {
+                print("result is nil")
+                return
+            }
+            print("拒絕朋友邀請\(result)")
+        }
+        
     }
     
     @objc func clickProfilButton() {
@@ -276,8 +305,8 @@ class TinderCard: UIView {
     
     func shakeAnimationCard(){
         
-        imageViewStatus.image = #imageLiteral(resourceName: "emptyview.png")
-        overLayImage.image = #imageLiteral(resourceName: "overlay_skip")
+        imageViewStatus.image = #imageLiteral(resourceName: "earth-2.png")
+        overLayImage.image = #imageLiteral(resourceName: "earth-2.png")
         UIView.animate(withDuration: 0.5, animations: {() -> Void in
             self.center = CGPoint(x: self.center.x - (self.frame.size.width / 2), y: self.center.y)
             self.transform = CGAffineTransform(rotationAngle: -0.2)

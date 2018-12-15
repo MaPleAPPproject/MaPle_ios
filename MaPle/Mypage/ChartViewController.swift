@@ -56,20 +56,28 @@ class ChartViewController: UIViewController, UIScrollViewDelegate{
                 print("getCountryCode result is nil")
                 return
             }
-            let count = result as! Array<String>
-            print(count)
+            let countryCodes = result as! Array<String>
+            print(countryCodes)
             var value = 0
-            for countryCode in count {
-                self.countryCodeDict.updateValue(value, forKey: countryCode)
-                value += 1
+            
+            if countryCodes.count == 1 {
+                let code = countryCodes.first as! String
+                self.countryCodeDict.updateValue(12, forKey: code)
+                self.countryCodeDict.updateValue(15, forKey: code)
+            } else {
+                for countryCode in countryCodes {
+                    self.countryCodeDict.updateValue(value, forKey: countryCode)
+                    value += 1
+                }
             }
+           
             
             
             let insets = UIEdgeInsets(top: 32, left: 20, bottom: 0, right: 0)
             self.map.frame = self.topView.bounds.inset(by: insets)
             var colorAxis: [Any] = []
-            for _ in 0...count.count {
-                colorAxis.append(UIColor.red)
+            for _ in 0...countryCodes.count {
+                colorAxis.append(UIColor.green)
             }
             self.map.loadMap("world-low", withData: self.countryCodeDict, colorAxis: colorAxis)
             
