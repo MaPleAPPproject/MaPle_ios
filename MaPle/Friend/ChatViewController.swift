@@ -62,10 +62,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
 //        getProfile(friendId: Id)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        if socket.isConnected {}
-        socket.disconnect()
-    }
+    
     
 //    func getProfile(friendId: String) {
 //        communicator.getfriendName(friendid: friendId) { (result, error) in
@@ -127,7 +124,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
                 return
         }
         if type == (kUTTypeImage as String) {
-            guard let originalImage = info[.originalImage] as? UIImage else {
+            guard let originalImage = info[.editedImage] as? UIImage else {
                 assertionFailure("originalImage is nil")
                 return
             }
@@ -221,7 +218,9 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        if socket.isConnected{
         socket.disconnect()
+    }
     }
     
     
@@ -244,7 +243,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
         print("websocket is disconnected: \(error?.localizedDescription)")
-        socket.disconnect()
+//        socket.disconnect()
         socket.connect()
     }
     

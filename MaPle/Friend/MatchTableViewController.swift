@@ -12,14 +12,12 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var matchlistTableView: UITableView!
     let memberID = UserDefaults.standard.integer(forKey: "MemberIDint")
-    let memberid = UserDefaults.standard.string(forKey: "MemberID")
+//    let memberid = UserDefaults.standard.string(forKey: "MemberID")
 
 
     let communicator = FriendCommunicator.shared
     var matchlist : [Friend_profile] = []
     let refreshControl = UIRefreshControl()
-    
-
 
     
     override func viewDidLoad() {
@@ -105,14 +103,22 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func likeBt(_ sender: UIButton) {
+        
+        let point: CGPoint = sender.convert(.zero, to: matchlistTableView)
+        let indexPath = matchlistTableView.indexPathForRow(at: point)
+        
         print("like friendID:\(sender.tag)")
-        self.like(friendid: sender.tag)
+        self.like(friendid: sender.tag, index: indexPath!.row)
     }
     
     
     @IBAction func dislikeBt(_ sender: UIButton) {
+        
+        let point: CGPoint = sender.convert(.zero, to: matchlistTableView)
+        let indexPath = matchlistTableView.indexPathForRow(at: point)
+        
         print("dislike friendID:\(sender.tag)")
-//        self.dislike(friendid: sender.tag)
+        self.dislike(friendid: sender.tag, index: indexPath!.row)
     }
     
     //MARK:-Retrieve Server
@@ -147,65 +153,42 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-    @objc func like(friendid: Int) {
+    @objc func like(friendid: Int, index: Int) {
     
-        guard let memberId =  memberid else {
-            assertionFailure("memberid is nil")
-            return
-        }
-        communicator.acceptMatch(memberid: Int(memberId)!, friendid: friendid) { (result, error) in
+        communicator.acceptMatch(memberid: memberID, friendid: friendid) { (result, error) in
             if let error = error {
-                print("acceptMatch error:\(error)")
+                assertionFailure("acceptMatch error:\(error)")
                 return
             }
             guard let result = result else {
-                print("result is nil")
+                assertionFailure("result is nil")
                 return
             }
-//            guard let jsonObject = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
-//                else {
-//                    print("Fail to generate jsonData")
-//                    return
-//            }
-//            let decoder = JSONDecoder()
-//            guard let resultObject = try? decoder.decode([Friend_profile].self, from: jsonObject) else {
-//                print("Fail to decode jsonData.")
-//                return
-//            }
-            
             print("成功接受朋友配對\(result)")
+            // MARK: 刪除以接受
+            self.matchlist.remove(at: index)
+            self.matchlistTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
             
         }
     }
     
     
-    func dislike(friendid: Int) {
+    @objc func dislike(friendid: Int, index: Int) {
         
-        guard let memberId =  memberid else {
-            assertionFailure("memberid is nil")
-            return
-        }
-        communicator.reject(memberid: Int(memberId)!, friendid: friendid) { (result, error) in
+
+        communicator.reject(memberid: memberID, friendid: friendid) { (result, error) in
             if let error = error {
-                print("acceptMatch error:\(error)")
+                assertionFailure("acceptMatch error:\(error)")
                 return
             }
             guard let result = result else {
-                print("result is nil")
+                assertionFailure("result is nil")
                 return
             }
-//            guard let jsonObject = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
-//                else {
-//                    print("Fail to generate jsonData")
-//                    return
-//            }
-//            let decoder = JSONDecoder()
-//            guard let resultObject = try? decoder.decode([Friend_profile].self, from: jsonObject) else {
-//                print("Fail to decode jsonData.")
-//                return
-//            }
-            
-            print("成功接受拒絕朋友配對\(result)")
+            print("成功拒絕朋友配對\(result)")
+            // MARK: 刪除已拒絕
+            self.matchlist.remove(at: index)
+            self.matchlistTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }
     }
     

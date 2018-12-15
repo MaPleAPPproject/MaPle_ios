@@ -40,7 +40,6 @@
 		8AA71ED921B12A1D000B28BE /* InvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71ED021B12A1D000B28BE /* InvitationViewController.swift */; };
 		8AA9DF86219D6BC1007FCA62 /* LocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9DF85219D6BC1007FCA62 /* LocationMapViewController.swift */; };
 		8AAC630321BE3724003D6EB6 /* TitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC630221BE3724003D6EB6 /* TitleCollectionReusableView.swift */; };
-		8AAC630821BE3A22003D6EB6 /* MatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC630621BE3A21003D6EB6 /* MatchTableViewController.swift */; };
 		8AAC630921BE3A22003D6EB6 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC630721BE3A22003D6EB6 /* MatchTableViewCell.swift */; };
 		8AADEC62219D2C6800A7FD34 /* OthersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AADEC61219D2C6800A7FD34 /* OthersPageViewController.swift */; };
 		8AB49D7721A3D1F9009F6472 /* OthersPage2CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB49D7621A3D1F9009F6472 /* OthersPage2CollectionViewController.swift */; };
@@ -52,13 +51,14 @@
 		9D87CEE621B0D4DA00CD08B4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEE321B0D4D900CD08B4 /* LoginViewController.swift */; };
 		9D87CEE721B0D4DA00CD08B4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEE521B0D4DA00CD08B4 /* RegisterViewController.swift */; };
 		9D87CEF021B0D55E00CD08B4 /* LodingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */; };
+		AD10473D21C34CD7001C9E58 /* MatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD10473C21C34CD7001C9E58 /* MatchTableViewController.swift */; };
+		AD10473F21C38957001C9E58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD10473E21C38957001C9E58 /* Assets.xcassets */; };
 		ADF0815B21C1FF6B0013012F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815821C1FF6B0013012F /* CardView.swift */; };
 		ADF0815C21C1FF6B0013012F /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815921C1FF6B0013012F /* UIImage+Resize.swift */; };
 		ADF0815D21C1FF6B0013012F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815A21C1FF6B0013012F /* ChatView.swift */; };
 		ADF0815F21C202FA0013012F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815E21C202FA0013012F /* ChatViewController.swift */; };
 		ADF0816121C203A80013012F /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0816021C203A80013012F /* FriendData.swift */; };
 		C82393A4B472C82F2D8A89A7 /* Pods_MaPle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */; };
-		DA237C8A21C270AA00BA0CC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA237C8921C270AA00BA0CC5 /* Assets.xcassets */; };
 		DA7F8C3421B559F1009899F6 /* ServerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */; };
 		DAA93FA921B751AB00EE8273 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA93FA821B751AB00EE8273 /* StoreKit.framework */; };
 		FA2B182421BEA02700EF5214 /* WorldTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B182321BEA02700EF5214 /* WorldTableViewController.swift */; };
@@ -115,7 +115,6 @@
 		8AA71ED021B12A1D000B28BE /* InvitationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationViewController.swift; sourceTree = "<group>"; };
 		8AA9DF85219D6BC1007FCA62 /* LocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapViewController.swift; sourceTree = "<group>"; };
 		8AAC630221BE3724003D6EB6 /* TitleCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleCollectionReusableView.swift; sourceTree = "<group>"; };
-		8AAC630621BE3A21003D6EB6 /* MatchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewController.swift; sourceTree = "<group>"; };
 		8AAC630721BE3A22003D6EB6 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
 		8AADEC61219D2C6800A7FD34 /* OthersPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPageViewController.swift; sourceTree = "<group>"; };
 		8AB49D7621A3D1F9009F6472 /* OthersPage2CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPage2CollectionViewController.swift; sourceTree = "<group>"; };
@@ -128,12 +127,13 @@
 		9D87CEE421B0D4DA00CD08B4 /* MaPle.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = MaPle.entitlements; sourceTree = "<group>"; };
 		9D87CEE521B0D4DA00CD08B4 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LodingView.swift; sourceTree = "<group>"; };
+		AD10473C21C34CD7001C9E58 /* MatchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewController.swift; sourceTree = "<group>"; };
+		AD10473E21C38957001C9E58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADF0815821C1FF6B0013012F /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		ADF0815921C1FF6B0013012F /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		ADF0815A21C1FF6B0013012F /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		ADF0815E21C202FA0013012F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		ADF0816021C203A80013012F /* FriendData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
-		DA237C8921C270AA00BA0CC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCommunicator.swift; sourceTree = "<group>"; };
 		DAA93FA821B751AB00EE8273 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FA2B182321BEA02700EF5214 /* WorldTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTableViewController.swift; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 		8AA163B0217F5DC200D80197 /* MaPle */ = {
 			isa = PBXGroup;
 			children = (
-				DA237C8921C270AA00BA0CC5 /* Assets.xcassets */,
+				AD10473E21C38957001C9E58 /* Assets.xcassets */,
 				9D87CEF221B0E08000CD08B4 /* Login */,
 				9D87CEF321B0E09500CD08B4 /* Map */,
 				9D87CEF421B0E0E300CD08B4 /* Friend */,
@@ -267,18 +267,18 @@
 		9D87CEF421B0E0E300CD08B4 /* Friend */ = {
 			isa = PBXGroup;
 			children = (
-				8AAC630721BE3A22003D6EB6 /* MatchTableViewCell.swift */,
-				8AAC630621BE3A21003D6EB6 /* MatchTableViewController.swift */,
-				8AA71ECF21B12A1D000B28BE /* FriendPageViewController.swift */,
 				8AA71ECE21B12A1D000B28BE /* FriendCommunicator.swift */,
+				8AA71ECF21B12A1D000B28BE /* FriendPageViewController.swift */,
 				ADF0816021C203A80013012F /* FriendData.swift */,
 				8AA71EC821B12A1C000B28BE /* FriendlistTableViewController.swift */,
-				8AA71ECA21B12A1D000B28BE /* FriendlistTableViewCell.swift */,
 				ADF0815E21C202FA0013012F /* ChatViewController.swift */,
+				8AA71ECA21B12A1D000B28BE /* FriendlistTableViewCell.swift */,
+				AD10473C21C34CD7001C9E58 /* MatchTableViewController.swift */,
+				8AAC630721BE3A22003D6EB6 /* MatchTableViewCell.swift */,
 				8AA71ED021B12A1D000B28BE /* InvitationViewController.swift */,
-				8AA71ECC21B12A1D000B28BE /* GradientView.swift */,
-				8AA71ECB21B12A1D000B28BE /* EmojiRateView.swift */,
 				8AA71ECD21B12A1D000B28BE /* TinderCard.swift */,
+				8AA71ECB21B12A1D000B28BE /* EmojiRateView.swift */,
+				8AA71ECC21B12A1D000B28BE /* GradientView.swift */,
 				ADF0815821C1FF6B0013012F /* CardView.swift */,
 				ADF0815A21C1FF6B0013012F /* ChatView.swift */,
 				ADF0815921C1FF6B0013012F /* UIImage+Resize.swift */,
@@ -394,7 +394,7 @@
 				FA39616B21C2128A0024D2CC /* earth-2.png in Resources */,
 				FA39615B21C1ED660024D2CC /* collectEmptyView3.png in Resources */,
 				FA2B183021BFB0D100EF5214 /* pinView2.png in Resources */,
-				DA237C8A21C270AA00BA0CC5 /* Assets.xcassets in Resources */,
+				AD10473F21C38957001C9E58 /* Assets.xcassets in Resources */,
 				FA39615D21C1F72B0024D2CC /* emptyView4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,9 +462,9 @@
 				ADF0815F21C202FA0013012F /* ChatViewController.swift in Sources */,
 				8A01110C21AD8E5000789296 /* SearchTableViewController.swift in Sources */,
 				8AA71ED621B12A1D000B28BE /* TinderCard.swift in Sources */,
+				AD10473D21C34CD7001C9E58 /* MatchTableViewController.swift in Sources */,
 				8AA71ED421B12A1D000B28BE /* EmojiRateView.swift in Sources */,
 				8A01110A21AD8E3B00789296 /* CollectionListViewController.swift in Sources */,
-				8AAC630821BE3A22003D6EB6 /* MatchTableViewController.swift in Sources */,
 				8AAC630921BE3A22003D6EB6 /* MatchTableViewCell.swift in Sources */,
 				8AA71EC021B1298D000B28BE /* CollectCollectionViewCell.swift in Sources */,
 				8AB49D7721A3D1F9009F6472 /* OthersPage2CollectionViewController.swift in Sources */,
@@ -650,7 +650,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
+				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle.Toby1214;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MaPle/MaPle-Bridging-Header.h";
@@ -674,7 +674,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
+				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle.Toby1214;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MaPle/MaPle-Bridging-Header.h";

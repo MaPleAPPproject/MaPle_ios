@@ -75,6 +75,16 @@ class ChartViewController: UIViewController, UIScrollViewDelegate{
             
             if countryCodes.count == 1 {
                 let code = countryCodes.first as! String
+                self.countryCodeDict.updateValue(12, forKey: code)
+                self.countryCodeDict.updateValue(15, forKey: code)
+            } else {
+                for countryCode in countryCodes {
+                    self.countryCodeDict.updateValue(value, forKey: countryCode)
+                    value += 1
+                }
+            
+            if countryCodes.count == 1 {
+                let code = countryCodes.first as! String
                 let data = [code : 12, "AA" : 20 ]
                self.setData(data: data)
             } else {
