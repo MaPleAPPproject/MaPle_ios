@@ -4,7 +4,6 @@
 //
 //  Created by Bron on 2018/11/21.
 //
-
 import Foundation
 import Alamofire
 
@@ -212,5 +211,4 @@ class  MapCommunicator {
         }
     }
 }
-
 

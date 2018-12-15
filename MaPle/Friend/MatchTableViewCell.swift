@@ -15,7 +15,8 @@ class MatchTableViewCell: UITableViewCell {
     @IBOutlet weak var dislikeButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
-    
+    @IBOutlet weak var cardbackgroundView: CardView!
+    @IBOutlet weak var photobackgroundView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,14 +32,14 @@ class MatchTableViewCell: UITableViewCell {
     @IBAction func dislikeBtPress(_ sender: UIButton) {
         self.likeButton.isHidden = true
         sender.isHidden = true
-        statusLabel.text = "已拒絕配對"
+        statusLabel.text = "❌\t已拒絕配對 "
         statusLabel.isHidden = false
     }
     
     @IBAction func likeBtPress(_ sender: UIButton) {
         self.dislikeButton.isHidden = true
         sender.isHidden = true
-        statusLabel.text = "已接受配對，發送交友邀請囉"
+        statusLabel.text = "⭕️\t已接受配對 \n 發送交友邀請囉"
         statusLabel.isHidden = false
 
     }

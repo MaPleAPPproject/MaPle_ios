@@ -4,7 +4,6 @@
 //
 //  Created by 蘇曉彤 on 2018/11/29.
 //
-
 import UIKit
 
 let  MAX_BUFFER_SIZE = 3;
@@ -12,35 +11,36 @@ let  SEPERATOR_DISTANCE = 8;
 let  TOPYAXIS = 75;
 
 class InvitationViewController: UIViewController {
-
+    
     @IBOutlet var containerView: GradientView!
     @IBOutlet weak var emojiView: EmojiRateView!
     @IBOutlet weak var viewTinderBackGround: UIView!
-    @IBOutlet weak var viewActions: UIView!
+//    @IBOutlet weak var viewActions: UIView!
     var selectedViewController: UIViewController!
-    let memberid = UserDefaults.standard.integer(forKey: "MemberIDint")
-
-
     
     var currentIndex = 0
     var currentLoadedCardsArray = [TinderCard]()
     var allCardsArray = [TinderCard]()
     var valueArray = ["1"]
+    let memberID = UserDefaults.standard.integer(forKey: "MemberIDint")
+//    let memberid = UserDefaults.standard.string(forKey: "MemberID")
+    
     let communicator = FriendCommunicator.shared
     let explorecommunicator = ExploreCommunicator.shared
+    
     var friends = [Friend_profile]()
     var friendsNames = [String]()
     var iconData: Data?
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewActions.alpha = 0
-        getallInvitation(memberid: memberid)
+        //viewActions.alpha = 0
+        getallInvitation()
         selectedViewController = self.parent
         let notificationName = Notification.Name("GetMemberIDtoButton")
         NotificationCenter.default.addObserver(self, selector: #selector(self.clickProfileButton(noti:)), name: notificationName, object: nil)
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +65,7 @@ class InvitationViewController: UIViewController {
             return
         }
         if let controller = storyboard?.instantiateViewController(withIdentifier: "othersPage") as? OthersPage2CollectionViewController {
-
+            
             controller.memberid = object[0] as! Int
             controller.userName = object[1] as! String
             controller.iconData = iconData
@@ -76,8 +76,12 @@ class InvitationViewController: UIViewController {
         }
     }
     
-    func getallInvitation(memberid: Int) {
-        communicator.getAllInvitation(memberid: memberid) { (result,error) in
+    func getallInvitation() {
+//        guard let memberId =  memberid else {
+//            assertionFailure("memberid is nil")
+//            return
+//        }
+        communicator.getAllInvitation(memberid: memberID) { (result,error) in
             if let error = error {
                 print("getallInvitation error:\(error)")
                 return
@@ -102,21 +106,22 @@ class InvitationViewController: UIViewController {
             }
             print(self.friends.description)
             self.loadCardValues(friends: self.friends)
-
+            
         }
     }
     
     func loadCardValues(friends: [Friend_profile]) {
         
         if friends.count > 0 {
-
+            
             let capCount = (friends.count > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : valueArray.count
-
+            
             for (i,value) in friends.enumerated() {
                 let newCard = createTinderCard(at: i,selfintro: friends[i].selfIntroduction,names:friends[i].Username,friend: value)
                 allCardsArray.append(newCard)
                 if i < capCount {
                     currentLoadedCardsArray.append(newCard)
+                    newCard.tag = i //array內加標籤
                 }
             }
             
@@ -137,7 +142,7 @@ class InvitationViewController: UIViewController {
         let dummyCard = currentLoadedCardsArray.first;
         dummyCard?.shakeAnimationCard()
         UIView.animate(withDuration: 1.0, delay: 2.0, options: .curveLinear, animations: {
-            self.viewActions.alpha = 1.0
+            //self.viewActions.alpha = 1.0
         }, completion: nil)
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.animateEmojiView), userInfo: emojiView, repeats: true)
     }
@@ -145,6 +150,7 @@ class InvitationViewController: UIViewController {
     func createTinderCard(at index: Int , selfintro :String, names:String,friend: Friend_profile ) -> TinderCard {
         
         let card = TinderCard(frame: CGRect(x: 0, y: 0, width: self.viewTinderBackGround.frame.size.width , height: viewTinderBackGround.frame.size.height - 50) ,value : selfintro, names: names,friend: friend )
+        card.invitationVC = self 
         card.delegate = self
         return card
     }
@@ -153,11 +159,11 @@ class InvitationViewController: UIViewController {
         
         emojiView.rateValue =  2.5
         UIView.animate(withDuration: 0.5) {
-        //button undo
+            //button undo
         }
         currentLoadedCardsArray.remove(at: 0)
         currentIndex = currentIndex + 1
-//        Timer.scheduledTimer(timeInterval: 1.01, target: self, selector: #selector(enableUndoButton), userInfo: currentIndex, repeats: false)
+        //        Timer.scheduledTimer(timeInterval: 1.01, target: self, selector: #selector(enableUndoButton), userInfo: currentIndex, repeats: false)
         
         if (currentIndex + currentLoadedCardsArray.count) < allCardsArray.count {
             let card = allCardsArray[currentIndex + currentLoadedCardsArray.count]
@@ -219,5 +225,5 @@ extension InvitationViewController : TinderCardDelegate{
     }
     
     
-
+    
 }

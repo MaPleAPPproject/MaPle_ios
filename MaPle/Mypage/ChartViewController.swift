@@ -17,7 +17,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate{
     let map: FSInteractiveMapView = FSInteractiveMapView()
     var oldClickedLayer = CAShapeLayer()
     var country = String()
-     var memberId = UserDefaults.standard.integer(forKey: "MemberIDint")
+    var memberId = UserDefaults.standard.integer(forKey: "MemberIDint")
     var countryCodeDict: [String : Int] = [:]
     
     override func viewDidLoad() {
@@ -44,6 +44,19 @@ class ChartViewController: UIViewController, UIScrollViewDelegate{
     }
     
     
+    func setData (data : [String : Int]){
+        
+        let insets = UIEdgeInsets(top: 32, left: 20, bottom: 0, right: 0)
+        self.map.frame = self.topView.bounds.inset(by: insets)
+        var colorAxis: [Any] = []
+        for _ in 0...data.keys.count {
+            colorAxis.append(UIColor.green)
+        }
+        self.map.loadMap("world-low", withData: data, colorAxis: colorAxis)
+        
+    }
+    
+    
     func colorGeoMap() {
         
         communicator.getCountryCode(memberId: memberId) { (result, error) in
@@ -56,60 +69,83 @@ class ChartViewController: UIViewController, UIScrollViewDelegate{
                 print("getCountryCode result is nil")
                 return
             }
-            let count = result as! Array<String>
-            print(count)
+            let countryCodes = result as! Array<String>
+            print(countryCodes)
             var value = 0
-            for countryCode in count {
-                self.countryCodeDict.updateValue(value, forKey: countryCode)
-                value += 1
-            }
             
-            
-            let insets = UIEdgeInsets(top: 32, left: 20, bottom: 0, right: 0)
-            self.map.frame = self.topView.bounds.inset(by: insets)
-            var colorAxis: [Any] = []
-            for _ in 0...count.count {
-                colorAxis.append(UIColor.red)
-            }
-            self.map.loadMap("world-low", withData: self.countryCodeDict, colorAxis: colorAxis)
-            
-            
-            self.map.clickHandler = {(identifier: String? , _ layer: CAShapeLayer?) -> Void in
-                if (self.oldClickedLayer != nil) {
-                    self.oldClickedLayer.zPosition = 0
-                    self.oldClickedLayer.shadowOpacity = 0
+            if countryCodes.count == 1 {
+                let code = countryCodes.first as! String
+                self.countryCodeDict.updateValue(12, forKey: code)
+                self.countryCodeDict.updateValue(15, forKey: code)
+            } else {
+                for countryCode in countryCodes {
+                    self.countryCodeDict.updateValue(value, forKey: countryCode)
+                    value += 1
                 }
-                self.oldClickedLayer = layer!
-                // We set a simple effect on the layer clicked to highlight it
-                layer?.zPosition = 10
-                layer?.shadowOpacity = 0.5
-                layer?.shadowColor = UIColor.black.cgColor
-                layer?.shadowRadius = 5
-                layer?.shadowOffset = CGSize(width: 0, height: 0)
-                print("\(String(describing: identifier)) clicked")
-                self.country = identifier ?? ""
-                let tableController = self.children.first as? WorldTableViewController
-                tableController?.country = self.country
-                tableController?.updateUI()
+                
+                if countryCodes.count == 1 {
+                    let code = countryCodes.first as! String
+                    let data = [code : 12, "AA" : 20 ]
+                    self.setData(data: data)
+                } else {
+                    for countryCode in countryCodes {
+                        self.countryCodeDict.updateValue(value, forKey: countryCode)
+                        value += 1
+                    }
+                    
+                    self.setData(data: self.countryCodeDict)
+                }
+                
+                
+                //
+                //            let insets = UIEdgeInsets(top: 32, left: 20, bottom: 0, right: 0)
+                //            self.map.frame = self.topView.bounds.inset(by: insets)
+                //            var colorAxis: [Any] = []
+                //            for _ in 0...countryCodes.count {
+                //                colorAxis.append(UIColor.green)
+                //            }
+                //            self.map.loadMap("world-low", withData: self.countryCodeDict, colorAxis: colorAxis)
+                //
+                
+                self.map.clickHandler = {(identifier: String? , _ layer: CAShapeLayer?) -> Void in
+                    if (self.oldClickedLayer != nil) {
+                        self.oldClickedLayer.zPosition = 0
+                        self.oldClickedLayer.shadowOpacity = 0
+                    }
+                    self.oldClickedLayer = layer!
+                    // We set a simple effect on the layer clicked to highlight it
+                    layer?.zPosition = 10
+                    layer?.shadowOpacity = 0.5
+                    layer?.shadowColor = UIColor.black.cgColor
+                    layer?.shadowRadius = 5
+                    layer?.shadowOffset = CGSize(width: 0, height: 0)
+                    print("\(String(describing: identifier)) clicked")
+                    self.country = identifier ?? ""
+                    let tableController = self.children.first as? WorldTableViewController
+                    tableController?.country = self.country
+                    tableController?.updateUI()
+                }
             }
+            self.topView.addSubview(self.map)
         }
-        topView.addSubview(map)
+        
+        
+        
+        
+        
+        
+        /*
+         // MARK: - Navigation
+         
+         // In a storyboard-based application, you will often want to do a little preparation before navigation
+         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         // Get the new view controller using segue.destination.
+         // Pass the selected object to the new view controller.
+         }
+         */
+        
+        
+        
+        
     }
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    
-    
-    
 }
