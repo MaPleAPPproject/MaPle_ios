@@ -19,7 +19,7 @@ class newMyPageCollectionViewController: UICollectionViewController {
     let exploreCommunicator = ExploreCommunicator.shared
     let myPagecommunicator = Communicator.shared
     //    var postDetail:PostDetail?
-    var userProfile:UserProfile?
+    var userProfile:Userprofile?
     var allpost = [Picture]()
     var allcollect = [Picture]()
     var data = [Picture]()
@@ -127,7 +127,7 @@ class newMyPageCollectionViewController: UICollectionViewController {
                 assertionFailure("failed to get data")
                 return
             }
-            guard let finalResult = try? JSONDecoder().decode(UserProfile.self, from: jsonData) else {
+            guard let finalResult = try? JSONDecoder().decode(Userprofile.self, from: jsonData) else {
                 assertionFailure("fail to decode")
                 return
             }
@@ -363,7 +363,7 @@ class newMyPageCollectionViewController: UICollectionViewController {
         }
     }
     
-    func handleHeaderData(headerView: MyPageCollectionReusableView, userProfileData: UserProfile) {
+    func handleHeaderData(headerView: MyPageCollectionReusableView, userProfileData: Userprofile) {
         headerView.userNameLabel.text = userProfileData.userName
         headerView.collectLabel.text = String(userProfileData.collectionCount)
         headerView.postCountLabel.text = String(userProfileData.postCount)

@@ -15,7 +15,7 @@ class InvitationViewController: UIViewController {
     @IBOutlet var containerView: GradientView!
     @IBOutlet weak var emojiView: EmojiRateView!
     @IBOutlet weak var viewTinderBackGround: UIView!
-//    @IBOutlet weak var viewActions: UIView!
+    @IBOutlet weak var viewActions: UIView!
     var selectedViewController: UIViewController!
     
     var currentIndex = 0
