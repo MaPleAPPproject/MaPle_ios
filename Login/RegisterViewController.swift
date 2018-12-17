@@ -68,7 +68,7 @@ class RegisterViewController: UIViewController,UITextViewDelegate {
                             self.present(alert, animated: true, completion: nil)
                             return
                         }
-                            let alert = UIAlertController(title: "警告!", message: "帳號申請成功", preferredStyle: .alert)
+                            let alert = UIAlertController(title: "帳號申請成功", message: "", preferredStyle: .alert)
                             let ok = UIAlertAction(title: "我知道了", style: .default, handler: {
                                 action in
                                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginView")
