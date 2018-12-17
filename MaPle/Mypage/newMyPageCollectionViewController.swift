@@ -75,6 +75,7 @@ class newMyPageCollectionViewController: UICollectionViewController {
         }
         let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
         alert.addAction(ok)
+        alert.addAction(cancel)
         present(alert,animated: true)
        
     }
@@ -357,7 +358,7 @@ class newMyPageCollectionViewController: UICollectionViewController {
                     finalfooterView.frame.size = CGSize(width: screensize.width, height: screensize.height*0.55)
                     finalfooterView.imageView.contentMode = .scaleToFill
                     DispatchQueue.main.async {
-                        finalfooterView.imageView.image = UIImage(named:"emptyview.png")
+                        finalfooterView.imageView.image = UIImage(named:"emptyview2.png")
                         finalfooterView.imageView.isHidden = false
 
                     }
