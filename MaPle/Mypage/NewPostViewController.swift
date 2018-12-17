@@ -143,11 +143,21 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
         if district.isEmpty && adminArea.isEmpty {
             placeString += country
         } else if !district.isEmpty {
-            placeString += district
-            placeString += country
+            
+            if district.elementsEqual(country) {
+                placeString += district
+            } else {
+                placeString += adminArea
+                placeString += country
+            }
         } else {
-            placeString += adminArea
-            placeString += country
+            if adminArea.elementsEqual(country) {
+                placeString += adminArea
+            } else {
+                placeString += adminArea
+                placeString += country
+            }
+            
         }
         
         print("placeString:\(placeString)")
