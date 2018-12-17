@@ -245,7 +245,7 @@ class newMyPageCollectionViewController: UICollectionViewController {
         if finalheaferView.segmentControl.selectedSegmentIndex == 0 {
             print("self.data.count=\(self.data.count)")
             if self.data.count == 0 {
-                self.finalfooterrView.imageView.image = UIImage(named:"emptyview.png")
+                self.finalfooterrView.imageView.image = UIImage(named:"emptyview2.png")
             }
             self.data = self.allpost
             return self.data.count

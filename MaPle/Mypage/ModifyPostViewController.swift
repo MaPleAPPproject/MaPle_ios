@@ -46,6 +46,7 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
     }
     
     func configView(){
+        commentTextView.text = comment
         commentTextView.placeholderColor = UIColor.darkGray
         commentTextView.placeholder = "What's new?"
       
