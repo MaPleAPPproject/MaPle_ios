@@ -2290,7 +2290,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已去過的國家" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIs-LU-a1c">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全球" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIs-LU-a1c">
                                                     <rect key="frame" x="22" y="0.0" width="178" height="43.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="tIs-LU-a1c" secondAttribute="height" multiplier="45:11" id="u9x-sM-RSS"/>
@@ -2811,7 +2811,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="cEz-XC-0GO">
-                        <barButtonItem key="leftBarButtonItem" title="登出" id="WKO-5Z-cOL"/>
+                        <barButtonItem key="leftBarButtonItem" title="登出" id="WKO-5Z-cOL">
+                            <connections>
+                                <action selector="logoutBtnPressed:" destination="N6z-ef-cuI" id="Iid-sG-wGg"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="j08-s3-70c">
                             <connections>
                                 <segue destination="waF-8P-KX6" kind="presentation" id="NfH-oj-wrs"/>
