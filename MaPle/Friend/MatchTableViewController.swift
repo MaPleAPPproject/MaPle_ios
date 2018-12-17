@@ -6,18 +6,19 @@
 //
 
 import UIKit
+import Darwin
 
 class MatchTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
+    @IBOutlet var matchView: UIView!
     @IBOutlet weak var matchlistTableView: UITableView!
     let memberID = UserDefaults.standard.integer(forKey: "MemberIDint")
-//    let memberid = UserDefaults.standard.string(forKey: "MemberID")
-
 
     let communicator = FriendCommunicator.shared
     var matchlist : [Friend_profile] = []
     let refreshControl = UIRefreshControl()
+    var iconData: Data?
 
     
     override func viewDidLoad() {
@@ -35,8 +36,14 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
         refreshControl.addTarget(self, action: #selector(refreshPictureData(_:)), for: .valueChanged)
     }
     
-    //MARK:-TableView
+    override func viewWillAppear(_ animated: Bool) {
+        if matchlist.isEmpty {
+            let backgroundImage = UIImage.init(named: "background_match")
+            matchView.layer.contents = backgroundImage?.cgImage
+        }
+    }
     
+    //MARK:-TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matchlist.count
     }
@@ -44,6 +51,10 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MatchTableViewCell
         let friend = matchlist[indexPath.row]
+        
+       
+        cell.selectionStyle = .none
+        
         cell.statusLabel.isHidden = true
         cell.dislikeButton.isHidden = false
         cell.likeButton.isHidden = false
@@ -69,9 +80,10 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.photoIV.clipsToBounds = true
             cell.photoIV.layer.cornerRadius = 30
         }
-
+        
         return cell
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "friendProfile"{
@@ -91,11 +103,7 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    }
-    
     //MARK:-ButtonAction
-
     @objc
     func refreshPictureData(_ sender: Any) {
         getmatch(memberid: memberID)
@@ -165,10 +173,10 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 return
             }
             print("成功接受朋友配對\(result)")
-            // MARK: 刪除以接受
+            // MARK: 刪除已接受
             self.matchlist.remove(at: index)
             self.matchlistTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-            
+            sleep(1)
         }
     }
     
@@ -189,10 +197,9 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
             // MARK: 刪除已拒絕
             self.matchlist.remove(at: index)
             self.matchlistTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+            sleep(1)
         }
     }
-    
-    
     
     
     

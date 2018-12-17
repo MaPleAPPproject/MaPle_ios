@@ -49,6 +49,7 @@ class LoginViewController: UIViewController,UITextViewDelegate {
                 else {
                     let memberId = data! as Int
                     let stringMemberId = String(memberId)
+                    
                     self.userDefaults.set(memberId, forKey: "MemberIDint")
                     self.userDefaults.set(stringMemberId, forKey: "MemberID")
                     self.userDefaults.set(self.email, forKey: "Email")

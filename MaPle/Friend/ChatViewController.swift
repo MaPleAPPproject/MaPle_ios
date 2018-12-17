@@ -22,10 +22,9 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     var socket : WebSocket!
     
     //上一頁帶入
-    var friendName : String! //尚未使用
+    var friendName : String!
     var friendId : Int!
     
-    //先key的假資料
     let userId = UserDefaults.standard.string(forKey: "MemberID")
     var userName: String?
     
@@ -56,34 +55,14 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         hideKeyboardWhenTappedAround()
-//        let Id = String(self.friendId)
-//        getProfile(friendId: Id)
     }
     
     
-    
-//    func getProfile(friendId: String) {
-//        communicator.getfriendName(friendid: friendId) { (result, error) in
-//            if let error = error {
-//                print("getAllFriend error:\(error)")
-//                return
-//            }
-//            guard let result = result else {
-//                print("result is nil")
-//                return
-//            }
-//            self.friendName = result as? String
-//            print("get friend: \(self.friendName)")
-//        }
-//    }
-    
     @IBAction func sendPhotoPressed(_ sender: UIButton) {
         
-        //選擇照片來源
         let alert = UIAlertController(title: "請選擇傳送照片的方式：", message: nil, preferredStyle: .actionSheet)
-        let camera = UIAlertAction(title: "相機", style: .default) { (action) in
+        let camera = UIAlertAction(title: "相機\t📷", style: .default) { (action) in
             self.launchPicker(source: .camera)
         }
         let library = UIAlertAction(title: "相片膠卷", style: .default) { (action) in
@@ -98,7 +77,6 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     }
     
     func launchPicker(source: UIImagePickerController.SourceType) {
-        //Check if the source is valid or not?
         guard UIImagePickerController.isSourceTypeAvailable(source) else {
             print("Invalid source type")
             return
@@ -108,16 +86,15 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         picker.delegate = self
         picker.mediaTypes = [kUTTypeImage, kUTTypeMovie] as [String]
         picker.sourceType = source
-        picker.allowsEditing = true //裁切！1.只提供照片正方形的裁切 2.提供影片的時段裁切，會出現在影片的上方列
+        picker.allowsEditing = true
         present(picker, animated: true)
     }
     
     
     // MARK: - UIImagePickerControllerDelegate Protocol Methods.
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print("info: \(info)")
-        //mediaType指照片或影片
-        //info[UIImagePickerController.InfoKey.mediaType]可精簡成[.mediaType]
         guard let type = info[.mediaType] as? String
             else {
                 assertionFailure("Invalid type")
@@ -128,18 +105,11 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
                 assertionFailure("originalImage is nil")
                 return
             }
-            //resizedImage是設定圖檔的最大邊長
             let resizedImage = originalImage.resize(maxEdge: 400)!
-            //compressionQuality壓縮率
-            //數字越小檔案越小，數字越大檔案越大（0.8/0.7 大小較剛好）
-            //let jpgData = resizedImage.jpegData(compressionQuality: 0.8)
             let pngData = resizedImage.pngData()
             print("pngData: \(pngData!.count)")
-            //            print("pngData: \(pngData!.count)")
             let base64Data = pngData!.base64EncodedData(options: NSData.Base64EncodingOptions(rawValue: 0))
             let imageBase64String = String(data: base64Data, encoding: .utf8)
-//            let imageBase64String = jpgData?.base64EncodedString()
-//            let imageBase64String = jpgData?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
             guard let userid = userId else {
                 assertionFailure("userid is nil")
                 return
@@ -167,6 +137,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @IBAction func sendTextPressed(_ sender: UIButton) {
         
         guard let text = inputTextField.text, !text.isEmpty else {
+            showToast(message: "請輸入文字訊息唷\t✏️")
             return
         }
         guard let userid = userId else {
@@ -186,7 +157,25 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
 
         inputTextField.resignFirstResponder()
     }
-    
+    //toast
+    func showToast(message : String) {
+        
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 200, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
     // 鍵盤上移
     @objc func keyboardWillChangeFrame(_ notification: Notification) {
         let info = notification.userInfo
@@ -305,5 +294,3 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     }
 
 }
-
-

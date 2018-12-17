@@ -23,14 +23,21 @@ class FriendlistTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        if selected {
+            backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        } else {
+            backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        }
     }
     
-    @IBAction func profilePressed(_ sender: UIButton) {
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        if highlighted {
+            backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        } else {
+            backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        }
     }
     
-    
-    @IBAction func chatPressed(_ sender: UIButton) {
-    }
     
     
 

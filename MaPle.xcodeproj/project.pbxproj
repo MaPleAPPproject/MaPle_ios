@@ -52,7 +52,8 @@
 		9D87CEE721B0D4DA00CD08B4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEE521B0D4DA00CD08B4 /* RegisterViewController.swift */; };
 		9D87CEF021B0D55E00CD08B4 /* LodingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */; };
 		AD10473D21C34CD7001C9E58 /* MatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD10473C21C34CD7001C9E58 /* MatchTableViewController.swift */; };
-		AD10473F21C38957001C9E58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD10473E21C38957001C9E58 /* Assets.xcassets */; };
+		AD11311C21C4F7E20035A8C7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD11311B21C4F7E20035A8C7 /* IAPHelper.swift */; };
+		AD4D4AA021C5279C001110B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD4D4A9F21C5279B001110B1 /* Assets.xcassets */; };
 		ADF0815B21C1FF6B0013012F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815821C1FF6B0013012F /* CardView.swift */; };
 		ADF0815C21C1FF6B0013012F /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815921C1FF6B0013012F /* UIImage+Resize.swift */; };
 		ADF0815D21C1FF6B0013012F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815A21C1FF6B0013012F /* ChatView.swift */; };
@@ -128,7 +129,8 @@
 		9D87CEE521B0D4DA00CD08B4 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LodingView.swift; sourceTree = "<group>"; };
 		AD10473C21C34CD7001C9E58 /* MatchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewController.swift; sourceTree = "<group>"; };
-		AD10473E21C38957001C9E58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD11311B21C4F7E20035A8C7 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		AD4D4A9F21C5279B001110B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADF0815821C1FF6B0013012F /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		ADF0815921C1FF6B0013012F /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		ADF0815A21C1FF6B0013012F /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -188,7 +190,6 @@
 				8A01110B21AD8E5000789296 /* SearchTableViewController.swift */,
 				8A613D6D21987F5400ADC06B /* ExploreCollectionViewCell.swift */,
 				8A3161E0219523EC00827F28 /* ExploreCommuicator.swift */,
-				8A3161E6219526F600827F28 /* ExploreData.swift */,
 			);
 			name = Explore;
 			sourceTree = "<group>";
@@ -214,7 +215,8 @@
 		8AA163B0217F5DC200D80197 /* MaPle */ = {
 			isa = PBXGroup;
 			children = (
-				AD10473E21C38957001C9E58 /* Assets.xcassets */,
+				AD4D4A9F21C5279B001110B1 /* Assets.xcassets */,
+				FA39616221C20EFF0024D2CC /* Main.storyboard */,
 				9D87CEF221B0E08000CD08B4 /* Login */,
 				9D87CEF321B0E09500CD08B4 /* Map */,
 				9D87CEF421B0E0E300CD08B4 /* Friend */,
@@ -222,8 +224,8 @@
 				9D87CEE421B0D4DA00CD08B4 /* MaPle.entitlements */,
 				9D87CEDF21B0D4B000CD08B4 /* UserAccount.swift */,
 				8AA163B1217F5DC200D80197 /* AppDelegate.swift */,
+				8A3161E6219526F600827F28 /* ExploreData.swift */,
 				8A3161DF2195239300827F28 /* Explore */,
-				FA39616221C20EFF0024D2CC /* Main.storyboard */,
 				8A3161E4219524A400827F28 /* Reachability.h */,
 				8A3161E3219524A400827F28 /* Reachability.m */,
 				8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */,
@@ -316,6 +318,7 @@
 		DA7D129A2181BB1E00286775 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				AD11311B21C4F7E20035A8C7 /* IAPHelper.swift */,
 				9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */,
 				DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */,
 			);
@@ -394,7 +397,7 @@
 				FA39616B21C2128A0024D2CC /* earth-2.png in Resources */,
 				FA39615B21C1ED660024D2CC /* collectEmptyView3.png in Resources */,
 				FA2B183021BFB0D100EF5214 /* pinView2.png in Resources */,
-				AD10473F21C38957001C9E58 /* Assets.xcassets in Resources */,
+				AD4D4AA021C5279C001110B1 /* Assets.xcassets in Resources */,
 				FA39615D21C1F72B0024D2CC /* emptyView4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,6 +485,7 @@
 				8A0DE9DA2199E5EE0090ABDE /* PictureDetailViewController.swift in Sources */,
 				8AA71EC321B1298D000B28BE /* SinglePostViewController.swift in Sources */,
 				8AA71ED721B12A1D000B28BE /* FriendCommunicator.swift in Sources */,
+				AD11311C21C4F7E20035A8C7 /* IAPHelper.swift in Sources */,
 				8AA163B2217F5DC200D80197 /* AppDelegate.swift in Sources */,
 				8AA71EC721B1298D000B28BE /* Communicator.swift in Sources */,
 				8AA71EBE21B1298D000B28BE /* PostCollectionViewCell.swift in Sources */,
@@ -650,7 +654,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle.Toby1214;
+				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MaPle/MaPle-Bridging-Header.h";
@@ -674,7 +678,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle.Toby1214;
+				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MaPle/MaPle-Bridging-Header.h";
