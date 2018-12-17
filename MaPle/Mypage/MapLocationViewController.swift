@@ -26,6 +26,7 @@ class MapLocationViewController: UIViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(mapViewLongPressed(longGesture:)))
         mapView.addGestureRecognizer(tapGesture)
+        locationManager.requestLocation()
         
     }
     
@@ -68,6 +69,7 @@ class MapLocationViewController: UIViewController {
         
         
         let geocoder = CLGeocoder()
+        
         geocoder.geocodeAddressString(address) { (placemarks, error) in
             //            guard let error = error else {
             //                return
@@ -128,6 +130,7 @@ class MapLocationViewController: UIViewController {
         selectedLocation.updateValue(adminarea ?? "", forKey: "adminarea")
         selectedLocation.updateValue(countryCode ?? "", forKey: "countryCode")
         selectedLocation.updateValue(address ?? "", forKey: "address")
+        selectedLocation.updateValue(address ?? "", forKey: "district")
         guard let place  = location else {
             print("location is nil")
             return}
@@ -145,7 +148,7 @@ class MapLocationViewController: UIViewController {
                 print("locality or subAdmin is nil ")
                 return
         }
-     
+        
         
         
         addressString = locality + ", " + subAdmin
@@ -181,18 +184,18 @@ class MapLocationViewController: UIViewController {
         
         
         geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            //            guard error != nil else {
-            //                print("geocoder error:\(String(describing: error))")
-            //                return
-            //            }
+                        if let error = error  {
+                            print("geocoder error:\(String(describing: error))")
+                            return
+                        }
             
-            guard let placemarks = placemarks else {
+            guard let placemark = placemarks?.first else {
                 print("placemarks is nil")
                 return
                 
             }
             
-            let  placemark = placemarks.first!
+          
             self.showAnnotationByPlaceMark(placemark: placemark, centerMove: centerMoved)
             
         }
@@ -201,7 +204,7 @@ class MapLocationViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
         
     }
     
@@ -225,7 +228,7 @@ extension MapLocationViewController: MKMapViewDelegate{
         } else {
             result?.annotation = annotation
         }
-
+        
         result?.pinTintColor = UIColor.red
         result?.canShowCallout = true
         let image = #imageLiteral(resourceName: "star-1")
@@ -254,7 +257,7 @@ extension MapLocationViewController: MKMapViewDelegate{
         alert.addAction(cancel)
         present(alert, animated: true)
     }
-  
+    
 }
 
 extension MapLocationViewController: CLLocationManagerDelegate {
