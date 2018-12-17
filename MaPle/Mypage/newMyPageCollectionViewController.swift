@@ -100,6 +100,11 @@ class newMyPageCollectionViewController: UICollectionViewController {
         //        }
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getProfile(memberid: self.memberid)
+    }
    
     // MARK:- to Server action
     

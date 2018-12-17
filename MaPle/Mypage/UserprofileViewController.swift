@@ -15,7 +15,7 @@ class UserprofileViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nameEditBtn: UIButton!
-    @IBOutlet weak var remiderLabel: UILabel!
+   
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
@@ -27,7 +27,7 @@ class UserprofileViewController: UIViewController {
     @IBOutlet weak var photoIcon: UIImageView!
      var memberId = UserDefaults.standard.integer(forKey: "MemberIDint")
     @IBOutlet weak var vipStatus: UILabel!
-    @IBOutlet weak var remiderStack: UIStackView!
+   
     @IBOutlet weak var selfIntroTextView: UITextView!
     @IBOutlet weak var passwordEditStackView: UIStackView!
     var isShowEditStack = false
@@ -222,7 +222,8 @@ class UserprofileViewController: UIViewController {
             userNameLabel.text = nameTextField.text
             offNameEditMode()
         } else {
-            nameTextField.placeholder = "您尚未輸入任何字元喔！"
+            showAlert(title: "Oops", message: "您尚未輸入任何字元喔！")
+          
         }
         
     }
@@ -253,7 +254,7 @@ class UserprofileViewController: UIViewController {
     func configureView(){
         let viewHeight:CGFloat = isShowEditStack ? 150 : 0.0
         passwordEditStackView.visiblity(gone: false, dimension: viewHeight)
-        remiderStack.visiblity(gone: false, dimension: viewHeight, attribute: .height)
+       
         selfIntroTextView.layer.borderWidth = 1
         selfIntroTextView.layer.borderColor = UIColor.gray.cgColor
     }
@@ -276,15 +277,15 @@ class UserprofileViewController: UIViewController {
                 newPasswordTextField!.text = ""
                 
             } else {
-                remiderStack.visiblity(gone: false, dimension: 30, attribute: .height)
-                remiderLabel.text = "請確認輸入的密碼必須一致！"
-                remiderLabel.textColor = .red
+              showAlert(title: "Oops", message: "請確認輸入的密碼必須一致！")
+             
+               
                 
             }
             
         } else {
-            remiderStack.visiblity(gone: false, dimension: 30, attribute: .height)
-            remiderLabel.text = "您尚未輸入任何字元喔！"
+             showAlert(title: "Oops", message: "您尚未輸入任何字元喔！")
+           
             
         }
     }
