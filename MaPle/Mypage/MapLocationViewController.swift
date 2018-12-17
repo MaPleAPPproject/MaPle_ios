@@ -248,11 +248,11 @@ extension MapLocationViewController: MKMapViewDelegate{
         let annotation = mapView.annotations
         mapView.removeAnnotations(annotation)
         let alert = UIAlertController(title: "確定地點", message: nil, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+        let ok = UIAlertAction(title: "確定", style: .default) { (action) in
             
             self.performSegue(withIdentifier: "unwind", sender: self)
         }
-        let cancel = UIAlertAction(title: "cancel", style: .default)
+        let cancel = UIAlertAction(title: "取消", style: .default)
         alert.addAction(ok)
         alert.addAction(cancel)
         present(alert, animated: true)
