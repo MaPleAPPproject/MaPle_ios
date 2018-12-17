@@ -10,6 +10,8 @@ import UITextView_Placeholder
 
 class ModifyPostViewController: UIViewController ,UITextViewDelegate{
     let communicator = Communicator.shared
+    let eCommunicatior = ExploreCommunicator.shared
+    var data : LocationList?
     
     
     @IBOutlet weak var postImage: UIImageView!
@@ -17,13 +19,14 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
     @IBOutlet weak var commentTextView: UITextView!
     
     @IBOutlet weak var locationLabel: UILabel!
+    
     var squareImage = UIImage()
     var comment = String()
     var location = String()
     
     var selectedLocation: [ String : String ] = [:]
     let imageManager = ImageManager.shared
-     var memberId = UserDefaults.standard.integer(forKey: "MemberIDint")
+    var memberId = UserDefaults.standard.integer(forKey: "MemberIDint")
     var lat = Double()
     var lon = Double()
     var postId = Int()
@@ -33,6 +36,7 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
         
         configView()
         setLocationLabel()
+        getLocationData()
         
     }
     
@@ -42,9 +46,9 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
     }
     
     func configView(){
-        commentTextView.text = comment
         commentTextView.placeholderColor = UIColor.darkGray
-        commentTextView.placeholder = "What's new"
+        commentTextView.placeholder = "What's new?"
+      
         commentTextView.returnKeyType = .done
         commentTextView.delegate = self
         
@@ -65,22 +69,21 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
             locationLabel.text = location
         } else {
             
-            let countryCode = (selectedLocation["countryCode"])
-            let country = (selectedLocation["country"])
-            let adminArea = (selectedLocation["adminarea"])
-            let district = (selectedLocation["district"])
-            
+            guard let country = (selectedLocation["country"]) else {return}
+            guard let adminArea = (selectedLocation["adminarea"]) else {return}
+            guard let district = (selectedLocation["district"]) else {return}
             var placeString = ""
             
-            if district != nil {
-                placeString += district!
-                placeString += ", "
+            if district.isEmpty && adminArea.isEmpty {
+               placeString += country
+            } else if !district.isEmpty {
+                placeString += district
+                placeString += country
             } else {
-                
-                placeString += adminArea!
-                placeString += ", "
+                placeString += adminArea
+                placeString += country
             }
-            placeString += country!
+            
             print("placeString:\(placeString)")
             locationLabel.text = placeString
         }
@@ -110,7 +113,7 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
             picker.sourceType = .photoLibrary
             picker.allowsEditing = true
             
-            picker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            picker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
             self.present(picker, animated: true, completion: nil)
             
         }
@@ -128,7 +131,7 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
         self.lon = source.lon
         
         setLocationLabel()
-
+        
         
         
     }
@@ -177,19 +180,28 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
             let adminArea = selectedLocation["adminarea"] ?? ""
             var addressString = ""
             var districtString = ""
-            if district == ""{
-                addressString = country + ", " + address
-                districtString = adminArea + ", " + country
-            } else {
+            if district.isEmpty && adminArea.isEmpty {
+                addressString += country
+                districtString = addressString
+            } else if !district.isEmpty {
                 addressString = country + ", " + district + ", " + address
                 districtString = district + "," + country
+            } else {
+                addressString = country + ", " + address
+                districtString = adminArea + ", " + country
             }
             
             post = UpdatePost(countryCode: countryCode, address: addressString
                 , district: districtString, latitude: lat, longitude: lon, comment: comment)
-            }else {
-            post = UpdatePost(countryCode: nil, address: nil, district: nil, latitude: nil , longitude: nil, comment: comment)
+        } else {
+            guard let data = self.data else {return}
+            let latitude = Double(data.lat)
+            let longitude = Double(data.lon)
+            post = UpdatePost(countryCode: data.countryCode, address: data.address, district: data.district, latitude: latitude , longitude: longitude, comment: comment)
         }
+        
+        
+        
         
         communicator.updatePost(postId: postId , imageBase64: imageBase64, post: post) { (result, error) in
             if let error = error {
@@ -216,13 +228,36 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
     }
     
     
+    func getLocationData(){
+        eCommunicatior.getLocationList(postId: "\(postId)") { (result, error) in
+            if let error = error {
+                print("error:\(error)")
+                return
+            }
+            guard let result = result else {
+                print("result is nil")
+                return
+            }
+            guard let jsondata = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) else {
+                print("decode failed")
+                return
+            }
+            guard let finaldata = try? JSONDecoder().decode(LocationList.self, from: jsondata) else {
+                print("decde failed")
+                return
+            }
+            self.data = finaldata
+            
+        }
+    }
+    
     // MARK: - Navigation
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "updatePostDoneSegue" {
-           
+            
             
             let controller = segue.destination as! SinglePostViewController
             controller.postId = self.postId

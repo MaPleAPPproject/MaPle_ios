@@ -75,6 +75,7 @@
 		FA39616321C20EFF0024D2CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA39616221C20EFF0024D2CC /* Main.storyboard */; };
 		FA39616921C2122C0024D2CC /* world-low.svg in Resources */ = {isa = PBXBuildFile; fileRef = FA39616821C2122B0024D2CC /* world-low.svg */; };
 		FA39616B21C2128A0024D2CC /* earth-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA39616A21C2128A0024D2CC /* earth-2.png */; };
+		FA5AB39C21C78A5700395B6B /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5AB39B21C78A5500395B6B /* camera.png */; };
 		FAB509B921C1783E00662F59 /* emptyview.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB509B821C1783E00662F59 /* emptyview.png */; };
 /* End PBXBuildFile section */
 
@@ -154,6 +155,7 @@
 		FA39616221C20EFF0024D2CC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FA39616821C2122B0024D2CC /* world-low.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "world-low.svg"; sourceTree = "<group>"; };
 		FA39616A21C2128A0024D2CC /* earth-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "earth-2.png"; sourceTree = "<group>"; };
+		FA5AB39B21C78A5500395B6B /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		FAB509B821C1783E00662F59 /* emptyview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emptyview.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -300,6 +302,7 @@
 			children = (
 				FA39616A21C2128A0024D2CC /* earth-2.png */,
 				FA39616821C2122B0024D2CC /* world-low.svg */,
+				FA5AB39B21C78A5500395B6B /* camera.png */,
 				8AA71EB521B1298D000B28BE /* CollectCollectionViewCell.swift */,
 				FA2B182721BEA0E700EF5214 /* ChartViewController.swift */,
 				FA2B182521BEA08E00EF5214 /* ModifyPostViewController.swift */,
@@ -399,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5AB39C21C78A5700395B6B /* camera.png in Resources */,
 				8AA163BE217F5DC500D80197 /* LaunchScreen.storyboard in Resources */,
 				FA39616921C2122C0024D2CC /* world-low.svg in Resources */,
 				FAB509B921C1783E00662F59 /* emptyview.png in Resources */,

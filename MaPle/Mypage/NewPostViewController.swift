@@ -17,7 +17,7 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var commentTextView: UITextView!
     
     @IBOutlet weak var locationLabel: UILabel!
-    var squareImage = UIImage()
+    var squareImage : UIImage?
     var comment = String()
     var location = String()
     
@@ -126,29 +126,32 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
         print(source.selectedLocation)
         self.selectedLocation = source.selectedLocation
         
-        let countryCode = (source.selectedLocation["countryCode"])
-        let country = (source.selectedLocation["country"])
-        let adminArea = (source.selectedLocation["adminarea"])
-        let district = (source.selectedLocation["district"])
+//        let countryCode = (source.selectedLocation["countryCode"])
+//        let country = (source.selectedLocation["country"])
+//        let adminArea = (source.selectedLocation["adminarea"])
+//        let district = (source.selectedLocation["district"])
         self.lat = source.lat
         self.lon = source.lon
         print("lat:\(lat)")
         print("lon:\(lon)")
         
+        guard let country = (selectedLocation["country"]) else {return}
+        guard let adminArea = (selectedLocation["adminarea"]) else {return}
+        guard let district = (selectedLocation["district"]) else {return}
         var placeString = ""
         
-        if district != nil {
-            placeString += district!
-            placeString += ", "
+        if district.isEmpty && adminArea.isEmpty {
+            placeString += country
+        } else if !district.isEmpty {
+            placeString += district
+            placeString += country
         } else {
-            
-            placeString += adminArea!
-            placeString += ", "
+            placeString += adminArea
+            placeString += country
         }
-        placeString += country!
+        
         print("placeString:\(placeString)")
         locationLabel.text = placeString
-        
     }
     
     
@@ -174,15 +177,25 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
     }
     @IBAction func savePost(_ sender: UIBarButtonItem) {
         
-        guard let photoImage = postImage.image else {
+       
+        guard let postImage = squareImage else {
             showAlert(message: "請加入照片~")
             return
+            
         }
         
-        let imageBase64 = imageManager.convertImageToBase64(image: photoImage.crop(ratio: 1))
+        let imageBase64 = imageManager.convertImageToBase64(image: postImage.crop(ratio: 1))
         guard let comment = commentTextView.text else {
             showAlert(message: "請加入貼文內容~")
             return
+        }
+        
+        if comment.isEmpty {
+            showAlert(message: "請加入貼文內容~")
+            return
+        }
+        if selectedLocation.isEmpty {
+            showAlert(message: "請加入地點~")
         }
         let country = selectedLocation["country"] ?? ""
         let address = selectedLocation["address"] ?? ""
@@ -191,13 +204,24 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
         let adminArea = selectedLocation["adminarea"] ?? ""
         var addressString = ""
         var districtString = ""
-        if district == ""{
-            addressString = country + ", " + address
-            districtString = adminArea + ", " + country
-        } else {
+        if district.isEmpty && adminArea.isEmpty {
+            addressString += country
+            districtString = addressString
+        } else if !district.isEmpty {
             addressString = country + ", " + district + ", " + address
             districtString = district + "," + country
+        } else {
+            addressString = country + ", " + address
+            districtString = adminArea + ", " + country
         }
+        
+//        if district == ""{
+//            addressString = country + ", " + address
+//            districtString = adminArea + ", " + country
+//        } else {
+//            addressString = country + ", " + district + ", " + address
+//            districtString = district + "," + country
+//        }
        
         let locaiton = Location(postId: nil, district: districtString, address: addressString, latitude: lat , longitude: lon, countryCode: countryCode)
         
