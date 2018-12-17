@@ -37,15 +37,21 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
         }
         refreshControl.addTarget(self, action: #selector(refreshPictureData(_:)), for: .valueChanged)
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         if friendlist.isEmpty {
             friendlistTableView.separatorStyle = .none
             let backgroundImage = UIImage.init(named: "background_friend")
             friendView.layer.contents = backgroundImage?.cgImage
         }
+        
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        if friendlist.isEmpty {
+//            friendlistTableView.separatorStyle = .none
+//            let backgroundImage = UIImage.init(named: "background_friend")
+//            friendView.layer.contents = backgroundImage?.cgImage
+//        }
+//    }
     
     
     // MARK: - Table view data source
