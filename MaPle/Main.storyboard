@@ -1651,7 +1651,7 @@
             </objects>
             <point key="canvasLocation" x="1534" y="-2858"/>
         </scene>
-        <!--Title-->
+        <!--編輯貼文-->
         <scene sceneID="p5D-QQ-zlK">
             <objects>
                 <viewController id="Fg9-S0-T0Z" customClass="NewPostViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
@@ -1713,7 +1713,7 @@
                         <viewLayoutGuide key="safeArea" id="lqD-bE-43P"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="UhL-Vr-a1Z">
+                    <navigationItem key="navigationItem" title="編輯貼文" id="UhL-Vr-a1Z">
                         <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="FSd-e7-ZhI">
                             <connections>
                                 <action selector="cancelBarBtnPressed:" destination="Fg9-S0-T0Z" id="fJj-wf-Xq4"/>
@@ -1876,7 +1876,7 @@
             </objects>
             <point key="canvasLocation" x="2833" y="-3001"/>
         </scene>
-        <!--Single Post View Controller-->
+        <!--貼文-->
         <scene sceneID="XzK-qt-Jjx">
             <objects>
                 <viewController id="3eN-s5-BMf" customClass="SinglePostViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
@@ -1983,7 +1983,7 @@
                         <viewLayoutGuide key="safeArea" id="EGO-j5-boR"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="qKX-bI-B4t"/>
+                    <navigationItem key="navigationItem" title="貼文" id="qKX-bI-B4t"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="commentLabel" destination="leO-0f-a5L" id="IAb-6N-NhP"/>
@@ -2001,7 +2001,7 @@
             </objects>
             <point key="canvasLocation" x="3743.4782608695655" y="-2283.4821428571427"/>
         </scene>
-        <!--Modify Post View Controller-->
+        <!--編輯貼文-->
         <scene sceneID="2Wl-xz-6Rn">
             <objects>
                 <viewController id="CO7-YG-fQg" customClass="ModifyPostViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
@@ -2065,7 +2065,7 @@
                         <viewLayoutGuide key="safeArea" id="ys9-Dc-Waj"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="YTN-QJ-HpV">
+                    <navigationItem key="navigationItem" title="編輯貼文" id="YTN-QJ-HpV">
                         <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="1hW-aa-whK">
                             <connections>
                                 <action selector="cancelBarBtnPressed:" destination="CO7-YG-fQg" id="VKW-ki-Msb"/>
@@ -2198,7 +2198,7 @@
             </objects>
             <point key="canvasLocation" x="4783" y="-1558"/>
         </scene>
-        <!--Chart View Controller-->
+        <!--佔領圖-->
         <scene sceneID="HwV-yg-brN">
             <objects>
                 <viewController id="XFY-Oj-pYV" customClass="ChartViewController" customModule="MaPle" customModuleProvider="target" sceneMemberID="viewController">
@@ -2245,7 +2245,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="acQ-We-eSu"/>
                     </view>
-                    <navigationItem key="navigationItem" id="JP7-JH-IVw"/>
+                    <navigationItem key="navigationItem" title="佔領圖" id="JP7-JH-IVw"/>
                     <connections>
                         <outlet property="scrollView" destination="FMp-bp-RQP" id="yhn-tn-3jb"/>
                         <outlet property="topView" destination="x6q-O1-6O7" id="viJ-qU-tBa"/>
