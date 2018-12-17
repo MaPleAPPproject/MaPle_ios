@@ -1300,76 +1300,45 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="149.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33a-gA-ikQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="149.66666666666666"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lws-Ns-Am1">
-                                                            <rect key="frame" x="5" y="6" width="144" height="138"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="144" id="Kfd-CY-A7q"/>
-                                                                <constraint firstAttribute="height" constant="138" id="YuJ-nP-NvJ"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="introLB" text="Intro" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97b-e9-txW">
-                                                            <rect key="frame" x="156" y="60" width="220" height="81"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="81" id="Gk5-nt-l27"/>
-                                                                <constraint firstAttribute="width" constant="220" id="gU0-fe-brn"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
-                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="Chat" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7g-e1-Tya">
-                                                            <rect key="frame" x="316" y="7" width="48" height="46"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="46" id="2rT-si-KU7"/>
-                                                                <constraint firstAttribute="width" constant="48" id="KqF-CZ-yTw"/>
-                                                            </constraints>
-                                                            <state key="normal" image="btn_chat">
-                                                                <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="chatPressed:" destination="t84-i9-Dhq" eventType="touchUpInside" id="PDx-Mc-FLd"/>
-                                                            </connections>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="nameLB" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtR-30-iZI">
-                                                            <rect key="frame" x="156" y="12" width="110" height="40"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="40" id="P1e-xH-r4C"/>
-                                                                <constraint firstAttribute="width" constant="110" id="p4N-U9-CIb"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="24"/>
-                                                            <color key="textColor" red="0.089565701780000007" green="0.37651073930000001" blue="0.4683107138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="MtR-30-iZI" secondAttribute="bottom" constant="97.5" id="0c7-zs-66l"/>
-                                                        <constraint firstAttribute="bottom" secondItem="lws-Ns-Am1" secondAttribute="bottom" constant="5.5" id="0ts-BV-H42"/>
-                                                        <constraint firstItem="X7g-e1-Tya" firstAttribute="leading" secondItem="MtR-30-iZI" secondAttribute="trailing" constant="50" id="DFr-Hy-1PS"/>
-                                                        <constraint firstItem="lws-Ns-Am1" firstAttribute="top" secondItem="33a-gA-ikQ" secondAttribute="top" constant="6" id="Kum-Ib-R9P"/>
-                                                        <constraint firstAttribute="bottom" secondItem="X7g-e1-Tya" secondAttribute="bottom" constant="96.5" id="T4U-H2-61a"/>
-                                                        <constraint firstAttribute="bottom" secondItem="97b-e9-txW" secondAttribute="bottom" constant="8.5" id="UfE-k8-wRK"/>
-                                                        <constraint firstItem="lws-Ns-Am1" firstAttribute="leading" secondItem="33a-gA-ikQ" secondAttribute="leading" constant="5" id="eTa-IP-SF3"/>
-                                                        <constraint firstItem="97b-e9-txW" firstAttribute="top" secondItem="33a-gA-ikQ" secondAttribute="top" constant="60" id="gWM-4Z-LL4"/>
-                                                        <constraint firstItem="MtR-30-iZI" firstAttribute="leading" secondItem="33a-gA-ikQ" secondAttribute="leading" constant="156" id="gnQ-v3-1BX"/>
-                                                        <constraint firstItem="X7g-e1-Tya" firstAttribute="top" secondItem="33a-gA-ikQ" secondAttribute="top" constant="7" id="rKI-08-GdO"/>
-                                                        <constraint firstItem="MtR-30-iZI" firstAttribute="top" secondItem="33a-gA-ikQ" secondAttribute="top" constant="12" id="s0S-8B-iae"/>
-                                                        <constraint firstItem="97b-e9-txW" firstAttribute="leading" secondItem="33a-gA-ikQ" secondAttribute="leading" constant="156" id="sNP-zE-if6"/>
-                                                    </constraints>
-                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lws-Ns-Am1">
+                                                    <rect key="frame" x="1" y="5" width="144" height="138"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Chat" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7g-e1-Tya">
+                                                    <rect key="frame" x="301" y="5" width="48" height="46"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="btn_chat">
+                                                        <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="userInteractionEnabled" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="chat:" destination="FfF-8v-BHC" eventType="touchUpInside" id="24j-DG-vWv"/>
+                                                        <action selector="chatPressed:" destination="t84-i9-Dhq" eventType="touchUpInside" id="KE1-gj-80Y"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="nameLB" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtR-30-iZI">
+                                                    <rect key="frame" x="150" y="10" width="110" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="24"/>
+                                                    <color key="textColor" red="0.089565701780000007" green="0.37651073930000001" blue="0.4683107138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="introLB" text="Intro" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97b-e9-txW">
+                                                    <rect key="frame" x="150" y="58" width="220" height="81"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="33a-gA-ikQ" firstAttribute="top" secondItem="we5-8r-8c8" secondAttribute="top" id="0bj-O7-Qsh"/>
-                                                <constraint firstAttribute="trailing" secondItem="33a-gA-ikQ" secondAttribute="trailing" id="N2A-4Q-xsb"/>
-                                                <constraint firstItem="33a-gA-ikQ" firstAttribute="leading" secondItem="we5-8r-8c8" secondAttribute="leading" id="iie-6Y-Xki"/>
-                                                <constraint firstAttribute="bottom" secondItem="33a-gA-ikQ" secondAttribute="bottom" id="qlw-78-Aet"/>
-                                            </constraints>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="userInteractionEnabled" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <outlet property="chatBt" destination="X7g-e1-Tya" id="5qC-pX-an6"/>
+                                            <outlet property="chatBt" destination="X7g-e1-Tya" id="Y5D-5Y-oOs"/>
                                             <outlet property="introLB" destination="97b-e9-txW" id="p6E-KH-iuV"/>
                                             <outlet property="nameLB" destination="MtR-30-iZI" id="Hdf-wu-wqp"/>
                                             <outlet property="photoIV" destination="lws-Ns-Am1" id="zNX-75-1dG"/>
@@ -1392,6 +1361,9 @@
                             <constraint firstItem="xVb-MP-YMr" firstAttribute="leading" secondItem="8zx-SB-wEw" secondAttribute="leading" id="ws8-Fp-QDz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dES-LA-iBw"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="userInteractionEnabled" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="friendView" destination="8zx-SB-wEw" id="Psk-uq-Pqw"/>
@@ -3394,7 +3366,6 @@
         <image name="tabbar_mypage" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ubl-Ra-QRJ"/>
         <segue reference="2Hh-4h-JnH"/>
         <segue reference="uVC-LD-brJ"/>
         <segue reference="REs-ah-FrR"/>

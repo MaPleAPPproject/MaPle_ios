@@ -39,6 +39,8 @@ class FriendlistTableViewCell: UITableViewCell {
     }
     
     
+    @IBAction func chat(_ sender: UIButton) {
+    }
     
 
 }
