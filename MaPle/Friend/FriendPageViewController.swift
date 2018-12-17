@@ -144,11 +144,11 @@ class FriendPageViewController: UIViewController
         
         serverCommunicator!.loadUserVipStatus { (results, error) in
             
-            guard let result = results!["vipStatus"]as? Int else {
-                assertionFailure("Json covertion fail")
-                return
-            }
-            self.vipStatus = result
+//            guard let result = results!["vipStatus"] as? Int else {
+//                assertionFailure("Json covertion fail")
+//                return
+//            }
+//            self.vipStatus = result
             
         }
         
