@@ -15,9 +15,11 @@
 		8A3161E5219524A400827F28 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E3219524A400827F28 /* Reachability.m */; };
 		8A3161E7219526F600827F28 /* ExploreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3161E6219526F600827F28 /* ExploreData.swift */; };
 		8A613D6E21987F5400ADC06B /* ExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A613D6D21987F5400ADC06B /* ExploreCollectionViewCell.swift */; };
+		8A8F354621C4E40000E7B8C2 /* recomView.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F354521C4E40000E7B8C2 /* recomView.png */; };
 		8AA163B2217F5DC200D80197 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163B1217F5DC200D80197 /* AppDelegate.swift */; };
 		8AA163B6217F5DC200D80197 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA163B5217F5DC200D80197 /* ExploreViewController.swift */; };
 		8AA163BE217F5DC500D80197 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA163BC217F5DC500D80197 /* LaunchScreen.storyboard */; };
+		8AA2374021C2B76D00487361 /* newMyPageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA2373F21C2B76D00487361 /* newMyPageCollectionViewController.swift */; };
 		8AA71EB021B12778000B28BE /* MapPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EAE21B12778000B28BE /* MapPageViewController.swift */; };
 		8AA71EB121B12778000B28BE /* MapCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EAF21B12778000B28BE /* MapCommunicator.swift */; };
 		8AA71EBD21B1298D000B28BE /* PrintHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71EB221B1298C000B28BE /* PrintHelper.swift */; };
@@ -40,25 +42,27 @@
 		8AA71ED921B12A1D000B28BE /* InvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71ED021B12A1D000B28BE /* InvitationViewController.swift */; };
 		8AA9DF86219D6BC1007FCA62 /* LocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9DF85219D6BC1007FCA62 /* LocationMapViewController.swift */; };
 		8AAC630321BE3724003D6EB6 /* TitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC630221BE3724003D6EB6 /* TitleCollectionReusableView.swift */; };
-		8AAC630821BE3A22003D6EB6 /* MatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC630621BE3A21003D6EB6 /* MatchTableViewController.swift */; };
 		8AAC630921BE3A22003D6EB6 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC630721BE3A22003D6EB6 /* MatchTableViewCell.swift */; };
 		8AADEC62219D2C6800A7FD34 /* OthersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AADEC61219D2C6800A7FD34 /* OthersPageViewController.swift */; };
 		8AB49D7721A3D1F9009F6472 /* OthersPage2CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB49D7621A3D1F9009F6472 /* OthersPage2CollectionViewController.swift */; };
 		8AB49D7921A3D522009F6472 /* OthersPageUICollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB49D7821A3D522009F6472 /* OthersPageUICollectionReusableView.swift */; };
 		8AB6499221AEC9660012439C /* SearchResultCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6499121AEC9660012439C /* SearchResultCollectionViewController.swift */; };
 		8AB6499421AECA250012439C /* ResultMapCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6499321AECA250012439C /* ResultMapCollectionReusableView.swift */; };
+		8AC6601921C34AB00087D934 /* MyPageCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6601821C34AB00087D934 /* MyPageCollectionReusableView.swift */; };
+		8AC6601B21C394E70087D934 /* FooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6601A21C394E70087D934 /* FooterCollectionReusableView.swift */; };
 		9D87CEE021B0D4B000CD08B4 /* userCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEDD21B0D4B000CD08B4 /* userCollectionViewCell.swift */; };
 		9D87CEE221B0D4B000CD08B4 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEDF21B0D4B000CD08B4 /* UserAccount.swift */; };
 		9D87CEE621B0D4DA00CD08B4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEE321B0D4D900CD08B4 /* LoginViewController.swift */; };
 		9D87CEE721B0D4DA00CD08B4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEE521B0D4DA00CD08B4 /* RegisterViewController.swift */; };
 		9D87CEF021B0D55E00CD08B4 /* LodingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */; };
+		AD10473D21C34CD7001C9E58 /* MatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD10473C21C34CD7001C9E58 /* MatchTableViewController.swift */; };
+		AD10473F21C38957001C9E58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD10473E21C38957001C9E58 /* Assets.xcassets */; };
 		ADF0815B21C1FF6B0013012F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815821C1FF6B0013012F /* CardView.swift */; };
 		ADF0815C21C1FF6B0013012F /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815921C1FF6B0013012F /* UIImage+Resize.swift */; };
 		ADF0815D21C1FF6B0013012F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815A21C1FF6B0013012F /* ChatView.swift */; };
 		ADF0815F21C202FA0013012F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815E21C202FA0013012F /* ChatViewController.swift */; };
 		ADF0816121C203A80013012F /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0816021C203A80013012F /* FriendData.swift */; };
 		C82393A4B472C82F2D8A89A7 /* Pods_MaPle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */; };
-		DA237C8A21C270AA00BA0CC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA237C8921C270AA00BA0CC5 /* Assets.xcassets */; };
 		DA7F8C3421B559F1009899F6 /* ServerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */; };
 		DAA93FA921B751AB00EE8273 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA93FA821B751AB00EE8273 /* StoreKit.framework */; };
 		FA2B182421BEA02700EF5214 /* WorldTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B182321BEA02700EF5214 /* WorldTableViewController.swift */; };
@@ -88,11 +92,13 @@
 		8A3161E4219524A400827F28 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		8A3161E6219526F600827F28 /* ExploreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreData.swift; sourceTree = "<group>"; };
 		8A613D6D21987F5400ADC06B /* ExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A8F354521C4E40000E7B8C2 /* recomView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recomView.png; sourceTree = "<group>"; };
 		8AA163AE217F5DC200D80197 /* MaPle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaPle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AA163B1217F5DC200D80197 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AA163B5217F5DC200D80197 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		8AA163BD217F5DC500D80197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AA163BF217F5DC500D80197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AA2373F21C2B76D00487361 /* newMyPageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newMyPageCollectionViewController.swift; sourceTree = "<group>"; };
 		8AA71EAE21B12778000B28BE /* MapPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPageViewController.swift; sourceTree = "<group>"; };
 		8AA71EAF21B12778000B28BE /* MapCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCommunicator.swift; sourceTree = "<group>"; };
 		8AA71EB221B1298C000B28BE /* PrintHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintHelper.swift; sourceTree = "<group>"; };
@@ -115,25 +121,27 @@
 		8AA71ED021B12A1D000B28BE /* InvitationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationViewController.swift; sourceTree = "<group>"; };
 		8AA9DF85219D6BC1007FCA62 /* LocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapViewController.swift; sourceTree = "<group>"; };
 		8AAC630221BE3724003D6EB6 /* TitleCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleCollectionReusableView.swift; sourceTree = "<group>"; };
-		8AAC630621BE3A21003D6EB6 /* MatchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewController.swift; sourceTree = "<group>"; };
 		8AAC630721BE3A22003D6EB6 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
 		8AADEC61219D2C6800A7FD34 /* OthersPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPageViewController.swift; sourceTree = "<group>"; };
 		8AB49D7621A3D1F9009F6472 /* OthersPage2CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPage2CollectionViewController.swift; sourceTree = "<group>"; };
 		8AB49D7821A3D522009F6472 /* OthersPageUICollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPageUICollectionReusableView.swift; sourceTree = "<group>"; };
 		8AB6499121AEC9660012439C /* SearchResultCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewController.swift; sourceTree = "<group>"; };
 		8AB6499321AECA250012439C /* ResultMapCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMapCollectionReusableView.swift; sourceTree = "<group>"; };
+		8AC6601821C34AB00087D934 /* MyPageCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCollectionReusableView.swift; sourceTree = "<group>"; };
+		8AC6601A21C394E70087D934 /* FooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		9D87CEDD21B0D4B000CD08B4 /* userCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D87CEDF21B0D4B000CD08B4 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		9D87CEE321B0D4D900CD08B4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9D87CEE421B0D4DA00CD08B4 /* MaPle.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = MaPle.entitlements; sourceTree = "<group>"; };
 		9D87CEE521B0D4DA00CD08B4 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9D87CEEE21B0D55E00CD08B4 /* LodingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LodingView.swift; sourceTree = "<group>"; };
+		AD10473C21C34CD7001C9E58 /* MatchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewController.swift; sourceTree = "<group>"; };
+		AD10473E21C38957001C9E58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADF0815821C1FF6B0013012F /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		ADF0815921C1FF6B0013012F /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		ADF0815A21C1FF6B0013012F /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		ADF0815E21C202FA0013012F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		ADF0816021C203A80013012F /* FriendData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
-		DA237C8921C270AA00BA0CC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCommunicator.swift; sourceTree = "<group>"; };
 		DAA93FA821B751AB00EE8273 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FA2B182321BEA02700EF5214 /* WorldTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTableViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +182,7 @@
 		8A3161DF2195239300827F28 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				8A8F354521C4E40000E7B8C2 /* recomView.png */,
 				8AAC630221BE3724003D6EB6 /* TitleCollectionReusableView.swift */,
 				8AB6499321AECA250012439C /* ResultMapCollectionReusableView.swift */,
 				8AB6499121AEC9660012439C /* SearchResultCollectionViewController.swift */,
@@ -214,7 +223,7 @@
 		8AA163B0217F5DC200D80197 /* MaPle */ = {
 			isa = PBXGroup;
 			children = (
-				DA237C8921C270AA00BA0CC5 /* Assets.xcassets */,
+				AD10473E21C38957001C9E58 /* Assets.xcassets */,
 				9D87CEF221B0E08000CD08B4 /* Login */,
 				9D87CEF321B0E09500CD08B4 /* Map */,
 				9D87CEF421B0E0E300CD08B4 /* Friend */,
@@ -267,18 +276,18 @@
 		9D87CEF421B0E0E300CD08B4 /* Friend */ = {
 			isa = PBXGroup;
 			children = (
-				8AAC630721BE3A22003D6EB6 /* MatchTableViewCell.swift */,
-				8AAC630621BE3A21003D6EB6 /* MatchTableViewController.swift */,
-				8AA71ECF21B12A1D000B28BE /* FriendPageViewController.swift */,
 				8AA71ECE21B12A1D000B28BE /* FriendCommunicator.swift */,
+				8AA71ECF21B12A1D000B28BE /* FriendPageViewController.swift */,
 				ADF0816021C203A80013012F /* FriendData.swift */,
 				8AA71EC821B12A1C000B28BE /* FriendlistTableViewController.swift */,
-				8AA71ECA21B12A1D000B28BE /* FriendlistTableViewCell.swift */,
 				ADF0815E21C202FA0013012F /* ChatViewController.swift */,
+				8AA71ECA21B12A1D000B28BE /* FriendlistTableViewCell.swift */,
+				AD10473C21C34CD7001C9E58 /* MatchTableViewController.swift */,
+				8AAC630721BE3A22003D6EB6 /* MatchTableViewCell.swift */,
 				8AA71ED021B12A1D000B28BE /* InvitationViewController.swift */,
-				8AA71ECC21B12A1D000B28BE /* GradientView.swift */,
-				8AA71ECB21B12A1D000B28BE /* EmojiRateView.swift */,
 				8AA71ECD21B12A1D000B28BE /* TinderCard.swift */,
+				8AA71ECB21B12A1D000B28BE /* EmojiRateView.swift */,
+				8AA71ECC21B12A1D000B28BE /* GradientView.swift */,
 				ADF0815821C1FF6B0013012F /* CardView.swift */,
 				ADF0815A21C1FF6B0013012F /* ChatView.swift */,
 				ADF0815921C1FF6B0013012F /* UIImage+Resize.swift */,
@@ -309,6 +318,9 @@
 				FA2B182F21BFB0D100EF5214 /* pinView2.png */,
 				FAB509B821C1783E00662F59 /* emptyview.png */,
 				8AA71EBB21B1298D000B28BE /* UserprofileViewController.swift */,
+				8AA2373F21C2B76D00487361 /* newMyPageCollectionViewController.swift */,
+				8AC6601821C34AB00087D934 /* MyPageCollectionReusableView.swift */,
+				8AC6601A21C394E70087D934 /* FooterCollectionReusableView.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -390,11 +402,12 @@
 				8AA163BE217F5DC500D80197 /* LaunchScreen.storyboard in Resources */,
 				FA39616921C2122C0024D2CC /* world-low.svg in Resources */,
 				FAB509B921C1783E00662F59 /* emptyview.png in Resources */,
+				8A8F354621C4E40000E7B8C2 /* recomView.png in Resources */,
 				FA39616321C20EFF0024D2CC /* Main.storyboard in Resources */,
 				FA39616B21C2128A0024D2CC /* earth-2.png in Resources */,
 				FA39615B21C1ED660024D2CC /* collectEmptyView3.png in Resources */,
 				FA2B183021BFB0D100EF5214 /* pinView2.png in Resources */,
-				DA237C8A21C270AA00BA0CC5 /* Assets.xcassets in Resources */,
+				AD10473F21C38957001C9E58 /* Assets.xcassets in Resources */,
 				FA39615D21C1F72B0024D2CC /* emptyView4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,9 +475,9 @@
 				ADF0815F21C202FA0013012F /* ChatViewController.swift in Sources */,
 				8A01110C21AD8E5000789296 /* SearchTableViewController.swift in Sources */,
 				8AA71ED621B12A1D000B28BE /* TinderCard.swift in Sources */,
+				AD10473D21C34CD7001C9E58 /* MatchTableViewController.swift in Sources */,
 				8AA71ED421B12A1D000B28BE /* EmojiRateView.swift in Sources */,
 				8A01110A21AD8E3B00789296 /* CollectionListViewController.swift in Sources */,
-				8AAC630821BE3A22003D6EB6 /* MatchTableViewController.swift in Sources */,
 				8AAC630921BE3A22003D6EB6 /* MatchTableViewCell.swift in Sources */,
 				8AA71EC021B1298D000B28BE /* CollectCollectionViewCell.swift in Sources */,
 				8AB49D7721A3D1F9009F6472 /* OthersPage2CollectionViewController.swift in Sources */,
@@ -484,10 +497,13 @@
 				8AA71ED721B12A1D000B28BE /* FriendCommunicator.swift in Sources */,
 				8AA163B2217F5DC200D80197 /* AppDelegate.swift in Sources */,
 				8AA71EC721B1298D000B28BE /* Communicator.swift in Sources */,
+				8AA2374021C2B76D00487361 /* newMyPageCollectionViewController.swift in Sources */,
+				8AC6601B21C394E70087D934 /* FooterCollectionReusableView.swift in Sources */,
 				8AA71EBE21B1298D000B28BE /* PostCollectionViewCell.swift in Sources */,
 				8A3161E5219524A400827F28 /* Reachability.m in Sources */,
 				8AB49D7921A3D522009F6472 /* OthersPageUICollectionReusableView.swift in Sources */,
 				9D87CEF021B0D55E00CD08B4 /* LodingView.swift in Sources */,
+				8AC6601921C34AB00087D934 /* MyPageCollectionReusableView.swift in Sources */,
 				DA7F8C3421B559F1009899F6 /* ServerCommunicator.swift in Sources */,
 				8AA71EB021B12778000B28BE /* MapPageViewController.swift in Sources */,
 				8AA71ED321B12A1D000B28BE /* FriendlistTableViewCell.swift in Sources */,
@@ -650,7 +666,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
+				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle.Toby1214;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MaPle/MaPle-Bridging-Header.h";
@@ -674,7 +690,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle;
+				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle.Toby1214;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MaPle/MaPle-Bridging-Header.h";

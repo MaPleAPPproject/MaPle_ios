@@ -406,12 +406,11 @@ UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
                 
             }
         case "collectShowSegue":
-            let controller = segue.destination as!  FriendPostViewController
+            let controller = segue.destination as!  PictureDetailViewController
             if let indexPath = collectCollectionView.indexPathsForSelectedItems?.first {
                 print("indexPath:\(indexPath.row)")
                 let postId = collectionIds[indexPath.row]
                 print("collectShowSegue prepare postId:\(postId)")
-                controller.collectionId = postId
             }
             return
         default:

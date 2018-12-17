@@ -15,11 +15,9 @@ import Alamofire
 
 class Communicator {
     
-    static let IP = "192.168.50.224"
+    static let IP = "192.168.197.50"
     
     static let BASEURL = "http://\(IP):8080/MaPle"
-    
-    static var friendsListIndex = Dictionary<String,String>()
     
     let USERPROFILE_URL = BASEURL + "/User_profileServlet"
     let CPOST_URL = BASEURL + "/CpostServlet"

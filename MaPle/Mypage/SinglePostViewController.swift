@@ -43,13 +43,13 @@ class SinglePostViewController: UIViewController {
         let rightEditBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.edit, target: self, action: #selector(modifyBarButtonTapped))
         let rightTrashBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.trash, target: self, action: #selector(deletBarButtonTapped))
         
-        let backbutton = UIButton(type: .custom)
-        backbutton.setImage(UIImage(named: "backward-arrow-2"), for: .normal) // Image can be downloaded from here below link
-        backbutton.setTitle("Back", for: .normal)
-        backbutton.setTitleColor(backbutton.tintColor, for: .normal) // You can change the TitleColor
-        backbutton.addTarget(self, action:#selector(backBtnPressed), for: .touchUpInside)
+//        let backbutton = UIButton(type: .custom)
+//        backbutton.setImage(UIImage(named: "backward-arrow-2"), for: .normal) // Image can be downloaded from here below link
+//        backbutton.setTitle("Back", for: .normal)
+//        backbutton.setTitleColor(backbutton.tintColor, for: .normal) // You can change the TitleColor
+//        backbutton.addTarget(self, action:#selector(backBtnPressed), for: .touchUpInside)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backbutton)
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backbutton)
         self.navigationItem.setRightBarButtonItems([rightEditBarButtonItem,rightTrashBarButtonItem], animated: true)
     }
     

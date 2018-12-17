@@ -27,6 +27,7 @@ class PictureDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //set icon image
         self.iconImageView.layer.cornerRadius = self.iconImageView.frame.size.width/2 //裁成圓角
         self.iconImageView.layer.masksToBounds = true //隱藏裁切部分

@@ -13,13 +13,14 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
     @IBOutlet weak var segmentView: UISegmentedControl!
     @IBOutlet weak var collectViewlayout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     var serverReach: Reachability?
     let communicatior = ExploreCommunicator.shared
     let fullScreenSize = UIScreen.main.bounds.size
     var districtList:[String]?
     var searchActive : Bool = false
     let searchController = UISearchController(searchResultsController: nil)
-    let buttonBar = UIView()
+//    let buttonBar = UIView()
     var datas = [Picture]()
     var filtered:[Picture] = []
     var tops = [Picture]()
@@ -82,9 +83,17 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     override func viewWillAppear(_ animated: Bool) {
+//        DispatchQueue.main.async {
+//            UIView.animate(withDuration: 0.3) {
+//                self.buttonBar.frame.origin.x = (self.segmentView.frame.width / CGFloat(self.segmentView.numberOfSegments)) * CGFloat(self.segmentView.selectedSegmentIndex)
+//                self.buttonBar.layoutIfNeeded()
+//                print("self.buttonBar.frame.origin.x:\(self.buttonBar.frame.origin.x)")
+//            }
+//        }
         super.viewWillAppear(animated)
         print("viewWillAppear index:\(self.segmentView.selectedSegmentIndex)")
         self.categoryValueChanged(self.segmentView)
+        
     }
     
     
@@ -144,6 +153,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
             self.datas = self.tops
             self.collectionView.delegate = self
             self.collectionView.dataSource = self
+            self.collectionView.reloadData()
         }
         
     }
@@ -169,6 +179,8 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 self.recoms.append(resultObject)
             }
 //            print("recoms:\(self.recoms)")
+            self.datas = self.recoms
+            self.collectionView.reloadData()
         })
         
     }
@@ -195,6 +207,8 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 self.news.append(resultObject)
             }
 //            print("news:\(self.news)")
+            self.datas = self.news
+            self.collectionView.reloadData()
         }
         
     }
@@ -208,6 +222,13 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
         }
         else
         {
+            if datas.count == 0 {
+                self.backgroundImageView.isHidden = false
+                self.backgroundImageView.image = UIImage(named:"recomView.png")
+                self.backgroundImageView.contentMode = .scaleAspectFit
+            } else {
+                self.backgroundImageView.isHidden = true
+            }
             return datas.count
         }
     }
@@ -243,27 +264,35 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     @IBAction func categoryValueChanged(_ sender: UISegmentedControl) {
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.3) {
-                self.buttonBar.frame.origin.x = (self.segmentView.frame.width / CGFloat(sender.numberOfSegments)) * CGFloat(sender.selectedSegmentIndex)
-                self.buttonBar.layoutIfNeeded()
-                print("self.buttonBar.frame.origin.x:\(self.buttonBar.frame.origin.x)")
-            }
-        }
-        
+//        DispatchQueue.main.async {
+//            UIView.animate(withDuration: 0.3) {
+//                self.buttonBar.frame.origin.x = (self.segmentView.frame.width / CGFloat(sender.numberOfSegments)) * CGFloat(sender.selectedSegmentIndex)
+//                self.buttonBar.layoutIfNeeded()
+//                print("self.buttonBar.frame.origin.x:\(self.buttonBar.frame.origin.x)")
+//            }
+//        }
+        self.datas.removeAll()
         switch sender.selectedSegmentIndex {
         case 0:
-            self.datas = self.tops
-            self.collectionView.reloadData()
+            self.tops.removeAll()
+            getPictureTop()
+//            self.datas = self.tops
+//            self.collectionView.reloadData()
         case 1:
-            self.datas = self.recoms
-            self.collectionView.reloadData()
+            self.recoms.removeAll()
+            getPictureRecom(memberid: self.memberid!)
+//            self.datas = self.recoms
+//            self.collectionView.reloadData()
         case 2:
-            self.datas = self.news
-            self.collectionView.reloadData()
+            self.news.removeAll()
+            getPictureNew()
+//            self.datas = self.news
+//            self.collectionView.reloadData()
         default:
-            self.datas = self.tops
-            self.collectionView.reloadData()
+            self.tops.removeAll()
+            getPictureTop()
+//            self.datas = self.tops
+//            self.collectionView.reloadData()
             
         }
     }
@@ -303,17 +332,30 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
             NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 18),
             NSAttributedString.Key.foregroundColor: UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0)
             ], for: .selected)
-        // This needs to be false since we are using auto layout constraints
-        buttonBar.translatesAutoresizingMaskIntoConstraints = false
-        buttonBar.backgroundColor = UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0)
-        view.addSubview(buttonBar)
-        // Constrain the top of the button bar to the bottom of the segmented control
-        buttonBar.topAnchor.constraint(equalTo: segmentView.bottomAnchor).isActive = true
-        buttonBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        
+        //add underline
+        let line = UIView()
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.backgroundColor = .gray
+        view.addSubview(line)
+        line.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         // Constrain the button bar to the left side of the segmented control
-        buttonBar.leftAnchor.constraint(equalTo: segmentView.leftAnchor).isActive = true
+        line.leftAnchor.constraint(equalTo: segmentView.leftAnchor).isActive = true
         // Constrain the button bar to the width of the segmented control divided by the number of segments
-        buttonBar.widthAnchor.constraint(equalTo: segmentView.widthAnchor, multiplier: 1 / CGFloat(segmentView.numberOfSegments)).isActive = true
+        line.widthAnchor.constraint(equalTo: segmentView.widthAnchor).isActive = true
+        line.topAnchor.constraint(equalTo: segmentView.bottomAnchor).isActive = true
+        
+        // This needs to be false since we are using auto layout constraints
+//        buttonBar.translatesAutoresizingMaskIntoConstraints = false
+//        buttonBar.backgroundColor = UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0)
+//        view.addSubview(buttonBar)
+//        // Constrain the top of the button bar to the bottom of the segmented control
+//        buttonBar.bottomAnchor.constraint(equalTo: segmentView.bottomAnchor).isActive = true
+//        buttonBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
+//        // Constrain the button bar to the left side of the segmented control
+//        buttonBar.leftAnchor.constraint(equalTo: segmentView.leftAnchor).isActive = true
+//        // Constrain the button bar to the width of the segmented control divided by the number of segments
+//        buttonBar.widthAnchor.constraint(equalTo: segmentView.widthAnchor, multiplier: 1 / CGFloat(segmentView.numberOfSegments)).isActive = true
         segmentView.addTarget(self, action: #selector(self.categoryValueChanged(_:)), for: UIControl.Event.valueChanged)
     }
 }
