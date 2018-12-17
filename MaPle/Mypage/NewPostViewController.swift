@@ -33,7 +33,7 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         configView()
         setLocationLabel()
-        //        getMemberIdFromUserDefault()
+        
         
     }
     
