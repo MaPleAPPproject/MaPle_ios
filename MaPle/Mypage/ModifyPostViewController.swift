@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UITextView_Placeholder
 
 class ModifyPostViewController: UIViewController ,UITextViewDelegate{
     let communicator = Communicator.shared
@@ -42,8 +43,8 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
     
     func configView(){
         commentTextView.text = comment
-        commentTextView.textColor = UIColor.darkGray
-        commentTextView.font = UIFont(name: "verdana", size: 15.0)
+        commentTextView.placeholderColor = UIColor.darkGray
+        commentTextView.placeholder = "What's new"
         commentTextView.returnKeyType = .done
         commentTextView.delegate = self
         

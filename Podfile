@@ -11,4 +11,6 @@ target 'MaPle' do
 pod 'Alamofire'
 pod 'FSInteractiveMap'
 pod 'Starscream'
+pod 'UITextView+Placeholder'
+
 end
