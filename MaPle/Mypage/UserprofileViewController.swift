@@ -435,14 +435,21 @@ class UserprofileViewController: UIViewController {
                 print("data is nil")
                 return
             }
-            
-            let image = UIImage(data: data)
-            
-            DispatchQueue.main.async {
-                self.photoIcon.image = image
-                self.photoIcon.clipsToBounds = true
-                self.photoIcon.layer.cornerRadius = self.photoIcon.frame.size.width / 2
+           
+            if data.count < 2000 {
+                DispatchQueue.main.async {
+                self.photoIcon.image = UIImage(named: "profile-user")
+                }
+            } else {
+                let image = UIImage(data: data)
+                DispatchQueue.main.async {
+                    self.photoIcon.image = image
+                    self.photoIcon.clipsToBounds = true
+                    self.photoIcon.layer.cornerRadius = self.photoIcon.frame.size.width / 2
+                }
             }
+            
+           
             
         }
     }

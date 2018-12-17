@@ -10,6 +10,7 @@ import UIKit
 
 class newMyPageCollectionViewController: UICollectionViewController {
 
+    @IBOutlet weak var photoIcon: UIImageView!
     @IBOutlet weak var colletctionViewFlowLayout: UICollectionViewFlowLayout!
     var memberid = UserDefaults.standard.integer(forKey: "MemberIDint")
     var finalheaferView = MyPageCollectionReusableView()
@@ -318,9 +319,17 @@ class newMyPageCollectionViewController: UICollectionViewController {
                         print("error:\(error)")
                     }
                     guard let data = data else {
+                        
+                       
                         print("data is nil")
+                        
                         return
                     }
+                    if data.count < 2000{
+                         self.finalheaferView.iconImageView.image = UIImage(named: "profile-user")
+                        return
+                    }
+                
                     self.finalheaferView.iconImageView.image = UIImage(data: data)
                 }
             } else {

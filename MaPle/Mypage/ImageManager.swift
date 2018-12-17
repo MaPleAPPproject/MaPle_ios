@@ -27,6 +27,11 @@ class ImageManager {
         return UIImage(data: imageData)!
     }
     
+//    func showAlert(){
+//        let alert = UIAlertController(title: "更換照片", message: "請選擇照片選取來源", preferredStyle: .actionSheet)
+//        let act
+//    }
+    
     
 
 }
