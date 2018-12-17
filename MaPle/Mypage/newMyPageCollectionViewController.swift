@@ -68,6 +68,17 @@ class newMyPageCollectionViewController: UICollectionViewController {
         
     }
     
+    @IBAction func logoutBtnPressed(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "登出", message: "是否確定要登出", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "登出", style: .default) { (action) in
+            self.performSegue(withIdentifier: "logoutSegue", sender: self)
+        }
+        let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        present(alert,animated: true)
+       
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -89,6 +100,11 @@ class newMyPageCollectionViewController: UICollectionViewController {
         //            segmentControl(self.segment)
         //        }
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getProfile(memberid: self.memberid)
     }
    
     // MARK:- to Server action
@@ -235,7 +251,7 @@ class newMyPageCollectionViewController: UICollectionViewController {
         if finalheaferView.segmentControl.selectedSegmentIndex == 0 {
             print("self.data.count=\(self.data.count)")
             if self.data.count == 0 {
-                self.finalfooterrView.imageView.image = UIImage(named:"emptyview.png")
+                self.finalfooterrView.imageView.image = UIImage(named:"emptyview2.png")
             }
             self.data = self.allpost
             return self.data.count
@@ -342,7 +358,7 @@ class newMyPageCollectionViewController: UICollectionViewController {
                     finalfooterView.frame.size = CGSize(width: screensize.width, height: screensize.height*0.55)
                     finalfooterView.imageView.contentMode = .scaleToFill
                     DispatchQueue.main.async {
-                        finalfooterView.imageView.image = UIImage(named:"emptyview.png")
+                        finalfooterView.imageView.image = UIImage(named:"emptyview2.png")
                         finalfooterView.imageView.isHidden = false
 
                     }

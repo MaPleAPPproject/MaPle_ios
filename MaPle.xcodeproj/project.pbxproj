@@ -75,7 +75,8 @@
 		FA39616321C20EFF0024D2CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA39616221C20EFF0024D2CC /* Main.storyboard */; };
 		FA39616921C2122C0024D2CC /* world-low.svg in Resources */ = {isa = PBXBuildFile; fileRef = FA39616821C2122B0024D2CC /* world-low.svg */; };
 		FA39616B21C2128A0024D2CC /* earth-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA39616A21C2128A0024D2CC /* earth-2.png */; };
-		FAB509B921C1783E00662F59 /* emptyview.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB509B821C1783E00662F59 /* emptyview.png */; };
+		FA5AB39C21C78A5700395B6B /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5AB39B21C78A5500395B6B /* camera.png */; };
+		FA5AB3A021C794D400395B6B /* emptyview2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5AB39F21C794D400395B6B /* emptyview2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -154,7 +155,8 @@
 		FA39616221C20EFF0024D2CC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FA39616821C2122B0024D2CC /* world-low.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "world-low.svg"; sourceTree = "<group>"; };
 		FA39616A21C2128A0024D2CC /* earth-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "earth-2.png"; sourceTree = "<group>"; };
-		FAB509B821C1783E00662F59 /* emptyview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emptyview.png; sourceTree = "<group>"; };
+		FA5AB39B21C78A5500395B6B /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		FA5AB39F21C794D400395B6B /* emptyview2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emptyview2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +302,7 @@
 			children = (
 				FA39616A21C2128A0024D2CC /* earth-2.png */,
 				FA39616821C2122B0024D2CC /* world-low.svg */,
+				FA5AB39B21C78A5500395B6B /* camera.png */,
 				8AA71EB521B1298D000B28BE /* CollectCollectionViewCell.swift */,
 				FA2B182721BEA0E700EF5214 /* ChartViewController.swift */,
 				FA2B182521BEA08E00EF5214 /* ModifyPostViewController.swift */,
@@ -308,6 +311,7 @@
 				8AA71EB921B1298D000B28BE /* ImageManager.swift */,
 				8AA71EB721B1298D000B28BE /* MapLocationViewController.swift */,
 				FA2B182921BEA23200EF5214 /* FriendPostViewController.swift */,
+				FA5AB39F21C794D400395B6B /* emptyview2.png */,
 				FA39615A21C1ED650024D2CC /* collectEmptyView3.png */,
 				8AA71EB621B1298D000B28BE /* MyPageViewController.swift */,
 				FA39615C21C1F72B0024D2CC /* emptyView4.png */,
@@ -316,7 +320,6 @@
 				8AA71EB221B1298C000B28BE /* PrintHelper.swift */,
 				8AA71EB821B1298D000B28BE /* SinglePostViewController.swift */,
 				FA2B182F21BFB0D100EF5214 /* pinView2.png */,
-				FAB509B821C1783E00662F59 /* emptyview.png */,
 				8AA71EBB21B1298D000B28BE /* UserprofileViewController.swift */,
 				8AA2373F21C2B76D00487361 /* newMyPageCollectionViewController.swift */,
 				8AC6601821C34AB00087D934 /* MyPageCollectionReusableView.swift */,
@@ -399,10 +402,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5AB39C21C78A5700395B6B /* camera.png in Resources */,
 				8AA163BE217F5DC500D80197 /* LaunchScreen.storyboard in Resources */,
 				FA39616921C2122C0024D2CC /* world-low.svg in Resources */,
-				FAB509B921C1783E00662F59 /* emptyview.png in Resources */,
 				8A8F354621C4E40000E7B8C2 /* recomView.png in Resources */,
+				FA5AB3A021C794D400395B6B /* emptyview2.png in Resources */,
 				FA39616321C20EFF0024D2CC /* Main.storyboard in Resources */,
 				FA39616B21C2128A0024D2CC /* earth-2.png in Resources */,
 				FA39615B21C1ED660024D2CC /* collectEmptyView3.png in Resources */,
@@ -425,12 +429,14 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/FSInteractiveMap/FSInteractiveMap.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSInteractiveMap.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

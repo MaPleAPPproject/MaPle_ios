@@ -69,7 +69,7 @@ class WorldTableViewController: UITableViewController {
     }
     
     func computeRatio(value countryNum: Int, _ totalCountryNum: Int) -> String{
-        let ratio = Float(countryNum) / Float(totalCountryNum)
+        let ratio = Float(countryNum) / Float(totalCountryNum) * 100
         let str = String(format: "%.2f", ratio)
         return str
     }
