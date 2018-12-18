@@ -120,6 +120,9 @@ class newMyPageCollectionViewController: UICollectionViewController {
         }
         let queue2 = DispatchQueue(label: "queue2", attributes: .concurrent)
         queue2.async(group: group) {
+            self.allpost.removeAll()
+            self.allcollect.removeAll()
+            self.data.removeAll()
             self.getAllpost(memberid: self.memberid)
             self.getAllcollection(memberid: self.memberid)
             
@@ -148,8 +151,14 @@ class newMyPageCollectionViewController: UICollectionViewController {
                 assertionFailure("fail to decode")
                 return
             }
+            //chat
+            let id = String(memberid)
+            Communicator.friendsListIndex[id] = finalResult.userName
+            
             self.userProfile = finalResult
-            self.handleHeaderData(headerView: self.finalheaferView, userProfileData: finalResult)
+            DispatchQueue.main.async {
+                self.handleHeaderData(headerView: self.finalheaferView, userProfileData: finalResult)
+            }
         }
     }
     
@@ -319,17 +328,13 @@ class newMyPageCollectionViewController: UICollectionViewController {
                         print("error:\(error)")
                     }
                     guard let data = data else {
-                        
-                       
                         print("data is nil")
-                        
                         return
                     }
                     if data.count < 2000{
-                         self.finalheaferView.iconImageView.image = UIImage(named: "profile-user")
+                         self.finalheaferView.iconImageView.image = UIImage(named: "profile-user.png")
                         return
                     }
-                
                     self.finalheaferView.iconImageView.image = UIImage(data: data)
                 }
             } else {
@@ -479,7 +484,9 @@ class newMyPageCollectionViewController: UICollectionViewController {
             getProfile(memberid: memberid)
             let segue = segue.source as! UserprofileViewController
             let image = segue.photoIcon.image
+            let imagedata = image!.pngData()
             self.finalheaferView.iconImageView.image = image
+            self.iconData = imagedata
 //            print("segue.userNameLabel.text:\(segue.userNameLabel.text)")
 //            print("segue.selfIntroTextView.text:\(segue.selfIntroTextView.text)")
 //            self.finalheaferView.userNameLabel.text = segue.userNameLabel.text

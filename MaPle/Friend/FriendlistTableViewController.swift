@@ -3,13 +3,15 @@
 //  MaPle
 //
 //  Created by 蘇曉彤 on 2018/11/18.
-//
+import StoreKit
 import UIKit
 import Starscream
 
-class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource , SKProductsRequestDelegate, SKPaymentTransactionObserver{
     
+    @IBOutlet var paymentBt: UIBarButtonItem!
     @IBOutlet var friendView: UIView!
+    @IBOutlet weak var backgroundimageview: UIImageView!
     @IBOutlet weak var friendlistTableView: UITableView!
     let memberID = UserDefaults.standard.integer(forKey: "MemberIDint")
 
@@ -22,6 +24,7 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareForPayment()
         friendlistTableView.delegate = self
         friendlistTableView.dataSource = self
         getfriends(memberid: memberID)
@@ -37,21 +40,21 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
         }
         refreshControl.addTarget(self, action: #selector(refreshPictureData(_:)), for: .valueChanged)
         
-        if friendlist.isEmpty {
-            friendlistTableView.separatorStyle = .none
-            let backgroundImage = UIImage.init(named: "background_friend")
-            friendView.layer.contents = backgroundImage?.cgImage
-        }
-        
-    }
-    
-//    override func viewWillAppear(_ animated: Bool) {
 //        if friendlist.isEmpty {
 //            friendlistTableView.separatorStyle = .none
 //            let backgroundImage = UIImage.init(named: "background_friend")
 //            friendView.layer.contents = backgroundImage?.cgImage
 //        }
-//    }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if friendlist.isEmpty {
+            backgroundimageview.isHidden = false
+            backgroundimageview.image = UIImage(named: "background_friend.png")
+            friendlistTableView.isHidden = true
+        }
+    }
     
     
     // MARK: - Table view data source
@@ -61,7 +64,17 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if friendlist.count == 0 {
+//            backgroundimageview.isHidden = false
+//            backgroundimageview.image = UIImage(named: "background_friend.png")
+//            friendlistTableView.isHidden = true
+//            friendlistTableView.backgroundView? = UIImageView(image: UIImage(named: "background_friend.png"))
+        } else {
+            backgroundimageview.isHidden = true
+            friendlistTableView.isHidden = false
+        }
         return friendlist.count
+
     }
     
     
@@ -74,7 +87,12 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
         cell.nameLB.adjustsFontSizeToFitWidth = true
         cell.introLB.text = friend.selfIntroduction
         cell.chatBt.tag = friend.FriendID
-        
+        print(self.vipStatus)
+        if self.vipStatus == 1 {
+            cell.chatBt.isHidden = false
+        } else {
+            cell.chatBt.isHidden = true
+        }
         communicator.getPhoto(id: friend.FriendID) { (data, error) in
             if let error = error {
                 print("Download fail: \(error)")
@@ -176,4 +194,358 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     
+    // MARK - Payment
+    
+    var productIDs = Set<String>()
+    var productsArray = [SKProduct]()
+    var isProgress: Bool = false
+    
+    let TAG = "FriendPageViewController : "
+    let messageTitle = "尊榮會員升等服務"
+    let message = "現在升等VIP立即開啟聊天室功能~!"
+    let product = "VipUpdate"
+    var serverCommunicator = ServerCommunicator()
+    var vipStatus = 0
+    
+    func barBtnSize() {
+        
+        let screenWidth = UIScreen.main.bounds.width
+//        paymentBarBtn.width = screenWidth
+        
+        
+        if vipStatus == 1{
+            self.paymentBt.isEnabled = false
+            self.paymentBt.title = ""
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        } else {
+            self.paymentBt.isEnabled = true
+            self.paymentBt.title = "▷▷▷ 現在開通聊天室服務只需$30!! ◁◁◁"
+        }
+        
+    }
+    
+    func prepareForPayment() {
+        SKPaymentQueue.default().add(self as SKPaymentTransactionObserver)
+        vipVerify()
+        barBtnSize()
+        
+    }
+    
+    
+    func vipVerify(){
+        guard let memberId = UserDefaults.standard.object(forKey: "MemberIDint") as? Int else {
+            return
+        }
+        print("\(TAG),  \(memberID)")
+        
+        
+        serverCommunicator.loadUserVipStatus(memberId){ (results, error) in
+            print("results:\(results!)")
+            guard let result = results!["vipStatus"] as? Int else {
+                assertionFailure("Json covertion fail")
+                return
+            }
+            self.vipStatus = result
+        }
+    }
+    
+    @IBAction func IABtn(sender: UIBarButtonItem) {
+        requestProductInfo()
+    }
+    
+    
+//    @IBAction func IABbtn(_ sender: UIBarButtonItem) {
+//        requestProductInfo()
+//    }
+    
+    func requestProductInfo() {
+        
+        if SKPaymentQueue.canMakePayments() {
+            
+            let identifiers: Set<String> = [product]
+            
+            let request = SKProductsRequest(productIdentifiers: identifiers)
+            
+            request.delegate = self
+            request.start()
+            
+            
+        } else {
+            print("取不到任何內購的商品...")
+            showActionSheet()
+        }
+    }
+    
+    
+    func showMessage(_ message: String) {
+        
+        let alertController = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "是", style: .default, handler: nil)
+        
+        alertController.addAction(confirm)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    // MARK: - Delegate
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        
+        if response.products.count != 0 {
+            
+            for product in response.products {
+                self.productsArray.append(product)
+                print(product)
+            }
+            
+            if self.productsArray.count != 0 {
+                SKPaymentQueue.default().add(self)
+                
+                let payment = SKPayment(product: self.productsArray.first!)
+                
+                SKPaymentQueue.default().add(payment)
+                
+                self.isProgress = true
+            } else {
+                print("\(TAG)用戶無法購買")
+            }
+            
+        } else {
+            print("\(TAG)取不到任何商品...")
+        }
+        if response.invalidProductIdentifiers.count != 0 {
+            print("\(TAG)交易失敗商品名稱 : \(response.invalidProductIdentifiers.description)")
+            showActionSheet()
+        }
+    }
+    
+    func transcationPurchasing(_ transcation: SKPaymentTransaction) {
+        
+        print("交易中...")
+    }
+    
+    fileprivate func transcationPurchased(_ transcation: SKPaymentTransaction) {
+        
+        print("交易成功...")
+        
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case SKPaymentTransactionState.purchased:
+                print("\(TAG)交易成功")
+                SKPaymentQueue.default().finishTransaction(transaction)
+                
+                self.isProgress = false
+                
+                SKPaymentQueue.default().remove(self)
+                
+                afterPaymentFinish()
+                
+                self.dismiss(animated: true, completion: nil)
+            case SKPaymentTransactionState.failed:
+                print("SKPaymentTransactionState.failed")
+                
+                if let error = transaction.error as? SKError {
+                    switch error.code {
+                    case .paymentCancelled:
+                        print("Transaction Cancelled: \(error.localizedDescription)")
+                    case .paymentInvalid:
+                        print("Transaction paymentInvalid: \(error.localizedDescription)")
+                    case .paymentNotAllowed:
+                        print("Transaction paymentNotAllowed: \(error.localizedDescription)")
+                    default:
+                        print("Transaction: \(error.localizedDescription)")
+                    }
+                }
+                
+                SKPaymentQueue.default().finishTransaction(transaction)
+                self.isProgress = false
+            case SKPaymentTransactionState.restored:
+                print("SKPaymentTransactionState.restore")
+                
+                SKPaymentQueue.default().finishTransaction(transaction)
+                self.isProgress = false
+                
+            default:
+                print(transaction.transactionState.rawValue)
+            }
+        }
+    }
+    
+    func showActionSheet() {
+        
+        if self.isProgress {
+            return
+        }
+        var buyAction: UIAlertAction?
+        
+        
+        buyAction = UIAlertAction(title: "購買", style: UIAlertAction.Style.default) { (action) -> Void in
+            if SKPaymentQueue.canMakePayments() {
+                SKPaymentQueue.default().add(self)
+                if self.productsArray.count != 0 {
+                    let payment = SKPayment(product: self.productsArray[1])
+                    
+                    SKPaymentQueue.default().add(payment)
+                    
+                    self.isProgress = true
+                } else {
+                    print("productArray is empty.")
+                }
+            }
+            self.showPaymentAlert()
+            
+        }
+        
+        let actionSheetController = UIAlertController(title: self.messageTitle, message: self.message, preferredStyle: UIAlertController.Style.actionSheet)
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertAction.Style.cancel, handler: nil)
+        
+        actionSheetController.addAction(buyAction!)
+        actionSheetController.addAction(cancelAction)
+        
+        self.present(actionSheetController, animated: true, completion: nil)
+    }
+    
+    func showPaymentAlert(){
+        let title = "iTune Store"
+        let message = "如果您有 Apple ID, 用此 Apple ID 在這\n裡登入。 如果您使用過 iTunes Store 或\n iCloud, 您已有 Apple ID。\n"
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let confirm = UIAlertAction(title: "使用現有 Apple ID", style: .default){ (action) in
+            self.showPaymentSignInAlert()
+        }
+        
+        let createNewAccount = UIAlertAction(title: "建立 Apple ID", style: .default, handler: nil)
+        let cancal = UIAlertAction(title: "取消", style: .default, handler: nil)
+        
+        alertController.addAction(confirm)
+        alertController.addAction(createNewAccount)
+        alertController.addAction(cancal)
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func showPaymentSignInAlert() {
+        let title = "需要登入"
+        let message = "如果您有 Apple ID, 用此 Apple ID 在這\n裡登入。 如果您使用過 iTunes Store 或\n iCloud, 您已有 Apple ID。\n"
+        
+        let label = UILabel(frame: CGRect(x: 100, y: 100, width: 50, height: 50))
+        label.text = "Text"
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "購買", style: .default){(action) in
+            
+            self.showLoadingAlert()
+            
+            //MARK- refresh
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+                self.dismiss(animated: false, completion: nil)
+                let title = "確認您的 App 內建購買功能"
+                let message = "您要以 NT$ 30 的價格購買一個 會員升等方案 嗎? \n\n [Enviroment: Sandbox]"
+                let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                
+                let confirm = UIAlertAction(title: "購買", style: .default){ (action) in
+                    
+                    self.showLoadingAlert()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                        
+                        self.dismiss(animated: false, completion: nil)
+                        self.afterPaymentFinish()
+                    })
+                }
+                let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
+                alertController.addAction(cancel)
+                alertController.addAction(confirm)
+                
+                
+                self.present(alertController, animated: true, completion: nil)
+            })
+            
+        }
+        let cancal = UIAlertAction(title: "取消", style: .default, handler: nil)
+        
+        alertController.addAction(confirm)
+        alertController.addAction(cancal)
+        alertController.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "example@icloud.com"
+        })
+        alertController.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "密碼"
+            
+            textField.isSecureTextEntry = true
+        })
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showLoadingAlert(){
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        print("restoreCompletedTransactionsFailed.")
+        print(error.localizedDescription)
+    }
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        print("paymentQueueRestoreCompletedTransactionsFinished.")
+    }
+    
+    func afterPaymentFinish(){
+        guard let memberId = UserDefaults.standard.object(forKey: "MemberIDint") as? Int else {
+            return
+        }
+        
+        serverCommunicator.updateUserVipStatus(memberId) { (results, error) in
+            if error != nil {
+                assertionFailure("failed to update Vip status error code : \(error!)")
+                return
+            }
+            guard let result = results!["response"]as? Int else {
+                assertionFailure("Json covertion fail")
+                return
+            }
+            if result == 1 {
+                self.vipVerify()
+                let title = "設定成功"
+                let message = "您的購買已經成功。 \n\n [Enviroment: Sandbox]"
+                let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                
+                let confirm = UIAlertAction(title: "好", style: .default){ (action) in
+                    
+                    self.barBtnSize()
+                    self.friendlistTableView.reloadData()
+                    
+                }
+                alertController.addAction(confirm)
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+                
+            }
+            
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        SKPaymentQueue.default().remove(self as SKPaymentTransactionObserver)
+    }
 }

@@ -9,13 +9,13 @@ import UIKit
 import Photos
 
 
-class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrollViewDelegate {
+class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrollViewDelegate, UITextFieldDelegate {
     let imageManager = ImageManager.shared
     var squareImage = UIImage()
-
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nameEditBtn: UIButton!
-   
+    
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
@@ -25,9 +25,9 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var photoIcon: UIImageView!
-     var memberId = UserDefaults.standard.integer(forKey: "MemberIDint")
+    var memberId = UserDefaults.standard.integer(forKey: "MemberIDint")
     @IBOutlet weak var vipStatus: UILabel!
-   
+    
     @IBOutlet weak var selfIntroTextView: UITextView!
     @IBOutlet weak var passwordEditStackView: UIStackView!
     var isShowEditStack = false
@@ -51,15 +51,17 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(hideKeyBoard))
         self.view.addGestureRecognizer(swipe)
         swipe.direction = .down
-      
+        
         
         
         
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -73,11 +75,14 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
     
     
     @objc func keyboardWillAppear(_ notification: NSNotification) {
-        
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
+        if !nameTextField.isFirstResponder{
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y == 0{
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
             }
+            
+            
         }
     }
     
@@ -94,9 +99,17 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
     @objc
     func hideKeyBoard(){
         selfIntroTextView.resignFirstResponder()
+        nameTextField.resignFirstResponder()
+        newPasswordTextField.resignFirstResponder()
+        confirmPasswordTextField.resignFirstResponder()
     }
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.resignFirstResponder()
+        newPasswordTextField.resignFirstResponder()
+        confirmPasswordTextField.resignFirstResponder()
+        return true
+    }
     
     func authorize() -> Bool {
         let photoLibraryStatus = PHPhotoLibrary.authorizationStatus() //相簿請求
@@ -169,9 +182,9 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
         return false
     }
     
-
     
-   
+    
+    
     
     @objc
     func changePhoto(){
@@ -193,16 +206,12 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
         }
         let gallery = UIAlertAction(title: "相簿", style: .default) { (action) in
             
-            //                let picker = UIImagePickerController()
-            //                picker.sourceType = .photoLibrary
-            //                picker.allowsEditing = true
-            //
-            //                picker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            
             let state = self.authorize()
             if state == true {
                 self.present(self.picker, animated: true, completion: nil)
             }
-       
+            
             
         }
         
@@ -217,7 +226,7 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
         let queue = DispatchQueue(label: "dispatchQueue")
         queue.sync {
             self.updateUserProfile()
-
+            
         }
         communicator.loadUserProfile(memberId: memberId) { (result, error) in
             if let error = error {
@@ -244,8 +253,8 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
             print("I am going to mypage")
             self.performSegue(withIdentifier: "fromUserProfileSegue", sender: resultObject)
         }
-//        print("I am going to mypage")
-//        performSegue(withIdentifier: "fromUserProfileSegue", sender: sender)
+        //        print("I am going to mypage")
+        //        performSegue(withIdentifier: "fromUserProfileSegue", sender: sender)
         
     }
     
@@ -265,7 +274,7 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
             offNameEditMode()
         } else {
             showAlert(title: "Oops", message: "您尚未輸入任何字元喔！")
-          
+            
         }
         
     }
@@ -298,7 +307,7 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
     func configureView(){
         let viewHeight:CGFloat = isShowEditStack ? 150 : 0.0
         passwordEditStackView.visiblity(gone: false, dimension: viewHeight)
-       
+        
         selfIntroTextView.layer.borderWidth = 1
         selfIntroTextView.layer.borderColor = UIColor.gray.cgColor
     }
@@ -321,15 +330,15 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
                 newPasswordTextField!.text = ""
                 
             } else {
-              showAlert(title: "Oops", message: "請確認輸入的密碼必須一致！")
-             
-               
+                showAlert(title: "Oops", message: "請確認輸入的密碼必須一致！")
+                
+                
                 
             }
             
         } else {
-             showAlert(title: "Oops", message: "您尚未輸入任何字元喔！")
-           
+            showAlert(title: "Oops", message: "您尚未輸入任何字元喔！")
+            
             
         }
     }
@@ -441,7 +450,7 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
         //
         //        }
         let userProfile = Userprofile(memberId: memberId, email: email , password: password, userName: userName, selfIntroduction: selfIntro, vipStatus: vipStatusNum, postCount: 0, collectionCount: 0)
-    
+        
         communicator.updateUserprofile(userProfile: userProfile, imageBase64: imageBase64) { (result, error) in
             if let error = error {
                 print("updateUserprofile error:\(error)")
@@ -479,10 +488,10 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
                 print("data is nil")
                 return
             }
-           
+            
             if data.count < 2000 {
                 DispatchQueue.main.async {
-                self.photoIcon.image = UIImage(named: "profile-user")
+                    self.photoIcon.image = UIImage(named: "profile-user")
                 }
             } else {
                 let image = UIImage(data: data)
@@ -493,7 +502,7 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
                 }
             }
             
-           
+            
             
         }
     }
@@ -621,3 +630,4 @@ extension UIImage {
         return UIImage(data: imageData)!
     }
 }
+

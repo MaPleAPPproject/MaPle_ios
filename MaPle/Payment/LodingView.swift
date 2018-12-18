@@ -35,4 +35,4 @@
             self.indicator.stopAnimating()
         }
         
-}
+    }

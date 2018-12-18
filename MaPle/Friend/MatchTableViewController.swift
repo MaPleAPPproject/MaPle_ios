@@ -11,6 +11,7 @@ import Darwin
 class MatchTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
+    @IBOutlet weak var backgroundimageView: UIImageView!
     @IBOutlet var matchView: UIView!
     @IBOutlet weak var matchlistTableView: UITableView!
     let memberID = UserDefaults.standard.integer(forKey: "MemberIDint")
@@ -37,14 +38,23 @@ class MatchTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if matchlist.isEmpty {
-            let backgroundImage = UIImage.init(named: "background_match")
-            matchView.layer.contents = backgroundImage?.cgImage
-        }
+//        if matchlist.isEmpty {
+//            let backgroundImage = UIImage.init(named: "background_match")
+//            matchView.layer.contents = backgroundImage?.cgImage
+//        }
     }
     
     //MARK:-TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if matchlist.count == 0 {
+            backgroundimageView.isHidden = false
+            backgroundimageView.image = UIImage(named: "background_match")
+            matchlistTableView.isHidden = true
+        } else {
+            backgroundimageView.isHidden = true
+            matchlistTableView.isHidden = false
+        }
+        
         return matchlist.count
     }
     

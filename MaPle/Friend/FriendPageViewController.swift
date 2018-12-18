@@ -8,9 +8,7 @@
 import StoreKit
 import UIKit
 
-class FriendPageViewController: UIViewController
-    , SKProductsRequestDelegate, SKPaymentTransactionObserver
-{
+class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     @IBOutlet weak var friendSegmentControl: UISegmentedControl!
     @IBOutlet weak var friendView: UIView!
@@ -135,21 +133,21 @@ class FriendPageViewController: UIViewController
             return
         }
         print(TAG, memberId)
-        self.serverCommunicator = ServerCommunicator(memberId)
+//        self.serverCommunicator = ServerCommunicator(memberId)
         
 //        productIDs.insert(product) // Todo add the productId
         
-        serverCommunicator!.loadUserVipStatus { (results, error) in
-            
+//        serverCommunicator!.loadUserVipStatus { (results, error) in
+        
 //            guard let result = results!["vipStatus"] as? Int else {
 //                assertionFailure("Json covertion fail")
 //                return
 //            }
 //            self.vipStatus = result
-            
+    
         }
         
-    }
+//    }
     
     
     @IBAction func IABbtn(_ sender: UIBarButtonItem) {
@@ -337,3 +335,4 @@ class FriendPageViewController: UIViewController
     }
     
 } // view controller
+
