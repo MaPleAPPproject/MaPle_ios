@@ -62,7 +62,7 @@ class InvitationViewController: UIViewController {
             assertionFailure("userid is nil")
             return
         }
-        if let controller = storyboard?.instantiateViewController(withIdentifier: "othersPage") as? OthersPage2CollectionViewController {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "othersPage1") as? OthersPage2CollectionViewController {
             
             controller.memberid = object[0] as! Int
             controller.userName = object[1] as! String

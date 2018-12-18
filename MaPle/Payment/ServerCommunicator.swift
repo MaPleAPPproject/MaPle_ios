@@ -15,23 +15,21 @@ let userProfileUrl = "\(url)/User_profileServlet"
 
 class ServerCommunicator {
     
-    var memberId: Int
     
-    init(_ memberid : Int){
-        self.memberId = memberid
+    init(){
     }
     //  MARK: - Public methods.
     
     
     typealias DoneHandler = (_ result:[String:Any]?, _ error: Error?) ->Void
     
-    func loadUserVipStatus(completion: @escaping DoneHandler){
-        let parameters = ["action":"findById", "memberId": "\(memberId)"]
+    func loadUserVipStatus(_ userId: Int,completion: @escaping DoneHandler){
+        let parameters = ["action":"findById", "memberId": "\(userId)"]
         doPost(userProfileUrl, parameters,  completion: completion)
     }
     
     func updateUserVipStatus(_ userId: Int, completion: @escaping DoneHandler){
-        let parameters = ["action":"vipStatusUpdate", "memberId": "\(memberId)"]
+        let parameters = ["action":"vipStatusUpdate", "memberId": "\(userId)"]
         doPost(userProfileUrl, parameters, completion: completion)
     }
     
@@ -42,15 +40,18 @@ class ServerCommunicator {
             switch response.result {
                 
             case .success(let json):
-                print("Get success response: \(json)")
-                
-                guard let finalJson = json as? [String:Any] else {
-                    let error = NSError(domain: "Invalid JSON object.", code: -1, userInfo: nil)
-                    completion(nil, error)
-                    return
+                if let Json = json as? Int {
+                    let finalJson = ["response":Json]
+                    completion(finalJson, nil)
+                } else {
+                    guard let finalJson = json as? [String:Any] else {
+                        let error = NSError(domain: "Invalid JSON object.", code: -1, userInfo: nil)
+                        completion(nil, error)
+                        return
+                    }
+                    
+                    completion(finalJson, nil)
                 }
-                
-                completion(finalJson, nil)
                 
             case .failure(let error):
                 print("Get error response: \(error)")

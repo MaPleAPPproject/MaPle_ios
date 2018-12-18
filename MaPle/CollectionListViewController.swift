@@ -83,13 +83,13 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        DispatchQueue.main.async {
-//            UIView.animate(withDuration: 0.3) {
-//                self.buttonBar.frame.origin.x = (self.segmentView.frame.width / CGFloat(self.segmentView.numberOfSegments)) * CGFloat(self.segmentView.selectedSegmentIndex)
-//                self.buttonBar.layoutIfNeeded()
-//                print("self.buttonBar.frame.origin.x:\(self.buttonBar.frame.origin.x)")
-//            }
-//        }
+        //        DispatchQueue.main.async {
+        //            UIView.animate(withDuration: 0.3) {
+        //                self.buttonBar.frame.origin.x = (self.segmentView.frame.width / CGFloat(self.segmentView.numberOfSegments)) * CGFloat(self.segmentView.selectedSegmentIndex)
+        //                self.buttonBar.layoutIfNeeded()
+        //                print("self.buttonBar.frame.origin.x:\(self.buttonBar.frame.origin.x)")
+        //            }
+        //        }
         super.viewWillAppear(animated)
         print("viewWillAppear index:\(self.segmentView.selectedSegmentIndex)")
         self.categoryValueChanged(self.segmentView)
@@ -149,7 +149,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 }
                 self.tops.append(resultObject)
             }
-//            print("tops:\(self.tops)")
+            //            print("tops:\(self.tops)")
             self.datas = self.tops
             self.collectionView.delegate = self
             self.collectionView.dataSource = self
@@ -178,7 +178,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 }
                 self.recoms.append(resultObject)
             }
-//            print("recoms:\(self.recoms)")
+            //            print("recoms:\(self.recoms)")
             self.datas = self.recoms
             self.collectionView.reloadData()
         })
@@ -194,7 +194,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 print("result is nil")
                 return
             }
-//            print("result:\(result)")
+            //            print("result:\(result)")
             for item in result {
                 guard let jsonData = try? JSONSerialization.data(withJSONObject: item, options: .prettyPrinted) else {
                     print("Fail to generate jsonData") //先將json物件轉為data
@@ -206,7 +206,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
                 }
                 self.news.append(resultObject)
             }
-//            print("news:\(self.news)")
+            //            print("news:\(self.news)")
             self.datas = self.news
             self.collectionView.reloadData()
         }
@@ -264,36 +264,21 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     @IBAction func categoryValueChanged(_ sender: UISegmentedControl) {
-//        DispatchQueue.main.async {
-//            UIView.animate(withDuration: 0.3) {
-//                self.buttonBar.frame.origin.x = (self.segmentView.frame.width / CGFloat(sender.numberOfSegments)) * CGFloat(sender.selectedSegmentIndex)
-//                self.buttonBar.layoutIfNeeded()
-//                print("self.buttonBar.frame.origin.x:\(self.buttonBar.frame.origin.x)")
-//            }
-//        }
+        
         self.datas.removeAll()
         switch sender.selectedSegmentIndex {
         case 0:
             self.tops.removeAll()
             getPictureTop()
-//            self.datas = self.tops
-//            self.collectionView.reloadData()
         case 1:
             self.recoms.removeAll()
             getPictureRecom(memberid: self.memberid!)
-//            self.datas = self.recoms
-//            self.collectionView.reloadData()
         case 2:
             self.news.removeAll()
             getPictureNew()
-//            self.datas = self.news
-//            self.collectionView.reloadData()
         default:
             self.tops.removeAll()
             getPictureTop()
-//            self.datas = self.tops
-//            self.collectionView.reloadData()
-            
         }
     }
     
@@ -318,7 +303,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
             return
         }
     }
- 
+    
     //MARK:- Segment Style
     func segmentstylechange() {
         self.segmentView.backgroundColor = .clear
@@ -346,16 +331,16 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
         line.topAnchor.constraint(equalTo: segmentView.bottomAnchor).isActive = true
         
         // This needs to be false since we are using auto layout constraints
-//        buttonBar.translatesAutoresizingMaskIntoConstraints = false
-//        buttonBar.backgroundColor = UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0)
-//        view.addSubview(buttonBar)
-//        // Constrain the top of the button bar to the bottom of the segmented control
-//        buttonBar.bottomAnchor.constraint(equalTo: segmentView.bottomAnchor).isActive = true
-//        buttonBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
-//        // Constrain the button bar to the left side of the segmented control
-//        buttonBar.leftAnchor.constraint(equalTo: segmentView.leftAnchor).isActive = true
-//        // Constrain the button bar to the width of the segmented control divided by the number of segments
-//        buttonBar.widthAnchor.constraint(equalTo: segmentView.widthAnchor, multiplier: 1 / CGFloat(segmentView.numberOfSegments)).isActive = true
+        //        buttonBar.translatesAutoresizingMaskIntoConstraints = false
+        //        buttonBar.backgroundColor = UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0)
+        //        view.addSubview(buttonBar)
+        //        // Constrain the top of the button bar to the bottom of the segmented control
+        //        buttonBar.bottomAnchor.constraint(equalTo: segmentView.bottomAnchor).isActive = true
+        //        buttonBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        //        // Constrain the button bar to the left side of the segmented control
+        //        buttonBar.leftAnchor.constraint(equalTo: segmentView.leftAnchor).isActive = true
+        //        // Constrain the button bar to the width of the segmented control divided by the number of segments
+        //        buttonBar.widthAnchor.constraint(equalTo: segmentView.widthAnchor, multiplier: 1 / CGFloat(segmentView.numberOfSegments)).isActive = true
         segmentView.addTarget(self, action: #selector(self.categoryValueChanged(_:)), for: UIControl.Event.valueChanged)
     }
 }

@@ -55,8 +55,9 @@ class LoginViewController: UIViewController,UITextViewDelegate {
                     self.userDefaults.set(self.email, forKey: "Email")
                     self.userDefaults.set(self.passWord, forKey: "PassWord")
                     
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "registerView")
-                    self.show(vc!, sender: self)
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "registerView") as! UITabBarController
+                    vc.tabBar.tintColor = UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0)
+                    self.show(vc, sender: self)
                 }
             })
         }
