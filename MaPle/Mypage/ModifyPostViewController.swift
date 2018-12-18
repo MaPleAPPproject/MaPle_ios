@@ -42,8 +42,51 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let image = postImage.image else {
+            return
+        }
+        squareImage = image
+        
+        guard let comment = commentTextView.text else {
+            return
+        }
+        self.comment = comment
+        
+        NotificationCenter.default.removeObserver(self)
+        
+    }
+    
+    @objc func keyboardWillAppear(_ notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillDisappear(_ notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
+    @objc
+    func hideKeyBoard(){
+        commentTextView.resignFirstResponder()
+    }
+    
     
     func configView(){
         commentTextView.text = comment
@@ -61,6 +104,10 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
         postImage.isUserInteractionEnabled = true
         postImage.image = squareImage
         
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(hideKeyBoard))
+        self.view.addGestureRecognizer(swipe)
+        swipe.direction = .down
+        
     }
     
     
@@ -75,7 +122,7 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
             guard let district = (selectedLocation["district"]) else {return}
             var placeString = ""
             
-            if district.isEmpty && adminArea.isEmpty {
+        if district.isEmpty && adminArea.isEmpty {
                placeString += country
             } else if !district.isEmpty {
                 

@@ -48,8 +48,9 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
         
         picker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyBoard))
-        self.view.addGestureRecognizer(tap)
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(hideKeyBoard))
+        self.view.addGestureRecognizer(swipe)
+        swipe.direction = .down
       
         
         
@@ -168,10 +169,7 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
         return false
     }
     
-//    func hideKeyBoard (textView : UITextView) -> Bool {
-//        textView.resignFirstResponder()
-//        return true
-//    }
+
     
    
     
@@ -204,11 +202,11 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
             if state == true {
                 self.present(self.picker, animated: true, completion: nil)
             }
-         let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
-            
-            
+       
             
         }
+        
+        let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
         alert.addAction(camera)
         alert.addAction(gallery)
         alert.addAction(cancel)

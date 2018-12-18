@@ -33,9 +33,10 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         configView()
         setLocationLabel()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyBoard))
-        self.view.addGestureRecognizer(tap)
-        
+      
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(hideKeyBoard))
+        self.view.addGestureRecognizer(swipe)
+        swipe.direction = .down
     }
     
 
@@ -110,7 +111,7 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
     }
     @objc
     func hideKeyBoard(){
-        selfIntroTextView.resignFirstResponder()
+        commentTextView.resignFirstResponder()
     }
     
     
