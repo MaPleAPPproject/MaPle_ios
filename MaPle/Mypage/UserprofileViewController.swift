@@ -9,7 +9,7 @@ import UIKit
 import Photos
 
 
-class UserprofileViewController: UIViewController {
+class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrollViewDelegate {
     let imageManager = ImageManager.shared
     var squareImage = UIImage()
 
@@ -48,14 +48,53 @@ class UserprofileViewController: UIViewController {
         
         picker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(hideKeyBoard))
+        self.view.addGestureRecognizer(swipe)
+        swipe.direction = .down
+      
+        
+        
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    
+    @objc func keyboardWillAppear(_ notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillDisappear(_ notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
+    
+    @objc
+    func hideKeyBoard(){
+        selfIntroTextView.resignFirstResponder()
+    }
     
     
     
@@ -130,11 +169,13 @@ class UserprofileViewController: UIViewController {
         return false
     }
     
+
     
+   
     
     @objc
     func changePhoto(){
-        let alert = UIAlertController(title: "更改大頭貼", message: "請選擇相片來源", preferredStyle: .alert)
+        let alert = UIAlertController(title: "更改大頭貼", message: "請選擇相片來源", preferredStyle: .actionSheet)
         let camera = UIAlertAction(title: "相機", style: .default){ (action) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) &&
                 UIImagePickerController.isCameraDeviceAvailable(.front) &&
@@ -161,13 +202,14 @@ class UserprofileViewController: UIViewController {
             if state == true {
                 self.present(self.picker, animated: true, completion: nil)
             }
-            
-            
-            
+       
             
         }
+        
+        let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
         alert.addAction(camera)
         alert.addAction(gallery)
+        alert.addAction(cancel)
         present(alert,animated: true)
     }
     
@@ -227,6 +269,8 @@ class UserprofileViewController: UIViewController {
         }
         
     }
+    
+    
     
     @IBAction func nameEditCancelBtnPressed(_ sender: UIButton) {
         offNameEditMode()
