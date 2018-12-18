@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hnb-Nt-0Uu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hnb-Nt-0Uu">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -677,26 +677,13 @@
                                             <action selector="myLocationPressed:" destination="8DQ-hr-w1g" eventType="touchUpInside" id="bjp-4k-Kcp"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWc-um-PjI">
-                                        <rect key="frame" x="5" y="5" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="aF0-i7-4rW"/>
-                                            <constraint firstAttribute="width" constant="40" id="cfN-EO-QmN"/>
-                                        </constraints>
-                                        <state key="normal" title="Button" image="location-pin"/>
-                                        <connections>
-                                            <action selector="drawSpotsBtnPressed:" destination="8DQ-hr-w1g" eventType="touchUpInside" id="Nmh-u3-7Sp"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="bWc-um-PjI" firstAttribute="top" secondItem="Twi-LY-cH6" secondAttribute="top" constant="5" id="2zk-IP-jko"/>
                                     <constraint firstItem="llW-av-luc" firstAttribute="leading" secondItem="Twi-LY-cH6" secondAttribute="leading" id="4dW-aH-EJI"/>
                                     <constraint firstAttribute="bottom" secondItem="llW-av-luc" secondAttribute="bottom" id="7q7-i8-kGo"/>
                                     <constraint firstItem="llW-av-luc" firstAttribute="top" secondItem="Twi-LY-cH6" secondAttribute="top" id="Fgc-vg-Zld"/>
                                     <constraint firstAttribute="trailing" secondItem="kVc-br-aLG" secondAttribute="trailing" constant="5" id="fq6-sV-dqC"/>
-                                    <constraint firstItem="bWc-um-PjI" firstAttribute="leading" secondItem="Twi-LY-cH6" secondAttribute="leading" constant="5" id="gaC-sp-LvM"/>
                                     <constraint firstItem="kVc-br-aLG" firstAttribute="top" secondItem="Twi-LY-cH6" secondAttribute="top" constant="5" id="jBe-LF-Jhr"/>
                                     <constraint firstAttribute="trailing" secondItem="llW-av-luc" secondAttribute="trailing" id="s8f-RE-hyG"/>
                                 </constraints>
@@ -785,7 +772,12 @@
                         <viewLayoutGuide key="safeArea" id="cHs-Eb-vgT"/>
                     </view>
                     <navigationItem key="navigationItem" title="地圖" id="5ir-v0-3ld">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="earth-2.png" id="gJ6-m8-5nN">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="location-pin64" id="2FS-e1-aoF">
+                            <connections>
+                                <action selector="drawSpotsBtnPressed:" destination="8DQ-hr-w1g" id="pMw-LP-o5I"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="earth-globe" id="gJ6-m8-5nN">
                             <connections>
                                 <segue destination="XFY-Oj-pYV" kind="show" id="OjD-oF-Coe"/>
                             </connections>
@@ -793,13 +785,15 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cellLayout" destination="9zK-2w-RGE" id="HBc-zj-qHK"/>
+                        <outlet property="drawSpotsBtn" destination="2FS-e1-aoF" id="I2O-s9-dlE"/>
                         <outlet property="myMapView" destination="llW-av-luc" id="Mye-xy-kPV"/>
                         <outlet property="mypostCollectionView" destination="fvC-kw-gmx" id="T2v-GZ-sdz"/>
+                        <segue destination="3eN-s5-BMf" kind="show" identifier="ToSinglePostView" id="qZ0-90-sfx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TW2-2d-xoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5927.1999999999998" y="-491.60419790104953"/>
+            <point key="canvasLocation" x="5887" y="-491"/>
         </scene>
         <!--地圖-->
         <scene sceneID="UTY-Vm-v7d">
@@ -1994,6 +1988,7 @@
                         <outlet property="postedDateLabel" destination="VRD-bL-gHP" id="42u-Gt-JsR"/>
                         <segue destination="j1g-Qa-FC3" kind="show" identifier="editPostSegue" id="sGT-0Z-2bY"/>
                         <segue destination="Eux-gh-GIN" kind="unwind" identifier="backToMyPage" unwindAction="unwind:" id="RhL-Do-luZ"/>
+                        <segue destination="Eux-gh-GIN" kind="unwind" unwindAction="unwind:" id="Tl3-kN-A8n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAt-1J-FyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2196,7 +2191,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Za7-zj-eZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Gqd-X4-NoF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4783" y="-1558"/>
+            <point key="canvasLocation" x="5265" y="-1641"/>
         </scene>
         <!--佔領圖-->
         <scene sceneID="HwV-yg-brN">
@@ -3595,13 +3590,13 @@
         <image name="camera.png" width="60" height="60"/>
         <image name="cancel" width="230.39999389648438" height="230.39999389648438"/>
         <image name="checked" width="230.39999389648438" height="230.39999389648438"/>
-        <image name="earth-2.png" width="32" height="32"/>
+        <image name="earth-globe" width="51.200000762939453" height="51.200000762939453"/>
         <image name="ic_edit" width="48" height="48"/>
         <image name="ic_explore_collect" width="200" height="200"/>
         <image name="ic_key" width="48" height="48"/>
         <image name="ic_membership" width="48" height="48"/>
         <image name="ic_selfintro" width="48" height="48"/>
-        <image name="location-pin" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="location-pin64" width="51.200000762939453" height="51.200000762939453"/>
         <image name="navigation" width="38" height="38"/>
         <image name="placeholder-4" width="25.600000381469727" height="25.600000381469727"/>
         <image name="tabbar_explore" width="25" height="25"/>
@@ -3611,6 +3606,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Br3-x8-NPc"/>
+        <segue reference="qZ0-90-sfx"/>
         <segue reference="NfH-oj-wrs"/>
         <segue reference="Cc8-2j-IOf"/>
         <segue reference="REs-ah-FrR"/>

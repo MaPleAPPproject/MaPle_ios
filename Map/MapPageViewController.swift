@@ -10,6 +10,7 @@ import CoreLocation
 
 class MapPageViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate,UICollectionViewDataSource {
     
+    
     @IBOutlet weak var drawSpotsBtn: UIBarButtonItem!
     @IBOutlet weak var cellLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var myMapView: MKMapView!

@@ -62,7 +62,7 @@
 		ADF0815D21C1FF6B0013012F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815A21C1FF6B0013012F /* ChatView.swift */; };
 		ADF0815F21C202FA0013012F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0815E21C202FA0013012F /* ChatViewController.swift */; };
 		ADF0816121C203A80013012F /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0816021C203A80013012F /* FriendData.swift */; };
-		C82393A4B472C82F2D8A89A7 /* Pods_MaPle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */; };
+		DA75E71921C899180003CEB2 /* Pods_MaPle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA75E71821C899180003CEB2 /* Pods_MaPle.framework */; };
 		DA7F8C3421B559F1009899F6 /* ServerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */; };
 		DAA93FA921B751AB00EE8273 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA93FA821B751AB00EE8273 /* StoreKit.framework */; };
 		FA2B182421BEA02700EF5214 /* WorldTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B182321BEA02700EF5214 /* WorldTableViewController.swift */; };
@@ -80,7 +80,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaPle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F6591CDB14574C6CD6EF97 /* Pods-MaPle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaPle.release.xcconfig"; path = "Pods/Target Support Files/Pods-MaPle/Pods-MaPle.release.xcconfig"; sourceTree = "<group>"; };
 		81A9F33315809AAE23DFDBA9 /* Pods-MaPle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaPle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MaPle/Pods-MaPle.debug.xcconfig"; sourceTree = "<group>"; };
 		8A01110921AD8E3B00789296 /* CollectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +142,7 @@
 		ADF0815A21C1FF6B0013012F /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		ADF0815E21C202FA0013012F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		ADF0816021C203A80013012F /* FriendData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
+		DA75E71821C899180003CEB2 /* Pods_MaPle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pods_MaPle.framework; sourceTree = "<group>"; };
 		DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCommunicator.swift; sourceTree = "<group>"; };
 		DAA93FA821B751AB00EE8273 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FA2B182321BEA02700EF5214 /* WorldTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTableViewController.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C82393A4B472C82F2D8A89A7 /* Pods_MaPle.framework in Frameworks */,
+				DA75E71921C899180003CEB2 /* Pods_MaPle.framework in Frameworks */,
 				DAA93FA921B751AB00EE8273 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,8 +248,8 @@
 		97C2342A36E01136857BD7D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DA75E71821C899180003CEB2 /* Pods_MaPle.framework */,
 				DAA93FA821B751AB00EE8273 /* StoreKit.framework */,
-				16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -667,6 +667,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YJT86MXP57;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -691,6 +695,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YJT86MXP57;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
