@@ -84,7 +84,7 @@ class FriendCommunicator {
         Alamofire.request(FRIENDLIST_URL, method: .post, parameters:parameters , encoding: JSONEncoding.default).responseData { (response) in
             switch response.result {
             case .success(let data):
-                print("Photo Download OK: \(data.count) bytes",data.count)
+//                print("Photo Download OK: \(data.count) bytes",data.count)
                 completion(data,nil)
             case .failure(let error):
                 print("Photo Download Fail: \(error)")

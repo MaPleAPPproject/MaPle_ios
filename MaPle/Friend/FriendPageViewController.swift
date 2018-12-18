@@ -9,7 +9,7 @@ import StoreKit
 import UIKit
 
 class FriendPageViewController: UIViewController
-, SKProductsRequestDelegate, SKPaymentTransactionObserver
+    , SKProductsRequestDelegate, SKPaymentTransactionObserver
 {
     
     @IBOutlet weak var friendSegmentControl: UISegmentedControl!
@@ -18,7 +18,7 @@ class FriendPageViewController: UIViewController
     @IBOutlet weak var matchView: UIView!
 //    let buttonBar = UIView()
     let memberid = UserDefaults.standard.string(forKey: "MemberID")
-
+    
     //MARK: - change friend page segment
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
 //        segmentLineChange(index: sender.selectedSegmentIndex)
@@ -122,25 +122,22 @@ class FriendPageViewController: UIViewController
     let TAG = "FriendPageViewController : "
     let messageTitle = "尊榮會員升等服務"
     let message = "現在升等VIP立即開啟聊天室功能~!"
-    
+    let product = "VipUpdate"
     var serverCommunicator : ServerCommunicator?
     var vipStatus : Int?
     
     
     func prepareForPayment() {
         
-       
+        SKPaymentQueue.default().add(self as SKPaymentTransactionObserver)
+        
         guard let memberId = UserDefaults.standard.object(forKey: "IntMemberID") as? Int else {
             return
         }
         print(TAG, memberId)
         self.serverCommunicator = ServerCommunicator(memberId)
         
-//        self.lodingView = LodingView(frame: UIScreen.main.bounds)
-//        self.view.addSubview(self.lodingView!)
-//        
-        productIDs.insert("Vip") // Todo add the productId
-        self.requestProductInfo()
+//        productIDs.insert(product) // Todo add the productId
         
         serverCommunicator!.loadUserVipStatus { (results, error) in
             
@@ -153,26 +150,24 @@ class FriendPageViewController: UIViewController
         }
         
     }
-
     
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        SKPaymentQueue.default().remove(self)
-    }
     
     @IBAction func IABbtn(_ sender: UIBarButtonItem) {
-        showActionSheet(Product.nonConsumable)
+        showActionSheet()
     }
     
     func requestProductInfo() {
         
         if SKPaymentQueue.canMakePayments() {
-            print("ProductId : \(productIDs)")
-            let productRequest = SKProductsRequest(productIdentifiers: productIDs)
             
-            productRequest.delegate = self
-            productRequest.start()
+            let identifiers: Set<String> = [product]
+            
+            let request = SKProductsRequest(productIdentifiers: identifiers)
+            
+            request.delegate = self
+            request.start()
+
+            
         } else {
             print("取不到任何內購的商品...")
         }
@@ -180,22 +175,21 @@ class FriendPageViewController: UIViewController
     
     
     func showMessage(_ message: String) {
-    
+        
         let alertController = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
         let confirm = UIAlertAction(title: "是", style: .default, handler: nil)
-    
+        
         alertController.addAction(confirm)
-    
+        
         self.present(alertController, animated: true, completion: nil)
     }
-
-
-
-
+    
+    
+    
+    
     // MARK: - Delegate
-
+    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        
         
         if response.products.count != 0 {
             
@@ -204,21 +198,43 @@ class FriendPageViewController: UIViewController
                 print(product)
             }
             
+            if self.productsArray.count != 0 {
+                SKPaymentQueue.default().add(self)
+                
+                let payment = SKPayment(product: self.productsArray.first!)
+                
+                SKPaymentQueue.default().add(payment)
+                
+                self.isProgress = true
+            } else {
+                print("\(TAG)用戶無法購買")
+            }
+            
         } else {
-            print("取不到任何商品...")
+            print("\(TAG)取不到任何商品...")
         }
         if response.invalidProductIdentifiers.count != 0 {
-            print(response.invalidProductIdentifiers.description)
+            print("\(TAG)交易失敗商品名稱 : \(response.invalidProductIdentifiers.description)")
         }
     }
-
-
+    
+    func transcationPurchasing(_ transcation: SKPaymentTransaction) {
+        
+        print("交易中...")
+    }
+    
+    fileprivate func transcationPurchased(_ transcation: SKPaymentTransaction) {
+        
+        print("交易成功...")
+        
+    }
+    
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
         for transaction in transactions {
             switch transaction.transactionState {
             case SKPaymentTransactionState.purchased:
-                print("交易成功")
+                print("\(TAG)交易成功")
                 SKPaymentQueue.default().finishTransaction(transaction)
                 
                 self.isProgress = false
@@ -257,30 +273,25 @@ class FriendPageViewController: UIViewController
             }
         }
     }
-
-    func showActionSheet(_ product: Product) {
+    
+    func showActionSheet() {
         
         if self.isProgress {
             return
         }
         var buyAction: UIAlertAction?
         
-        switch product {
-        case .nonConsumable:
+        buyAction = UIAlertAction(title: "購買", style: UIAlertAction.Style.default) { (action) -> Void in
             
-            buyAction = UIAlertAction(title: "購買", style: UIAlertAction.Style.default) { (action) -> Void in
-                if SKPaymentQueue.canMakePayments() {
-                    SKPaymentQueue.default().add(self)
-                    
-                    let payment = SKPayment(product: self.productsArray[1])
-                    
-                    SKPaymentQueue.default().add(payment)
-                    
-                    self.isProgress = true
+            if SKPaymentQueue.canMakePayments() {
+                
+                self.requestProductInfo()
+                
                 }
-            }
             
         }
+        
+        
         
         let actionSheetController = UIAlertController(title: self.messageTitle, message: self.message, preferredStyle: UIAlertController.Style.actionSheet)
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertAction.Style.cancel, handler: nil)
@@ -290,16 +301,16 @@ class FriendPageViewController: UIViewController
         
         self.present(actionSheetController, animated: true, completion: nil)
     }
-
+    
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
         print("restoreCompletedTransactionsFailed.")
         print(error.localizedDescription)
     }
-
+    
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         print("paymentQueueRestoreCompletedTransactionsFinished.")
     }
-
+    
     func afterPaymentFinish(){
         guard let memberId = UserDefaults.standard.object(forKey: "IntMemberID") as? Int else {
             return
@@ -320,7 +331,9 @@ class FriendPageViewController: UIViewController
             }
         }
     }
-    enum Product {
-        case nonConsumable
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        SKPaymentQueue.default().remove(self as SKPaymentTransactionObserver)
     }
+    
 } // view controller

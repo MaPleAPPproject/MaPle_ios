@@ -62,6 +62,7 @@ class TinderCard: UIView {
         
         originalPoint = center
         
+        
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.beingDragged))
         addGestureRecognizer(panGestureRecognizer)
         
@@ -305,15 +306,15 @@ class TinderCard: UIView {
     
     func shakeAnimationCard(){
         
-        imageViewStatus.image = #imageLiteral(resourceName: "earth-2.png")
-        overLayImage.image = #imageLiteral(resourceName: "earth-2.png")
-        UIView.animate(withDuration: 0.5, animations: {() -> Void in
+        imageViewStatus.image = #imageLiteral(resourceName: "btn_skip_pressed")
+        overLayImage.image = #imageLiteral(resourceName: "overlay_skip")
+        UIView.animate(withDuration: 0.8, animations: {() -> Void in
             self.center = CGPoint(x: self.center.x - (self.frame.size.width / 2), y: self.center.y)
             self.transform = CGAffineTransform(rotationAngle: -0.2)
             self.imageViewStatus.alpha = 1.0
             self.overLayImage.alpha = 1.0
         }, completion: {(_) -> Void in
-            UIView.animate(withDuration: 0.5, animations: {() -> Void in
+            UIView.animate(withDuration: 0.8, animations: {() -> Void in
                 self.imageViewStatus.alpha = 0
                 self.overLayImage.alpha = 0
                 self.center = self.originalPoint
@@ -321,13 +322,13 @@ class TinderCard: UIView {
             }, completion: {(_ complete: Bool) -> Void in
                 self.imageViewStatus.image = #imageLiteral(resourceName: "btn_like_pressed")
                 self.overLayImage.image =  #imageLiteral(resourceName: "overlay_like")
-                UIView.animate(withDuration: 0.5, animations: {() -> Void in
+                UIView.animate(withDuration: 0.8, animations: {() -> Void in
                     self.imageViewStatus.alpha = 1
                     self.overLayImage.alpha = 1
                     self.center = CGPoint(x: self.center.x + (self.frame.size.width / 2), y: self.center.y)
                     self.transform = CGAffineTransform(rotationAngle: 0.2)
                 }, completion: {(_ complete: Bool) -> Void in
-                    UIView.animate(withDuration: 0.5, animations: {() -> Void in
+                    UIView.animate(withDuration: 0.8, animations: {() -> Void in
                         self.imageViewStatus.alpha = 0
                         self.overLayImage.alpha = 0
                         self.center = self.originalPoint

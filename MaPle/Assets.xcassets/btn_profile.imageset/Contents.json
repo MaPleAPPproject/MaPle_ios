@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "loginOOut.png",
+      "filename" : "baseline_account_circle_white_18dp.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "baseline_account_circle_white_18dp-1.png",
       "scale" : "2x"
     },
     {

@@ -9,12 +9,12 @@ import Starscream
 
 class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var friendView: UIView!
     @IBOutlet weak var friendlistTableView: UITableView!
-    let memberid = UserDefaults.standard.string(forKey: "MemberID")
+    let memberID = UserDefaults.standard.integer(forKey: "MemberIDint")
+
+    let refreshControl = UIRefreshControl()
     
-    
-    
-    //    let memberid = UserDefaults.standard.integer(forKey: "MemberIDint")
     let communicator = FriendCommunicator.shared
     var friendlist : [Friend_profile] = []
     var socket: WebSocket!
@@ -24,11 +24,35 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
         friendlistTableView.delegate = self
         friendlistTableView.dataSource = self
-        getfriends()
+        getfriends(memberid: memberID)
         friendlistTableView.separatorInset = UIEdgeInsets.zero
         friendlistTableView.separatorColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-       
+        
+        
+        //refreshControl
+        if #available(iOS 10.0, *) {
+            self.friendlistTableView.refreshControl = refreshControl
+        } else {
+            self.friendlistTableView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(refreshPictureData(_:)), for: .valueChanged)
+        
+        if friendlist.isEmpty {
+            friendlistTableView.separatorStyle = .none
+            let backgroundImage = UIImage.init(named: "background_friend")
+            friendView.layer.contents = backgroundImage?.cgImage
+        }
+        
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        if friendlist.isEmpty {
+//            friendlistTableView.separatorStyle = .none
+//            let backgroundImage = UIImage.init(named: "background_friend")
+//            friendView.layer.contents = backgroundImage?.cgImage
+//        }
+//    }
+    
     
     // MARK: - Table view data source
     
@@ -44,6 +68,8 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FriendlistTableViewCell
         let friend = friendlist[indexPath.row]
+        
+        cell.selectionStyle = .none
         cell.nameLB.text = friend.Username
         cell.nameLB.adjustsFontSizeToFitWidth = true
         cell.introLB.text = friend.selfIntroduction
@@ -66,49 +92,10 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
     
     
     // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "friendProfile" {
             guard  let targetVC = segue.destination as? OthersPage2CollectionViewController else {
                 assertionFailure("Faild to get destination")
@@ -127,12 +114,12 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
     
     
     
-    func getfriends() {
-        guard let memberId =  memberid else {
-            assertionFailure("memberid is nil")
-            return
-        }
-        communicator.getAllFriend(memberid: Int(memberId)!) { (result,error) in
+    func getfriends(memberid: Int) {
+//        guard let memberId =  memberid else {
+//            assertionFailure("memberid is nil")
+//            return
+//        }
+        communicator.getAllFriend(memberid: memberid) { (result,error) in
             if let error = error {
                 print("getAllFriend error:\(error)")
                 return
@@ -165,16 +152,15 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
             self.friendlist = resultObject
 //            print("\(self.friendlist)")
             self.friendlistTableView.reloadData()
-            
-            
-            
         }
     }
     
-    @IBAction func profilePressed(_ sender: Any) {
-        
+    //MARK:-ButtonAction
+    @objc
+    func refreshPictureData(_ sender: Any) {
+        getfriends(memberid: memberID)
+        self.refreshControl.endRefreshing()
     }
-    
     
     @IBAction func chatPressed(_ sender: UIButton) {
         print("sender.tag:\(sender.tag)")

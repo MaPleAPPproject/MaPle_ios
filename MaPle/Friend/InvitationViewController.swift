@@ -15,7 +15,6 @@ class InvitationViewController: UIViewController {
     @IBOutlet var containerView: GradientView!
     @IBOutlet weak var emojiView: EmojiRateView!
     @IBOutlet weak var viewTinderBackGround: UIView!
-    @IBOutlet weak var viewActions: UIView!
     var selectedViewController: UIViewController!
     
     var currentIndex = 0
@@ -23,7 +22,6 @@ class InvitationViewController: UIViewController {
     var allCardsArray = [TinderCard]()
     var valueArray = ["1"]
     let memberID = UserDefaults.standard.integer(forKey: "MemberIDint")
-//    let memberid = UserDefaults.standard.string(forKey: "MemberID")
     
     let communicator = FriendCommunicator.shared
     let explorecommunicator = ExploreCommunicator.shared
@@ -77,10 +75,6 @@ class InvitationViewController: UIViewController {
     }
     
     func getallInvitation() {
-//        guard let memberId =  memberid else {
-//            assertionFailure("memberid is nil")
-//            return
-//        }
         communicator.getAllInvitation(memberid: memberID) { (result,error) in
             if let error = error {
                 print("getallInvitation error:\(error)")
@@ -122,7 +116,7 @@ class InvitationViewController: UIViewController {
                 if i < capCount {
                     currentLoadedCardsArray.append(newCard)
                     newCard.tag = i //array內加標籤
-                }
+                } 
             }
             
             for (i,_) in currentLoadedCardsArray.enumerated() {
@@ -135,6 +129,10 @@ class InvitationViewController: UIViewController {
             animateCardAfterSwiping()
             perform(#selector(loadInitialDummyAnimation), with: nil, afterDelay: 1.0)
         }
+        
+        let backgroundImage = UIImage.init(named: "background_inviation")
+        viewTinderBackGround.layer.contents = backgroundImage?.cgImage
+        
     }
     
     @objc func loadInitialDummyAnimation() {
@@ -191,15 +189,7 @@ class InvitationViewController: UIViewController {
         }
     }
     
-    @IBAction func disLikeButton(_ sender: Any) {
-        let card = currentLoadedCardsArray.first
-        card?.leftClickAction()
-    }
     
-    @IBAction func likeButton(_ sender: Any) {
-        let card = currentLoadedCardsArray.first
-        card?.rightClickAction()
-    }
 }
 
 
