@@ -41,10 +41,7 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        print("lat:\(self.lat)")
-        //        print("lon:\(self.lon)")
-        //        print("select location:\(self.selectedLocation)")
-        //        setLocationLabel()
+
     }
     
     

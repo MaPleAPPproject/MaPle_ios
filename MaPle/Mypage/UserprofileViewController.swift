@@ -9,7 +9,7 @@ import UIKit
 import Photos
 
 
-class UserprofileViewController: UIViewController {
+class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrollViewDelegate {
     let imageManager = ImageManager.shared
     var squareImage = UIImage()
 
@@ -48,14 +48,54 @@ class UserprofileViewController: UIViewController {
         
         picker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyBoard))
+        self.view.addGestureRecognizer(tap)
+      
+        
+        
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    
+    @objc func keyboardWillAppear(_ notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillDisappear(_ notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
+    
+    @objc
+    func hideKeyBoard(){
+        selfIntroTextView.resignFirstResponder()
+    }
     
     
     
@@ -130,7 +170,12 @@ class UserprofileViewController: UIViewController {
         return false
     }
     
+//    func hideKeyBoard (textView : UITextView) -> Bool {
+//        textView.resignFirstResponder()
+//        return true
+//    }
     
+   
     
     @objc
     func changePhoto(){
@@ -227,6 +272,8 @@ class UserprofileViewController: UIViewController {
         }
         
     }
+    
+    
     
     @IBAction func nameEditCancelBtnPressed(_ sender: UIButton) {
         offNameEditMode()

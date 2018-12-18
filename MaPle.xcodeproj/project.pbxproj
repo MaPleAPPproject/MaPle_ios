@@ -64,7 +64,6 @@
 		ADF0816121C203A80013012F /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0816021C203A80013012F /* FriendData.swift */; };
 		C82393A4B472C82F2D8A89A7 /* Pods_MaPle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */; };
 		DA7F8C3421B559F1009899F6 /* ServerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */; };
-		DAA93FA921B751AB00EE8273 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA93FA821B751AB00EE8273 /* StoreKit.framework */; };
 		FA2B182421BEA02700EF5214 /* WorldTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B182321BEA02700EF5214 /* WorldTableViewController.swift */; };
 		FA2B182621BEA08E00EF5214 /* ModifyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B182521BEA08E00EF5214 /* ModifyPostViewController.swift */; };
 		FA2B182821BEA0E700EF5214 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B182721BEA0E700EF5214 /* ChartViewController.swift */; };
@@ -145,7 +144,6 @@
 		ADF0815E21C202FA0013012F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		ADF0816021C203A80013012F /* FriendData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
 		DA7F8C3321B559F1009899F6 /* ServerCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCommunicator.swift; sourceTree = "<group>"; };
-		DAA93FA821B751AB00EE8273 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FA2B182321BEA02700EF5214 /* WorldTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTableViewController.swift; sourceTree = "<group>"; };
 		FA2B182521BEA08E00EF5214 /* ModifyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPostViewController.swift; sourceTree = "<group>"; };
 		FA2B182721BEA0E700EF5214 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C82393A4B472C82F2D8A89A7 /* Pods_MaPle.framework in Frameworks */,
-				DAA93FA921B751AB00EE8273 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +247,6 @@
 		97C2342A36E01136857BD7D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DAA93FA821B751AB00EE8273 /* StoreKit.framework */,
 				16DEBB2C3390D9E15785154C /* Pods_MaPle.framework */,
 			);
 			name = Frameworks;
@@ -376,7 +372,7 @@
 						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -670,13 +666,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YJT86MXP57;
+				DEVELOPMENT_TEAM = 53L8H6U7Q7;
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle.Toby1214;
+				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle000000;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MaPle/MaPle-Bridging-Header.h";
@@ -694,13 +690,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YJT86MXP57;
+				DEVELOPMENT_TEAM = 53L8H6U7Q7;
 				INFOPLIST_FILE = MaPle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle.Toby1214;
+				PRODUCT_BUNDLE_IDENTIFIER = cp102.MaPle000000;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MaPle/MaPle-Bridging-Header.h";
