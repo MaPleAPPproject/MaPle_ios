@@ -8,7 +8,9 @@
 import StoreKit
 import UIKit
 
-class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+class FriendPageViewController: UIViewController
+    
+{
     
     @IBOutlet weak var friendSegmentControl: UISegmentedControl!
     @IBOutlet weak var friendView: UIView!
@@ -49,7 +51,7 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
         invitationView.isHidden = true
         matchView.isHidden = true
         
-        prepareForPayment()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,232 +109,8 @@ class FriendPageViewController: UIViewController, SKProductsRequestDelegate, SKP
         friendSegmentControl.addTarget(self, action: #selector(self.indexChanged(_:)), for: UIControl.Event.valueChanged)
     }
     
+   
     
-    // MARK - Payment
-    
-    var productIDs = Set<String>()
-    var productsArray = [SKProduct]()
-    
-    var isProgress: Bool = false
-    var lodingView: LodingView?
-    
-    
-    let TAG = "FriendPageViewController : "
-    let messageTitle = "尊榮會員升等服務"
-    let message = "現在升等VIP立即開啟聊天室功能~!"
-    let product = "VipUpdate"
-    var serverCommunicator : ServerCommunicator?
-    var vipStatus : Int?
-    
-    
-    func prepareForPayment() {
-        
-        SKPaymentQueue.default().add(self as SKPaymentTransactionObserver)
-        
-        guard let memberId = UserDefaults.standard.object(forKey: "IntMemberID") as? Int else {
-            return
-        }
-        print(TAG, memberId)
-//        self.serverCommunicator = ServerCommunicator(memberId)
-        
-//        productIDs.insert(product) // Todo add the productId
-        
-//        serverCommunicator!.loadUserVipStatus { (results, error) in
-        
-//            guard let result = results!["vipStatus"] as? Int else {
-//                assertionFailure("Json covertion fail")
-//                return
-//            }
-//            self.vipStatus = result
-    
-        }
-        
-//    }
-    
-    
-    @IBAction func IABbtn(_ sender: UIBarButtonItem) {
-        showActionSheet()
-    }
-    
-    func requestProductInfo() {
-        
-        if SKPaymentQueue.canMakePayments() {
-            
-            let identifiers: Set<String> = [product]
-            
-            let request = SKProductsRequest(productIdentifiers: identifiers)
-            
-            request.delegate = self
-            request.start()
-
-            
-        } else {
-            print("取不到任何內購的商品...")
-        }
-    }
-    
-    
-    func showMessage(_ message: String) {
-        
-        let alertController = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
-        let confirm = UIAlertAction(title: "是", style: .default, handler: nil)
-        
-        alertController.addAction(confirm)
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    
-    
-    
-    // MARK: - Delegate
-    
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        
-        if response.products.count != 0 {
-            
-            for product in response.products {
-                self.productsArray.append(product)
-                print(product)
-            }
-            
-            if self.productsArray.count != 0 {
-                SKPaymentQueue.default().add(self)
-                
-                let payment = SKPayment(product: self.productsArray.first!)
-                
-                SKPaymentQueue.default().add(payment)
-                
-                self.isProgress = true
-            } else {
-                print("\(TAG)用戶無法購買")
-            }
-            
-        } else {
-            print("\(TAG)取不到任何商品...")
-        }
-        if response.invalidProductIdentifiers.count != 0 {
-            print("\(TAG)交易失敗商品名稱 : \(response.invalidProductIdentifiers.description)")
-        }
-    }
-    
-    func transcationPurchasing(_ transcation: SKPaymentTransaction) {
-        
-        print("交易中...")
-    }
-    
-    fileprivate func transcationPurchased(_ transcation: SKPaymentTransaction) {
-        
-        print("交易成功...")
-        
-    }
-    
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        
-        for transaction in transactions {
-            switch transaction.transactionState {
-            case SKPaymentTransactionState.purchased:
-                print("\(TAG)交易成功")
-                SKPaymentQueue.default().finishTransaction(transaction)
-                
-                self.isProgress = false
-                
-                SKPaymentQueue.default().remove(self)
-                
-                afterPaymentFinish()
-                
-                self.dismiss(animated: true, completion: nil)
-            case SKPaymentTransactionState.failed:
-                print("SKPaymentTransactionState.failed")
-                
-                if let error = transaction.error as? SKError {
-                    switch error.code {
-                    case .paymentCancelled:
-                        print("Transaction Cancelled: \(error.localizedDescription)")
-                    case .paymentInvalid:
-                        print("Transaction paymentInvalid: \(error.localizedDescription)")
-                    case .paymentNotAllowed:
-                        print("Transaction paymentNotAllowed: \(error.localizedDescription)")
-                    default:
-                        print("Transaction: \(error.localizedDescription)")
-                    }
-                }
-                
-                SKPaymentQueue.default().finishTransaction(transaction)
-                self.isProgress = false
-            case SKPaymentTransactionState.restored:
-                print("SKPaymentTransactionState.restore")
-                
-                SKPaymentQueue.default().finishTransaction(transaction)
-                self.isProgress = false
-                
-            default:
-                print(transaction.transactionState.rawValue)
-            }
-        }
-    }
-    
-    func showActionSheet() {
-        
-        if self.isProgress {
-            return
-        }
-        var buyAction: UIAlertAction?
-        
-        buyAction = UIAlertAction(title: "購買", style: UIAlertAction.Style.default) { (action) -> Void in
-            
-            if SKPaymentQueue.canMakePayments() {
-                
-                self.requestProductInfo()
-                
-                }
-            
-        }
-        
-        
-        
-        let actionSheetController = UIAlertController(title: self.messageTitle, message: self.message, preferredStyle: UIAlertController.Style.actionSheet)
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertAction.Style.cancel, handler: nil)
-        
-        actionSheetController.addAction(buyAction!)
-        actionSheetController.addAction(cancelAction)
-        
-        self.present(actionSheetController, animated: true, completion: nil)
-    }
-    
-    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
-        print("restoreCompletedTransactionsFailed.")
-        print(error.localizedDescription)
-    }
-    
-    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        print("paymentQueueRestoreCompletedTransactionsFinished.")
-    }
-    
-    func afterPaymentFinish(){
-        guard let memberId = UserDefaults.standard.object(forKey: "IntMemberID") as? Int else {
-            return
-        }
-        serverCommunicator!.updateUserVipStatus(memberId) { (results, error) in
-            if let error = error {
-                assertionFailure("failed to update Vip status error code : \(error)")
-                return
-            }
-            guard let result = results!["response"]as? Int else {
-                assertionFailure("Json covertion fail")
-                return
-            }
-            if result == 1 {
-                self.view.setNeedsDisplay()
-            } else {
-                self.showMessage("操作錯誤, 請重新來過~!")
-            }
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        SKPaymentQueue.default().remove(self as SKPaymentTransactionObserver)
-    }
-    
+     
 } // view controller
 

@@ -6,10 +6,10 @@
 import StoreKit
 import UIKit
 import Starscream
-
-class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource , SKProductsRequestDelegate, SKPaymentTransactionObserver{
+import StoreKit
+class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  , SKProductsRequestDelegate, SKPaymentTransactionObserver{
     
-    @IBOutlet var paymentBt: UIBarButtonItem!
+    
     @IBOutlet var friendView: UIView!
     @IBOutlet weak var backgroundimageview: UIImageView!
     @IBOutlet weak var friendlistTableView: UITableView!
@@ -23,7 +23,9 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         prepareForPayment()
         friendlistTableView.delegate = self
         friendlistTableView.dataSource = self
@@ -87,6 +89,11 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
         cell.nameLB.adjustsFontSizeToFitWidth = true
         cell.introLB.text = friend.selfIntroduction
         cell.chatBt.tag = friend.FriendID
+        if self.vipStatus == 1 {
+            cell.chatBt.isHidden = false
+        } else {
+            cell.chatBt.isHidden = true
+        }
         print(self.vipStatus)
         if self.vipStatus == 1 {
             cell.chatBt.isHidden = false
@@ -205,22 +212,29 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
     let message = "現在升等VIP立即開啟聊天室功能~!"
     let product = "VipUpdate"
     var serverCommunicator = ServerCommunicator()
-    var vipStatus = 0
-    
-    func barBtnSize() {
+    var vipStatus: Int = 0 {
+        didSet {
+            barBtnSize()
+        }
         
-        let screenWidth = UIScreen.main.bounds.width
-//        paymentBarBtn.width = screenWidth
+    }
+    
+   
+   
+    @IBOutlet weak var paymentBtn: UIButton!
+    @IBOutlet weak var PaymentBtnView: UIView!
+    func barBtnSize() {
         
         
         if vipStatus == 1{
-            self.paymentBt.isEnabled = false
-            self.paymentBt.title = ""
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            paymentBtn.isHidden = true
+            PaymentBtnView.frame.size.height = 0
         } else {
-            self.paymentBt.isEnabled = true
-            self.paymentBt.title = "▷▷▷ 現在開通聊天室服務只需$30!! ◁◁◁"
+            paymentBtn.isHidden = false
+            PaymentBtnView.frame.size.height = 40
+            paymentBtn.setTitle("▷▷▷ 現在開通聊天室服務只需$30!! ◁◁◁", for: .normal)
         }
+        self.friendlistTableView.reloadData()
         
     }
     
@@ -236,11 +250,9 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
         guard let memberId = UserDefaults.standard.object(forKey: "MemberIDint") as? Int else {
             return
         }
-        print("\(TAG),  \(memberID)")
-        
         
         serverCommunicator.loadUserVipStatus(memberId){ (results, error) in
-            print("results:\(results!)")
+            
             guard let result = results!["vipStatus"] as? Int else {
                 assertionFailure("Json covertion fail")
                 return
@@ -249,14 +261,9 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
-    @IBAction func IABtn(sender: UIBarButtonItem) {
+    @IBAction func IABbtn(_ sender: UIButton) {
         requestProductInfo()
     }
-    
-    
-//    @IBAction func IABbtn(_ sender: UIBarButtonItem) {
-//        requestProductInfo()
-//    }
     
     func requestProductInfo() {
         
@@ -298,7 +305,7 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
             
             for product in response.products {
                 self.productsArray.append(product)
-                print(product)
+                
             }
             
             if self.productsArray.count != 0 {
@@ -391,16 +398,20 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
                 SKPaymentQueue.default().add(self)
                 if self.productsArray.count != 0 {
                     let payment = SKPayment(product: self.productsArray[1])
-                    
+
                     SKPaymentQueue.default().add(payment)
-                    
+
                     self.isProgress = true
                 } else {
                     print("productArray is empty.")
                 }
             }
             self.showPaymentAlert()
-            
+//            if self.vipStatus == 1{
+//                self.vipStatus = 0
+//            } else {
+//                self.vipStatus = 1
+//            }
         }
         
         let actionSheetController = UIAlertController(title: self.messageTitle, message: self.message, preferredStyle: UIAlertController.Style.actionSheet)
@@ -448,7 +459,7 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
                 self.dismiss(animated: false, completion: nil)
                 let title = "確認您的 App 內建購買功能"
-                let message = "您要以 NT$ 30 的價格購買一個 會員升等方案 嗎? \n\n [Enviroment: Sandbox]"
+                let message = "您要以 NT$ 30 的價格購買一個 VipMemberShip 嗎? \n\n [Environment: Sandbox]"
                 let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
                 
                 let confirm = UIAlertAction(title: "購買", style: .default){ (action) in
@@ -472,8 +483,9 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
         }
         let cancal = UIAlertAction(title: "取消", style: .default, handler: nil)
         
-        alertController.addAction(confirm)
         alertController.addAction(cancal)
+        alertController.addAction(confirm)
+        
         alertController.addTextField(configurationHandler: { (textField) in
             textField.placeholder = "example@icloud.com"
         })
@@ -525,13 +537,10 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
             if result == 1 {
                 self.vipVerify()
                 let title = "設定成功"
-                let message = "您的購買已經成功。 \n\n [Enviroment: Sandbox]"
+                let message = "您的購買已經成功。 \n\n [Environment: Sandbox]"
                 let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
                 
                 let confirm = UIAlertAction(title: "好", style: .default){ (action) in
-                    
-                    self.barBtnSize()
-                    self.friendlistTableView.reloadData()
                     
                 }
                 alertController.addAction(confirm)
@@ -549,3 +558,9 @@ class FriendlistTableViewController: UIViewController, UITableViewDelegate, UITa
         SKPaymentQueue.default().remove(self as SKPaymentTransactionObserver)
     }
 }
+    
+    
+    
+    
+    
+
