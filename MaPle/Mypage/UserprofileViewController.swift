@@ -58,9 +58,7 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
     
     override func viewWillAppear(_ animated: Bool) {
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification)
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification)
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -179,7 +177,7 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
     
     @objc
     func changePhoto(){
-        let alert = UIAlertController(title: "更改大頭貼", message: "請選擇相片來源", preferredStyle: .alert)
+        let alert = UIAlertController(title: "更改大頭貼", message: "請選擇相片來源", preferredStyle: .actionSheet)
         let camera = UIAlertAction(title: "相機", style: .default){ (action) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) &&
                 UIImagePickerController.isCameraDeviceAvailable(.front) &&
@@ -206,13 +204,14 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
             if state == true {
                 self.present(self.picker, animated: true, completion: nil)
             }
-            
+         let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
             
             
             
         }
         alert.addAction(camera)
         alert.addAction(gallery)
+        alert.addAction(cancel)
         present(alert,animated: true)
     }
     

@@ -102,7 +102,7 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
     
     @objc
     func changePhoto(){
-        let alert = UIAlertController(title: nil, message: "請選擇相片來源", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: "請選擇相片來源", preferredStyle: .actionSheet)
         let camera = UIAlertAction(title: "相機", style: .default){ (action) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) &&
                 UIImagePickerController.isCameraDeviceAvailable(.front) &&
@@ -128,8 +128,11 @@ class ModifyPostViewController: UIViewController ,UITextViewDelegate{
             self.present(picker, animated: true, completion: nil)
             
         }
+        let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
+
         alert.addAction(camera)
         alert.addAction(gallery)
+        alert.addAction(cancel)
         present(alert,animated: true)
         
     }
