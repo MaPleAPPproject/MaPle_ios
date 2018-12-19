@@ -130,7 +130,7 @@ class MapLocationViewController: UIViewController {
         selectedLocation.updateValue(adminarea ?? "", forKey: "adminarea")
         selectedLocation.updateValue(countryCode ?? "", forKey: "countryCode")
         selectedLocation.updateValue(address ?? "", forKey: "address")
-        selectedLocation.updateValue(address ?? "", forKey: "district")
+        selectedLocation.updateValue("", forKey: "district")
         guard let place  = location else {
             print("location is nil")
             return}
@@ -150,8 +150,12 @@ class MapLocationViewController: UIViewController {
         }
         
         
-        
-        addressString = locality + ", " + subAdmin
+        if locality.elementsEqual(subAdmin){
+            addressString = locality
+        } else {
+             addressString = locality + ", " + subAdmin
+        }
+       
         annotation.subtitle = addressString
         selectedLocation.updateValue( addressString, forKey: "district" )
         

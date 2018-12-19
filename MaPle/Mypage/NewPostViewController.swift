@@ -34,54 +34,9 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
         configView()
         setLocationLabel()
       
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(hideKeyBoard))
-        self.view.addGestureRecognizer(swipe)
-        swipe.direction = .down
+       
     }
-    
 
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        guard let image = postImage.image else {
-            return
-        }
-        squareImage = image
-        
-        guard let comment = commentTextView.text else {
-            return
-        }
-        self.comment = comment
-        
-        NotificationCenter.default.removeObserver(self)
-        
-    }
-    
-    @objc func keyboardWillAppear(_ notification: NSNotification) {
-        
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-    
-    @objc func keyboardWillDisappear(_ notification: NSNotification) {
-        
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
-    }
     
     func configView(){
 
@@ -175,6 +130,7 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
                 placeString += district
             } else {
                 placeString += adminArea
+                placeString += ","
                 placeString += country
             }
         } else {
@@ -182,6 +138,7 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
                 placeString += adminArea
             } else {
                 placeString += adminArea
+                placeString += ","
                 placeString += country
             }
             
@@ -190,6 +147,9 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
         print("placeString:\(placeString)")
         locationLabel.text = placeString
     }
+        
+    
+    
     
     
     @IBAction func cancelBarBtnPressed(_ sender: UIBarButtonItem) {
@@ -252,13 +212,7 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
             districtString = adminArea + ", " + country
         }
         
-//        if district == ""{
-//            addressString = country + ", " + address
-//            districtString = adminArea + ", " + country
-//        } else {
-//            addressString = country + ", " + district + ", " + address
-//            districtString = district + "," + country
-//        }
+
        
         let locaiton = Location(postId: nil, district: districtString, address: addressString, latitude: lat , longitude: lon, countryCode: countryCode)
         
