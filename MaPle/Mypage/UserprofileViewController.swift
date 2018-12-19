@@ -41,6 +41,9 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changePhoto))
         photoIcon.addGestureRecognizer(gestureRecognizer)
         photoIcon.isUserInteractionEnabled = true
+//        self.photoIcon.clipsToBounds = true
+//        self.photoIcon.layer.cornerRadius = self.photoIcon.frame.size.width / 2
+       
         
         //        let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
@@ -48,61 +51,21 @@ class UserprofileViewController: UIViewController , UITextViewDelegate , UIScrol
         
         picker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(hideKeyBoard))
-        self.view.addGestureRecognizer(swipe)
-        swipe.direction = .down
-        
-        
-        
-        
+       
     }
     
     
+
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-    }
+
     
     
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self)
-    }
+
+    
+
     
     
-    @objc func keyboardWillAppear(_ notification: NSNotification) {
-        if !nameTextField.isFirstResponder{
-            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-                if self.view.frame.origin.y == 0{
-                    self.view.frame.origin.y -= keyboardSize.height
-                }
-            }
-            
-            
-        }
-    }
-    
-    @objc func keyboardWillDisappear(_ notification: NSNotification) {
-        
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
-    }
-    
-    
-    @objc
-    func hideKeyBoard(){
-        selfIntroTextView.resignFirstResponder()
-        nameTextField.resignFirstResponder()
-        newPasswordTextField.resignFirstResponder()
-        confirmPasswordTextField.resignFirstResponder()
-    }
+
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         nameTextField.resignFirstResponder()
@@ -540,6 +503,11 @@ extension UserprofileViewController: UIImagePickerControllerDelegate, UINavigati
         let image = info[.originalImage] as! UIImage
         squareImage = image.crop(ratio: 1)
         photoIcon.image = squareImage
+        DispatchQueue.main.async {
+//            self.photoIcon.image = image
+            self.photoIcon.clipsToBounds = true
+            self.photoIcon.layer.cornerRadius = self.photoIcon.frame.size.width / 2
+        }
         dismiss(animated: true, completion: nil)
         
     }

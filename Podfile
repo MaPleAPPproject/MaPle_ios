@@ -12,5 +12,6 @@ pod 'Alamofire'
 pod 'FSInteractiveMap'
 pod 'Starscream'
 pod 'UITextView+Placeholder'
+pod 'IQKeyboardManagerSwift'
 
 end
