@@ -26,7 +26,7 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
     var tops = [Picture]()
     var recoms = [Picture]()
     var news = [Picture]()
-    private let refreshControl = UIRefreshControl()
+//    private let refreshControl = UIRefreshControl()
     let memberid = UserDefaults.standard.string(forKey: "MemberID")
 
     
@@ -60,12 +60,12 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
         self.segmentstylechange()
         
         //refreshControl
-        if #available(iOS 10.0, *) {
-            self.collectionView.refreshControl = refreshControl
-        } else {
-            self.collectionView.addSubview(refreshControl)
-        }
-        refreshControl.addTarget(self, action: #selector(refreshPictureData(_:)), for: .valueChanged)
+//        if #available(iOS 10.0, *) {
+//            self.collectionView.refreshControl = refreshControl
+//        } else {
+//            self.collectionView.addSubview(refreshControl)
+//        }
+//        refreshControl.addTarget(self, action: #selector(refreshPictureData(_:)), for: .valueChanged)
         
     }
     @objc
@@ -97,16 +97,16 @@ class CollectionListViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     
-    @objc func refreshPictureData(_ sender: Any) {
-        guard let finalmemberid = self.memberid else {
-            assertionFailure("memberid is nil")
-            return
-        }
-        getPictureTop()
-        getPictureNew()
-        getPictureRecom(memberid:finalmemberid)
-        self.refreshControl.endRefreshing()
-    }
+//    @objc func refreshPictureData(_ sender: Any) {
+//        guard let finalmemberid = self.memberid else {
+//            assertionFailure("memberid is nil")
+//            return
+//        }
+//        getPictureTop()
+//        getPictureNew()
+//        getPictureRecom(memberid:finalmemberid)
+//        self.refreshControl.endRefreshing()
+//    }
     
     func getDistrictList() {
         communicatior.getDistinct { (result, error) in
