@@ -49,7 +49,7 @@ class ChartViewController: UIViewController, UIScrollViewDelegate{
         self.map.frame = self.topView.bounds.inset(by: insets)
         var colorAxis: [Any] = []
         for _ in 0...data.keys.count {
-            colorAxis.append(UIColor.green)
+            colorAxis.append(UIColor(red: 30/255, green: 163/255, blue: 163/255, alpha: 1.0))
         }
         self.map.loadMap("world-low", withData: data, colorAxis: colorAxis)
         
