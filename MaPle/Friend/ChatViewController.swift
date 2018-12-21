@@ -279,7 +279,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             return
         }
         print("resultObject-----> \(resultObject)")
-        let textDetail = "\(resultObject.senderName):"
+        let textDetail = "\(resultObject.senderName)"
         let type : ChatSenderType = .fromOthers
         let base64String = resultObject.content
         
